@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>1000以内的完全数</title>
+    <url>/2019/07/26/1000%E4%BB%A5%E5%86%85%E7%9A%84%E5%AE%8C%E5%85%A8%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="完全数-1000以内-（Perfect-number）"><a href="#完全数-1000以内-（Perfect-number）" class="headerlink" title="完全数(1000以内)（Perfect number）"></a>完全数(1000以内)（Perfect number）</h1><p>输出1000以内的完全数（Perfect number）  </p>
+<p>如果一个数恰好等于它的因子之和，则称该数为“完全数”  </p>
+<p>如： 6 ，28, 469 ……  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">perfect_number</span><span class="params">(<span class="keyword">int</span> number)</span></span></span><br><span class="line"><span class="function">	</span>&#123;	</span><br><span class="line">		<span class="keyword">int</span> s,j;</span><br><span class="line">		s=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=number/<span class="number">2</span>;j++)</span><br><span class="line">			<span class="keyword">if</span>(number%j==<span class="number">0</span>)</span><br><span class="line">				s+=j;</span><br><span class="line">		<span class="keyword">if</span>(number==s)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> number;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"1000以内的完数：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(number=<span class="number">1</span>;number&lt;=<span class="number">1000</span>;number++)</span><br><span class="line">		<span class="keyword">if</span>(perfect_number(number)==<span class="number">1</span>) </span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,number);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/07/26/1000以内的完全数/02.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>1+2^2+3^3+4^4+5^5</title>
     <url>/2019/08/06/1-2-2-3-3-4-4-5-5/</url>
     <content><![CDATA[<h1 id="1-2-2-3-3-4-4-5-5"><a href="#1-2-2-3-3-4-4-5-5" class="headerlink" title="1+2^2+3^3+4^4+5^5"></a>1+2^2+3^3+4^4+5^5</h1><p>计算：1+2^2+3^3+4^4+5^5：  </p>
@@ -41,17 +61,16 @@
       </tags>
   </entry>
   <entry>
-    <title>1000以内的完全数</title>
-    <url>/2019/07/26/1000%E4%BB%A5%E5%86%85%E7%9A%84%E5%AE%8C%E5%85%A8%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="完全数-1000以内-（Perfect-number）"><a href="#完全数-1000以内-（Perfect-number）" class="headerlink" title="完全数(1000以内)（Perfect number）"></a>完全数(1000以内)（Perfect number）</h1><p>输出1000以内的完全数（Perfect number）  </p>
-<p>如果一个数恰好等于它的因子之和，则称该数为“完全数”  </p>
-<p>如： 6 ，28, 469 ……  </p>
+    <title>123---321</title>
+    <url>/2019/08/22/123-321/</url>
+    <content><![CDATA[<h1 id="倒着输出"><a href="#倒着输出" class="headerlink" title="倒着输出"></a>倒着输出</h1><p>输入一个整数：123 输出：321  </p>
+<p>源代码： </p>
 <a id="more"></a>
 
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">perfect_number</span><span class="params">(<span class="keyword">int</span> number)</span></span></span><br><span class="line"><span class="function">	</span>&#123;	</span><br><span class="line">		<span class="keyword">int</span> s,j;</span><br><span class="line">		s=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=number/<span class="number">2</span>;j++)</span><br><span class="line">			<span class="keyword">if</span>(number%j==<span class="number">0</span>)</span><br><span class="line">				s+=j;</span><br><span class="line">		<span class="keyword">if</span>(number==s)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> number;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"1000以内的完数：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(number=<span class="number">1</span>;number&lt;=<span class="number">1000</span>;number++)</span><br><span class="line">		<span class="keyword">if</span>(perfect_number(number)==<span class="number">1</span>) </span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,number);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,a,r=<span class="number">0</span>,t=<span class="number">10</span>,e;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个数：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	e=x;</span><br><span class="line">	<span class="keyword">while</span>(x)</span><br><span class="line">		&#123;</span><br><span class="line">			a=x%<span class="number">10</span>;</span><br><span class="line">			r=r*t+a;</span><br><span class="line">			x/=<span class="number">10</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d---%d\n"</span>,e,r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/26/1000以内的完全数/02.jpg" alt></p>
+<p>运行结果：</p>
+<p><img src="//czheisenberg.github.io/2019/08/22/123-321/321.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -98,25 +117,6 @@
       <tags>
         <tag>C</tag>
         <tag>C语言数列</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>123---321</title>
-    <url>/2019/08/22/123-321/</url>
-    <content><![CDATA[<h1 id="倒着输出"><a href="#倒着输出" class="headerlink" title="倒着输出"></a>倒着输出</h1><p>输入一个整数：123 输出：321  </p>
-<p>源代码： </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,a,r=<span class="number">0</span>,t=<span class="number">10</span>,e;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个数：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	e=x;</span><br><span class="line">	<span class="keyword">while</span>(x)</span><br><span class="line">		&#123;</span><br><span class="line">			a=x%<span class="number">10</span>;</span><br><span class="line">			r=r*t+a;</span><br><span class="line">			x/=<span class="number">10</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d---%d\n"</span>,e,r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：</p>
-<p><img src="//czheisenberg.github.io/2019/08/22/123-321/321.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -178,24 +178,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Welcome</title>
-    <url>/2019/07/15/Welcome/</url>
-    <content><![CDATA[<h1 id="我的第一个博客"><a href="#我的第一个博客" class="headerlink" title="我的第一个博客"></a>我的第一个博客</h1><p>创建第一个C语言程序“Hello World”<br>源代码：</p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"> c</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Hello World!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：<br>Hello World</p>
-<p><img src="//czheisenberg.github.io/2019/07/15/Welcome/1.png" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Painting heart</title>
     <url>/2019/07/16/Painting-heart/</url>
     <content><![CDATA[<h1 id="使用python画❤"><a href="#使用python画❤" class="headerlink" title="使用python画❤"></a>使用python画❤</h1><p>利用python画一个❤  </p>
@@ -215,6 +197,24 @@
       </categories>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Welcome</title>
+    <url>/2019/07/15/Welcome/</url>
+    <content><![CDATA[<h1 id="我的第一个博客"><a href="#我的第一个博客" class="headerlink" title="我的第一个博客"></a>我的第一个博客</h1><p>创建第一个C语言程序“Hello World”<br>源代码：</p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"> c</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Hello World!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：<br>Hello World</p>
+<p><img src="//czheisenberg.github.io/2019/07/15/Welcome/1.png" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -438,27 +438,6 @@
       </tags>
   </entry>
   <entry>
-    <title>回文数</title>
-    <url>/2019/07/16/%E5%9B%9E%E6%96%87%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h1><p>“回文”是指正读反读都能读通的句子，它是古今中外都有的一种修辞方式和文字游戏，如“我为人人，人人为我”等。在数学中也有这样一类数字有这样的特征，成为回文数（palindrome number</p>
-<p>设n是一任意自然数。若将n的各位数字反向排列所得自然数n1与n相等，则称n为一回文数。例如，若n=1234321，则称n为一回文数；但若n=1234567，则n不是回文数。  </p>
-<p>简单来说： 正读与反读都一样！  </p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">h_h</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,m;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;x;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			j=i;</span><br><span class="line">			m=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span>(j)</span><br><span class="line">				&#123;</span><br><span class="line">					m=m*<span class="number">10</span>+j%<span class="number">10</span>;</span><br><span class="line">					j/=<span class="number">10</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">if</span>(i==m)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,i);</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,y,i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个范围 如：100\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">if</span>(h_h(x));</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/16/回文数/6.png" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>同构数02</title>
     <url>/2019/12/06/%E5%90%8C%E6%9E%84%E6%95%B002/</url>
     <content><![CDATA[<h1 id="同构数"><a href="#同构数" class="headerlink" title="同构数"></a>同构数</h1><p>正整数n若是它平方数的尾部，则称n为同构数。  </p>
@@ -471,6 +450,27 @@
 
 <p>运行结果：</p>
 <p><img src="//czheisenberg.github.io/2019/12/06/同构数02/tong.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>回文数</title>
+    <url>/2019/07/16/%E5%9B%9E%E6%96%87%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h1><p>“回文”是指正读反读都能读通的句子，它是古今中外都有的一种修辞方式和文字游戏，如“我为人人，人人为我”等。在数学中也有这样一类数字有这样的特征，成为回文数（palindrome number</p>
+<p>设n是一任意自然数。若将n的各位数字反向排列所得自然数n1与n相等，则称n为一回文数。例如，若n=1234321，则称n为一回文数；但若n=1234567，则n不是回文数。  </p>
+<p>简单来说： 正读与反读都一样！  </p>
+<p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">h_h</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,m;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;x;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			j=i;</span><br><span class="line">			m=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span>(j)</span><br><span class="line">				&#123;</span><br><span class="line">					m=m*<span class="number">10</span>+j%<span class="number">10</span>;</span><br><span class="line">					j/=<span class="number">10</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">if</span>(i==m)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,i);</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,y,i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个范围 如：100\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">if</span>(h_h(x));</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/07/16/回文数/6.png" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -531,6 +531,26 @@
       </tags>
   </entry>
   <entry>
+    <title>完全数</title>
+    <url>/2019/07/26/%E5%AE%8C%E5%85%A8%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="完全数（Perfect-number）"><a href="#完全数（Perfect-number）" class="headerlink" title="完全数（Perfect number）"></a>完全数（Perfect number）</h1><p>判断一个数是否为完全数（Perfect number）  </p>
+<p>如果一个数恰好等于它的因子之和，则称该数为“完全数”  </p>
+<p>如： 6 ，28, 469 ……  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> number,sum=<span class="number">0</span>,i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个数：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;number);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=number/<span class="number">2</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(number%i==<span class="number">0</span>)</span><br><span class="line">				sum+=i;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">if</span>(number==sum)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d是完数\n"</span>,number);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d不是完数\n"</span>,number);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果： </p>
+<p><img src="//czheisenberg.github.io/2019/07/26/完全数/01.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>开机时间</title>
     <url>/2019/08/24/%E5%BC%80%E6%9C%BA%E6%97%B6%E9%97%B4/</url>
     <content><![CDATA[<h1 id="获取系统已开机时间"><a href="#获取系统已开机时间" class="headerlink" title="获取系统已开机时间"></a>获取系统已开机时间</h1><p>来自百度  </p>
@@ -549,26 +569,6 @@
       <tags>
         <tag>C</tag>
         <tag>C语言有趣程序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>完全数</title>
-    <url>/2019/07/26/%E5%AE%8C%E5%85%A8%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="完全数（Perfect-number）"><a href="#完全数（Perfect-number）" class="headerlink" title="完全数（Perfect number）"></a>完全数（Perfect number）</h1><p>判断一个数是否为完全数（Perfect number）  </p>
-<p>如果一个数恰好等于它的因子之和，则称该数为“完全数”  </p>
-<p>如： 6 ，28, 469 ……  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> number,sum=<span class="number">0</span>,i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个数：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;number);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=number/<span class="number">2</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(number%i==<span class="number">0</span>)</span><br><span class="line">				sum+=i;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">if</span>(number==sum)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d是完数\n"</span>,number);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d不是完数\n"</span>,number);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果： </p>
-<p><img src="//czheisenberg.github.io/2019/07/26/完全数/01.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -591,26 +591,6 @@
       </tags>
   </entry>
   <entry>
-    <title>提取数字或字母</title>
-    <url>/2019/09/06/%E6%8F%90%E5%8F%96%E6%95%B0%E5%AD%97%E6%88%96%E5%AD%97%E6%AF%8D/</url>
-    <content><![CDATA[<p>提取数字或字母  </p>
-<p>输入一串字符提取其中的数字或字母！  </p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch[N];</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	gets(ch);</span><br><span class="line">	<span class="keyword">for</span>(i=j=<span class="number">0</span>;ch[i]!=<span class="string">'\0'</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//if(ch[i]&gt;='a'&amp;&amp;ch[i]&lt;='z'||ch[i]&gt;='A'&amp;&amp;ch[i]&lt;='Z') //提取字母 </span></span><br><span class="line">			<span class="keyword">if</span>(ch[i]&gt;=<span class="string">'0'</span>&amp;&amp;ch[i]&lt;=<span class="string">'9'</span>)<span class="comment">//提取数字 </span></span><br><span class="line">				&#123;</span><br><span class="line">					ch[j]=ch[i];</span><br><span class="line">					j++;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	ch[j]=<span class="string">'\0'</span>;</span><br><span class="line">	<span class="built_in">puts</span>(ch);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/09/06/提取数字或字母/zm.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>星期计算</title>
     <url>/2019/08/22/%E6%98%9F%E6%9C%9F%E8%AE%A1%E7%AE%97/</url>
     <content><![CDATA[<h1 id="基姆拉尔森计算公式"><a href="#基姆拉尔森计算公式" class="headerlink" title="基姆拉尔森计算公式"></a>基姆拉尔森计算公式</h1><p>通过使用基姆拉尔森计算公式计算星期几！！！  </p>
@@ -626,6 +606,26 @@
 
 <p>运行结果： </p>
 <p><img src="//czheisenberg.github.io/2019/08/22/星期计算/x.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>提取数字或字母</title>
+    <url>/2019/09/06/%E6%8F%90%E5%8F%96%E6%95%B0%E5%AD%97%E6%88%96%E5%AD%97%E6%AF%8D/</url>
+    <content><![CDATA[<p>提取数字或字母  </p>
+<p>输入一串字符提取其中的数字或字母！  </p>
+<p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch[N];</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	gets(ch);</span><br><span class="line">	<span class="keyword">for</span>(i=j=<span class="number">0</span>;ch[i]!=<span class="string">'\0'</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//if(ch[i]&gt;='a'&amp;&amp;ch[i]&lt;='z'||ch[i]&gt;='A'&amp;&amp;ch[i]&lt;='Z') //提取字母 </span></span><br><span class="line">			<span class="keyword">if</span>(ch[i]&gt;=<span class="string">'0'</span>&amp;&amp;ch[i]&lt;=<span class="string">'9'</span>)<span class="comment">//提取数字 </span></span><br><span class="line">				&#123;</span><br><span class="line">					ch[j]=ch[i];</span><br><span class="line">					j++;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	ch[j]=<span class="string">'\0'</span>;</span><br><span class="line">	<span class="built_in">puts</span>(ch);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/09/06/提取数字或字母/zm.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -805,25 +805,6 @@
       </tags>
   </entry>
   <entry>
-    <title>顺序查找</title>
-    <url>/2019/08/17/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<h1 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h1><p>输入一个数，确定它在数组中的位置，如果没有这个数输出-1，否则输出它的下标！</p>
-<p>源代码：</p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,x;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入%d个数：\n"</span>,N);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"此数组："</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n请输入你要查找的数字：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="keyword">if</span>(a[i]==x)</span><br><span class="line">			<span class="keyword">break</span>;			</span><br><span class="line">	<span class="keyword">if</span>(i&lt;N)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d的下标为%d\n"</span>,x,i);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果： </p>
-<p><img src="//czheisenberg.github.io/2019/08/17/顺序查找/666.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>阶乘</title>
     <url>/2019/08/24/%E9%98%B6%E4%B9%98/</url>
     <content><![CDATA[<h1 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h1><p>比如 5！=5X4X3X2X1  =120</p>
@@ -835,6 +816,25 @@
 
 <p>运行结果：</p>
 <p><img src="//czheisenberg.github.io/2019/08/24/阶乘/j.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>顺序查找</title>
+    <url>/2019/08/17/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h1 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h1><p>输入一个数，确定它在数组中的位置，如果没有这个数输出-1，否则输出它的下标！</p>
+<p>源代码：</p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,x;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入%d个数：\n"</span>,N);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"此数组："</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n请输入你要查找的数字：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="keyword">if</span>(a[i]==x)</span><br><span class="line">			<span class="keyword">break</span>;			</span><br><span class="line">	<span class="keyword">if</span>(i&lt;N)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d的下标为%d\n"</span>,x,i);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果： </p>
+<p><img src="//czheisenberg.github.io/2019/08/17/顺序查找/666.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
