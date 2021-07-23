@@ -41,6 +41,26 @@
       </tags>
   </entry>
   <entry>
+    <title>1 3 3 9 2 7 1 4 4 1 6 6 3 6 1 8 8 6 4 2</title>
+    <url>/2019/08/17/1-3-3-9-2-7-1-4-4-1-6-6-3-6-1-8-8-6-4-2/</url>
+    <content><![CDATA[<h1 id="1-3-3-9-2-7-1-4-4-1-6"><a href="#1-3-3-9-2-7-1-4-4-1-6" class="headerlink" title="1 3 3 9 2 7 1 4 4 1 6"></a>1 3 3 9 2 7 1 4 4 1 6</h1><p>输出数列： 1 3 3 9 2 7 1 4 4 1 6…… 前20项。  </p>
+<p>源代码： </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 20</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,j,t=<span class="number">0</span>;</span><br><span class="line">	a[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	a[<span class="number">1</span>]=<span class="number">3</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i]=a[i<span class="number">-1</span>]*a[i<span class="number">-2</span>];</span><br><span class="line">			t=a[i];</span><br><span class="line">			<span class="keyword">if</span>(t&gt;=<span class="number">10</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					j=t;</span><br><span class="line">					a[i]=t/=<span class="number">10</span>;</span><br><span class="line">					a[++i]=j%=<span class="number">10</span>; </span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="//czheisenberg.github.io/2019/08/17/1-3-3-9-2-7-1-4-4-1-6-6-3-6-1-8-8-6-4-2/133927.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>C语言数列</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>123---321</title>
     <url>/2019/08/22/123-321/</url>
     <content><![CDATA[<h1 id="倒着输出"><a href="#倒着输出" class="headerlink" title="倒着输出"></a>倒着输出</h1><p>输入一个整数：123 输出：321  </p>
@@ -100,23 +120,21 @@
       </tags>
   </entry>
   <entry>
-    <title>1 3 3 9 2 7 1 4 4 1 6 6 3 6 1 8 8 6 4 2</title>
-    <url>/2019/08/17/1-3-3-9-2-7-1-4-4-1-6-6-3-6-1-8-8-6-4-2/</url>
-    <content><![CDATA[<h1 id="1-3-3-9-2-7-1-4-4-1-6"><a href="#1-3-3-9-2-7-1-4-4-1-6" class="headerlink" title="1 3 3 9 2 7 1 4 4 1 6"></a>1 3 3 9 2 7 1 4 4 1 6</h1><p>输出数列： 1 3 3 9 2 7 1 4 4 1 6…… 前20项。  </p>
-<p>源代码： </p>
+    <title>21世纪的闰年和平年</title>
+    <url>/2019/08/06/21%E4%B8%96%E7%BA%AA%E7%9A%84%E9%97%B0%E5%B9%B4%E5%92%8C%E5%B9%B3%E5%B9%B4/</url>
+    <content><![CDATA[<h1 id="21世纪的闰年和平年"><a href="#21世纪的闰年和平年" class="headerlink" title="21世纪的闰年和平年"></a>21世纪的闰年和平年</h1><p>源代码： </p>
 <a id="more"></a>
 
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 20</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,j,t=<span class="number">0</span>;</span><br><span class="line">	a[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	a[<span class="number">1</span>]=<span class="number">3</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i]=a[i<span class="number">-1</span>]*a[i<span class="number">-2</span>];</span><br><span class="line">			t=a[i];</span><br><span class="line">			<span class="keyword">if</span>(t&gt;=<span class="number">10</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					j=t;</span><br><span class="line">					a[i]=t/=<span class="number">10</span>;</span><br><span class="line">					a[++i]=j%=<span class="number">10</span>; </span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LeapYear_PeaceYear</span><span class="params">(<span class="keyword">int</span> year)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>((year%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;year%<span class="number">100</span>!=<span class="number">0</span>)||year%<span class="number">400</span>==<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> year,j=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"21世纪的闰年和平年：\n"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"闰年：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(year=<span class="number">2001</span>;year&lt;=<span class="number">2100</span>;year++)</span><br><span class="line">		<span class="keyword">if</span>(LeapYear_PeaceYear(year)==<span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d "</span>,year);</span><br><span class="line">				j++;</span><br><span class="line">				<span class="keyword">if</span>(j%<span class="number">6</span>==<span class="number">0</span>)</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n平年：\n"</span>);</span><br><span class="line">	j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(year=<span class="number">2001</span>;year&lt;=<span class="number">2100</span>;year++)</span><br><span class="line">		<span class="keyword">if</span>(LeapYear_PeaceYear(year)==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d "</span>,year);</span><br><span class="line">				j++;</span><br><span class="line">				<span class="keyword">if</span>(j%<span class="number">6</span>==<span class="number">0</span>)</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>运行结果：</p>
-<p><img src="//czheisenberg.github.io/2019/08/17/1-3-3-9-2-7-1-4-4-1-6-6-3-6-1-8-8-6-4-2/133927.jpg" alt></p>
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/08/06/21世纪的闰年和平年/211.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
       </categories>
       <tags>
         <tag>C</tag>
-        <tag>C语言数列</tag>
       </tags>
   </entry>
   <entry>
@@ -136,67 +154,6 @@
       <tags>
         <tag>C</tag>
         <tag>C语言数列</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>21世纪的闰年和平年</title>
-    <url>/2019/08/06/21%E4%B8%96%E7%BA%AA%E7%9A%84%E9%97%B0%E5%B9%B4%E5%92%8C%E5%B9%B3%E5%B9%B4/</url>
-    <content><![CDATA[<h1 id="21世纪的闰年和平年"><a href="#21世纪的闰年和平年" class="headerlink" title="21世纪的闰年和平年"></a>21世纪的闰年和平年</h1><p>源代码： </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LeapYear_PeaceYear</span><span class="params">(<span class="keyword">int</span> year)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>((year%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;year%<span class="number">100</span>!=<span class="number">0</span>)||year%<span class="number">400</span>==<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> year,j=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"21世纪的闰年和平年：\n"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"闰年：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(year=<span class="number">2001</span>;year&lt;=<span class="number">2100</span>;year++)</span><br><span class="line">		<span class="keyword">if</span>(LeapYear_PeaceYear(year)==<span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d "</span>,year);</span><br><span class="line">				j++;</span><br><span class="line">				<span class="keyword">if</span>(j%<span class="number">6</span>==<span class="number">0</span>)</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n平年：\n"</span>);</span><br><span class="line">	j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(year=<span class="number">2001</span>;year&lt;=<span class="number">2100</span>;year++)</span><br><span class="line">		<span class="keyword">if</span>(LeapYear_PeaceYear(year)==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d "</span>,year);</span><br><span class="line">				j++;</span><br><span class="line">				<span class="keyword">if</span>(j%<span class="number">6</span>==<span class="number">0</span>)</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/08/06/21世纪的闰年和平年/211.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Do you know how many days you have lived?</title>
-    <url>/2019/08/20/Do-you-know-how-many-days-you-have-lived/</url>
-    <content><![CDATA[<h1 id="你知道你活了多少天了吗？"><a href="#你知道你活了多少天了吗？" class="headerlink" title="你知道你活了多少天了吗？"></a>你知道你活了多少天了吗？</h1><p>问题：求你存在于这个美丽世界的天数！  </p>
-<p>如有误 请指出。</p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">days_of_year</span><span class="params">(<span class="keyword">int</span> year)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">between_year_brgin_and_year_end</span><span class="params">(<span class="keyword">int</span> year_begin,<span class="keyword">int</span> year_end)</span> </span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">days</span><span class="params">(<span class="keyword">int</span> year,<span class="keyword">int</span> month,<span class="keyword">int</span> day)</span></span>;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> year_begin,month_begin,day_begin,sum_begin=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> year_end,month_end,day_end,sum_end=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> sum_middle=<span class="number">0</span>; </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入起始日期：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;year_begin,&amp;month_begin,&amp;day_begin);</span><br><span class="line">	sum_begin=days(year_begin,month_begin,day_begin);<span class="comment">//例如：2017 8 20 求1--7月分的天数 </span></span><br><span class="line">	sum_begin+=day_begin;<span class="comment">//求 1--7份的天数 + 8月 的天数（20） == 232 天 </span></span><br><span class="line">	<span class="comment">//printf("%d/%d/%d 是%d年的第%d天\n",year_begin,month_begin,day_begin,year_begin,sum_begin);</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入截止日期：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;year_end,&amp;month_end,&amp;day_end);</span><br><span class="line">	sum_end=days(year_end,month_end,day_end);<span class="comment">//例如：2019 8 20 求1--7月分的天数 </span></span><br><span class="line">	sum_end+=day_end;<span class="comment">//求 1--7份的天数 + 8月 的天数（20） == 232 天 </span></span><br><span class="line">	<span class="comment">//printf("%d/%d/%d 是%d年的第%d天\n",year_end,month_end,day_end,year_end,sum_end);</span></span><br><span class="line">	sum_middle+=between_year_brgin_and_year_end(year_begin,year_end);<span class="comment">//求起始年份与结束年份 中间年份的天数  </span></span><br><span class="line">	<span class="comment">//printf("中间年份的天数：%d\n",sum_middle);						 //例如： 2017--2019 即 求中间年份 2018 的天数</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(year_begin!=year_end)</span><br><span class="line">		sum_begin=days_of_year(year_begin)-sum_begin;<span class="comment">//求2017 8 20 之后 到2017年的最后一天的 天数</span></span><br><span class="line">												<span class="comment">// 例如 2017 8 20 是2017年的 第232天 </span></span><br><span class="line">												<span class="comment">// 2017年剩余的天数  365-232=  133天 </span></span><br><span class="line">												</span><br><span class="line">																</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d/%d/%d--"</span>,year_begin,month_begin,day_begin);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d/%d/%d"</span>,  year_end,month_end,day_end);</span><br><span class="line">	<span class="keyword">if</span>(year_begin==year_end)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"相隔: %d天\n"</span>,sum_end-sum_begin);<span class="comment">//如果是同一年的情况下：例如：2019/1/1---2019/2/1 ==32-1=31 </span></span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"相隔：%d天\n"</span>,sum_begin+sum_middle+sum_end);<span class="comment">//2017/8/20 --- 2019/8/20 </span></span><br><span class="line">														<span class="comment">//   sum_begin        + sum_middle    + sum_end</span></span><br><span class="line">														<span class="comment">//     133           +  365          +   232</span></span><br><span class="line">														<span class="comment">//2017年剩余的天数 + 2018的天数 + 8/20是2019的第 xxx天 </span></span><br><span class="line">	<span class="keyword">if</span>(sum_begin+sum_middle+sum_end&gt;=<span class="number">365</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"≈%d年\n"</span>,(sum_begin+sum_middle+sum_end)/<span class="number">365</span>);<span class="comment">//如果天数太大 转换为大概年份 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">days_of_year</span><span class="params">(<span class="keyword">int</span> year)</span><span class="comment">//求 闰年平年的天数 </span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(year%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;year%<span class="number">100</span>!=<span class="number">0</span>||year%<span class="number">400</span>==<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">366</span>;</span><br><span class="line">		<span class="keyword">else</span>	</span><br><span class="line">			<span class="keyword">return</span> <span class="number">365</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">between_year_brgin_and_year_end</span><span class="params">(<span class="keyword">int</span> year_begin,<span class="keyword">int</span> year_end)</span><span class="comment">//求起始年份与结束年份 中间年份的天数  </span></span></span><br><span class="line"><span class="function">	</span>&#123;															<span class="comment">//例如： 2017--2019 即 求中间年份 2018的天数 </span></span><br><span class="line">		<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(year_begin!=year_end)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>(year_begin+=<span class="number">1</span>;year_begin&lt;year_end;year_begin++)</span><br><span class="line">				sum+=days_of_year(year_begin);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">return</span> sum;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">days</span><span class="params">(<span class="keyword">int</span> year,<span class="keyword">int</span> month,<span class="keyword">int</span> day)</span><span class="comment">//求某年某月 是某年的多少天  </span></span></span><br><span class="line"><span class="function">	</span>&#123;								<span class="comment">//例如： 2019 8 20 前 8-1个月的天数 </span></span><br><span class="line">		<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">switch</span>(month<span class="number">-1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">12</span>:sum+=<span class="number">31</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">11</span>:sum+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">10</span>:sum+=<span class="number">31</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">9</span>:sum+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">8</span>:sum+=<span class="number">31</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">7</span>:sum+=<span class="number">31</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">6</span>:sum+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">5</span>:sum+=<span class="number">31</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">4</span>:sum+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">3</span>:sum+=<span class="number">31</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">2</span>:<span class="keyword">if</span>(year%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;year%<span class="number">100</span>!=<span class="number">0</span>||year%<span class="number">400</span>==<span class="number">0</span>) </span><br><span class="line">							sum+=<span class="number">29</span>;</span><br><span class="line">						<span class="keyword">else</span></span><br><span class="line">							sum+=<span class="number">28</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">1</span>:sum+=<span class="number">31</span>;</span><br><span class="line">			&#125;		</span><br><span class="line">		<span class="keyword">return</span> sum;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/08/20/Do-you-know-how-many-days-you-have-lived/days.jpg" alt></p>
-<p><img src="//czheisenberg.github.io/2019/08/20/Do-you-know-how-many-days-you-have-lived/day.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Painting heart</title>
-    <url>/2019/07/16/Painting-heart/</url>
-    <content><![CDATA[<h1 id="使用python画❤"><a href="#使用python画❤" class="headerlink" title="使用python画❤"></a>使用python画❤</h1><p>利用python画一个❤  </p>
-<p>导入 turtle 库 并起一个别名为： t  </p>
-<p>这样便于操作：  </p>
-<p>有点粗糙！</p>
-<p>源代码：</p>
-<a id="more"></a>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle <span class="keyword">as</span> t</span><br><span class="line"><span class="comment">#画人</span></span><br><span class="line">t.color(<span class="string">'black'</span>)</span><br><span class="line">t.pensize(<span class="number">2</span>)</span><br><span class="line">t.circle(<span class="number">40</span>)</span><br><span class="line">t.right(<span class="number">90</span>)</span><br><span class="line">t.forward(<span class="number">110</span>)</span><br><span class="line">t.right(<span class="number">45</span>)</span><br><span class="line">t.forward(<span class="number">60</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.backward(<span class="number">60</span>)</span><br><span class="line">t.left(<span class="number">43</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.goto(<span class="number">45</span>,<span class="number">-111</span>)</span><br><span class="line">t.goto(<span class="number">45</span>,<span class="number">-180</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.goto(<span class="number">0</span>,<span class="number">-45</span>)</span><br><span class="line">t.left(<span class="number">90</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.goto(<span class="number">70</span>,<span class="number">-45</span>)</span><br><span class="line">t.goto(<span class="number">89</span>,<span class="number">-30</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.goto(<span class="number">0</span>,<span class="number">-55</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.goto(<span class="number">72</span>,<span class="number">-55</span>)</span><br><span class="line">t.right(<span class="number">34</span>)</span><br><span class="line">t.forward(<span class="number">22</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.left(<span class="number">34</span>)</span><br><span class="line">t.goto(<span class="number">199</span>,<span class="number">-50</span>)</span><br><span class="line">t.pendown()</span><br><span class="line"></span><br><span class="line">t.pensize(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">t.delay(<span class="number">0</span>)</span><br><span class="line"><span class="comment">#画❤</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">h</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">200</span>):</span><br><span class="line">        t.right(<span class="number">1</span>)</span><br><span class="line">        t.forward(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">t.color(<span class="string">'red'</span>,<span class="string">'pink'</span>)</span><br><span class="line">t.begin_fill()</span><br><span class="line">t.left(<span class="number">140</span>)</span><br><span class="line">t.forward(<span class="number">111.65</span>)</span><br><span class="line">h()</span><br><span class="line">t.left(<span class="number">120</span>)</span><br><span class="line">h()</span><br><span class="line">t.forward(<span class="number">111.65</span>)</span><br><span class="line">t.end_fill()</span><br><span class="line"></span><br><span class="line">t.hideturtle()</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/16/Painting-heart/3.gif" alt></p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -460,6 +417,49 @@
       </categories>
   </entry>
   <entry>
+    <title>Do you know how many days you have lived?</title>
+    <url>/2019/08/20/Do-you-know-how-many-days-you-have-lived/</url>
+    <content><![CDATA[<h1 id="你知道你活了多少天了吗？"><a href="#你知道你活了多少天了吗？" class="headerlink" title="你知道你活了多少天了吗？"></a>你知道你活了多少天了吗？</h1><p>问题：求你存在于这个美丽世界的天数！  </p>
+<p>如有误 请指出。</p>
+<p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">days_of_year</span><span class="params">(<span class="keyword">int</span> year)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">between_year_brgin_and_year_end</span><span class="params">(<span class="keyword">int</span> year_begin,<span class="keyword">int</span> year_end)</span> </span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">days</span><span class="params">(<span class="keyword">int</span> year,<span class="keyword">int</span> month,<span class="keyword">int</span> day)</span></span>;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> year_begin,month_begin,day_begin,sum_begin=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> year_end,month_end,day_end,sum_end=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> sum_middle=<span class="number">0</span>; </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入起始日期：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;year_begin,&amp;month_begin,&amp;day_begin);</span><br><span class="line">	sum_begin=days(year_begin,month_begin,day_begin);<span class="comment">//例如：2017 8 20 求1--7月分的天数 </span></span><br><span class="line">	sum_begin+=day_begin;<span class="comment">//求 1--7份的天数 + 8月 的天数（20） == 232 天 </span></span><br><span class="line">	<span class="comment">//printf("%d/%d/%d 是%d年的第%d天\n",year_begin,month_begin,day_begin,year_begin,sum_begin);</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入截止日期：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;year_end,&amp;month_end,&amp;day_end);</span><br><span class="line">	sum_end=days(year_end,month_end,day_end);<span class="comment">//例如：2019 8 20 求1--7月分的天数 </span></span><br><span class="line">	sum_end+=day_end;<span class="comment">//求 1--7份的天数 + 8月 的天数（20） == 232 天 </span></span><br><span class="line">	<span class="comment">//printf("%d/%d/%d 是%d年的第%d天\n",year_end,month_end,day_end,year_end,sum_end);</span></span><br><span class="line">	sum_middle+=between_year_brgin_and_year_end(year_begin,year_end);<span class="comment">//求起始年份与结束年份 中间年份的天数  </span></span><br><span class="line">	<span class="comment">//printf("中间年份的天数：%d\n",sum_middle);						 //例如： 2017--2019 即 求中间年份 2018 的天数</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(year_begin!=year_end)</span><br><span class="line">		sum_begin=days_of_year(year_begin)-sum_begin;<span class="comment">//求2017 8 20 之后 到2017年的最后一天的 天数</span></span><br><span class="line">												<span class="comment">// 例如 2017 8 20 是2017年的 第232天 </span></span><br><span class="line">												<span class="comment">// 2017年剩余的天数  365-232=  133天 </span></span><br><span class="line">												</span><br><span class="line">																</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d/%d/%d--"</span>,year_begin,month_begin,day_begin);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d/%d/%d"</span>,  year_end,month_end,day_end);</span><br><span class="line">	<span class="keyword">if</span>(year_begin==year_end)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"相隔: %d天\n"</span>,sum_end-sum_begin);<span class="comment">//如果是同一年的情况下：例如：2019/1/1---2019/2/1 ==32-1=31 </span></span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"相隔：%d天\n"</span>,sum_begin+sum_middle+sum_end);<span class="comment">//2017/8/20 --- 2019/8/20 </span></span><br><span class="line">														<span class="comment">//   sum_begin        + sum_middle    + sum_end</span></span><br><span class="line">														<span class="comment">//     133           +  365          +   232</span></span><br><span class="line">														<span class="comment">//2017年剩余的天数 + 2018的天数 + 8/20是2019的第 xxx天 </span></span><br><span class="line">	<span class="keyword">if</span>(sum_begin+sum_middle+sum_end&gt;=<span class="number">365</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"≈%d年\n"</span>,(sum_begin+sum_middle+sum_end)/<span class="number">365</span>);<span class="comment">//如果天数太大 转换为大概年份 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">days_of_year</span><span class="params">(<span class="keyword">int</span> year)</span><span class="comment">//求 闰年平年的天数 </span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(year%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;year%<span class="number">100</span>!=<span class="number">0</span>||year%<span class="number">400</span>==<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">366</span>;</span><br><span class="line">		<span class="keyword">else</span>	</span><br><span class="line">			<span class="keyword">return</span> <span class="number">365</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">between_year_brgin_and_year_end</span><span class="params">(<span class="keyword">int</span> year_begin,<span class="keyword">int</span> year_end)</span><span class="comment">//求起始年份与结束年份 中间年份的天数  </span></span></span><br><span class="line"><span class="function">	</span>&#123;															<span class="comment">//例如： 2017--2019 即 求中间年份 2018的天数 </span></span><br><span class="line">		<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(year_begin!=year_end)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>(year_begin+=<span class="number">1</span>;year_begin&lt;year_end;year_begin++)</span><br><span class="line">				sum+=days_of_year(year_begin);</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">return</span> sum;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">days</span><span class="params">(<span class="keyword">int</span> year,<span class="keyword">int</span> month,<span class="keyword">int</span> day)</span><span class="comment">//求某年某月 是某年的多少天  </span></span></span><br><span class="line"><span class="function">	</span>&#123;								<span class="comment">//例如： 2019 8 20 前 8-1个月的天数 </span></span><br><span class="line">		<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">switch</span>(month<span class="number">-1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">12</span>:sum+=<span class="number">31</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">11</span>:sum+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">10</span>:sum+=<span class="number">31</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">9</span>:sum+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">8</span>:sum+=<span class="number">31</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">7</span>:sum+=<span class="number">31</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">6</span>:sum+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">5</span>:sum+=<span class="number">31</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">4</span>:sum+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">3</span>:sum+=<span class="number">31</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">2</span>:<span class="keyword">if</span>(year%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;year%<span class="number">100</span>!=<span class="number">0</span>||year%<span class="number">400</span>==<span class="number">0</span>) </span><br><span class="line">							sum+=<span class="number">29</span>;</span><br><span class="line">						<span class="keyword">else</span></span><br><span class="line">							sum+=<span class="number">28</span>;</span><br><span class="line">				<span class="keyword">case</span>  <span class="number">1</span>:sum+=<span class="number">31</span>;</span><br><span class="line">			&#125;		</span><br><span class="line">		<span class="keyword">return</span> sum;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/08/20/Do-you-know-how-many-days-you-have-lived/days.jpg" alt></p>
+<p><img src="//czheisenberg.github.io/2019/08/20/Do-you-know-how-many-days-you-have-lived/day.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Painting heart</title>
+    <url>/2019/07/16/Painting-heart/</url>
+    <content><![CDATA[<h1 id="使用python画❤"><a href="#使用python画❤" class="headerlink" title="使用python画❤"></a>使用python画❤</h1><p>利用python画一个❤  </p>
+<p>导入 turtle 库 并起一个别名为： t  </p>
+<p>这样便于操作：  </p>
+<p>有点粗糙！</p>
+<p>源代码：</p>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle <span class="keyword">as</span> t</span><br><span class="line"><span class="comment">#画人</span></span><br><span class="line">t.color(<span class="string">'black'</span>)</span><br><span class="line">t.pensize(<span class="number">2</span>)</span><br><span class="line">t.circle(<span class="number">40</span>)</span><br><span class="line">t.right(<span class="number">90</span>)</span><br><span class="line">t.forward(<span class="number">110</span>)</span><br><span class="line">t.right(<span class="number">45</span>)</span><br><span class="line">t.forward(<span class="number">60</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.backward(<span class="number">60</span>)</span><br><span class="line">t.left(<span class="number">43</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.goto(<span class="number">45</span>,<span class="number">-111</span>)</span><br><span class="line">t.goto(<span class="number">45</span>,<span class="number">-180</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.goto(<span class="number">0</span>,<span class="number">-45</span>)</span><br><span class="line">t.left(<span class="number">90</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.goto(<span class="number">70</span>,<span class="number">-45</span>)</span><br><span class="line">t.goto(<span class="number">89</span>,<span class="number">-30</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.goto(<span class="number">0</span>,<span class="number">-55</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.goto(<span class="number">72</span>,<span class="number">-55</span>)</span><br><span class="line">t.right(<span class="number">34</span>)</span><br><span class="line">t.forward(<span class="number">22</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.left(<span class="number">34</span>)</span><br><span class="line">t.goto(<span class="number">199</span>,<span class="number">-50</span>)</span><br><span class="line">t.pendown()</span><br><span class="line"></span><br><span class="line">t.pensize(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">t.delay(<span class="number">0</span>)</span><br><span class="line"><span class="comment">#画❤</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">h</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">200</span>):</span><br><span class="line">        t.right(<span class="number">1</span>)</span><br><span class="line">        t.forward(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">t.color(<span class="string">'red'</span>,<span class="string">'pink'</span>)</span><br><span class="line">t.begin_fill()</span><br><span class="line">t.left(<span class="number">140</span>)</span><br><span class="line">t.forward(<span class="number">111.65</span>)</span><br><span class="line">h()</span><br><span class="line">t.left(<span class="number">120</span>)</span><br><span class="line">h()</span><br><span class="line">t.forward(<span class="number">111.65</span>)</span><br><span class="line">t.end_fill()</span><br><span class="line"></span><br><span class="line">t.hideturtle()</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/07/16/Painting-heart/3.gif" alt></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Welcome</title>
     <url>/2019/07/15/Welcome/</url>
     <content><![CDATA[<h1 id="我的第一个博客"><a href="#我的第一个博客" class="headerlink" title="我的第一个博客"></a>我的第一个博客</h1><p>创建第一个C语言程序“Hello World”<br>源代码：</p>
@@ -469,6 +469,25 @@
 
 <p>运行结果：<br>Hello World</p>
 <p><img src="//czheisenberg.github.io/2019/07/15/Welcome/1.png" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fibonacci sequence</title>
+    <url>/2019/07/16/fibonacci-sequence/</url>
+    <content><![CDATA[<h1 id="斐波拉契数列"><a href="#斐波拉契数列" class="headerlink" title="斐波拉契数列"></a>斐波拉契数列</h1><h2 id="fibonacci-sequence"><a href="#fibonacci-sequence" class="headerlink" title="fibonacci sequence"></a>fibonacci sequence</h2><p>利用数组求出斐波拉契数列前20项:  </p>
+<p>源代码：</p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 20</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i;</span><br><span class="line">	a[<span class="number">0</span>]=a[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"斐波拉契数列：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i]=a[i<span class="number">-1</span>]+a[i<span class="number">-2</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/07/16/fibonacci-sequence/2.png" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -494,25 +513,6 @@
 
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>fibonacci sequence</title>
-    <url>/2019/07/16/fibonacci-sequence/</url>
-    <content><![CDATA[<h1 id="斐波拉契数列"><a href="#斐波拉契数列" class="headerlink" title="斐波拉契数列"></a>斐波拉契数列</h1><h2 id="fibonacci-sequence"><a href="#fibonacci-sequence" class="headerlink" title="fibonacci sequence"></a>fibonacci sequence</h2><p>利用数组求出斐波拉契数列前20项:  </p>
-<p>源代码：</p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 20</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i;</span><br><span class="line">	a[<span class="number">0</span>]=a[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"斐波拉契数列：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i]=a[i<span class="number">-1</span>]+a[i<span class="number">-2</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/16/fibonacci-sequence/2.png" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
   </entry>
   <entry>
     <title>lonely_number</title>
@@ -698,27 +698,6 @@
       </tags>
   </entry>
   <entry>
-    <title>回文数</title>
-    <url>/2019/07/16/%E5%9B%9E%E6%96%87%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h1><p>“回文”是指正读反读都能读通的句子，它是古今中外都有的一种修辞方式和文字游戏，如“我为人人，人人为我”等。在数学中也有这样一类数字有这样的特征，成为回文数（palindrome number</p>
-<p>设n是一任意自然数。若将n的各位数字反向排列所得自然数n1与n相等，则称n为一回文数。例如，若n=1234321，则称n为一回文数；但若n=1234567，则n不是回文数。  </p>
-<p>简单来说： 正读与反读都一样！  </p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">h_h</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,m;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;x;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			j=i;</span><br><span class="line">			m=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span>(j)</span><br><span class="line">				&#123;</span><br><span class="line">					m=m*<span class="number">10</span>+j%<span class="number">10</span>;</span><br><span class="line">					j/=<span class="number">10</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">if</span>(i==m)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,i);</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,y,i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个范围 如：100\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">if</span>(h_h(x));</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/16/回文数/6.png" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>同构数02</title>
     <url>/2019/12/06/%E5%90%8C%E6%9E%84%E6%95%B002/</url>
     <content><![CDATA[<h1 id="同构数"><a href="#同构数" class="headerlink" title="同构数"></a>同构数</h1><p>正整数n若是它平方数的尾部，则称n为同构数。  </p>
@@ -740,6 +719,27 @@
       </tags>
   </entry>
   <entry>
+    <title>回文数</title>
+    <url>/2019/07/16/%E5%9B%9E%E6%96%87%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h1><p>“回文”是指正读反读都能读通的句子，它是古今中外都有的一种修辞方式和文字游戏，如“我为人人，人人为我”等。在数学中也有这样一类数字有这样的特征，成为回文数（palindrome number</p>
+<p>设n是一任意自然数。若将n的各位数字反向排列所得自然数n1与n相等，则称n为一回文数。例如，若n=1234321，则称n为一回文数；但若n=1234567，则n不是回文数。  </p>
+<p>简单来说： 正读与反读都一样！  </p>
+<p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">h_h</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,m;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;x;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			j=i;</span><br><span class="line">			m=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span>(j)</span><br><span class="line">				&#123;</span><br><span class="line">					m=m*<span class="number">10</span>+j%<span class="number">10</span>;</span><br><span class="line">					j/=<span class="number">10</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">if</span>(i==m)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,i);</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,y,i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个范围 如：100\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">if</span>(h_h(x));</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/07/16/回文数/6.png" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>图形</title>
     <url>/2019/08/17/%E5%9B%BE%E5%BD%A2/</url>
     <content><![CDATA[]]></content>
@@ -749,6 +749,25 @@
       <tags>
         <tag>C</tag>
         <tag>C语言数列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大小写互换</title>
+    <url>/2019/09/06/%E5%A4%A7%E5%B0%8F%E5%86%99%E4%BA%92%E6%8D%A2/</url>
+    <content><![CDATA[<p>大小写互换</p>
+<p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">char</span> ch[N];</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一串字符：\n"</span>);</span><br><span class="line">	gets(ch);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(ch[i]&gt;=<span class="string">'a'</span>&amp;&amp;ch[i]&lt;=<span class="string">'z'</span>)</span><br><span class="line">				ch[i]-=<span class="number">32</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(ch[i]&gt;=<span class="string">'A'</span>&amp;&amp;ch[i]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">					ch[i]+=<span class="number">32</span>; </span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">puts</span>(ch);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/09/06/大小写互换/dx.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -763,25 +782,6 @@
 
 <p>运行结果：  </p>
 <p><img src="//czheisenberg.github.io/2019/09/11/字母各个个数/HOW.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>大小写互换</title>
-    <url>/2019/09/06/%E5%A4%A7%E5%B0%8F%E5%86%99%E4%BA%92%E6%8D%A2/</url>
-    <content><![CDATA[<p>大小写互换</p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">char</span> ch[N];</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一串字符：\n"</span>);</span><br><span class="line">	gets(ch);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(ch[i]&gt;=<span class="string">'a'</span>&amp;&amp;ch[i]&lt;=<span class="string">'z'</span>)</span><br><span class="line">				ch[i]-=<span class="number">32</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(ch[i]&gt;=<span class="string">'A'</span>&amp;&amp;ch[i]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">					ch[i]+=<span class="number">32</span>; </span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">puts</span>(ch);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/09/06/大小写互换/dx.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -1027,26 +1027,6 @@
       </tags>
   </entry>
   <entry>
-    <title>阶乘</title>
-    <url>/2019/08/24/%E9%98%B6%E4%B9%98/</url>
-    <content><![CDATA[<h1 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h1><p>比如 5！=5X4X3X2X1  =120</p>
-<p>6! =6X5X4X3X2X1  =720</p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,i;</span><br><span class="line">	<span class="keyword">double</span> sum=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个数：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=a;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			sum*=i;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d!=%f\n"</span>,a,sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：</p>
-<p><img src="//czheisenberg.github.io/2019/08/24/阶乘/j.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>能被3整除的偶数</title>
     <url>/2019/08/17/%E8%83%BD%E8%A2%AB3%E6%95%B4%E9%99%A4%E7%9A%84%E5%81%B6%E6%95%B0/</url>
     <content><![CDATA[<h1 id="x-2-0-amp-amp-x-3-0"><a href="#x-2-0-amp-amp-x-3-0" class="headerlink" title="x%2==0&amp;&amp;x%3==0"></a>x%2==0&amp;&amp;x%3==0</h1><p>输入一些正整数（以0表示结束），统计并输出能被3整除的偶数的数及个数！  </p>
@@ -1076,6 +1056,26 @@
 
 <p>运行结果：  </p>
 <p><img src="//czheisenberg.github.io/2019/07/17/选择排序/8.png" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>阶乘</title>
+    <url>/2019/08/24/%E9%98%B6%E4%B9%98/</url>
+    <content><![CDATA[<h1 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h1><p>比如 5！=5X4X3X2X1  =120</p>
+<p>6! =6X5X4X3X2X1  =720</p>
+<p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,i;</span><br><span class="line">	<span class="keyword">double</span> sum=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个数：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=a;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			sum*=i;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d!=%f\n"</span>,a,sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="//czheisenberg.github.io/2019/08/24/阶乘/j.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
