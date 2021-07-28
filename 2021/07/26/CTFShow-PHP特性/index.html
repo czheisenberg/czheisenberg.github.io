@@ -58,7 +58,7 @@
     <link rel="icon" href="/img/favicon.png">
 
     <meta name="format-detection" content="telephone=no">
-    <meta name="description" itemprop="description" content="CTFShow PHP 特性web90源码:">
+    <meta name="description" itemprop="description" content="CTFShow PHP 特性web89源码:">
     <meta name="keywords" content>
     <meta name="theme-color" content="#0097A7">
 
@@ -239,12 +239,12 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="CTFShow PHP特性 | Czheisenberg">
     <meta property="og:image" content="/img/favicon.png">
-    <meta property="og:description" content="CTFShow PHP 特性web90源码:">
+    <meta property="og:description" content="CTFShow PHP 特性web89源码:">
     
 
     
         <meta property="article:published_time" content="Mon Jul 26 2021 19:31:36 GMT+0800">
-        <meta property="article:modified_time" content="Mon Jul 26 2021 19:40:39 GMT+0800">
+        <meta property="article:modified_time" content="Wed Jul 28 2021 21:00:36 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "https://czheisenberg.github.io/2021/07/26/CTFShow-PHP特性/index.html",
     "headline": "CTFShow PHP特性",
     "datePublished": "Mon Jul 26 2021 19:31:36 GMT+0800",
-    "dateModified": "Mon Jul 26 2021 19:40:39 GMT+0800",
+    "dateModified": "Wed Jul 28 2021 21:00:36 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "czheisenberg",
@@ -286,7 +286,7 @@
         }
     },
     "keywords": "",
-    "description": "CTFShow PHP 特性web90源码:",
+    "description": "CTFShow PHP 特性web89源码:",
 }
 </script>
 
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CTFShow-PHP-特性"><span class="post-toc-number">1.</span> <span class="post-toc-text">CTFShow PHP 特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#web90"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">web90</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CTFShow-PHP-特性"><span class="post-toc-number">1.</span> <span class="post-toc-text">CTFShow PHP 特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#web89"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">web89</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#web90"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">web90</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#web91"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">web91</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#web92"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">web92</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#web93"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">web93</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#web94"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">web94</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -486,9 +486,22 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="CTFShow-PHP-特性"><a href="#CTFShow-PHP-特性" class="headerlink" title="CTFShow PHP 特性"></a>CTFShow PHP 特性</h1><h2 id="web90"><a href="#web90" class="headerlink" title="web90"></a>web90</h2><p>源码:</p>
+        <h1 id="CTFShow-PHP-特性"><a href="#CTFShow-PHP-特性" class="headerlink" title="CTFShow PHP 特性"></a>CTFShow PHP 特性</h1><h2 id="web89"><a href="#web89" class="headerlink" title="web89"></a>web89</h2><p>源码:</p>
 <a id="more"></a>
 
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-18 15:38:51</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">include</span>(<span class="string">"flag.php"</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'num'</span>]))&#123;</span><br><span class="line">    $num = $_GET[<span class="string">'num'</span>];</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">"/[0-9]/"</span>, $num))&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"no no no!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(intval($num))&#123;</span><br><span class="line">        <span class="keyword">echo</span> $flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析：</strong></p>
+<ol>
+<li>正则表达式匹配： 数字 0-9， 就会 狗带 no no no </li>
+<li>intval() 函数：获取变量的整数值</li>
+</ol>
+<p><strong>实验：</strong></p>
+<ol>
+<li>数组绕过 : ?num[]</li>
+</ol>
+<p><img src="//czheisenberg.github.io/2021/07/26/CTFShow-PHP特性/web89.png" alt></p>
+<h2 id="web90"><a href="#web90" class="headerlink" title="web90"></a>web90</h2><p>源码:</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-18 16:06:11</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">include</span>(<span class="string">"flag.php"</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'num'</span>]))&#123;</span><br><span class="line">    $num = $_GET[<span class="string">'num'</span>];</span><br><span class="line">    <span class="keyword">if</span>($num===<span class="string">"4476"</span>)&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"no no no!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(intval($num,<span class="number">0</span>)===<span class="number">4476</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> $flag;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> intval($num,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>intval($num,0) 第二位参数为 0</p>
@@ -500,6 +513,73 @@
 
 <p>将 num==4476a 传入将得到 4476 那么 if(intval($num,0) === 4476) 成立 即可获得flag</p>
 <p><img src="//czheisenberg.github.io/2021/07/26/CTFShow-PHP特性/web90_2.png" alt></p>
+<h2 id="web91"><a href="#web91" class="headerlink" title="web91"></a>web91</h2><p>源码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># @Author: Firebasky</span><br><span class="line"># @Date:   2020-09-16 11:25:09</span><br><span class="line"># @Last Modified by:   h1xa</span><br><span class="line"># @Last Modified time: 2020-09-18 16:16:09</span><br><span class="line"># @link: https://ctfer.com</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">show_source(__FILE__);</span><br><span class="line">include(&apos;flag.php&apos;);</span><br><span class="line">$a=$_GET[&apos;cmd&apos;];</span><br><span class="line">if(preg_match(&apos;/^php$/im&apos;, $a))&#123;</span><br><span class="line">    if(preg_match(&apos;/^php$/i&apos;, $a))&#123;</span><br><span class="line">        echo &apos;hacker&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        echo $flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">    echo &apos;nonononono&apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Notice: Undefined index: cmd in /var/www/html/index.php on line 15</span><br><span class="line">nonononono</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析：</strong></p>
+<ol>
+<li><p>正则表达式 : /^php$/im:</p>
+<p>^  : 匹配输入字符串的开始位置</p>
+<p>$  : 匹配输入字符串的结尾位置</p>
+<p>i   : 不区分大小写</p>
+<p>m : 多行匹配 使边界字符 <strong>^</strong> 和 <strong>$</strong> 匹配每一行的开头和结尾</p>
+<p>那么这个正则表达式 ，输入的字符串为 php 才为真才能进入此 if 中</p>
+</li>
+<li><p>正则表示 /^php$/i: 与上一个正则相比 少了 多行匹配。 那么突入点就在 这个 m多匹配上面。</p>
+</li>
+<li><p>第二个 if 语句不能满足才能得到 flag 意思就是 第二个 if 它不能匹配到字符串 php </p>
+</li>
+<li><p>第一个 if 语句多行匹配到字符串 php</p>
+</li>
+<li><p>因此得让第一个多行匹配能匹配到字符串 php 而 第二个单行匹配不能匹配到字符串 php 就得让字符串第一行不为 php 第二行或者第三行…… 为php </p>
+</li>
+<li><p>构建 playload notphp换行php – &gt; notphp%0a123%0aphp (一共三行 %0a 为换行符的 URL编码)</p>
+</li>
+</ol>
+<p><strong>实验：</strong></p>
+<ol>
+<li>直接输入 php 效果:</li>
+</ol>
+<p><img src="//czheisenberg.github.io/2021/07/26/CTFShow-PHP特性/web91.png" alt></p>
+<ol start="2">
+<li>notphp%0a123%0aphp</li>
+</ol>
+<p><img src="//czheisenberg.github.io/2021/07/26/CTFShow-PHP特性/web91_1.png" alt></p>
+<h2 id="web92"><a href="#web92" class="headerlink" title="web92"></a>web92</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: Firebasky</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-18 16:29:30</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">include</span>(<span class="string">"flag.php"</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'num'</span>]))&#123;</span><br><span class="line">    $num = $_GET[<span class="string">'num'</span>];</span><br><span class="line">    <span class="keyword">if</span>($num==<span class="number">4476</span>)&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"no no no!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(intval($num,<span class="number">0</span>)==<span class="number">4476</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> $flag;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> intval($num,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析:</strong></p>
+<ol>
+<li>intval() 获取变量的整数值，<strong>intval</strong>    ( <a href="mk:@MSITStore:D:\MY-CODE\PHP\php7.3.8手册（官网）\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/language.pseudo-types.html#language.types.mixed" target="_blank" rel="noopener">mixed</a> <code>$var</code>   [, int <code>$base</code> = 10  ] ) : int</li>
+<li>使用指定进制 base 转换(默认十进制) base是 0 ，检测 var 的格式来决定使用的进制:</li>
+</ol>
+<p><img src="//czheisenberg.github.io/2021/07/26/CTFShow-PHP特性/web92.png" alt></p>
+<ol start="3">
+<li>if(intval($num,0)==4476){echo $flag;} 此处 == 为弱比较，只比较数值，不比较类型，那么将 4476 转换为八进制(010574)或十六进制(0x117c)，就能使比较成立并得到 flag</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?num=<span class="number">0x117c</span></span><br><span class="line">?num=<span class="number">010574</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="//czheisenberg.github.io/2021/07/26/CTFShow-PHP特性/web92_1.png" alt></p>
+<h2 id="web93"><a href="#web93" class="headerlink" title="web93"></a>web93</h2><p>源码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># @Author: Firebasky</span><br><span class="line"># @Date:   2020-09-16 11:25:09</span><br><span class="line"># @Last Modified by:   h1xa</span><br><span class="line"># @Last Modified time: 2020-09-18 16:32:58</span><br><span class="line"># @link: https://ctfer.com</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">include(&quot;flag.php&quot;);</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">if(isset($_GET[&apos;num&apos;]))&#123;</span><br><span class="line">    $num = $_GET[&apos;num&apos;];</span><br><span class="line">    if($num==4476)&#123;</span><br><span class="line">        die(&quot;no no no!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if(preg_match(&quot;/[a-z]/i&quot;, $num))&#123;</span><br><span class="line">        die(&quot;no no no!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if(intval($num,0)==4476)&#123;</span><br><span class="line">        echo $flag;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        echo intval($num,0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析：</strong></p>
+<ol>
+<li>此题相较于上一题 多了正则匹配了 <strong>字母</strong>， 那么六进制 0x 将失效</li>
+<li>八进制(010574)</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?num=<span class="number">010574</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="//czheisenberg.github.io/2021/07/26/CTFShow-PHP特性/web93.png" alt></p>
+<h2 id="web94"><a href="#web94" class="headerlink" title="web94"></a>web94</h2><p>源码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># @Author: h1xa</span><br><span class="line"># @Date:   2020-09-16 11:25:09</span><br><span class="line"># @Last Modified by:   h1xa</span><br><span class="line"># @Last Modified time: 2020-09-18 16:46:19</span><br><span class="line"># @link: https://ctfer.com</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">include(&quot;flag.php&quot;);</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">if(isset($_GET[&apos;num&apos;]))&#123;</span><br><span class="line">    $num = $_GET[&apos;num&apos;];</span><br><span class="line">    if($num===&quot;4476&quot;)&#123;</span><br><span class="line">        die(&quot;no no no!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if(preg_match(&quot;/[a-z]/i&quot;, $num))&#123;</span><br><span class="line">        die(&quot;no no no!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if(!strpos($num, &quot;0&quot;))&#123;</span><br><span class="line">        die(&quot;no no no!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if(intval($num,0)===4476)&#123;</span><br><span class="line">        echo $flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析：</strong></p>
+<ol>
+<li>此题相较于上一题多了 strpos($num,’0’)  查找字符串 0 首次出现的位置</li>
+<li>小数点绕过: 4476.0</li>
+</ol>
+<p><img src="//czheisenberg.github.io/2021/07/26/CTFShow-PHP特性/web94.png" alt></p>
 
         
     
