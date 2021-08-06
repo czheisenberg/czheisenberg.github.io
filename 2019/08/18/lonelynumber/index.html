@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html style="display: none;" lang="zh">
-    <head><meta name="generator" content="Hexo 3.9.0">
+    <head>
     <meta charset="utf-8">
     <!--
         © Material Theme
@@ -27,13 +27,13 @@
 
 
 
-    <link rel="dns-prefetch" href="https://.disqus.com">
+    <link rel="dns-prefetch" href="https://.disqus.com"/>
 
 
 
 
 
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
 
 
 
@@ -57,7 +57,7 @@
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
     <link rel="icon" href="/img/favicon.png">
 
-    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="质数除了1和它本身以外不再有其他因数的自然数。  
 我认为除了1和它本身之外 太孤独了!
 so  lonely_number()  
@@ -66,8 +66,8 @@ so  lonely_number()
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
-    <meta http-equiv="Cache-Control" content="no-transform">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -258,7 +258,7 @@ so  lonely_number()
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://czheisenberg.github.io/2019/08/18/lonelynumber/index.html">
+        <link rel="canonical" href="https://czheisenberg.github.io/2019/08/18/lonelynumber/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -310,7 +310,7 @@ so  lonely_number()
     <!-- Custom Head -->
     
 
-</head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
     
@@ -360,7 +360,7 @@ so  lonely_number()
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#质数"><span class="post-toc-number">1.</span> <span class="post-toc-text">质数</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%B4%A8%E6%95%B0"><span class="post-toc-number">1.</span> <span class="post-toc-text">质数</span></a></li></ol>
     </ul>
     
 
@@ -435,7 +435,7 @@ so  lonely_number()
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/C/">C</a>
+        <a class="post_tag-none-link" href="/tags/C/" rel="tag">C</a>
     </ul>
     
 
@@ -508,12 +508,12 @@ so  lonely_number()
 <p>我认为除了1和它本身之外 太孤独了!</p>
 <p>so  lonely_number()  </p>
 <p>源代码：  </p>
-<a id="more"></a>
+<span id="more"></span>
 
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdio.h"</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lonely_number</span><span class="params">(<span class="keyword">int</span> number)</span><span class="comment">//除了1和它本身以外不再有其他因数的自然数。</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=number/<span class="number">2</span>;i++)</span><br><span class="line">		<span class="keyword">if</span>(number%i==<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">if</span>(i&gt;number/<span class="number">2</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"1000以内的质数（素数）：\n"</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">1000</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(lonely_number(i))</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"%3d "</span>,i);</span><br><span class="line">					j++;</span><br><span class="line">					<span class="keyword">if</span>(j%<span class="number">10</span>==<span class="number">0</span>)</span><br><span class="line">						<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&quot;stdio.h&quot;</span> </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lonely_number</span><span class="params">(<span class="keyword">int</span> number)</span><span class="comment">//除了1和它本身以外不再有其他因数的自然数。</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=number/<span class="number">2</span>;i++)</span><br><span class="line">		<span class="keyword">if</span>(number%i==<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">if</span>(i&gt;number/<span class="number">2</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;1000以内的质数（素数）：\n&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">1000</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(lonely_number(i))</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">&quot;%3d &quot;</span>,i);</span><br><span class="line">					j++;</span><br><span class="line">					<span class="keyword">if</span>(j%<span class="number">10</span>==<span class="number">0</span>)</span><br><span class="line">						<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>运行结果：  </p>
-<p><img src="//czheisenberg.github.io/2019/08/18/lonelynumber/lonely-number.jpg" alt></p>
+<p><img src="/2019/08/18/lonelynumber/lonely-number.jpg"></p>
 
         
     
@@ -563,7 +563,7 @@ so  lonely_number()
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2019/08/18/99乘法表/" id="post_nav-newer" class="prev-content">
+        <a href="/2019/08/18/99%E4%B9%98%E6%B3%95%E8%A1%A8/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -577,7 +577,7 @@ so  lonely_number()
 
     <!-- Next Nav -->
     
-        <a href="/2019/08/17/二分查找/" id="post_nav-older" class="next-content">
+        <a href="/2019/08/17/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
@@ -889,7 +889,9 @@ It will not impact the appearance and can give developers a lot of support :)
 <script>
 	var agent = navigator.userAgent.toLowerCase();
 	if(agent.indexOf('ucbrowser')>0) {
-		document.write('<link rel="stylesheet" href="/css/uc.css">');
+		document.write('
+<link rel="stylesheet" href="/css/uc.css">
+');
 	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
 	}
 </script>
