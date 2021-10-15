@@ -40,6 +40,22 @@
 <p><a href="https://www.splitbrain.org/services/ook">https://www.splitbrain.org/services/ook</a> 在线解密</p>
 <h2 id="crypto8"><a href="#crypto8" class="headerlink" title="crypto8"></a>crypto8</h2><p>Brainfuck 加密</p>
 <p><a href="https://www.splitbrain.org/services/ook">https://www.splitbrain.org/services/ook</a> 在线解密</p>
+<h2 id="crypto9"><a href="#crypto9" class="headerlink" title="crypto9"></a>crypto9</h2><p>下载是一个压缩包，但是没有解码密码，可以使用 Ziperello 破解</p>
+<p><img src="/2021/10/14/CTFShow-CRYPTO/crypto9.png"></p>
+<p>得到密码 4132:</p>
+<p>根据文件夹的名称： serpent 可知是这种加密方式。在线网站解密:</p>
+<p><a href="http://serpent.online-domain-tools.com/">Serpent Encryption – Easily encrypt or decrypt strings or files (online-domain-tools.com)</a></p>
+<p><img src="/2021/10/14/CTFShow-CRYPTO/crypto9_2.png"></p>
+<h2 id="crypto10"><a href="#crypto10" class="headerlink" title="crypto10"></a>crypto10</h2><p><a href="http://www.mxcz.net/tools/quotedprintable.aspx">http://www.mxcz.net/tools/quotedprintable.aspx</a></p>
+<p>得到: 用你那火热的嘴唇让我在午夜里无尽的销魂</p>
+<p>flag{用你那火热的嘴唇让我在午夜里无尽的销魂}</p>
+<h2 id="crypto11"><a href="#crypto11" class="headerlink" title="crypto11"></a>crypto11</h2><p><a href="https://www.somd5.com/">https://www.somd5.com/</a></p>
+<p>得到 ctf</p>
+<p>flag{ctf}</p>
+<h2 id="crypto0"><a href="#crypto0" class="headerlink" title="crypto0"></a>crypto0</h2><p>gmbh{ifmmp_dug}</p>
+<p><a href="https://www.qqxiuzi.cn/bianma/kaisamima.php">凯撒密码在线加密解密 - 千千秀字 (qqxiuzi.cn)</a></p>
+<p>凯撒密码 位移 1 位：</p>
+<p>flag{hello_ctf}</p>
 ]]></content>
       <categories>
         <category>CTF笔记</category>
