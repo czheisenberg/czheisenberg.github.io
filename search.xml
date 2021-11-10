@@ -57,7 +57,12 @@
 <p>凯撒密码 位移 1 位：</p>
 <p>flag{hello_ctf}</p>
 <h2 id="crypto12"><a href="#crypto12" class="headerlink" title="crypto12"></a>crypto12</h2><p>uozt{Zgyzhv_xlwv_uiln_xguhsld}</p>
-]]></content>
+<p>埃特巴什码:</p>
+<p><a href="https://wtool.com.cn/atbash.html">埃特巴什码 - Atbash Cipher - 在线工具网 (wtool.com.cn)</a></p>
+<p>flag{Atbase_code_from_ctfshow} (注意大小写)</p>
+<h2 id="crypto13"><a href="#crypto13" class="headerlink" title="crypto13"></a>crypto13</h2><p>下载 下来 base.txt base家族混合。网上有脚本:</p>
+<p>flag{b4Se_Fami1y_Is_FUn}</p>
+<h2 id="crypto14"><a href="#crypto14" class="headerlink" title="crypto14"></a>crypto14</h2>]]></content>
       <categories>
         <category>CTF笔记</category>
       </categories>
