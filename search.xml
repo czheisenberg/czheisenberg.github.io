@@ -228,7 +228,18 @@
 <p>过滤的内容: 的确过滤 小数点 .</p>
 <p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web162_4.png"></p>
 <h2 id="web163"><a href="#web163" class="headerlink" title="web163"></a>web163</h2><p>同<strong>web162</strong></p>
-<h2 id="web164"><a href="#web164" class="headerlink" title="web164"></a>web164</h2>]]></content>
+<h2 id="web164"><a href="#web164" class="headerlink" title="web164"></a>web164</h2><p>不会，暂时不做。</p>
+<h2 id="web165"><a href="#web165" class="headerlink" title="web165"></a>web165</h2><p>不会，暂时不做。</p>
+<h2 id="web166"><a href="#web166" class="headerlink" title="web166"></a>web166</h2><p>发现这道题，居然可以通过上传 zip 压缩包包含一句话木马。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web166.png"></p>
+<p>注意：Content-type: application/x-zip=compressed，需要要一样，直接更改后缀为 zip 抓包默认为这个，无需更改。</p>
+<p>上传成功，访问下载链接:</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web166_1.png"></p>
+<p>如图所示，右键复制下载链接:</p>
+<p><a href="http://945a0766-6515-46a4-bbbf-88479bf12c3c.challenge.ctf.show/upload/download.php?file=28696a28293fe023a51d363d03303616.zip">http://945a0766-6515-46a4-bbbf-88479bf12c3c.challenge.ctf.show/upload/download.php?file=28696a28293fe023a51d363d03303616.zip</a></p>
+<p>然后蚁剑连接,在上一级目录即可拿到 flag。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web166_2.png"></p>
+]]></content>
       <categories>
         <category>CTF笔记</category>
       </categories>
